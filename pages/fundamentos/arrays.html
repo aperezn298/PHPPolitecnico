@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays en PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item active" href="arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 text-white">Fundamentos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="1">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">1/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="2">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">2/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="3">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">3/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="4">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="operadores.html" class="text-decoration-none">Operadores</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">4/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="5">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">5/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="6">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="funciones.html" class="text-decoration-none">Funciones</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">6/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="7">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="arrays.html" class="text-decoration-none">Arrays</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">7/7</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <div class="content-page">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="#">Fundamentos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Arrays</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="mb-4">Arrays en PHP</h1>
+                    
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Comprender qué son los arrays y los diferentes tipos en PHP</li>
+                            <li>Aprender a crear y manipular arrays indexados</li>
+                            <li>Conocer cómo funcionan los arrays asociativos</li>
+                            <li>Entender los arrays multidimensionales y su utilidad</li>
+                            <li>Dominar las principales funciones para trabajar con arrays</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>¿Qué es un Array?</h2>
+                    <p>
+                        Un array es una estructura de datos que permite almacenar múltiples valores bajo un único nombre de variable. En PHP, los arrays son increíblemente versátiles y pueden almacenar cualquier tipo de datos, incluso otros arrays.
+                    </p>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Tipos de arrays en PHP</h5>
+                            <ul>
+                                <li><strong>Arrays indexados</strong>: Usan números como índices</li>
+                                <li><strong>Arrays asociativos</strong>: Usan nombres de clave personalizados</li>
+                                <li><strong>Arrays multidimensionales</strong>: Arrays que contienen otros arrays</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Arrays Indexados</h2>
+                    <p>
+                        Los arrays indexados utilizan números como índices. El primer elemento tiene el índice 0, el segundo tiene el índice 1, y así sucesivamente.
+                    </p>
+                    
+                    <h3 class="mt-4">Crear un array indexado</h3>
+                    <p>
+                        Hay dos formas principales de crear arrays indexados:
+                    </p>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$frutas</span> = [<span class="php-string">"manzana"</span>, <span class="php-string">"naranja"</span>, <span class="php-string">"plátano"</span>];
+
+<span class="php-keyword">foreach</span> (<span class="php-variable">$frutas</span> <span class="php-keyword">as</span> <span class="php-variable">$fruta</span>) {
+    <span class="php-keyword">echo</span> <span class="php-variable">$fruta</span> . <span class="php-string">"&lt;br&gt;"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-4">Recorrer un array indexado</h3>
+                    <p>
+                        Existen varias formas de recorrer los elementos de un array:
+                    </p>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+$frutas = ["manzana", "naranja", "plátano", "fresa"];
+
+// Método 1: Bucle for
+echo "Recorriendo con bucle for:<br>";
+for ($i = 0; $i < count($frutas); $i++) {
+    echo "Índice $i: " . $frutas[$i] . "<br>";
+}
+
+echo "<br>Recorriendo con foreach:<br>";
+// Método 2: Bucle foreach (recomendado)
+foreach ($frutas as $fruta) {
+    echo $fruta . "<br>";
+}
+
+echo "<br>Recorriendo con foreach (con índices):<br>";
+// Método 3: foreach con índices
+foreach ($frutas as $indice => $fruta) {
+    echo "Índice $indice: $fruta<br>";
+}
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Consejo:</strong> Para arrays indexados, el bucle <code>foreach</code> es más fácil de leer y menos propenso a errores que el bucle <code>for</code>.
+                    </div>
+                    
+                    <h3 class="mt-4">Modificar arrays indexados</h3>
+                    <p>
+                        Puedes modificar, añadir y eliminar elementos de un array:
+                    </p>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+$frutas = ["manzana", "naranja", "plátano"];
+
+// Modificar un elemento existente
+$frutas[1] = "kiwi";  // Reemplaza "naranja" por "kiwi"
+
+// Añadir un elemento al final
+$frutas[] = "fresa";  // Añade "fresa" al final
+
+// Añadir un elemento con la función array_push()
+array_push($frutas, "uva");  // Añade "uva" al final
+
+// Eliminar el último elemento
+array_pop($frutas);  // Elimina "uva"
+
+// Eliminar un elemento específico
+unset($frutas[0]);  // Elimina "manzana" (¡pero no reordena los índices!)
+
+// Mostrar el array resultante
+echo "Array después de las modificaciones:<br>";
+print_r($frutas);
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning mt-3">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Importante:</strong> Cuando usas <code>unset()</code> para eliminar un elemento de un array, los índices no se reordenan automáticamente. Si necesitas reordenar los índices, puedes usar <code>array_values($array)</code> después.
+                    </div>
+                    
+                    <h2 class="mt-5">Arrays Asociativos</h2>
+                    <p>
+                        Los arrays asociativos utilizan claves personalizadas en lugar de índices numéricos. Esto permite acceder a los valores de forma más descriptiva.
+                    </p>
+                    
+                    <h3 class="mt-4">Crear un array asociativo</h3>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Crear un array asociativo
+$persona = [
+    "nombre" => "Juan",
+    "edad" => 25,
+    "ciudad" => "Madrid"
+];
+
+// Forma alternativa
+$estudiante = array(
+    "nombre" => "Ana",
+    "carrera" => "Informática",
+    "semestre" => 3
+);
+
+// Acceder a elementos específicos
+echo "$persona[nombre] tiene $persona[edad] años y vive en $persona[ciudad]";
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-4">Recorrer un array asociativo</h3>
+                    <p>
+                        Para recorrer arrays asociativos, el bucle <code>foreach</code> es la mejor opción:
+                    </p>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+$persona = [
+    "nombre" => "Juan",
+    "edad" => 25,
+    "ciudad" => "Madrid",
+    "profesion" => "Desarrollador"
+];
+
+// Recorrer solo los valores
+echo "Datos personales:<br>";
+foreach ($persona as $valor) {
+    echo "- $valor<br>";
+}
+
+// Recorrer claves y valores
+echo "<br>Datos con etiquetas:<br>";
+foreach ($persona as $clave => $valor) {
+    echo ucfirst($clave) . ": $valor<br>";
+}
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-4">Modificar arrays asociativos</h3>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+$persona = [
+    "nombre" => "Juan",
+    "edad" => 25,
+    "ciudad" => "Madrid"
+];
+
+// Modificar un valor existente
+$persona["edad"] = 26;
+
+// Añadir un nuevo par clave-valor
+$persona["profesion"] = "Desarrollador";
+
+// Eliminar un elemento
+unset($persona["ciudad"]);
+
+// Mostrar el array resultante
+echo "Array modificado:<br>";
+print_r($persona);
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Arrays Multidimensionales</h2>
+                    <p>
+                        Los arrays multidimensionales son arrays que contienen otros arrays. Son útiles para representar estructuras de datos complejas como matrices, tablas o jerarquías.
+                    </p>
+                    
+                    <h3 class="mt-4">Crear un array multidimensional</h3>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Array multidimensional (matriz de estudiantes)
+$estudiantes = [
+    [
+        "nombre" => "Ana López",
+        "calificaciones" => [
+            "matematicas" => 90,
+            "historia" => 85,
+            "ciencias" => 92
+        ]
+    ],
+    [
+        "nombre" => "Carlos Gómez",
+        "calificaciones" => [
+            "matematicas" => 78,
+            "historia" => 89,
+            "ciencias" => 76
+        ]
+    ]
+];
+
+// Acceder a los datos de un estudiante
+$estudiante1 = $estudiantes[0];
+echo "Estudiante: " . $estudiante1["nombre"] . "<br>";
+echo "Matemáticas: " . $estudiante1["calificaciones"]["matematicas"] . "<br>";
+echo "Historia: " . $estudiante1["calificaciones"]["historia"] . "<br>";
+echo "Ciencias: " . $estudiante1["calificaciones"]["ciencias"] . "<br>";
+
+// Forma directa de acceder a los datos
+echo "<br>";
+echo "Estudiante: " . $estudiantes[1]["nombre"] . "<br>";
+echo "Matemáticas: " . $estudiantes[1]["calificaciones"]["matematicas"] . "<br>";
+echo "Historia: " . $estudiantes[1]["calificaciones"]["historia"] . "<br>";
+echo "Ciencias: " . $estudiantes[1]["calificaciones"]["ciencias"] . "<br>";
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-4">Recorrer arrays multidimensionales</h3>
+                    <p>
+                        Para recorrer arrays multidimensionales, se utilizan bucles <code>foreach</code> anidados:
+                    </p>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Array multidimensional
+$productos = [
+    "electronica" => [
+        "televisores" => ["Samsung", "LG", "Sony"],
+        "smartphones" => ["iPhone", "Samsung Galaxy", "Xiaomi"]
+    ],
+    "hogar" => [
+        "muebles" => ["Sofá", "Mesa", "Silla"],
+        "electrodomesticos" => ["Nevera", "Lavadora", "Microondas"]
+    ]
+];
+
+// Recorrer el array multidimensional
+foreach ($productos as $categoria => $subcategorias) {
+    echo "<strong>Categoría: " . ucfirst($categoria) . "</strong><br>";
+    
+    foreach ($subcategorias as $subcategoria => $items) {
+        echo "- " . ucfirst($subcategoria) . ": ";
+        
+        foreach ($items as $indice => $item) {
+            echo $item;
+            
+            // Agregar coma si no es el último elemento
+            if ($indice < count($items) - 1) {
+                echo ", ";
+            }
+        }
+        
+        echo "<br>";
+    }
+    
+    echo "<br>";
+}
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Funciones Útiles para Arrays</h2>
+                    <p>
+                        PHP proporciona numerosas funciones para manipular y trabajar con arrays:
+                    </p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Función</th>
+                                    <th>Descripción</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>count($array)</code></td>
+                                    <td>Cuenta el número de elementos</td>
+                                    <td><code>count([1, 2, 3]) // 3</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>sort($array)</code></td>
+                                    <td>Ordena un array (ascendente)</td>
+                                    <td><code>sort($numeros)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>rsort($array)</code></td>
+                                    <td>Ordena un array (descendente)</td>
+                                    <td><code>rsort($numeros)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_push($array, $valor)</code></td>
+                                    <td>Añade elementos al final</td>
+                                    <td><code>array_push($frutas, "piña")</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_pop($array)</code></td>
+                                    <td>Elimina y devuelve el último elemento</td>
+                                    <td><code>$ultimo = array_pop($frutas)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_shift($array)</code></td>
+                                    <td>Elimina y devuelve el primer elemento</td>
+                                    <td><code>$primero = array_shift($frutas)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_unshift($array, $valor)</code></td>
+                                    <td>Añade elementos al inicio</td>
+                                    <td><code>array_unshift($frutas, "kiwi")</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_merge($array1, $array2)</code></td>
+                                    <td>Fusiona dos o más arrays</td>
+                                    <td><code>$fusion = array_merge($a, $b)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>in_array($valor, $array)</code></td>
+                                    <td>Comprueba si un valor existe</td>
+                                    <td><code>in_array("manzana", $frutas)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_search($valor, $array)</code></td>
+                                    <td>Busca un valor y devuelve su clave</td>
+                                    <td><code>$key = array_search("manzana", $frutas)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_key_exists($clave, $array)</code></td>
+                                    <td>Verifica si una clave existe</td>
+                                    <td><code>array_key_exists("nombre", $persona)</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>array_sum($array)</code></td>
+                                    <td>Suma los valores de un array numérico</td>
+                                    <td><code>$suma = array_sum([1, 2, 3, 4])</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h3 class="mt-4">Ejemplos de funciones para arrays</h3>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Array original
+$frutas = ["manzana", "naranja", "plátano", "fresa", "kiwi"];
+echo "Array original: " . implode(", ", $frutas) . "<br><br>";
+
+// Ordenar alfabéticamente
+sort($frutas);
+echo "Array ordenado: " . implode(", ", $frutas) . "<br>";
+
+// Comprobar si existe un valor
+$buscar = "manzana";
+if (in_array($buscar, $frutas)) {
+    echo "¿Existe la $buscar en el array? Sí<br>";
+} else {
+    echo "¿Existe la $buscar en el array? No<br>";
+}
+
+// Contar elementos
+echo "Conteo de elementos: " . count($frutas) . "<br>";
+
+// Sumar valores numéricos
+$numeros = [10, 15, 5, 8, 17];
+echo "Suma de números: " . array_sum($numeros) . "<br>";
+
+// Fusionar arrays
+$masFrutas = ["uva", "cereza"];
+$todasFrutas = array_merge($frutas, $masFrutas);
+echo "Todas las frutas: " . implode(", ", $todasFrutas) . "<br>";
+
+// Eliminar duplicados
+$numeros_duplicados = [1, 2, 2, 3, 4, 4, 5];
+$numeros_unicos = array_unique($numeros_duplicados);
+echo "Números únicos: " . implode(", ", $numeros_unicos) . "<br>";
+
+// Obtener claves
+$persona = ["nombre" => "Juan", "edad" => 25, "ciudad" => "Madrid"];
+$claves = array_keys($persona);
+echo "Claves del array persona: " . implode(", ", $claves) . "<br>";
+
+// Obtener valores
+$valores = array_values($persona);
+echo "Valores del array persona: " . implode(", ", $valores);
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Funciones Avanzadas para Arrays</h2>
+                    <p>
+                        PHP ofrece también funciones avanzadas para operaciones más complejas con arrays:
+                    </p>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Array de números
+$numeros = [1, 2, 3, 4, 5];
+
+// array_map(): aplica una función a cada elemento
+$cuadrados = array_map(function($n) {
+    return $n * $n;
+}, $numeros);
+echo "Números al cuadrado: " . implode(", ", $cuadrados) . "<br>";
+
+// array_filter(): filtra elementos según una condición
+$pares = array_filter($numeros, function($n) {
+    return $n % 2 == 0;
+});
+echo "Números pares: " . implode(", ", $pares) . "<br>";
+
+// array_reduce(): reduce el array a un solo valor
+$suma = array_reduce($numeros, function($carry, $item) {
+    return $carry + $item;
+}, 0);
+echo "Suma de números: $suma<br>";
+
+// array_walk(): modifica cada elemento del array
+$frutas = ["manzana", "naranja", "plátano"];
+array_walk($frutas, function(&$value) {
+    $value = ucfirst($value);
+});
+echo "Frutas con mayúscula: " . implode(", ", $frutas) . "<br>";
+
+// array_slice(): extrae una porción del array
+$porcion = array_slice($numeros, 1, 3);  // desde índice 1, 3 elementos
+echo "Porción del array: " . implode(", ", $porcion) . "<br>";
+
+// array_chunk(): divide un array en fragmentos
+$grupos = array_chunk($numeros, 2);  // grupos de 2 elementos
+echo "Array dividido en grupos:<br>";
+foreach ($grupos as $grupo) {
+    echo "- " . implode(", ", $grupo) . "<br>";
+}
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mt-3">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>Ventajas de las funciones de orden superior:</strong> Funciones como <code>array_map()</code>, <code>array_filter()</code> y <code>array_reduce()</code> permiten escribir código más conciso y expresivo al trabajar con arrays.
+                    </div>
+                    
+                    <h2 class="mt-5">Casos Prácticos con Arrays</h2>
+                    
+                    <h3 class="mt-4">Caso 1: Lista de tareas</h3>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Lista de tareas con arrays
+$tareas = [
+    [
+        "id" => 1,
+        "titulo" => "Comprar víveres",
+        "completada" => true,
+        "fechaLimite" => "2025-05-05"
+    ],
+    [
+        "id" => 2,
+        "titulo" => "Pagar facturas",
+        "completada" => false,
+        "fechaLimite" => "2025-05-10"
+    ],
+    [
+        "id" => 3,
+        "titulo" => "Enviar informe",
+        "completada" => false,
+        "fechaLimite" => "2025-05-15"
+    ]
+];
+
+// Mostrar todas las tareas
+echo "<h4>Lista de tareas:</h4>";
+echo "<ul>";
+foreach ($tareas as $tarea) {
+    $estado = $tarea["completada"] ? "completada" : "pendiente";
+    $clase = $tarea["completada"] ? "text-decoration-line-through text-muted" : "";
+    echo "<li class='$clase'>";
+    echo $tarea["titulo"] . " - Estado: " . $estado . " (Fecha límite: " . $tarea["fechaLimite"] . ")";
+    echo "</li>";
+}
+echo "</ul>";
+
+// Filtrar tareas pendientes
+$tareasPendientes = array_filter($tareas, function($tarea) {
+    return !$tarea["completada"];
+});
+
+echo "<h4>Tareas pendientes:</h4>";
+echo "<ul>";
+foreach ($tareasPendientes as $tarea) {
+    echo "<li>" . $tarea["titulo"] . " (Fecha límite: " . $tarea["fechaLimite"] . ")</li>";
+}
+echo "</ul>";
+
+// Contar tareas completadas
+$tareasCompletadas = array_filter($tareas, function($tarea) {
+    return $tarea["completada"];
+});
+
+echo "<p>Tienes " . count($tareasPendientes) . " tareas pendientes y " . 
+     count($tareasCompletadas) . " tareas completadas.</p>";
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-4">Caso 2: Cálculo de estadísticas</h3>
+                    
+                    <div class="interactive-example">
+                        <div class="code-section">
+                            <pre><code class="php-code">&lt;?php
+// Datos de ventas
+$ventas = [
+    "enero" => 15000,
+    "febrero" => 22000,
+    "marzo" => 18500,
+    "abril" => 25000,
+    "mayo" => 21000
+];
+
+// Total de ventas
+$totalVentas = array_sum($ventas);
+echo "<h4>Estadísticas de ventas:</h4>";
+echo "Total de ventas: $" . number_format($totalVentas, 2) . "<br>";
+
+// Promedio de ventas
+$promedioVentas = $totalVentas / count($ventas);
+echo "Promedio mensual: $" . number_format($promedioVentas, 2) . "<br>";
+
+// Mes con mayores ventas
+$mesMaximo = array_search(max($ventas), $ventas);
+echo "Mes con mayores ventas: " . ucfirst($mesMaximo) . " con $" . number_format($ventas[$mesMaximo], 2) . "<br>";
+
+// Mes con menores ventas
+$mesMinimo = array_search(min($ventas), $ventas);
+echo "Mes con menores ventas: " . ucfirst($mesMinimo) . " con $" . number_format($ventas[$mesMinimo], 2) . "<br>";
+
+// Ordenar ventas (de mayor a menor)
+arsort($ventas);
+echo "<br><h5>Ventas ordenadas (mayor a menor):</h5>";
+echo "<ul>";
+foreach ($ventas as $mes => $cantidad) {
+    echo "<li>" . ucfirst($mes) . ": $" . number_format($cantidad, 2) . "</li>";
+}
+echo "</ul>";
+
+// Calcular porcentaje respecto al total
+echo "<h5>Porcentaje sobre el total:</h5>";
+echo "<ul>";
+foreach ($ventas as $mes => $cantidad) {
+    $porcentaje = ($cantidad / $totalVentas) * 100;
+    echo "<li>" . ucfirst($mes) . ": " . number_format($porcentaje, 1) . "%</li>";
+}
+echo "</ul>";
+?&gt;</code></pre>
+                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                        </div>
+                        <div class="result-section p-3">
+                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navegación de página -->
+                    <div class="page-navigation mt-5">
+                        <a href="funciones.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i> Anterior: Funciones
+                        </a>
+                        <a href="../intermedio/formularios.html" class="btn btn-primary">
+                            Siguiente: Formularios <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Ejercicio práctico -->
+                    <div class="card mt-5 border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0 text-white"><i class="fas fa-laptop-code me-2"></i>Ejercicio Práctico</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5>Sistema de calificaciones</h5>
+                            <p>Crea un sistema para gestionar calificaciones de estudiantes utilizando arrays:</p>
+                            <ol>
+                                <li>Define un array multidimensional llamado <code>$estudiantes</code> con al menos 3 estudiantes</li>
+                                <li>Para cada estudiante, guarda: nombre, edad y un array asociativo con las calificaciones de al menos 3 asignaturas</li>
+                                <li>Crea una función que calcule el promedio de calificaciones para cada estudiante</li>
+                                <li>Muestra un listado ordenado por nombre de los estudiantes con sus promedios</li>
+                                <li>Identifica y muestra al estudiante con el promedio más alto</li>
+                            </ol>
+                            <div class="alert alert-light border">
+                                <p><strong>Pistas:</strong></p>
+                                <ul>
+                                    <li>Define el array así: <code>$estudiantes = [ ["nombre" => "Ana", "edad" => 20, "calificaciones" => [...]], ... ];</code></li>
+                                    <li>Para calcular el promedio, usa <code>array_sum()</code> y <code>count()</code></li>
+                                    <li>Para encontrar el estudiante con mayor promedio, recorre el array y guarda el mayor valor</li>
+                                    <li>Usa <code>sort()</code> o <code>usort()</code> para ordenar el array por nombre</li>
+                                    <li>Muestra los resultados en formato de tabla HTML para mejor presentación</li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-sm btn-success complete-lesson" data-bs-toggle="tooltip" title="Marcar como completada">
+                                <i class="fas fa-check me-2"></i>Completar lección
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a>
+                        </li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+</body>
+</html>

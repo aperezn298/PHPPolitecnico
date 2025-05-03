@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sintaxis Básica de PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item active" href="sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 text-white">Fundamentos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="1">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">1/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="2">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">2/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="3">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">3/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="4">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="operadores.html" class="text-decoration-none">Operadores</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">4/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="5">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">5/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="6">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="funciones.html" class="text-decoration-none">Funciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="7">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="arrays.html" class="text-decoration-none">Arrays</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">7/7</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 28%;" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100">28%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <div class="content-page">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="#">Fundamentos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sintaxis Básica</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="mb-4">Sintaxis Básica de PHP</h1>
+                    
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Entender la estructura básica de un script PHP</li>
+                            <li>Conocer las etiquetas de apertura y cierre de PHP</li>
+                            <li>Aprender sobre la separación de instrucciones</li>
+                            <li>Comprender los comentarios en PHP</li>
+                            <li>Conocer la sensibilidad a mayúsculas y minúsculas</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Etiquetas de PHP</h2>
+                    <p>
+                        Para que el servidor web identifique el código PHP y lo ejecute, necesitamos colocarlo dentro de etiquetas especiales. Las etiquetas estándar de PHP son:
+                    </p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Hola, Mundo!'</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-3">
+                        Cuando PHP encuentra estas etiquetas, deja de interpretar el código como HTML y comienza a ejecutarlo como código PHP.
+                    </p>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Nota:</strong> Aunque existen etiquetas cortas <code>&lt;? ?&gt;</code>, su uso no está recomendado porque pueden estar deshabilitadas en algunas configuraciones de PHP. Siempre usa las etiquetas estándar <code>&lt;?php ?&gt;</code>.
+                    </div>
+
+                    <h2 class="mt-5">Separación de Instrucciones</h2>
+                    <p>
+                        En PHP, cada instrucción debe terminar con un punto y coma (;). Esto es similar a otros lenguajes como C, C++ o Java.
+                    </p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Esta es la primera instrucción&lt;br&gt;'</span>;
+<span class="php-keyword">echo</span> <span class="php-string">'Esta es la segunda instrucción.'</span>;
+<span class="php-keyword">echo</span> <span class="php-string">'Saludos '</span> . <span class="php-string">'estudiantes.'</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-danger mt-3">
+                        <i class="fas fa-times-circle me-2"></i>
+                        <strong>Error común:</strong> Olvidar el punto y coma al final de una instrucción provoca un error de sintaxis:
+                        
+                        <div class="vscode-editor mt-4">
+                            <div
+                                class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                <span><i class="fab fa-php"></i> ejemplo.php</span>
+                            </div>
+                            <div class="vscode-editor-content">
+                                <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Esta línea provocará un error'</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Porque falta el punto y coma anterior'</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Comentarios en PHP</h2>
+                    <p>
+                        Los comentarios son notas que escribimos en el código para explicar lo que hace. No son ejecutados por el intérprete PHP y sirven para ayudarnos a entender el código en el futuro o para colaborar con otros programadores.
+                    </p>
+                    
+                    <p>PHP soporta tres tipos de comentarios:</p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Este es un comentario de una línea</span>
+<span class="php-comment"># Este también es un comentario de una línea</span>
+<span class="php-comment">/* Este es un comentario
+   de múltiples líneas
+   que puede extenderse
+   por varias líneas */</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Solo este texto será mostrado en la página'</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Sensibilidad a Mayúsculas y Minúsculas</h2>
+                    <p>
+                        En PHP, algunas cosas son sensibles a mayúsculas y minúsculas (case-sensitive) y otras no:
+                    </p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Elemento</th>
+                                    <th>Sensibilidad a mayúsculas</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Variables</td>
+                                    <td><span class="badge bg-danger">Sensible</span></td>
+                                    <td><code>$nombre</code> y <code>$Nombre</code> son diferentes</td>
+                                </tr>
+                                <tr>
+                                    <td>Constantes definidas por el usuario</td>
+                                    <td><span class="badge bg-danger">Sensible</span> (por defecto)</td>
+                                    <td><code>define('MICONST', 'valor');</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Nombres de funciones</td>
+                                    <td><span class="badge bg-success">No sensible</span></td>
+                                    <td><code>strtoupper()</code> y <code>STRTOUPPER()</code> son iguales</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombres de clases</td>
+                                    <td><span class="badge bg-success">No sensible</span></td>
+                                    <td><code>class MiClase {}</code> y <code>class MICLASE {}</code> son iguales</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombres de métodos</td>
+                                    <td><span class="badge bg-success">No sensible</span></td>
+                                    <td><code>miMetodo()</code> y <code>MiMetodo()</code> son iguales</td>
+                                </tr>
+                                <tr>
+                                    <td>Palabras clave (if, else, while...)</td>
+                                    <td><span class="badge bg-success">No sensible</span></td>
+                                    <td><code>if</code>, <code>IF</code> y <code>If</code> son iguales</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$nombre</span> = <span class="php-string">'Juan'</span>;
+<span class="php-variable">$Nombre</span> = <span class="php-string">'Pedro'</span>;
+<span class="php-keyword">echo</span> <span class="php-string">'nombre: '</span> . <span class="php-variable">$nombre</span> . <span class="php-string">'&lt;br&gt;'</span>;
+<span class="php-keyword">echo</span> <span class="php-string">'Nombre: '</span> . <span class="php-variable">$Nombre</span> . <span class="php-string">'&lt;br&gt;'</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">PHP Mezclado con HTML</h2>
+                    <p>
+                        Una de las características más potentes de PHP es la forma en que se puede mezclar con HTML:
+                    </p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="code-color">&lt;!DOCTYPE html&gt;</span>
+<span class="code-color">&lt;html&gt;</span>
+<span class="code-color">&lt;head&gt;</span>
+<span class="code-color">    &lt;title&gt;PHP y HTML&lt;/title&gt;</span>
+<span class="code-color">&lt;/head&gt;</span>
+<span class="code-color">&lt;body&gt;</span>
+<span class="code-color">    &lt;h1&gt;Bienvenido a mi página&lt;/h1&gt;</span>
+<span class="php-tag">    &lt;?php</span>
+<span class="php-variable">    $hora</span> = <span class="php-function">date</span>(<span class="php-string">'H'</span>);
+<span class="php-keyword">    if</span> (<span class="php-variable">$hora</span> &lt; <span class="php-number">12</span>) {
+<span class="php-keyword">        echo</span> <span class="php-string">'¡Buenos días!'</span>;
+<span class="php-keyword">    } elseif</span> (<span class="php-variable">$hora</span> &lt; <span class="php-number">18</span>) {
+<span class="php-keyword">        echo</span> <span class="php-string">'¡Buenas tardes!'</span>;
+<span class="php-keyword">    } else</span> {
+<span class="php-keyword">        echo</span> <span class="php-string">'¡Buenas noches!'</span>;
+<span class="php-keyword">    }</span>
+<span class="php-tag">    ?&gt;</span>
+<span class="code-color">    &lt;p&gt;Este es un párrafo normal en HTML.&lt;/p&gt;</span>
+<span class="code-color">    &lt;p&gt;Hoy es: &lt;?php</span> <span class="php-keyword">echo</span> <span class="php-function">date</span>(<span class="php-string">'d/m/Y'</span>); <span class="php-tag">?&gt;&lt;/p&gt;</span>
+<span class="code-color">    &lt;ul&gt;</span>
+<span class="php-tag">        &lt;?php</span>
+<span class="php-keyword">        for</span> (<span class="php-variable">$i</span> = <span class="php-number">1</span>; <span class="php-variable">$i</span> &lt;= <span class="php-number">5</span>; <span class="php-variable">$i</span>++) {
+<span class="php-keyword">            echo</span> <span class="php-string">"&lt;li&gt;Elemento </span><span class="php-variable">$i</span><span class="php-string"> de la lista&lt;/li&gt;"</span>;
+<span class="php-keyword">        }</span>
+<span class="php-tag">        ?&gt;</span>
+<span class="code-color">    &lt;/ul&gt;</span>
+<span class="code-color">&lt;/body&gt;</span>
+<span class="code-color">&lt;/html&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Entrada de Datos en PHP</h2>
+                    <p>
+                        En PHP, existen diversas formas de obtener datos de entrada del usuario. Esto es fundamental para crear aplicaciones interactivas.
+                    </p>
+                    
+                    <h3>Usando readline() para Entrada en Consola</h3>
+                    <p>
+                        La función <code>readline()</code> permite recibir entradas de usuario desde la línea de comandos cuando se ejecuta PHP en modo CLI (Command Line Interface).
+                    </p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> entrada_consola.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Solicitar datos al usuario</span>
+<span class="php-variable">$nombre</span> = <span class="php-function">readline</span>(<span class="php-string">'¿Cuál es tu nombre? '</span>);
+<span class="php-variable">$edad</span> = <span class="php-function">readline</span>(<span class="php-string">'¿Cuál es tu edad? '</span>);
+
+<span class="php-comment">// Mostrar los datos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Hola $nombre, tienes $edad años."</span>;
+
+<span class="php-comment">// También se puede usar readline_add_history para conservar entradas anteriores</span>
+<span class="php-function">readline_add_history</span>(<span class="php-variable">$nombre</span>);
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2 - CLI</span>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Nota:</strong> La función <code>readline()</code> solo está disponible cuando PHP se ejecuta en modo de línea de comandos (CLI) y requiere tener instalada la extensión readline. No funciona en entornos web.
+                    </div>
+                    
+                    <h3>Entrada de Datos en Entorno Web</h3>
+                    <p>
+                        En aplicaciones web, la entrada de datos normalmente se recibe a través de formularios HTML usando los métodos GET o POST.
+                    </p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> formulario.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="code-color">&lt;!DOCTYPE html&gt;</span>
+<span class="code-color">&lt;html&gt;</span>
+<span class="code-color">&lt;body&gt;</span>
+<span class="code-color">    &lt;form method="post" action="procesar.php"&gt;</span>
+<span class="code-color">        &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;</span>
+<span class="code-color">        &lt;input type="text" id="nombre" name="nombre"&gt;&lt;br&gt;&lt;br&gt;</span>
+<span class="code-color">        </span>
+<span class="code-color">        &lt;label for="edad"&gt;Edad:&lt;/label&gt;</span>
+<span class="code-color">        &lt;input type="number" id="edad" name="edad"&gt;&lt;br&gt;&lt;br&gt;</span>
+<span class="code-color">        </span>
+<span class="code-color">        &lt;input type="submit" value="Enviar"&gt;</span>
+<span class="code-color">    &lt;/form&gt;</span>
+<span class="code-color">&lt;/body&gt;</span>
+<span class="code-color">&lt;/html&gt;</span>
+                            </code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> procesar.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Acceder a los datos del formulario enviados por POST</span>
+<span class="php-variable">$nombre</span> = <span class="php-variable">$_POST</span>[<span class="php-string">'nombre'</span>];
+<span class="php-variable">$edad</span> = <span class="php-variable">$_POST</span>[<span class="php-string">'edad'</span>];
+
+<span class="php-comment">// Validar la entrada (siempre validar los datos de entrada)</span>
+<span class="php-keyword">if</span> (<span class="php-function">empty</span>(<span class="php-variable">$nombre</span>) || <span class="php-function">empty</span>(<span class="php-variable">$edad</span>)) {
+    <span class="php-keyword">echo</span> <span class="php-string">'Por favor, complete todos los campos.'</span>;
+    <span class="php-keyword">exit</span>;
+}
+
+<span class="php-comment">// Procesar los datos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Hola $nombre, has indicado que tienes $edad años."</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Otras Formas de Capturar Entrada</h3>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Variables Predefinidas para Entrada de Datos</h5>
+                            <ul>
+                                <li><strong>$_GET</strong>: Captura datos enviados por URL o formularios con método GET</li>
+                                <li><strong>$_POST</strong>: Captura datos enviados por formularios con método POST</li>
+                                <li><strong>$_REQUEST</strong>: Combina $_GET, $_POST y $_COOKIE</li>
+                                <li><strong>$_FILES</strong>: Contiene información de archivos subidos mediante formularios</li>
+                                <li><strong>$_COOKIE</strong>: Variables pasadas a través de cookies</li>
+                                <li><strong>$_SESSION</strong>: Variables de sesión registradas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Seguridad:</strong> Nunca confíes en los datos de entrada del usuario. Siempre valida y limpia los datos antes de procesarlos para evitar vulnerabilidades como inyección SQL o XSS.
+                    </div>
+                    
+                    <h2 class="mt-5">Salida de Datos en PHP</h2>
+                    <p>
+                        PHP ofrece varias formas de mostrar datos:
+                    </p>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Formas comunes de mostrar datos</h5>
+                            <ul>
+                                <li><strong>echo</strong>: Muestra una o más cadenas</li>
+                                <li><strong>print</strong>: Similar a echo, pero solo puede mostrar una cadena y devuelve un valor (1)</li>
+                                <li><strong>printf</strong>: Muestra una cadena formateada</li>
+                                <li><strong>print_r</strong>: Muestra información legible sobre una variable</li>
+                                <li><strong>var_dump</strong>: Similar a print_r, pero muestra información más detallada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// echo - La forma más común</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Hola '</span>, <span class="php-string">'Mundo'</span>, <span class="php-string">'!&lt;br&gt;'</span>;
+
+<span class="php-comment">// print - Similar a echo pero solo acepta un argumento</span>
+<span class="php-keyword">print</span> <span class="php-string">'Hola Mundo con print!&lt;br&gt;'</span>;
+
+<span class="php-comment">// printf - Para formatear texto</span>
+<span class="php-variable">$nombre</span> = <span class="php-string">'Ana'</span>;
+<span class="php-variable">$edad</span> = <span class="php-number">25</span>;
+<span class="php-function">printf</span>(<span class="php-string">'Me llamo %s y tengo %d años.&lt;br&gt;'</span>, <span class="php-variable">$nombre</span>, <span class="php-variable">$edad</span>);
+
+<span class="php-comment">// print_r - Útil para arrays y objetos</span>
+<span class="php-variable">$colores</span> = <span class="php-keyword">array</span>(<span class="php-string">'rojo'</span>, <span class="php-string">'verde'</span>, <span class="php-string">'azul'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">'Array de colores: '</span>;
+<span class="php-function">print_r</span>(<span class="php-variable">$colores</span>);
+<span class="php-keyword">echo</span> <span class="php-string">'&lt;br&gt;'</span>;
+
+<span class="php-comment">// var_dump - Muestra información detallada sobre variables</span>
+<span class="php-keyword">echo</span> <span class="php-string">'Detalles de la variable colores: '</span>;
+<span class="php-function">var_dump</span>(<span class="php-variable">$colores</span>);
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Mejores Prácticas de Sintaxis</h2>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Recomendaciones para escribir código PHP limpio</h5>
+                            <ul>
+                                <li><strong>Sangría consistente</strong>: Usa 4 espacios (o tabulaciones) para la sangría de bloques de código.</li>
+                                <li><strong>Espaciado</strong>: Añade espacios alrededor de operadores para mejorar la legibilidad.</li>
+                                <li><strong>Comentarios</strong>: Usa comentarios para explicar el propósito del código, especialmente en partes complejas.</li>
+                                <li><strong>Etiquetas de cierre</strong>: Omite la etiqueta de cierre de PHP <code>?&gt;</code> en archivos que contengan solo código PHP (evita problemas con espacios en blanco).</li>
+                                <li><strong>Nomenclatura</strong>: Usa nombres descriptivos para variables, funciones, etc.</li>
+                                <li><strong>Longitud</strong>: Mantén las líneas de código razonablemente cortas (generalmente menos de 80-120 caracteres).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3>Ejemplo de código bien formateado:</h3>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code>
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">/**
+ * Función que calcula el promedio de un array de números
+ *
+ * @param array $numeros Array de números para calcular el promedio
+ * @return float El promedio calculado
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">calcularPromedio</span>(<span class="php-variable">$numeros</span>) {
+    <span class="php-keyword">if</span> (<span class="php-function">empty</span>(<span class="php-variable">$numeros</span>)) {
+        <span class="php-keyword">return</span> <span class="php-number">0</span>;
+    }
+    <span class="php-variable">$suma</span> = <span class="php-number">0</span>;
+    <span class="php-keyword">foreach</span> (<span class="php-variable">$numeros</span> <span class="php-keyword">as</span> <span class="php-variable">$numero</span>) {
+        <span class="php-variable">$suma</span> += <span class="php-variable">$numero</span>;
+    }
+    <span class="php-keyword">return</span> <span class="php-variable">$suma</span> / <span class="php-function">count</span>(<span class="php-variable">$numeros</span>);
+}
+
+<span class="php-variable">$calificaciones</span> = [<span class="php-number">85</span>, <span class="php-number">90</span>, <span class="php-number">78</span>, <span class="php-number">92</span>, <span class="php-number">88</span>];
+<span class="php-variable">$promedio</span> = <span class="php-function">calcularPromedio</span>(<span class="php-variable">$calificaciones</span>);
+<span class="php-keyword">echo</span> <span class="php-string">'El promedio es: '</span> . <span class="php-variable">$promedio</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Navegación de página -->
+                    <div class="page-navigation">
+                        <a href="introduccion.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i> Anterior: Introducción a PHP
+                        </a>
+                        <a href="variables.html" class="btn btn-primary">
+                            Siguiente: Variables y Tipos <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Ejercicio práctico -->
+                    <div class="card mt-5 border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0 text-white"><i class="fas fa-laptop-code me-2"></i>Ejercicio Práctico</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5>Practica la sintaxis de PHP</h5>
+                            <p>Crea un archivo PHP que realice las siguientes tareas:</p>
+                            <ol>
+                                <li>Muestra un título "Práctica de Sintaxis PHP" usando una etiqueta HTML &lt;h1&gt;</li>
+                                <li>Muestra la fecha actual en formato "Hoy es [día de la semana], [día] de [mes] de [año]"</li>
+                                <li>Añade comentarios que expliquen lo que hace tu código</li>
+                            </ol>
+                            <button class="btn btn-sm btn-success complete-lesson" data-bs-toggle="tooltip" title="Marcar como completada">
+                                <i class="fas fa-check me-2"></i>Completar lección
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a>
+                        </li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+</body>
+</html>

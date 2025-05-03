@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores en PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item active" href="operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 text-white">Fundamentos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="1">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">1/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="2">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">2/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="3">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">3/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="3">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="operadores.html" class="text-decoration-none">Operadores</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">4/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="5">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">5/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="6">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="funciones.html" class="text-decoration-none">Funciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="7">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="arrays.html" class="text-decoration-none">Arrays</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">7/7</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 57%;" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100">57%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <div class="content-page">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="#">Fundamentos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Operadores</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="mb-4">Operadores en PHP</h1>
+
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Identificar los diferentes tipos de operadores en PHP.</li>
+                            <li>Aplicar operadores para realizar cálculos, comparaciones y operaciones lógicas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-calculator text-primary me-2"></i>
+                            <h2 class="h5 mb-0">1. Operadores Aritméticos</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se utilizan para realizar operaciones matemáticas básicas.</p>
+                            <div class="vscode-editor mt-2 shadow-sm">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$a</span> = <span class="php-number">10</span>;
+<span class="php-variable">$b</span> = <span class="php-number">3</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Suma: "</span> . (<span class="php-variable">$a</span> + <span class="php-variable">$b</span>) . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Resta: "</span> . (<span class="php-variable">$a</span> - <span class="php-variable">$b</span>) . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Multiplicación: "</span> . (<span class="php-variable">$a</span> * <span class="php-variable">$b</span>) . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"División: "</span> . (<span class="php-variable">$a</span> / <span class="php-variable">$b</span>) . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Módulo: "</span> . (<span class="php-variable">$a</span> % <span class="php-variable">$b</span>) . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p><strong>Resultado:</strong></p>
+                                <div class="bg-light p-3 border rounded result-panel">
+                                    Suma: 13<br>
+                                    Resta: 7<br>
+                                    Multiplicación: 30<br>
+                                    División: 3.3333333333333<br>
+                                    Módulo: 1<br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-equals text-primary me-2"></i>
+                            <h2 class="h5 mb-0">2. Operadores de Asignación</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se usan para asignar valores a variables.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Ejemplo</th>
+                                            <th>Equivalente a</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>=</td>
+                                            <td>$x = 5</td>
+                                            <td>$x = 5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>+=</td>
+                                            <td>$x += 3</td>
+                                            <td>$x = $x + 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>-=</td>
+                                            <td>$x -= 3</td>
+                                            <td>$x = $x - 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>*=</td>
+                                            <td>$x *= 3</td>
+                                            <td>$x = $x * 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>/=</td>
+                                            <td>$x /= 3</td>
+                                            <td>$x = $x / 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>%=</td>
+                                            <td>$x %= 3</td>
+                                            <td>$x = $x % 3</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3 shadow-sm">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> asignacion.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$x</span> = <span class="php-number">5</span>;
+<span class="php-variable">$x</span> += <span class="php-number">3</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Valor final de x: $x"</span>; <span class="php-comment">// Resultado: 8</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p><strong>Resultado:</strong></p>
+                                <div class="bg-light p-3 border rounded result-panel">
+                                    Valor final de x: 8
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-not-equal text-primary me-2"></i>
+                            <h2 class="h5 mb-0">3. Operadores de Comparación</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Comparan dos valores y devuelven verdadero o falso.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Nombre</th>
+                                            <th>Ejemplo</th>
+                                            <th>Resultado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>==</td>
+                                            <td>Igual</td>
+                                            <td>$a == $b</td>
+                                            <td>TRUE si $a es igual a $b</td>
+                                        </tr>
+                                        <tr>
+                                            <td>===</td>
+                                            <td>Idéntico</td>
+                                            <td>$a === $b</td>
+                                            <td>TRUE si $a es igual a $b, y son del mismo tipo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>!=</td>
+                                            <td>Diferente</td>
+                                            <td>$a != $b</td>
+                                            <td>TRUE si $a no es igual a $b</td>
+                                        </tr>
+                                        <tr>
+                                            <td>!==</td>
+                                            <td>No idéntico</td>
+                                            <td>$a !== $b</td>
+                                            <td>TRUE si $a no es igual a $b o no son del mismo tipo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>></td>
+                                            <td>Mayor que</td>
+                                            <td>$a > $b</td>
+                                            <td>TRUE si $a es mayor que $b</td>
+                                        </tr>
+                                        <tr>
+                                            <td><</td>
+                                            <td>Menor que</td>
+                                            <td>$a < $b</td>
+                                            <td>TRUE si $a es menor que $b</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> comparacion.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$a</span> = <span class="php-number">10</span>;
+<span class="php-variable">$b</span> = <span class="php-number">20</span>;
+<span class="php-keyword">echo</span> (<span class="php-variable">$a</span> == <span class="php-variable">$b</span> ? <span class="php-string">"Iguales"</span> : <span class="php-string">"Diferentes"</span>); <span class="php-comment">// Diferentes</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de Operadores de Incremento/Decremento con ejemplo -->
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-plus-square text-primary me-2"></i>
+                            <h2 class="h5 mb-0">4. Operadores de Incremento/Decremento</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se utilizan para incrementar o decrementar el valor de una variable.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>++$x</td>
+                                            <td>Pre-incremento: Incrementa $x en uno, luego devuelve $x</td>
+                                        </tr>
+                                        <tr>
+                                            <td>$x++</td>
+                                            <td>Post-incremento: Devuelve $x, luego incrementa $x en uno</td>
+                                        </tr>
+                                        <tr>
+                                            <td>--$x</td>
+                                            <td>Pre-decremento: Decrementa $x en uno, luego devuelve $x</td>
+                                        </tr>
+                                        <tr>
+                                            <td>$x--</td>
+                                            <td>Post-decremento: Devuelve $x, luego decrementa $x en uno</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> ejemplo_incremento.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$x</span> = <span class="php-number">5</span>;
+
+<span class="php-comment">// Pre-incremento</span>
+<span class="php-keyword">echo</span> ++<span class="php-variable">$x</span>; <span class="php-comment">// 6</span>
+
+<span class="php-comment">// Post-incremento</span>
+<span class="php-keyword">echo</span> <span class="php-variable">$x</span>++; <span class="php-comment">// 6</span>
+
+<span class="php-comment">// Pre-decremento</span>
+<span class="php-keyword">echo</span> --<span class="php-variable">$x</span>; <span class="php-comment">// 6</span>
+
+<span class="php-comment">// Post-decremento</span>
+<span class="php-keyword">echo</span> <span class="php-variable">$x</span>--; <span class="php-comment">// 6</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de Operadores Lógicos con ejemplo -->
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-code-branch text-primary me-2"></i>
+                            <h2 class="h5 mb-0">5. Operadores Lógicos</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se utilizan para combinar declaraciones condicionales.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Nombre</th>
+                                            <th>Ejemplo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>and</td>
+                                            <td>Y lógico</td>
+                                            <td>($x and $y)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>or</td>
+                                            <td>O lógico</td>
+                                            <td>($x or $y)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>xor</td>
+                                            <td>O exclusivo</td>
+                                            <td>($x xor $y)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>!</td>
+                                            <td>No lógico</td>
+                                            <td>!$x</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&&</td>
+                                            <td>Y lógico</td>
+                                            <td>($x && $y)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>||</td>
+                                            <td>O lógico</td>
+                                            <td>($x || $y)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> ejemplo_logicos.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$x</span> = <span class="php-keyword">true</span>;
+<span class="php-variable">$y</span> = <span class="php-keyword">false</span>;
+
+<span class="php-comment">// Operador AND</span>
+<span class="php-function">var_dump</span>(<span class="php-variable">$x</span> <span class="php-keyword">and</span> <span class="php-variable">$y</span>); <span class="php-comment">// false</span>
+
+<span class="php-comment">// Operador OR</span>
+<span class="php-function">var_dump</span>(<span class="php-variable">$x</span> <span class="php-keyword">or</span> <span class="php-variable">$y</span>); <span class="php-comment">// true</span>
+
+<span class="php-comment">// Operador XOR</span>
+<span class="php-function">var_dump</span>(<span class="php-variable">$x</span> <span class="php-keyword">xor</span> <span class="php-variable">$y</span>); <span class="php-comment">// true</span>
+
+<span class="php-comment">// Operador NOT</span>
+<span class="php-function">var_dump</span>(!<span class="php-variable">$x</span>); <span class="php-comment">// false</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de Operadores de Cadena con ejemplo -->
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-align-left text-primary me-2"></i>
+                            <h2 class="h5 mb-0">6. Operadores de Cadena</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se utilizan para concatenar cadenas de texto.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Descripción</th>
+                                            <th>Ejemplo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>.</td>
+                                            <td>Concatenación</td>
+                                            <td>$txt1 . $txt2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>.=</td>
+                                            <td>Concatenación y asignación</td>
+                                            <td>$txt1 .= $txt2</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> ejemplo_cadena.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$txt1</span> = <span class="php-string">"Hola"</span>;
+<span class="php-variable">$txt2</span> = <span class="php-string">" Mundo"</span>;
+
+<span class="php-comment">// Concatenación</span>
+<span class="php-keyword">echo</span> <span class="php-variable">$txt1</span> . <span class="php-variable">$txt2</span>; <span class="php-comment">// Hola Mundo</span>
+
+<span class="php-comment">// Concatenación y asignación</span>
+<span class="php-variable">$txt1</span> .= <span class="php-variable">$txt2</span>;
+<span class="php-keyword">echo</span> <span class="php-variable">$txt1</span>; <span class="php-comment">// Hola Mundo</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de Operadores de Matriz con ejemplo -->
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-table text-primary me-2"></i>
+                            <h2 class="h5 mb-0">7. Operadores de Matriz</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se utilizan para comparar y manipular matrices.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Descripción</th>
+                                            <th>Ejemplo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>+</td>
+                                            <td>Unión</td>
+                                            <td>$x + $y</td>
+                                        </tr>
+                                        <tr>
+                                            <td>==</td>
+                                            <td>Igualdad</td>
+                                            <td>$x == $y</td>
+                                        </tr>
+                                        <tr>
+                                            <td>===</td>
+                                            <td>Identidad</td>
+                                            <td>$x === $y</td>
+                                        </tr>
+                                        <tr>
+                                            <td>!=</td>
+                                            <td>Diferente</td>
+                                            <td>$x != $y</td>
+                                        </tr>
+                                        <tr>
+                                            <td>!==</td>
+                                            <td>No idéntico</td>
+                                            <td>$x !== $y</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> ejemplo_matriz.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$x</span> = [<span class="php-string">"a"</span> => <span class="php-number">1</span>, <span class="php-string">"b"</span> => <span class="php-number">2</span>];
+<span class="php-variable">$y</span> = [<span class="php-string">"c"</span> => <span class="php-number">3</span>, <span class="php-string">"d"</span> => <span class="php-number">4</span>];
+
+<span class="php-comment">// Unión</span>
+<span class="php-variable">$z</span> = <span class="php-variable">$x</span> + <span class="php-variable">$y</span>;
+<span class="php-function">print_r</span>(<span class="php-variable">$z</span>); <span class="php-comment">// ["a" => 1, "b" => 2, "c" => 3, "d" => 4]</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección de Operadores de Asignación Condicional con ejemplo -->
+                    <div class="card mb-4 shadow-sm hover-card">
+                        <div class="card-header bg-gradient-light d-flex align-items-center">
+                            <i class="fas fa-random text-primary me-2"></i>
+                            <h2 class="h5 mb-0">8. Operadores de Asignación Condicional</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Se utilizan para asignar valores basados en una condición.</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Operador</th>
+                                            <th>Descripción</th>
+                                            <th>Ejemplo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>?:</td>
+                                            <td>Operador ternario</td>
+                                            <td>$x = ($a > $b) ? $a : $b</td>
+                                        </tr>
+                                        <tr>
+                                            <td>??</td>
+                                            <td>Fusión de null</td>
+                                            <td>$x = $a ?? $b</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fab fa-php"></i> ejemplo_asignacion_condicional.php</span>
+                                </div>
+                                <div class="vscode-editor-content">
+                                    <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$a</span> = <span class="php-number">10</span>;
+<span class="php-variable">$b</span> = <span class="php-number">20</span>;
+
+<span class="php-comment">// Operador ternario</span>
+<span class="php-variable">$x</span> = (<span class="php-variable">$a</span> > <span class="php-variable">$b</span>) ? <span class="php-variable">$a</span> : <span class="php-variable">$b</span>;
+<span class="php-keyword">echo</span> <span class="php-variable">$x</span>; <span class="php-comment">// 20</span>
+
+<span class="php-comment">// Fusión de null</span>
+<span class="php-variable">$y</span> = <span class="php-keyword">null</span>;
+<span class="php-variable">$z</span> = <span class="php-variable">$y</span> ?? <span class="php-string">"Valor por defecto"</span>;
+<span class="php-keyword">echo</span> <span class="php-variable">$z</span>; <span class="php-comment">// Valor por defecto</span>
+<span class="php-tag">?&gt;</span>
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navegación de página -->
+                    <div class="page-navigation">
+                        <a href="variables.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left me-2"></i> Anterior: Variables y Tipos
+                        </a>
+                        <a href="control.html" class="btn btn-primary">
+                            Siguiente: Estructuras de Control <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Ejercicio Práctico Interactivo -->
+                    <div class="card mb-4 shadow border-primary">
+                        <div class="card-header bg-primary text-white d-flex align-items-center">
+                            <i class="fas fa-laptop-code me-2"></i>
+                            <h2 class="h5 mb-0">Ejercicio Práctico: Calculadora con Operadores</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="alert alert-info"><i class="fas fa-info-circle me-2"></i>Completa este ejercicio para poner en práctica lo aprendido sobre operadores en PHP. Intenta resolver cada paso antes de revisar la solución.</p>
+                            
+                            <div class="mb-4">
+                                <h5><i class="fas fa-tasks me-2 text-primary"></i>Instrucciones:</h5>
+                                <p>Vamos a crear una mini-calculadora que utilice diferentes tipos de operadores. La calculadora debe:</p>
+                                <ol>
+                                    <li>Recibir dos números</li>
+                                    <li>Realizar operaciones aritméticas básicas</li>
+                                    <li>Mostrar resultados de comparaciones</li>
+                                    <li>Utilizar operadores lógicos</li>
+                                </ol>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="mb-3"><i class="fas fa-code me-2 text-primary"></i>Código Base:</h5>
+                                <div class="vscode-editor shadow-sm">
+                                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                        <span><i class="fab fa-php"></i> calculadora.php</span>
+                                    </div>
+                                    <div class="vscode-editor-content">
+                                        <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mini Calculadora PHP&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container mt-5"&gt;
+        &lt;h2&gt;Mini Calculadora PHP&lt;/h2&gt;
+        
+        &lt;form method="post" action="" class="mb-4"&gt;
+            &lt;div class="row mb-3"&gt;
+                &lt;div class="col-md-5"&gt;
+                    &lt;input type="number" name="num1" class="form-control" placeholder="Primer número" 
+                           value="&lt;?php echo isset($_POST['num1']) ? $_POST['num1'] : ''; ?&gt;" required&gt;
+                &lt;/div&gt;
+                &lt;div class="col-md-2 text-center"&gt;
+                    &lt;select name="operacion" class="form-select"&gt;
+                        &lt;option value="suma"&gt;+&lt;/option&gt;
+                        &lt;option value="resta"&gt;-&lt;/option&gt;
+                        &lt;option value="multiplicacion"&gt;×&lt;/option&gt;
+                        &lt;option value="division"&gt;÷&lt;/option&gt;
+                        &lt;option value="modulo"&gt;%&lt;/option&gt;
+                        &lt;option value="comparacion"&gt;==&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;div class="col-md-5"&gt;
+                    &lt;input type="number" name="num2" class="form-control" placeholder="Segundo número" 
+                           value="&lt;?php echo isset($_POST['num2']) ? $_POST['num2'] : ''; ?&gt;" required&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="d-grid"&gt;
+                &lt;button type="submit" class="btn btn-primary"&gt;Calcular&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+        
+        &lt;div class="card"&gt;
+            &lt;div class="card-header"&gt;Resultado&lt;/div&gt;
+            &lt;div class="card-body"&gt;
+                &lt;?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Obtener valores
+                    $num1 = $_POST['num1'];
+                    $num2 = $_POST['num2'];
+                    $operacion = $_POST['operacion'];
+                    
+                    // Realizar cálculos según la operación seleccionada
+                    switch($operacion) {
+                        case 'suma':
+                            $resultado = $num1 + $num2;
+                            echo "Suma: $num1 + $num2 = $resultado";
+                            break;
+                        
+                        case 'resta':
+                            // Tu código aquí
+                            $resultado = $num1 - $num2;
+                            echo "Resta: $num1 - $num2 = $resultado";
+                            break;
+                            
+                        case 'multiplicacion':
+                            // Tu código aquí
+                            $resultado = $num1 * $num2;
+                            echo "Multiplicación: $num1 × $num2 = $resultado";
+                            break;
+                            
+                        case 'division':
+                            // Tu código aquí (¡recuerda verificar división por cero!)
+                            if ($num2 != 0) {
+                                $resultado = $num1 / $num2;
+                                echo "División: $num1 ÷ $num2 = $resultado";
+                            } else {
+                                echo "&lt;div class='alert alert-danger'&gt;Error: No se puede dividir por cero&lt;/div&gt;";
+                            }
+                            break;
+                            
+                        case 'modulo':
+                            // Tu código aquí
+                            if ($num2 != 0) {
+                                $resultado = $num1 % $num2;
+                                echo "Módulo: $num1 % $num2 = $resultado";
+                            } else {
+                                echo "&lt;div class='alert alert-danger'&gt;Error: No se puede calcular módulo con cero&lt;/div&gt;";
+                            }
+                            break;
+                            
+                        case 'comparacion':
+                            // Tu código aquí - Muestra resultados de comparación con == y ===
+                            echo "&lt;h5&gt;Resultados de comparación:&lt;/h5&gt;";
+                            echo "&lt;ul&gt;";
+                            echo "&lt;li&gt;$num1 == $num2: " . ($num1 == $num2 ? "Verdadero" : "Falso") . "&lt;/li&gt;";
+                            echo "&lt;li&gt;$num1 === $num2: " . ($num1 === $num2 ? "Verdadero" : "Falso") . "&lt;/li&gt;";
+                            echo "&lt;li&gt;$num1 != $num2: " . ($num1 != $num2 ? "Verdadero" : "Falso") . "&lt;/li&gt;";
+                            echo "&lt;li&gt;$num1 > $num2: " . ($num1 > $num2 ? "Verdadero" : "Falso") . "&lt;/li&gt;";
+                            echo "&lt;li&gt;$num1 < $num2: " . ($num1 < $num2 ? "Verdadero" : "Falso") . "&lt;/li&gt;";
+                            echo "&lt;/ul&gt;";
+                            break;
+                    }
+                    
+                    // Sección adicional - Operadores Lógicos
+                    echo "&lt;hr&gt;";
+                    echo "&lt;h5&gt;Evaluación con operadores lógicos:&lt;/h5&gt;";
+                    $esPar1 = ($num1 % 2 == 0);
+                    $esPar2 = ($num2 % 2 == 0);
+                    
+                    echo "&lt;ul&gt;";
+                    echo "&lt;li&gt;¿$num1 es par? " . ($esPar1 ? "Sí" : "No") . "&lt;/li&gt;";
+                    echo "&lt;li&gt;¿$num2 es par? " . ($esPar2 ? "Sí" : "No") . "&lt;/li&gt;";
+                    echo "&lt;li&gt;¿Ambos números son pares? " . ($esPar1 && $esPar2 ? "Sí" : "No") . "&lt;/li&gt;";
+                    echo "&lt;li&gt;¿Al menos uno es par? " . ($esPar1 || $esPar2 ? "Sí" : "No") . "&lt;/li&gt;";
+                    echo "&lt;/ul&gt;";
+                }
+                ?&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="alert alert-warning mt-4"&gt;
+            &lt;strong&gt;Nota:&lt;/strong&gt; Esta calculadora es un ejemplo educativo. Para probar este código, necesitas un servidor con PHP habilitado.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                                        </code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion" id="ejercicioAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="solucionHeading">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#solucionCollapse">
+                                            <i class="fas fa-lightbulb me-2"></i> Ver solución completa
+                                        </button>
+                                    </h2>
+                                    <div id="solucionCollapse" class="accordion-collapse collapse" aria-labelledby="solucionHeading" data-bs-parent="#ejercicioAccordion">
+                                        <div class="accordion-body">
+                                            <p>La solución ya está completa en el código proporcionado, pero vamos a explicar las partes clave:</p>
+                                            
+                                            <h6 class="mt-3">1. Operadores Aritméticos:</h6>
+                                            <p>Se utilizan en los casos 'suma', 'resta', 'multiplicacion', 'division' y 'modulo' para realizar cálculos básicos entre los dos números.</p>
+                                            
+                                            <h6 class="mt-3">2. Operadores de Comparación:</h6>
+                                            <p>Se utilizan en el caso 'comparacion' para comparar los dos números usando operadores como ==, ===, !=, >, &lt;.</p>
+                                            
+                                            <h6 class="mt-3">3. Operadores Lógicos:</h6>
+                                            <p>Se utilizan en la sección adicional para evaluar si los números son pares y aplicar los operadores && (AND) y || (OR).</p>
+                                            
+                                            <h6 class="mt-3">4. Operadores de Asignación:</h6>
+                                            <p>Se utilizan en todo el código para asignar valores a variables como $resultado = $num1 + $num2.</p>
+
+                                            <div class="alert alert-success mt-3">
+                                                <strong>Desafío adicional:</strong> ¿Podrías expandir la calculadora para incluir operadores de incremento/decremento o el operador ternario?
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="reftosHeading">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#reftosCollapse">
+                                            <i class="fas fa-puzzle-piece me-2"></i> Reto personal
+                                        </button>
+                                    </h2>
+                                    <div id="reftosCollapse" class="accordion-collapse collapse" aria-labelledby="reftosHeading" data-bs-parent="#ejercicioAccordion">
+                                        <div class="accordion-body">
+                                            <p>Intenta expandir la calculadora con las siguientes funcionalidades:</p>
+                                            <ol>
+                                                <li>Agrega una opción para usar el operador exponencial ** (disponible en PHP 5.6+)</li>
+                                                <li>Implementa una función que verifique si el resultado de la operación es un número primo usando operadores lógicos</li>
+                                                <li>Agrega una opción para concatenar los dos números como strings y mostrar el resultado</li>
+                                                <li>Usa el operador ternario para mostrar si el resultado es positivo o negativo</li>
+                                            </ol>
+                                            <p>Estas mejoras te ayudarán a practicar y profundizar en el uso de los diferentes tipos de operadores en PHP.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a></li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+</body>
+</html>

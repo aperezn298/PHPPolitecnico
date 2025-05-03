@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de Control en PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y
+                                    Sesiones</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/poo.html">Programación Orientada a
+                                    Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 text-white">Fundamentos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="1">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">1/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="2">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">2/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="3">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">3/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="4">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="operadores.html" class="text-decoration-none">Operadores</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">4/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="4">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">5/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="6">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="funciones.html" class="text-decoration-none">Funciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="7">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="arrays.html" class="text-decoration-none">Arrays</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">7/7</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 71%;" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100">71%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <div class="content-page">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="#">Fundamentos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Estructuras de control</li>
+                        </ol>
+                    </nav>
+
+                <h1 class="mb-4">Estructuras de Control en PHP</h1>
+
+                <!-- Estructura IF -->
+                <section class="mb-5">
+                    <h2>1. Estructura IF</h2>
+                    <p><strong>Definición:</strong> La estructura <code>if</code> permite ejecutar un bloque de código si una condición es verdadera.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">if (condición) {
+    // Código a ejecutar si la condición es verdadera
+}</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$edad</span> >= <span class="php-number">18</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Eres mayor de edad."</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-keyword">echo</span> <span class="php-string">"Eres menor de edad."</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura IF-ELSE -->
+                <section class="mb-5">
+                    <h2>2. Estructura IF-ELSE</h2>
+                    <p><strong>Definición:</strong> La estructura <code>if-else</code> permite ejecutar un bloque de código si la condición es verdadera y otro bloque si es falsa.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">if (condición) {
+    // Código si la condición es verdadera
+} else {
+    // Código si la condición es falsa
+}</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$edad</span> = <span class="php-number">16</span>;
+<span class="php-keyword">if</span> (<span class="php-variable">$edad</span> >= <span class="php-number">18</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Eres mayor de edad."</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-keyword">echo</span> <span class="php-string">"Eres menor de edad."</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura SWITCH -->
+                <section class="mb-5">
+                    <h2>3. Estructura SWITCH</h2>
+                    <p><strong>Definición:</strong> La estructura <code>switch</code> permite seleccionar entre múltiples bloques de código según el valor de una expresión.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">switch (expresión) {
+    case valor1:
+        // Código si expresión == valor1
+        break;
+    case valor2:
+        // Código si expresión == valor2
+        break;
+    default:
+        // Código si no coincide ningún caso
+}</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$dia</span> = <span class="php-string">"lunes"</span>;
+<span class="php-keyword">switch</span> (<span class="php-variable">$dia</span>) {
+    <span class="php-keyword">case</span> <span class="php-string">"lunes"</span>:
+        <span class="php-keyword">echo</span> <span class="php-string">"Hoy es lunes."</span>;
+        <span class="php-keyword">break</span>;
+    <span class="php-keyword">case</span> <span class="php-string">"viernes"</span>:
+        <span class="php-keyword">echo</span> <span class="php-string">"Hoy es viernes."</span>;
+        <span class="php-keyword">break</span>;
+    <span class="php-keyword">default</span>:
+        <span class="php-keyword">echo</span> <span class="php-string">"Es otro día de la semana."</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura FOR -->
+                <section class="mb-5">
+                    <h2>4. Estructura FOR</h2>
+                    <p><strong>Definición:</strong> La estructura <code>for</code> se utiliza para ejecutar un bloque de código un número específico de veces.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">for (inicialización; condición; incremento) {
+    // Código a ejecutar en cada iteración
+}</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">for</span> (<span class="php-variable">$i</span> = <span class="php-number">1</span>; <span class="php-variable">$i</span> <= <span class="php-number">5</span>; <span class="php-variable">$i</span>++) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Iteración $i\n"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura WHILE -->
+                <section class="mb-5">
+                    <h2>5. Estructura WHILE</h2>
+                    <p><strong>Definición:</strong> La estructura <code>while</code> ejecuta un bloque de código mientras una condición sea verdadera.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">while (condición) {
+    // Código a ejecutar mientras la condición sea verdadera
+}</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$contador</span> = <span class="php-number">1</span>;
+<span class="php-keyword">while</span> (<span class="php-variable">$contador</span> <= <span class="php-number">5</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Contador: $contador\n"</span>;
+    <span class="php-variable">$contador</span>++;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura DO-WHILE -->
+                <section class="mb-5">
+                    <h2>6. Estructura DO-WHILE</h2>
+                    <p><strong>Definición:</strong> La estructura <code>do-while</code> ejecuta un bloque de código al menos una vez y luego repite mientras la condición sea verdadera.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">do {
+    // Código a ejecutar
+} while (condición);</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$contador</span> = <span class="php-number">1</span>;
+<span class="php-keyword">do</span> {
+    <span class="php-keyword">echo</span> <span class="php-string">"Contador: $contador\n"</span>;
+    <span class="php-variable">$contador</span>++;
+} <span class="php-keyword">while</span> (<span class="php-variable">$contador</span> <= <span class="php-number">5</span>);
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura FOREACH -->
+                <section class="mb-5">
+                    <h2>7. Estructura FOREACH</h2>
+                    <p><strong>Definición:</strong> La estructura <code>foreach</code> se utiliza para recorrer arrays de forma sencilla.</p>
+                    <h3>Sintaxis</h3>
+                    <pre><code class="php">foreach ($array as $valor) {
+    // Código a ejecutar para cada valor
+}</code></pre>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$colores</span> = [<span class="php-string">"rojo"</span>, <span class="php-string">"verde"</span>, <span class="php-string">"azul"</span>];
+<span class="php-keyword">foreach</span> (<span class="php-variable">$colores</span> <span class="php-keyword">as</span> <span class="php-variable">$color</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Color: $color\n"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura BREAK -->
+                <section class="mb-5">
+                    <h2>8. Estructura BREAK</h2>
+                    <p><strong>Definición:</strong> La estructura <code>break</code> se utiliza para salir de un bucle o terminar la ejecución de un <code>switch</code>.</p>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">for</span> (<span class="php-variable">$i</span> = <span class="php-number">1</span>; <span class="php-variable">$i</span> <= <span class="php-number">10</span>; <span class="php-variable">$i</span>++) {
+    <span class="php-keyword">if</span> (<span class="php-variable">$i</span> == <span class="php-number">5</span>) {
+        <span class="php-keyword">break</span>; <span class="php-comment">// Salir del bucle cuando $i es igual a 5</span>
+    }
+    <span class="php-keyword">echo</span> <span class="php-string">"Número: $i\n"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Estructura CONTINUE -->
+                <section class="mb-5">
+                    <h2>9. Estructura CONTINUE</h2>
+                    <p><strong>Definición:</strong> La estructura <code>continue</code> se utiliza para saltar a la siguiente iteración de un bucle, omitiendo el código restante en la iteración actual.</p>
+                    <h3>Ejemplo</h3>
+                    <div class="vscode-editor mt-2 shadow-sm">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> aritmeticos.php</span>
+                        </div>
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">for</span> (<span class="php-variable">$i</span> = <span class="php-number">1</span>; <span class="php-variable">$i</span> <= <span class="php-number">10</span>; <span class="php-variable">$i</span>++) {
+    <span class="php-keyword">if</span> (<span class="php-variable">$i</span> % <span class="php-number">2</span> == <span class="php-number">0</span>) {
+        <span class="php-keyword">continue</span>; <span class="php-comment">// Saltar el resto del código para números pares</span>
+    }
+    <span class="php-keyword">echo</span> <span class="php-string">"Número impar: $i\n"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div></div>
+                </section>
+
+                <!-- Navegación de página -->
+                <div class="page-navigation">
+                    <a href="operadores.html" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i> Anterior: Operadores
+                    </a>
+                    <a href="funciones.html" class="btn btn-primary">
+                        Siguiente: Funciones <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a></li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>    
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

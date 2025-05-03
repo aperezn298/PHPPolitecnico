@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y
+                                    Sesiones</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/poo.html">Programación Orientada a
+                                    Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0 text-white">Fundamentos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed"
+                                data-lesson-id="1">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
+                                </div>
+                                <span class="badge bg-success rounded-pill">1/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
+                                data-lesson-id="2">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">2/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
+                                data-lesson-id="3">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">3/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
+                                data-lesson-id="4">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="operadores.html" class="text-decoration-none">Operadores</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">4/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
+                                data-lesson-id="5">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">5/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
+                                data-lesson-id="6">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="funciones.html" class="text-decoration-none">Funciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/7</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
+                                data-lesson-id="7">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="arrays.html" class="text-decoration-none">Arrays</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">7/7</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress"
+                                style="width: 14%;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100">14%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <div class="content-page">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="#">Fundamentos</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Introducción a PHP</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="mb-4">Introducción a PHP</h1>
+
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Entender qué es PHP y para qué se utiliza</li>
+                            <li>Conocer la historia y evolución de PHP</li>
+                            <li>Configurar un entorno de desarrollo básico</li>
+                            <li>Crear y ejecutar tu primer script PHP</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-primary">Historia y evolución de PHP</h2>
+                    <p class="lead">
+                        PHP fue creado originalmente por <strong>Rasmus Lerdorf</strong> en 1994 como un conjunto simple de scripts de Perl para rastrear visitas a su currículum en línea. Lo llamó <em>"Personal Home Page Tools"</em> (Herramientas para Página Personal).
+                    </p>
+                    <div class="timeline-container">
+                        <div class="timeline">
+                            <div class="timeline-item" data-year="1994">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP Nace</h5>
+                                    <p>Rasmus Lerdorf crea un conjunto de scripts Perl para rastrear visitas a su CV online</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="1995">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 1.0</h5>
+                                    <p>Primera versión pública, llamada "Personal Home Page Tools"</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="1997">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 2.0</h5>
+                                    <p>Se renombró a "PHP: Hypertext Preprocessor" (acrónimo recursivo)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="1998">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 3.0</h5>
+                                    <p>Reescritura completa por Andi Gutmans y Zeev Suraski</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2000">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 4.0</h5>
+                                    <p>Introducción del motor Zend, mejor rendimiento</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2004">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 5.0</h5>
+                                    <p>Soporte mejorado para OOP, PDO, excepciones y XML</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2015">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 7.0</h5>
+                                    <p>Mejoras significativas de rendimiento, operador de nave espacial</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2020">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 8.0</h5>
+                                    <p>JIT compiler, tipos unión, expresiones match y atributos</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-year="2022">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h5>PHP 8.2</h5>
+                                    <p>Nuevas características y optimizaciones (última versión estable)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Actualmente, PHP es uno de los lenguajes de programación más populares para el desarrollo web, utilizado por millones de sitios web y aplicaciones, desde pequeños blogs hasta gigantes de la industria como Facebook, Wikipedia y WordPress.
+                    </p>
+
+                    <h2>Instalación y configuración</h2>
+                    <p>
+                        Para comenzar a trabajar con PHP, necesitas configurar un entorno de desarrollo. Existen varias opciones:
+                    </p>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Opción 1: Paquetes todo en uno</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Soluciones que incluyen PHP, servidor web y MySQL en una sola instalación:</p>
+                                    <ul>
+                                        <li><a href="https://www.apachefriends.org/" target="_blank">XAMPP</a> (Windows, Linux, macOS)</li>
+                                        <li><a href="https://www.wampserver.com/" target="_blank">WAMP</a> (Windows)</li>
+                                        <li><a href="https://www.mamp.info/" target="_blank">MAMP</a> (macOS, Windows)</li>
+                                    </ul>
+                                    <div class="mt-2">
+                                        <span class="badge bg-success">Recomendado para principiantes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Opción 2: Instalación manual</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Instalar cada componente por separado:</p>
+                                    <ol>
+                                        <li>Instalar <a href="https://www.php.net/downloads" target="_blank">PHP</a></li>
+                                        <li>Instalar un servidor web (Apache, Nginx)</li>
+                                        <li>Configurar PHP con el servidor web</li>
+                                    </ol>
+                                    <div class="mt-2">
+                                        <span class="badge bg-warning">Para usuarios avanzados</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0 text-white">Opción 3: Servidor integrado</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>PHP incluye un servidor web de desarrollo desde PHP 5.4:</p>
+                                    <pre><code>php -S localhost:8000</code></pre>
+                                    <p>Ejecuta este comando en la terminal desde el directorio de tu proyecto.</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-info">Para desarrollo rápido</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Consejo</h5>
+                        <p class="mb-0">Para este curso, recomendamos usar XAMPP por su facilidad de instalación y configuración. Simplemente descárgalo, instálalo y activa los servicios de Apache y MySQL para empezar a desarrollar.</p>
+                    </div>
+
+                    <h2>Características detalladas de PHP</h2>
+                    
+                    <div class="accordion mb-4" id="accordionPhpFeatures">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Rendimiento y eficiencia
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionPhpFeatures">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>PHP 8 incluye un compilador JIT (Just-In-Time) que mejora significativamente el rendimiento</li>
+                                        <li>Gestión eficiente de memoria</li>
+                                        <li>Proceso de solicitud-respuesta optimizado para entornos web</li>
+                                        <li>Capacidad para manejar millones de solicitudes diarias</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Características de lenguaje moderno
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionPhpFeatures">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Programación orientada a objetos completa</li>
+                                        <li>Tipos estrictos (opcional) para mejor seguridad de tipos</li>
+                                        <li>Closures y funciones anónimas</li>
+                                        <li>Namespaces para organizar y encapsular código</li>
+                                        <li>Traits para reutilización de código</li>
+                                        <li>Sistema de excepciones para manejo de errores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Integración y extensibilidad
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionPhpFeatures">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Más de 3,000 extensiones disponibles para diferentes funcionalidades</li>
+                                        <li>Soporte para múltiples bases de datos (MySQL, PostgreSQL, SQLite, MongoDB, etc.)</li>
+                                        <li>Fácil integración con servicios web y APIs</li>
+                                        <li>Capacidad para trabajar con diferentes formatos (XML, JSON, etc.)</li>
+                                        <li>Soporte para servicios de correo electrónico, FTP y más</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Seguridad
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionPhpFeatures">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Herramientas integradas para prevenir inyección SQL</li>
+                                        <li>Funciones de sanitización de entrada de usuario</li>
+                                        <li>Protección contra Cross-Site Scripting (XSS)</li>
+                                        <li>Gestión segura de sesiones</li>
+                                        <li>Cifrado y hash de contraseñas con funciones modernas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Ventajas de PHP</h2>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-rocket me-2 text-primary"></i>Facilidad de aprendizaje</h5>
+                                    <p class="card-text">PHP tiene una sintaxis clara y similar a C, lo que facilita su aprendizaje, especialmente para quienes ya conocen lenguajes como JavaScript. Su naturaleza de script y la documentación detallada permiten un rápido progreso.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-globe me-2 text-primary"></i>Comunidad y soporte</h5>
+                                    <p class="card-text">Una de las comunidades más grandes de programadores, con millones de desarrolladores, abundante documentación, tutoriales, y foros de ayuda. Esta comunidad activa garantiza soluciones rápidas a problemas comunes.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-server me-2 text-primary"></i>Compatibilidad con servidores</h5>
+                                    <p class="card-text">PHP es compatible con prácticamente todos los servicios de hosting web, desde opciones económicas compartidas hasta servidores dedicados de alto rendimiento. La mayoría viene con PHP preinstalado y listo para usar.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-code-branch me-2 text-primary"></i>Frameworks y CMS</h5>
+                                    <p class="card-text">PHP cuenta con frameworks robustos como Laravel, Symfony y CodeIgniter, y potentes sistemas de gestión de contenido como WordPress, Drupal y Joomla, que facilitan el desarrollo rápido de aplicaciones complejas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mb-4">
+                        <h5><i class="fas fa-chart-pie me-2"></i>PHP en cifras</h5>
+                        <ul class="mb-0">
+                            <li>Alimenta aproximadamente el 77% de todos los sitios web con backend conocido</li>
+                            <li>WordPress (basado en PHP) impulsa más del 40% de todos los sitios web del mundo</li>
+                            <li>Utilizado por empresas como Facebook, Wikipedia, Slack, Etsy y muchas más</li>
+                            <li>Más de 20 años de desarrollo continuo</li>
+                        </ul>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Características principales de PHP</h5>
+                            <ul>
+                                <li><strong>Lenguaje de servidor</strong>: Se ejecuta en el servidor web, no en el
+                                    navegador del usuario.</li>
+                                <li><strong>Open Source</strong>: Es gratuito y de código abierto, con una gran
+                                    comunidad de desarrolladores.</li>
+                                <li><strong>Multiplataforma</strong>: Funciona en diferentes sistemas operativos
+                                    (Windows, Linux, Mac OS).</li>
+                                <li><strong>Compatibilidad con bases de datos</strong>: Se integra fácilmente con MySQL,
+                                    PostgreSQL, SQLite, etc.</li>
+                                <li><strong>Flexibilidad</strong>: Puede ser embebido directamente en HTML o utilizarse
+                                    en frameworks MVC.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Sintaxis de los scripts en PHP</h5>
+                            <ul>
+                                <li>PHP es un lenguaje de script del lado del servidor, lo que significa que se ejecuta en el
+                                    servidor y genera HTML que se envía al navegador del cliente.</li>
+                                <li>Los scripts PHP pueden contener HTML, CSS y JavaScript, lo que permite crear páginas web
+                                    dinámicas.</li>
+                                <li>PHP es un lenguaje interpretado, lo que significa que no necesita ser compilado antes de
+                                    ejecutarse.</li>
+                                <li>Todos los scripts PHP comienzan con la etiqueta <code>&lt;?php</code> y terminan con
+                                    <code>?&gt;</code>.</li>
+                                <li>Las instrucciones PHP se terminan con un punto y coma <code>;</code>.</li>
+                                <li>Los archivos se guardan con extensión <code>.php</code>.</li>
+                            </ul> 
+                            Veamos un ejemplo básico:
+                        </div>
+                    </div>    
+
+
+                    <h2>Ejemplo de un script</h2>
+                    <!-- Ejemplo con PHP y HTML juntos -->
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">echo</span> <span class="php-function">date</span>(<span class="php-string">'d/m/Y'</span>);
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+
+                    <!-- Panel para mostrar el resultado del tercer ejemplo -->
+                    <div class="result-panel mt-3" style="display: none;">
+                        <h5>Resultado:</h5>
+                        <div class="result-output"></div>
+                    </div>
+
+                    <p class="mt-3">En este ejemplo, hemos combinado código PHP con HTML para mostrar la fecha actual y
+                        generar una lista de forma dinámica.</p>
+
+                    <!-- Navegación de página -->
+                    <div class="page-navigation">
+                        <a class="btn btn-outline-primary disabled">
+                            <i class="fas fa-arrow-left me-2"></i> Anterior
+                        </a>
+                        <a href="sintaxis.html" class="btn btn-primary">
+                            Siguiente: Sintaxis Básica <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Ejercicio práctico -->
+                    <div class="card mt-5 border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0 text-white"><i class="fas fa-laptop-code me-2"></i>Ejercicios Prácticos</h4>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="mb-4">Evalúa tus conocimientos sobre introducción a PHP</h5>
+                            
+                            <!-- Ejercicio 1: Verdadero o Falso -->
+                            <div class="mb-5">
+                                <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Ejercicio 1: Verdadero o Falso</h6>
+                                <p>Marca si las siguientes afirmaciones son verdaderas o falsas:</p>
+                                
+                                <div class="true-false-questions">
+                                    <div class="question mb-3">
+                                        <div class="d-flex align-items-start">
+                                            <span class="me-2">1.</span>
+                                            <div>
+                                                <p class="mb-2">PHP fue creado originalmente por Rasmus Lerdorf en 1994.</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q1" id="q1-true" value="true">
+                                                    <label class="form-check-label" for="q1-true">Verdadero</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q1" id="q1-false" value="false">
+                                                    <label class="form-check-label" for="q1-false">Falso</label>
+                                                </div>
+                                                <div class="answer-feedback text-success" style="display: none;">
+                                                    ¡Correcto! PHP fue creado por Rasmus Lerdorf en 1994 como un conjunto de scripts para rastrear visitas a su CV online.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="question mb-3">
+                                        <div class="d-flex align-items-start">
+                                            <span class="me-2">2.</span>
+                                            <div>
+                                                <p class="mb-2">PHP significa "Personal Home Page" actualmente.</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q2" id="q2-true" value="true">
+                                                    <label class="form-check-label" for="q2-true">Verdadero</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q2" id="q2-false" value="false">
+                                                    <label class="form-check-label" for="q2-false">Falso</label>
+                                                </div>
+                                                <div class="answer-feedback text-danger" style="display: none;">
+                                                    ¡Incorrecto! Actualmente PHP significa "PHP: Hypertext Preprocessor", un acrónimo recursivo desde 1997.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="question mb-3">
+                                        <div class="d-flex align-items-start">
+                                            <span class="me-2">3.</span>
+                                            <div>
+                                                <p class="mb-2">Los archivos PHP se ejecutan en el navegador del usuario.</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q3" id="q3-true" value="true">
+                                                    <label class="form-check-label" for="q3-true">Verdadero</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q3" id="q3-false" value="false">
+                                                    <label class="form-check-label" for="q3-false">Falso</label>
+                                                </div>
+                                                <div class="answer-feedback text-danger" style="display: none;">
+                                                    ¡Incorrecto! PHP se ejecuta en el servidor, no en el navegador del usuario. El servidor procesa el código PHP y envía solo HTML al navegador.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="question mb-3">
+                                        <div class="d-flex align-items-start">
+                                            <span class="me-2">4.</span>
+                                            <div>
+                                                <p class="mb-2">Para ejecutar código PHP, necesitamos un servidor web como Apache.</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q4" id="q4-true" value="true">
+                                                    <label class="form-check-label" for="q4-true">Verdadero</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q4" id="q4-false" value="false">
+                                                    <label class="form-check-label" for="q4-false">Falso</label>
+                                                </div>
+                                                <div class="answer-feedback text-success" style="display: none;">
+                                                    ¡Correcto! PHP necesita un servidor web como Apache para ejecutar sus scripts, aunque desde PHP 5.4 también incluye un servidor de desarrollo integrado.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="question mb-3">
+                                        <div class="d-flex align-items-start">
+                                            <span class="me-2">5.</span>
+                                            <div>
+                                                <p class="mb-2">El código PHP se escribe entre las etiquetas &lt;?php y ?&gt;</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q5" id="q5-true" value="true">
+                                                    <label class="form-check-label" for="q5-true">Verdadero</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="q5" id="q5-false" value="false">
+                                                    <label class="form-check-label" for="q5-false">Falso</label>
+                                                </div>
+                                                <div class="answer-feedback text-success" style="display: none;">
+                                                    ¡Correcto! El código PHP siempre está contenido dentro de las etiquetas &lt;?php y ?&gt;
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary check-true-false mt-2">Verificar respuestas</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Ejercicio 2: Relacionar -->
+                            <div class="mb-5">
+                                <h6 class="mb-3"><i class="fas fa-project-diagram me-2 text-primary"></i>Ejercicio 2: Relaciona los conceptos</h6>
+                                <p>Selecciona la definición correcta para cada concepto de PHP:</p>
+                                
+                                <div class="matching-exercise">
+                                    <form id="matching-form">
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <strong>1. PHP</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select class="form-select" data-correct="a">
+                                                    <option value="">Selecciona la respuesta correcta...</option>
+                                                    <option value="a">Hypertext Preprocessor, lenguaje de programación para desarrollo web del lado del servidor</option>
+                                                    <option value="b">Un sistema de gestión de bases de datos relacionales</option>
+                                                    <option value="c">Un marco de desarrollo frontend para crear páginas web interactivas</option>
+                                                    <option value="d">Un servidor web de código abierto</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <strong>2. Variables en PHP</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select class="form-select" data-correct="c">
+                                                    <option value="">Selecciona la respuesta correcta...</option>
+                                                    <option value="a">Se declaran con la palabra clave 'var'</option>
+                                                    <option value="b">No pueden comenzar con el símbolo $</option>
+                                                    <option value="c">Comienzan con $ y son sensibles a mayúsculas y minúsculas</option>
+                                                    <option value="d">Son tipadas estáticamente, una vez declaradas no pueden cambiar de tipo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <strong>3. MySQL</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select class="form-select" data-correct="b">
+                                                    <option value="">Selecciona la respuesta correcta...</option>
+                                                    <option value="a">Un lenguaje de programación para desarrollo frontend</option>
+                                                    <option value="b">Un sistema de gestión de bases de datos relacionales muy utilizado con PHP</option>
+                                                    <option value="c">Una función para manipular cadenas en PHP</option>
+                                                    <option value="d">Un framework para desarrollo de aplicaciones PHP</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <strong>4. include()</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select class="form-select" data-correct="a">
+                                                    <option value="">Selecciona la respuesta correcta...</option>
+                                                    <option value="a">Una función que permite incluir y evaluar archivos en PHP</option>
+                                                    <option value="b">Una función para encriptar datos en PHP</option>
+                                                    <option value="c">Un método para conectar PHP con bases de datos</option>
+                                                    <option value="d">Una estructura de control de flujo en PHP</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <strong>5. $_POST</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select class="form-select" data-correct="d">
+                                                    <option value="">Selecciona la respuesta correcta...</option>
+                                                    <option value="a">Una función para enviar datos a través de correo electrónico</option>
+                                                    <option value="b">Un método para crear publicaciones en bases de datos</option>
+                                                    <option value="c">Una función para mostrar texto en el navegador</option>
+                                                    <option value="d">Una variable superglobal usada para recoger datos de formularios enviados con el método POST</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-end mt-3">
+                                            <span id="matching-result" class="me-3 fw-bold"></span>
+                                            <button type="button" class="btn btn-primary" id="check-matching">Verificar respuestas</button>
+                                            <button type="button" class="btn btn-secondary ms-2" id="reveal-matching">Mostrar solución</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 text-center">
+                                <button class="btn btn-success complete-lesson" data-bs-toggle="tooltip"
+                                    title="Marcar como completada">
+                                    <i class="fas fa-check me-2"></i>Completar lección
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Script para los ejercicios -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Ejercicio 1: Verdadero o Falso
+                            const checkTrueFalseBtn = document.querySelector('.check-true-false');
+                            if (checkTrueFalseBtn) {
+                                checkTrueFalseBtn.addEventListener('click', function() {
+                                    const correctAnswers = {
+                                        q1: "true",
+                                        q2: "false",
+                                        q3: "false",
+                                        q4: "true",
+                                        q5: "true"
+                                    };
+                                    
+                                    let score = 0;
+                                    
+                                    // Revisar cada pregunta
+                                    for (let q in correctAnswers) {
+                                        const selectedOption = document.querySelector(`input[name="${q}"]:checked`);
+                                        const feedbackEl = document.querySelector(`input[name="${q}"]`).closest('.question').querySelector('.answer-feedback');
+                                        
+                                        if (selectedOption) {
+                                            if (selectedOption.value === correctAnswers[q]) {
+                                                score++;
+                                                feedbackEl.classList.remove('text-danger');
+                                                feedbackEl.classList.add('text-success');
+                                            } else {
+                                                feedbackEl.classList.remove('text-success');
+                                                feedbackEl.classList.add('text-danger');
+                                            }
+                                            feedbackEl.style.display = 'block';
+                                        }
+                                    }
+                                    
+                                    alert(`Obtuviste ${score} de 5 respuestas correctas.`);
+                                });
+                            }
+                            
+                            // Ejercicio 2: Relacionar
+                            const checkMatchingBtn = document.querySelector('#check-matching');
+                            const revealMatchingBtn = document.querySelector('#reveal-matching');
+                            if (checkMatchingBtn) {
+                                checkMatchingBtn.addEventListener('click', function() {
+                                    const selects = document.querySelectorAll('.matching-exercise .form-select');
+                                    let correctCount = 0;
+
+                                    selects.forEach(select => {
+                                        const correctAnswer = select.getAttribute('data-correct');
+                                        if (select.value === correctAnswer) {
+                                            correctCount++;
+                                            select.classList.remove('is-invalid');
+                                            select.classList.add('is-valid');
+                                        } else {
+                                            select.classList.remove('is-valid');
+                                            select.classList.add('is-invalid');
+                                        }
+                                    });
+
+                                    const resultSpan = document.querySelector('#matching-result');
+                                    resultSpan.textContent = `Correctas: ${correctCount}/${selects.length}`;
+                                    resultSpan.className = correctCount === selects.length ? 'text-success' : 'text-danger';
+                                });
+                            }
+
+                            if (revealMatchingBtn) {
+                                revealMatchingBtn.addEventListener('click', function() {
+                                    const selects = document.querySelectorAll('.matching-exercise .form-select');
+
+                                    selects.forEach(select => {
+                                        const correctAnswer = select.getAttribute('data-correct');
+                                        select.value = correctAnswer;
+                                        select.classList.remove('is-invalid');
+                                        select.classList.add('is-valid');
+                                    });
+
+                                    const resultSpan = document.querySelector('#matching-result');
+                                    resultSpan.textContent = 'Solución revelada.';
+                                    resultSpan.className = 'text-info fw-bold';
+                                });
+                            }
+                            
+                            // Ejercicio 3: Crucigrama
+                            const checkCrosswordBtn = document.querySelector('#check-crossword');
+                            const revealCrosswordBtn = document.querySelector('#reveal-crossword');
+                            if (checkCrosswordBtn) {
+                                checkCrosswordBtn.addEventListener('click', function() {
+                                    const correctAnswers = {
+                                        '1h-1': 'C', '1h-2': '', '1v-1': 'E', '1h-4': 'O', '1h-5': 'L',
+                                        '1v-2': 'C', '2h-1': 'W', '2h-2': 'H', '2h-3': 'I', '2h-4': 'L', '2h-5': 'E',
+                                        '1v-3': 'I', '1v-4': 'L', '2v-1': 'R', '1v-5': 'U', '2v-3': 'Q',
+                                        '3h-1': 'M', '3h-2': 'Y', '3h-3': 'S', '3h-4': 'Q', '3h-5': 'L',
+                                        '1v-6': 'S', '2v-4': 'Q', '2v-5': 'U', '2v-6': 'I', '3v-1': 'P',
+                                        '3v-2': 'O', '3v-3': 'R', '3v-4': 'E', '3v-5': 'E', '2v-7': 'R',
+                                        '1v-7': 'T'
+                                    };
+
+                                    let isCorrect = true;
+
+                                    document.querySelectorAll('.crossword-cell').forEach(cell => {
+                                        const word = cell.dataset.word;
+                                        const value = cell.value.toUpperCase();
+
+                                        if (correctAnswers[word] !== value) {
+                                            isCorrect = false;
+                                            cell.classList.add('is-invalid');
+                                        } else {
+                                            cell.classList.remove('is-invalid');
+                                            cell.classList.add('is-valid');
+                                        }
+                                    });
+
+                                    const resultSpan = document.querySelector('#crossword-result');
+                                    if (isCorrect) {
+                                        resultSpan.textContent = '¡Correcto!';
+                                        resultSpan.className = 'text-success fw-bold';
+                                    } else {
+                                        resultSpan.textContent = 'Hay errores, revisa tus respuestas.';
+                                        resultSpan.className = 'text-danger fw-bold';
+                                    }
+                                });
+                            }
+
+                            if (revealCrosswordBtn) {
+                                revealCrosswordBtn.addEventListener('click', function() {
+                                    const correctAnswers = {
+                                        '1h-1': 'C', '1h-2': '', '1v-1': 'E', '1h-4': 'O', '1h-5': 'L',
+                                        '1v-2': 'C', '2h-1': 'W', '2h-2': 'H', '2h-3': 'I', '2h-4': 'L', '2h-5': 'E',
+                                        '1v-3': 'I', '1v-4': 'L', '2v-1': 'R', '1v-5': 'U', '2v-3': 'Q',
+                                        '3h-1': 'M', '3h-2': 'Y', '3h-3': 'S', '3h-4': 'Q', '3h-5': 'L',
+                                        '1v-6': 'S', '2v-4': 'Q', '2v-5': 'U', '2v-6': 'I', '3v-1': 'P',
+                                        '3v-2': 'O', '3v-3': 'R', '3v-4': 'E', '3v-5': 'E', '2v-7': 'R',
+                                        '1v-7': 'T'
+                                    };
+
+                                    document.querySelectorAll('.crossword-cell').forEach(cell => {
+                                        const word = cell.dataset.word;
+                                        cell.value = correctAnswers[word] || '';
+                                        cell.classList.remove('is-invalid');
+                                        cell.classList.add('is-valid');
+                                    });
+
+                                    const resultSpan = document.querySelector('#crossword-result');
+                                    resultSpan.textContent = 'Solución revelada.';
+                                    resultSpan.className = 'text-info fw-bold';
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a>
+                        </li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+    <!-- Script específico para la página -->
+    <script>
+        // Funcionalidad para el botón de copiar
+        document.addEventListener('DOMContentLoaded', function () {
+            // Botones de copiar código
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const code = this.getAttribute('data-code');
+                    navigator.clipboard.writeText(code)
+                        .then(() => {
+                            // Cambiar texto del botón temporalmente
+                            const originalText = this.innerHTML;
+                            this.innerHTML = '<i class="fas fa-check"></i> <span>Copiado</span>';
+
+                            setTimeout(() => {
+                                this.innerHTML = originalText;
+                            }, 2000);
+                        })
+                        .catch(err => {
+                            console.error('Error al copiar:', err);
+                        });
+                });
+            });
+
+            // Botones de ejecutar código
+            document.querySelectorAll('.execute').forEach((button, index) => {
+                button.addEventListener('click', function () {
+                    const code = this.getAttribute('data-code');
+                    const resultPanel = document.querySelectorAll('.result-panel')[index];
+                    const resultOutput = resultPanel.querySelector('.result-output');
+
+                    // Mostrar panel de resultados
+                    resultPanel.style.display = 'block';
+
+                    // Simulación de ejecución de código PHP
+                    // En un entorno real, esto enviaría el código a un servidor para ejecutarlo
+                    try {
+                        // Simulamos la ejecución del código PHP
+                        let result = '';
+
+                        if (code.includes('Hola, Mundo!')) {
+                            result = 'Hola, Mundo!';
+                        } else if (code.includes('$nombre') && code.includes('$edad')) {
+                            result = 'Hola, Usuario! Tienes 25 años.';
+                        } else if (code.includes('date')) {
+                            // Formato de fecha actual dd/mm/yyyy
+                            const now = new Date();
+                            const day = String(now.getDate()).padStart(2, '0');
+                            const month = String(now.getMonth() + 1).padStart(2, '0');
+                            const year = now.getFullYear();
+
+                            result = `
+<h1>Fecha de hoy:</h1>
+${day}/${month}/${year}
+
+<h1>Lista generada con PHP:</h1>
+<ul>
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+    <li>Elemento 3</li>
+    <li>Elemento 4</li>
+    <li>Elemento 5</li>
+</ul>`;
+                        }
+
+                        resultOutput.innerHTML = result;
+                    } catch (error) {
+                        resultOutput.innerHTML = `<span style="color: red;">Error: ${error.message}</span>`;
+                    }
+
+                    // Hacer scroll al resultado
+                    resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
