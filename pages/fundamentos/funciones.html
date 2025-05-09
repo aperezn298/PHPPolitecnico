@@ -126,7 +126,7 @@
                                 </div>
                                 <span class="badge bg-success rounded-pill">5/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="6">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="6">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="funciones.html" class="text-decoration-none">Funciones</a>
@@ -209,8 +209,11 @@
                         Veamos un ejemplo básico de cómo crear y llamar a una función:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
                             <div class="vscode-editor-content">
                                 <pre><code class="php">
 <span class="php-tag">&lt;?php</span>
@@ -222,11 +225,9 @@
 <span class="php-tag">?&gt;</span>
                                 </code></pre>
                             </div>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-info mt-3">
@@ -244,23 +245,26 @@
                         Por defecto, los parámetros son obligatorios y deben proporcionarse en el mismo orden en que están definidos:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Función con parámetros obligatorios
-function calcularAreaRectangulo($longitud, $anchura) {
-    $area = $longitud * $anchura;
-    echo "El área del rectángulo es: $area";
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">function</span> <span class="php-function">calcularAreaRectangulo</span>(<span class="php-variable">$longitud</span>, <span class="php-variable">$anchura</span>) {
+    <span class="php-variable">$area</span> = <span class="php-variable">$longitud</span> * <span class="php-variable">$anchura</span>;
+    <span class="php-keyword">echo</span> <span class="php-string">"El área del rectángulo es: $area"</span>;
 }
 
-// Llamar a la función con los parámetros requeridos
-calcularAreaRectangulo(10, 5);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-function">calcularAreaRectangulo</span>(10, 5);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h3 class="mt-4">Parámetros con valores por defecto</h3>
@@ -268,26 +272,27 @@ calcularAreaRectangulo(10, 5);
                         Los parámetros pueden tener valores por defecto que se utilizan cuando no se proporciona un argumento:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Función con parámetros por defecto
-function calcularAreaCirculo($radio, $pi = 3.14159) {
-    $area = $pi * $radio * $radio;
-    echo "El área del círculo es: $area";
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">function</span> <span class="php-function">calcularAreaCirculo</span>(<span class="php-variable">$radio</span>, <span class="php-variable">$pi</span> = <span class="php-number">3.14159</span>) {
+    <span class="php-variable">$area</span> = <span class="php-variable">$pi</span> * <span class="php-variable">$radio</span> * <span class="php-variable">$radio</span>;
+    <span class="php-keyword">echo</span> <span class="php-string">"El área del círculo es: $area"</span>;
 }
 
-// Llamar a la función con solo un parámetro
-calcularAreaCirculo(5);  // Usa el valor por defecto de $pi
-
-// Llamar a la función sobrescribiendo el valor por defecto
-calcularAreaCirculo(5, 3.14);  // Usa el valor de $pi proporcionado
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-function">calcularAreaCirculo</span>(<span class="php-number">5</span>);
+<span class="php-function">calcularAreaCirculo</span>(<span class="php-number">5</span>, <span class="php-number">3.14</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-warning mt-3">
@@ -300,26 +305,29 @@ calcularAreaCirculo(5, 3.14);  // Usa el valor de $pi proporcionado
                         A partir de PHP 5.6, podemos usar el operador <code>...</code> (operador de dispersión o spread) para crear funciones que acepten un número variable de argumentos:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Función con número variable de argumentos
-function sumar(...$numeros) {
-    $total = 0;
-    foreach ($numeros as $numero) {
-        $total += $numero;
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">function</span> <span class="php-function">sumar</span>(<span class="php-variable">...</span><span class="php-variable">$numeros</span>) {
+    <span class="php-variable">$total</span> = <span class="php-number">0</span>;
+    <span class="php-keyword">foreach</span> (<span class="php-variable">$numeros</span> <span class="php-keyword">as</span> <span class="php-variable">$numero</span>) {
+        <span class="php-variable">$total</span> += <span class="php-variable">$numero</span>;
     }
-    return $total;
+    <span class="php-keyword">return</span> <span class="php-variable">$total</span>;
 }
 
-// Podemos pasar cualquier cantidad de argumentos
-echo "La suma de 3, 5 y 8 es: " . sumar(3, 5, 8);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-keyword">echo</span> <span class="php-string">"La suma de 3, 5 y 8 es: "</span> . <span class="php-function">sumar</span>(<span class="php-number">3</span>, <span class="php-number">5</span>, <span class="php-number">8</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Funciones con Retorno de Valores</h2>
@@ -327,49 +335,55 @@ echo "La suma de 3, 5 y 8 es: " . sumar(3, 5, 8);
                         Las funciones pueden devolver valores mediante la instrucción <code>return</code>. Cuando se ejecuta un <code>return</code>, la función termina y devuelve el valor especificado.
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Función que devuelve un valor
-function multiplicar($a, $b) {
-    $resultado = $a * $b;
-    return $resultado;  // Devuelve el resultado
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">function</span> <span class="php-function">multiplicar</span>(<span class="php-variable">$a</span>, <span class="php-variable">$b</span>) {
+    <span class="php-variable">$resultado</span> = <span class="php-variable">$a</span> * <span class="php-variable">$b</span>;
+    <span class="php-keyword">return</span> <span class="php-variable">$resultado</span>;
 }
 
-// Guardar el valor devuelto en una variable
-$producto = multiplicar(4, 5);
-echo "4 x 5 = $producto";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-variable">$producto</span> = <span class="php-function">multiplicar</span>(<span class="php-number">4</span>, <span class="php-number">5</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"4 x 5 = $producto"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <p class="mt-3">
                         Una función puede devolver múltiples valores usando un array o, a partir de PHP 7, utilizando la desestructuración de arrays:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Función que devuelve múltiples valores
-function obtenerPersona() {
-    $nombre = "Juan";
-    $edad = 25;
-    return [$nombre, $edad];  // Devuelve un array
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">function</span> <span class="php-function">obtenerPersona</span>() {
+    <span class="php-variable">$nombre</span> = <span class="php-string">"Juan"</span>;
+    <span class="php-variable">$edad</span> = <span class="php-number">25</span>;
+    <span class="php-keyword">return</span> [<span class="php-variable">$nombre</span>, <span class="php-variable">$edad</span>];
 }
 
-// Obtener valores individuales (PHP 7+)
-[$nombre, $edad] = obtenerPersona();
-echo "Nombre: $nombre, Edad: $edad";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+[<span class="php-variable">$nombre</span>, <span class="php-variable">$edad</span>] = <span class="php-function">obtenerPersona</span>();
+<span class="php-keyword">echo</span> <span class="php-string">"Nombre: $nombre, Edad: $edad"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Parámetros por Referencia</h2>
@@ -381,34 +395,35 @@ echo "Nombre: $nombre, Edad: $edad";
                         Para modificar la variable original, podemos pasar parámetros por referencia añadiendo el símbolo <code>&</code> antes del nombre del parámetro:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Paso por valor vs. Paso por referencia
-
-// Función con paso por valor (comportamiento normal)
-function incrementarValor($numero) {
-    $numero++;
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">function</span> <span class="php-function">incrementarValor</span>(<span class="php-variable">$numero</span>) {
+    <span class="php-variable">$numero</span>++;
 }
 
-// Función con paso por referencia
-function incrementarReferencia(&$numero) {
-    $numero++;
+<span class="php-keyword">function</span> <span class="php-function">incrementarReferencia</span>(<span class="php-variable">&</span><span class="php-variable">$numero</span>) {
+    <span class="php-variable">$numero</span>++;
 }
 
-$a = 5;
-incrementarValor($a);
-echo "Después de incrementarValor(): $a<br>";  // Muestra 5 (no cambia)
+<span class="php-variable">$a</span> = <span class="php-number">5</span>;
+<span class="php-function">incrementarValor</span>(<span class="php-variable">$a</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Después de incrementarValor(): $a"</span>;
 
-$b = 10;
-incrementarReferencia($b);
-echo "Después de incrementarReferencia(): $b";  // Muestra 11 (cambia)
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-variable">$b</span> = <span class="php-number">10</span>;
+<span class="php-function">incrementarReferencia</span>(<span class="php-variable">$b</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Después de incrementarReferencia(): $b"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-danger mt-3">
@@ -432,58 +447,34 @@ echo "Después de incrementarReferencia(): $b";  // Muestra 11 (cambia)
                         </div>
                     </div>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Variables globales y locales
-$x = "Variable global"; // Variable global
-
-function test1() {
-    $y = "Variable local"; // Variable local
-    echo "Dentro de la función test1:<br>";
-    echo "Variable y (local): $y<br>";
-    echo "Intento de acceder a x sin declaración global: $x<br>";
-}
-
-function test2() {
-    global $x; // Declaración global
-    echo "Dentro de la función test2:<br>";
-    echo "Variable x (global): $x<br>";
-}
-
-function test3() {
-    echo "Dentro de la función test3:<br>";
-    echo "Variable x usando \$GLOBALS: " . $GLOBALS['x'] . "<br>";
-    // Modificar variable global
-    $GLOBALS['x'] = "Variable global modificada";
-}
-
-function contarLlamadas() {
-    static $contador = 0; // Variable estática
-    $contador++;
-    echo "Esta función ha sido llamada $contador veces<br>";
-}
-
-test1();
-echo "<br>";
-test2();
-echo "<br>";
-test3();
-echo "<br>";
-
-echo "Fuera de las funciones:<br>";
-echo "Variable x (global): $x<br><br>";
-
-echo "Llamando a contarLlamadas() varias veces:<br>";
-contarLlamadas();
-contarLlamadas();
-contarLlamadas();
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$x</span> = <span class="php-string">"Variable global"</span>;
+
+<span class="php-keyword">function</span> <span class="php-function">test1</span>() {
+    <span class="php-variable">$y</span> = <span class="php-string">"Variable local"</span>;
+    <span class="php-keyword">echo</span> <span class="php-string">"Dentro de la función test1: Variable y (local): $y"</span>;
+}
+
+<span class="php-keyword">function</span> <span class="php-function">test2</span>() {
+    <span class="php-keyword">global</span> <span class="php-variable">$x</span>;
+    <span class="php-keyword">echo</span> <span class="php-string">"Dentro de la función test2: Variable x (global): $x"</span>;
+}
+
+<span class="php-function">test1</span>();
+<span class="php-function">test2</span>();
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Funciones Anónimas (Closures)</h2>
@@ -491,38 +482,25 @@ contarLlamadas();
                         Las funciones anónimas o closures son funciones sin nombre, que pueden asignarse a variables o pasarse como argumentos a otras funciones:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Ejemplo de función anónima
-$saludo = function($nombre) {
-    return "¡Hola, $nombre!";
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$saludo</span> = <span class="php-keyword">function</span>(<span class="php-variable">$nombre</span>) {
+    <span class="php-keyword">return</span> <span class="php-string">"¡Hola, $nombre!"</span>;
 };
 
-echo $saludo("Ana") . "<br>";
-
-// Función anónima como argumento
-$numeros = [1, 2, 3, 4, 5];
-$numeros_duplicados = array_map(function($numero) {
-    return $numero * 2;
-}, $numeros);
-
-echo "Números originales: " . implode(", ", $numeros) . "<br>";
-echo "Números duplicados: " . implode(", ", $numeros_duplicados) . "<br>";
-
-// Usando una variable externa (uso de "use")
-$factor = 3;
-$numeros_multiplicados = array_map(function($numero) use ($factor) {
-    return $numero * $factor;
-}, $numeros);
-
-echo "Números multiplicados por $factor: " . implode(", ", $numeros_multiplicados);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-keyword">echo</span> <span class="php-variable">$saludo</span>(<span class="php-string">"Ana"</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-success mt-3">
@@ -535,34 +513,25 @@ echo "Números multiplicados por $factor: " . implode(", ", $numeros_multiplicad
                         A partir de PHP 7.4, PHP introdujo funciones de flecha, que son una sintaxis más concisa para funciones anónimas simples:
                     </p>
                     
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Ejemplo de funciones de flecha (PHP 7.4+)
-$numeros = [1, 2, 3, 4, 5];
-
-// Función anónima tradicional
-$cuadrados1 = array_map(function($n) {
-    return $n * $n;
-}, $numeros);
-
-// Misma función usando sintaxis de flecha
-$cuadrados2 = array_map(fn($n) => $n * $n, $numeros);
-
-echo "Cuadrados (función tradicional): " . implode(", ", $cuadrados1) . "<br>";
-echo "Cuadrados (función de flecha): " . implode(", ", $cuadrados2) . "<br>";
-
-// Las funciones de flecha capturan automáticamente las variables externas
-$base = 10;
-$suma = array_map(fn($n) => $n + $base, $numeros);
-
-echo "Números sumados a $base: " . implode(", ", $suma);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$numeros</span> = [<span class="php-number">1</span>, <span class="php-number">2</span>, <span class="php-number">3</span>];
+
+<span class="php-variable">$cuadrados</span> = <span class="php-function">array_map</span>(<span class="php-keyword">fn</span>(<span class="php-variable">$n</span>) => <span class="php-variable">$n</span> * <span class="php-variable">$n</span>, <span class="php-variable">$numeros</span>);
+
+<span class="php-keyword">echo</span> <span class="php-string">"Cuadrados: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$cuadrados</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-info mt-3">
@@ -615,39 +584,22 @@ echo "Números sumados a $base: " . implode(", ", $suma);
                         </div>
                     </div>
                     
-                    <div class="interactive-example mt-4">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Ejemplos de funciones integradas útiles
-
-// Funciones de strings
-$texto = "  Hola, Mundo PHP!  ";
-echo "Texto original: '$texto'<br>";
-echo "Longitud: " . strlen($texto) . "<br>";
-echo "En minúsculas: " . strtolower($texto) . "<br>";
-echo "En mayúsculas: " . strtoupper($texto) . "<br>";
-echo "Sin espacios: '" . trim($texto) . "'<br>";
-echo "Reemplazar: " . str_replace("Mundo", "Universo", $texto) . "<br><br>";
-
-// Funciones de arrays
-$frutas = ["manzana", "banana", "naranja"];
-echo "Array original: " . implode(", ", $frutas) . "<br>";
-echo "Número de elementos: " . count($frutas) . "<br>";
-
-sort($frutas);
-echo "Ordenado: " . implode(", ", $frutas) . "<br>";
-
-array_push($frutas, "kiwi");
-echo "Después de añadir 'kiwi': " . implode(", ", $frutas) . "<br>";
-
-echo "¿Contiene 'banana'? " . (in_array("banana", $frutas) ? "Sí" : "No") . "<br>";
-echo "¿Contiene 'pera'? " . (in_array("pera", $frutas) ? "Sí" : "No") . "<br>";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$texto</span> = <span class="php-string">"Hola, Mundo PHP!"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Texto original: $texto"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Documentación de Funciones</h2>
@@ -655,36 +607,34 @@ echo "¿Contiene 'pera'? " . (in_array("pera", $frutas) ? "Sí" : "No") . "<br>"
                         Es una buena práctica documentar tus funciones para facilitar su uso y mantenimiento. PHP usa un formato similar a JavaDoc llamado PHPDoc:
                     </p>
                     
-                    <div class="interactive-example mt-4">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-/**
+                    <div class="vscode-editor mt-4">
+                        <div
+                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">/**
  * Calcula el total con impuestos para un precio dado.
  *
  * @param float $precio El precio sin impuestos
  * @param float $tasaImpuesto La tasa de impuesto (por defecto: 0.16 o 16%)
  * @return float El precio con impuestos aplicados
- */
-function calcularTotalConImpuestos($precio, $tasaImpuesto = 0.16) {
-    if ($precio < 0) {
-        throw new InvalidArgumentException("El precio no puede ser negativo");
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">calcularTotalConImpuestos</span>(<span class="php-variable">$precio</span>, <span class="php-variable">$tasaImpuesto</span> = <span class="php-number">0.16</span>) {
+    <span class="php-keyword">if</span> (<span class="php-variable">$precio</span> < <span class="php-number">0</span>) {
+        <span class="php-keyword">throw</span> <span class="php-keyword">new</span> <span class="php-class">InvalidArgumentException</span>(<span class="php-string">"El precio no puede ser negativo"</span>);
     }
-    
-    $total = $precio * (1 + $tasaImpuesto);
-    return $total;
+    <span class="php-variable">$total</span> = <span class="php-variable">$precio</span> * (<span class="php-number">1</span> + <span class="php-variable">$tasaImpuesto</span>);
+    <span class="php-keyword">return</span> <span class="php-variable">$total</span>;
 }
-
-// Usando la función
-$precioProducto = 100;
-$total = calcularTotalConImpuestos($precioProducto);
-echo "Precio: $precioProducto€<br>";
-echo "Total con impuestos: $total€";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-info mt-3">

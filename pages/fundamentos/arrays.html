@@ -200,9 +200,10 @@
                     <p>
                         Hay dos formas principales de crear arrays indexados:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
                             <div class="vscode-editor-content">
                                 <pre><code class="php">
 <span class="php-tag">&lt;?php</span>
@@ -214,46 +215,47 @@
 <span class="php-tag">?&gt;</span>
                                 </code></pre>
                             </div>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h3 class="mt-4">Recorrer un array indexado</h3>
                     <p>
                         Existen varias formas de recorrer los elementos de un array:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-$frutas = ["manzana", "naranja", "plátano", "fresa"];
-
-// Método 1: Bucle for
-echo "Recorriendo con bucle for:<br>";
-for ($i = 0; $i < count($frutas); $i++) {
-    echo "Índice $i: " . $frutas[$i] . "<br>";
-}
-
-echo "<br>Recorriendo con foreach:<br>";
-// Método 2: Bucle foreach (recomendado)
-foreach ($frutas as $fruta) {
-    echo $fruta . "<br>";
-}
-
-echo "<br>Recorriendo con foreach (con índices):<br>";
-// Método 3: foreach con índices
-foreach ($frutas as $indice => $fruta) {
-    echo "Índice $indice: $fruta<br>";
-}
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$frutas</span> = [<span class="php-string">"manzana"</span>, <span class="php-string">"naranja"</span>, <span class="php-string">"plátano"</span>, <span class="php-string">"fresa"</span>];
+
+<span class="php-comment">// Método 1: Bucle for</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Recorriendo con bucle for:&lt;br&gt;"</span>;
+<span class="php-keyword">for</span> (<span class="php-variable">$i</span> = <span class="php-number">0</span>; <span class="php-variable">$i</span> < <span class="php-function">count</span>(<span class="php-variable">$frutas</span>); <span class="php-variable">$i</span>++) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Índice $i: "</span> . <span class="php-variable">$frutas</span>[<span class="php-variable">$i</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+}
+
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;Recorriendo con foreach:&lt;br&gt;"</span>;
+<span class="php-comment">// Método 2: Bucle foreach (recomendado)</span>
+<span class="php-keyword">foreach</span> (<span class="php-variable">$frutas</span> <span class="php-keyword">as</span> <span class="php-variable">$fruta</span>) {
+    <span class="php-keyword">echo</span> <span class="php-variable">$fruta</span> . <span class="php-string">"&lt;br&gt;"</span>;
+}
+
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;Recorriendo con foreach (con índices):&lt;br&gt;"</span>;
+<span class="php-comment">// Método 3: foreach con índices</span>
+<span class="php-keyword">foreach</span> (<span class="php-variable">$frutas</span> <span class="php-keyword">as</span> <span class="php-variable">$indice</span> => <span class="php-variable">$fruta</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Índice $indice: $fruta&lt;br&gt;"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-info mt-3">
@@ -265,36 +267,39 @@ foreach ($frutas as $indice => $fruta) {
                     <p>
                         Puedes modificar, añadir y eliminar elementos de un array:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-$frutas = ["manzana", "naranja", "plátano"];
-
-// Modificar un elemento existente
-$frutas[1] = "kiwi";  // Reemplaza "naranja" por "kiwi"
-
-// Añadir un elemento al final
-$frutas[] = "fresa";  // Añade "fresa" al final
-
-// Añadir un elemento con la función array_push()
-array_push($frutas, "uva");  // Añade "uva" al final
-
-// Eliminar el último elemento
-array_pop($frutas);  // Elimina "uva"
-
-// Eliminar un elemento específico
-unset($frutas[0]);  // Elimina "manzana" (¡pero no reordena los índices!)
-
-// Mostrar el array resultante
-echo "Array después de las modificaciones:<br>";
-print_r($frutas);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$frutas</span> = [<span class="php-string">"manzana"</span>, <span class="php-string">"naranja"</span>, <span class="php-string">"plátano"</span>];
+
+<span class="php-comment">// Modificar un elemento existente</span>
+<span class="php-variable">$frutas</span>[<span class="php-number">1</span>] = <span class="php-string">"kiwi"</span>;  <span class="php-comment">// Reemplaza "naranja" por "kiwi"</span>
+
+<span class="php-comment">// Añadir un elemento al final</span>
+<span class="php-variable">$frutas</span>[] = <span class="php-string">"fresa"</span>;  <span class="php-comment">// Añade "fresa" al final</span>
+
+<span class="php-comment">// Añadir un elemento con la función array_push()</span>
+<span class="php-function">array_push</span>(<span class="php-variable">$frutas</span>, <span class="php-string">"uva"</span>);  <span class="php-comment">// Añade "uva" al final</span>
+
+<span class="php-comment">// Eliminar el último elemento</span>
+<span class="php-function">array_pop</span>(<span class="php-variable">$frutas</span>);  <span class="php-comment">// Elimina "uva"</span>
+
+<span class="php-comment">// Eliminar un elemento específico</span>
+<span class="php-keyword">unset</span>(<span class="php-variable">$frutas</span>[<span class="php-number">0</span>]);  <span class="php-comment">// Elimina "manzana" (¡pero no reordena los índices!)</span>
+
+<span class="php-comment">// Mostrar el array resultante</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Array después de las modificaciones:&lt;br&gt;"</span>;
+<span class="php-function">print_r</span>(<span class="php-variable">$frutas</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-warning mt-3">
@@ -308,97 +313,106 @@ print_r($frutas);
                     </p>
                     
                     <h3 class="mt-4">Crear un array asociativo</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Crear un array asociativo
-$persona = [
-    "nombre" => "Juan",
-    "edad" => 25,
-    "ciudad" => "Madrid"
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Crear un array asociativo</span>
+<span class="php-variable">$persona</span> = [
+    <span class="php-string">"nombre"</span> => <span class="php-string">"Juan"</span>,
+    <span class="php-string">"edad"</span> => <span class="php-number">25</span>,
+    <span class="php-string">"ciudad"</span> => <span class="php-string">"Madrid"</span>
 ];
 
-// Forma alternativa
-$estudiante = array(
-    "nombre" => "Ana",
-    "carrera" => "Informática",
-    "semestre" => 3
+<span class="php-comment">// Forma alternativa</span>
+<span class="php-variable">$estudiante</span> = <span class="php-function">array</span>(
+    <span class="php-string">"nombre"</span> => <span class="php-string">"Ana"</span>,
+    <span class="php-string">"carrera"</span> => <span class="php-string">"Informática"</span>,
+    <span class="php-string">"semestre"</span> => <span class="php-number">3</span>
 );
 
-// Acceder a elementos específicos
-echo "$persona[nombre] tiene $persona[edad] años y vive en $persona[ciudad]";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-comment">// Acceder a elementos específicos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"$persona[nombre] tiene $persona[edad] años y vive en $persona[ciudad]"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h3 class="mt-4">Recorrer un array asociativo</h3>
                     <p>
                         Para recorrer arrays asociativos, el bucle <code>foreach</code> es la mejor opción:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-$persona = [
-    "nombre" => "Juan",
-    "edad" => 25,
-    "ciudad" => "Madrid",
-    "profesion" => "Desarrollador"
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$persona</span> = [
+    <span class="php-string">"nombre"</span> => <span class="php-string">"Juan"</span>,
+    <span class="php-string">"edad"</span> => <span class="php-number">25</span>,
+    <span class="php-string">"ciudad"</span> => <span class="php-string">"Madrid"</span>,
+    <span class="php-string">"profesion"</span> => <span class="php-string">"Desarrollador"</span>
 ];
 
-// Recorrer solo los valores
-echo "Datos personales:<br>";
-foreach ($persona as $valor) {
-    echo "- $valor<br>";
+<span class="php-comment">// Recorrer solo los valores</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Datos personales:&lt;br&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$persona</span> <span class="php-keyword">as</span> <span class="php-variable">$valor</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"- $valor&lt;br&gt;"</span>;
 }
 
-// Recorrer claves y valores
-echo "<br>Datos con etiquetas:<br>";
-foreach ($persona as $clave => $valor) {
-    echo ucfirst($clave) . ": $valor<br>";
+<span class="php-comment">// Recorrer claves y valores</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;Datos con etiquetas:&lt;br&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$persona</span> <span class="php-keyword">as</span> <span class="php-variable">$clave</span> => <span class="php-variable">$valor</span>) {
+    <span class="php-keyword">echo</span> <span class="php-function">ucfirst</span>(<span class="php-variable">$clave</span>) . <span class="php-string">": $valor&lt;br&gt;"</span>;
 }
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h3 class="mt-4">Modificar arrays asociativos</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-$persona = [
-    "nombre" => "Juan",
-    "edad" => 25,
-    "ciudad" => "Madrid"
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$persona</span> = [
+    <span class="php-string">"nombre"</span> => <span class="php-string">"Juan"</span>,
+    <span class="php-string">"edad"</span> => <span class="php-number">25</span>,
+    <span class="php-string">"ciudad"</span> => <span class="php-string">"Madrid"</span>
 ];
 
-// Modificar un valor existente
-$persona["edad"] = 26;
+<span class="php-comment">// Modificar un valor existente</span>
+<span class="php-variable">$persona</span>[<span class="php-string">"edad"</span>] = <span class="php-number">26</span>;
 
-// Añadir un nuevo par clave-valor
-$persona["profesion"] = "Desarrollador";
+<span class="php-comment">// Añadir un nuevo par clave-valor</span>
+<span class="php-variable">$persona</span>[<span class="php-string">"profesion"</span>] = <span class="php-string">"Desarrollador"</span>;
 
-// Eliminar un elemento
-unset($persona["ciudad"]);
+<span class="php-comment">// Eliminar un elemento</span>
+<span class="php-keyword">unset</span>(<span class="php-variable">$persona</span>[<span class="php-string">"ciudad"</span>]);
 
-// Mostrar el array resultante
-echo "Array modificado:<br>";
-print_r($persona);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-comment">// Mostrar el array resultante</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Array modificado:&lt;br&gt;"</span>;
+<span class="php-function">print_r</span>(<span class="php-variable">$persona</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Arrays Multidimensionales</h2>
@@ -407,98 +421,104 @@ print_r($persona);
                     </p>
                     
                     <h3 class="mt-4">Crear un array multidimensional</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Array multidimensional (matriz de estudiantes)
-$estudiantes = [
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Array multidimensional (matriz de estudiantes)</span>
+<span class="php-variable">$estudiantes</span> = [
     [
-        "nombre" => "Ana López",
-        "calificaciones" => [
-            "matematicas" => 90,
-            "historia" => 85,
-            "ciencias" => 92
+        <span class="php-string">"nombre"</span> => <span class="php-string">"Ana López"</span>,
+        <span class="php-string">"calificaciones"</span> => [
+            <span class="php-string">"matematicas"</span> => <span class="php-number">90</span>,
+            <span class="php-string">"historia"</span> => <span class="php-number">85</span>,
+            <span class="php-string">"ciencias"</span> => <span class="php-number">92</span>
         ]
     ],
     [
-        "nombre" => "Carlos Gómez",
-        "calificaciones" => [
-            "matematicas" => 78,
-            "historia" => 89,
-            "ciencias" => 76
+        <span class="php-string">"nombre"</span> => <span class="php-string">"Carlos Gómez"</span>,
+        <span class="php-string">"calificaciones"</span> => [
+            <span class="php-string">"matematicas"</span> => <span class="php-number">78</span>,
+            <span class="php-string">"historia"</span> => <span class="php-number">89</span>,
+            <span class="php-string">"ciencias"</span> => <span class="php-number">76</span>
         ]
     ]
 ];
 
-// Acceder a los datos de un estudiante
-$estudiante1 = $estudiantes[0];
-echo "Estudiante: " . $estudiante1["nombre"] . "<br>";
-echo "Matemáticas: " . $estudiante1["calificaciones"]["matematicas"] . "<br>";
-echo "Historia: " . $estudiante1["calificaciones"]["historia"] . "<br>";
-echo "Ciencias: " . $estudiante1["calificaciones"]["ciencias"] . "<br>";
+<span class="php-comment">// Acceder a los datos de un estudiante</span>
+<span class="php-variable">$estudiante1</span> = <span class="php-variable">$estudiantes</span>[<span class="php-number">0</span>];
+<span class="php-keyword">echo</span> <span class="php-string">"Estudiante: "</span> . <span class="php-variable">$estudiante1</span>[<span class="php-string">"nombre"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Matemáticas: "</span> . <span class="php-variable">$estudiante1</span>[<span class="php-string">"calificaciones"</span>][<span class="php-string">"matematicas"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Historia: "</span> . <span class="php-variable">$estudiante1</span>[<span class="php-string">"calificaciones"</span>][<span class="php-string">"historia"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Ciencias: "</span> . <span class="php-variable">$estudiante1</span>[<span class="php-string">"calificaciones"</span>][<span class="php-string">"ciencias"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Forma directa de acceder a los datos
-echo "<br>";
-echo "Estudiante: " . $estudiantes[1]["nombre"] . "<br>";
-echo "Matemáticas: " . $estudiantes[1]["calificaciones"]["matematicas"] . "<br>";
-echo "Historia: " . $estudiantes[1]["calificaciones"]["historia"] . "<br>";
-echo "Ciencias: " . $estudiantes[1]["calificaciones"]["ciencias"] . "<br>";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-comment">// Forma directa de acceder a los datos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Estudiante: "</span> . <span class="php-variable">$estudiantes</span>[<span class="php-number">1</span>][<span class="php-string">"nombre"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Matemáticas: "</span> . <span class="php-variable">$estudiantes</span>[<span class="php-number">1</span>][<span class="php-string">"calificaciones"</span>][<span class="php-string">"matematicas"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Historia: "</span> . <span class="php-variable">$estudiantes</span>[<span class="php-number">1</span>][<span class="php-string">"calificaciones"</span>][<span class="php-string">"historia"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Ciencias: "</span> . <span class="php-variable">$estudiantes</span>[<span class="php-number">1</span>][<span class="php-string">"calificaciones"</span>][<span class="php-string">"ciencias"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h3 class="mt-4">Recorrer arrays multidimensionales</h3>
                     <p>
                         Para recorrer arrays multidimensionales, se utilizan bucles <code>foreach</code> anidados:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Array multidimensional
-$productos = [
-    "electronica" => [
-        "televisores" => ["Samsung", "LG", "Sony"],
-        "smartphones" => ["iPhone", "Samsung Galaxy", "Xiaomi"]
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Array multidimensional</span>
+<span class="php-variable">$productos</span> = [
+    <span class="php-string">"electronica"</span> => [
+        <span class="php-string">"televisores"</span> => [<span class="php-string">"Samsung"</span>, <span class="php-string">"LG"</span>, <span class="php-string">"Sony"</span>],
+        <span class="php-string">"smartphones"</span> => [<span class="php-string">"iPhone"</span>, <span class="php-string">"Samsung Galaxy"</span>, <span class="php-string">"Xiaomi"</span>]
     ],
-    "hogar" => [
-        "muebles" => ["Sofá", "Mesa", "Silla"],
-        "electrodomesticos" => ["Nevera", "Lavadora", "Microondas"]
+    <span class="php-string">"hogar"</span> => [
+        <span class="php-string">"muebles"</span> => [<span class="php-string">"Sofá"</span>, <span class="php-string">"Mesa"</span>, <span class="php-string">"Silla"</span>],
+        <span class="php-string">"electrodomesticos"</span> => [<span class="php-string">"Nevera"</span>, <span class="php-string">"Lavadora"</span>, <span class="php-string">"Microondas"</span>]
     ]
 ];
 
-// Recorrer el array multidimensional
-foreach ($productos as $categoria => $subcategorias) {
-    echo "<strong>Categoría: " . ucfirst($categoria) . "</strong><br>";
+<span class="php-comment">// Recorrer el array multidimensional</span>
+<span class="php-keyword">foreach</span> (<span class="php-variable">$productos</span> <span class="php-keyword">as</span> <span class="php-variable">$categoria</span> => <span class="php-variable">$subcategorias</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;strong&gt;Categoría: "</span> . <span class="php-function">ucfirst</span>(<span class="php-variable">$categoria</span>) . <span class="php-string">"&lt;/strong&gt;&lt;br&gt;"</span>;
     
-    foreach ($subcategorias as $subcategoria => $items) {
-        echo "- " . ucfirst($subcategoria) . ": ";
+    <span class="php-keyword">foreach</span> (<span class="php-variable">$subcategorias</span> <span class="php-keyword">as</span> <span class="php-variable">$subcategoria</span> => <span class="php-variable">$items</span>) {
+        <span class="php-keyword">echo</span> <span class="php-string">"- "</span> . <span class="php-function">ucfirst</span>(<span class="php-variable">$subcategoria</span>) . <span class="php-string">": "</span>;
         
-        foreach ($items as $indice => $item) {
-            echo $item;
+        <span class="php-keyword">foreach</span> (<span class="php-variable">$items</span> <span class="php-keyword">as</span> <span class="php-variable">$indice</span> => <span class="php-variable">$item</span>) {
+            <span class="php-keyword">echo</span> <span class="php-variable">$item</span>;
             
-            // Agregar coma si no es el último elemento
-            if ($indice < count($items) - 1) {
-                echo ", ";
+            <span class="php-comment">// Agregar coma si no es el último elemento</span>
+            <span class="php-keyword">if</span> (<span class="php-variable">$indice</span> < <span class="php-function">count</span>(<span class="php-variable">$items</span>) - <span class="php-number">1</span>) {
+                <span class="php-keyword">echo</span> <span class="php-string">", "</span>;
             }
         }
         
-        echo "<br>";
+        <span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
     }
     
-    echo "<br>";
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
 }
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Funciones Útiles para Arrays</h2>
@@ -581,111 +601,117 @@ foreach ($productos as $categoria => $subcategorias) {
                     </div>
                     
                     <h3 class="mt-4">Ejemplos de funciones para arrays</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Array original
-$frutas = ["manzana", "naranja", "plátano", "fresa", "kiwi"];
-echo "Array original: " . implode(", ", $frutas) . "<br><br>";
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Array original</span>
+<span class="php-variable">$frutas</span> = [<span class="php-string">"manzana"</span>, <span class="php-string">"naranja"</span>, <span class="php-string">"plátano"</span>, <span class="php-string">"fresa"</span>, <span class="php-string">"kiwi"</span>];
+<span class="php-keyword">echo</span> <span class="php-string">"Array original: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$frutas</span>) . <span class="php-string">"&lt;br&gt;&lt;br&gt;"</span>;
 
-// Ordenar alfabéticamente
-sort($frutas);
-echo "Array ordenado: " . implode(", ", $frutas) . "<br>";
+<span class="php-comment">// Ordenar alfabéticamente</span>
+<span class="php-function">sort</span>(<span class="php-variable">$frutas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Array ordenado: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$frutas</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Comprobar si existe un valor
-$buscar = "manzana";
-if (in_array($buscar, $frutas)) {
-    echo "¿Existe la $buscar en el array? Sí<br>";
-} else {
-    echo "¿Existe la $buscar en el array? No<br>";
+<span class="php-comment">// Comprobar si existe un valor</span>
+<span class="php-variable">$buscar</span> = <span class="php-string">"manzana"</span>;
+<span class="php-keyword">if</span> (<span class="php-function">in_array</span>(<span class="php-variable">$buscar</span>, <span class="php-variable">$frutas</span>)) {
+    <span class="php-keyword">echo</span> <span class="php-string">"¿Existe la $buscar en el array? Sí&lt;br&gt;"</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-keyword">echo</span> <span class="php-string">"¿Existe la $buscar en el array? No&lt;br&gt;"</span>;
 }
 
-// Contar elementos
-echo "Conteo de elementos: " . count($frutas) . "<br>";
+<span class="php-comment">// Contar elementos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Conteo de elementos: "</span> . <span class="php-function">count</span>(<span class="php-variable">$frutas</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Sumar valores numéricos
-$numeros = [10, 15, 5, 8, 17];
-echo "Suma de números: " . array_sum($numeros) . "<br>";
+<span class="php-comment">// Sumar valores numéricos</span>
+<span class="php-variable">$numeros</span> = [<span class="php-number">10</span>, <span class="php-number">15</span>, <span class="php-number">5</span>, <span class="php-number">8</span>, <span class="php-number">17</span>];
+<span class="php-keyword">echo</span> <span class="php-string">"Suma de números: "</span> . <span class="php-function">array_sum</span>(<span class="php-variable">$numeros</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Fusionar arrays
-$masFrutas = ["uva", "cereza"];
-$todasFrutas = array_merge($frutas, $masFrutas);
-echo "Todas las frutas: " . implode(", ", $todasFrutas) . "<br>";
+<span class="php-comment">// Fusionar arrays</span>
+<span class="php-variable">$masFrutas</span> = [<span class="php-string">"uva"</span>, <span class="php-string">"cereza"</span>];
+<span class="php-variable">$todasFrutas</span> = <span class="php-function">array_merge</span>(<span class="php-variable">$frutas</span>, <span class="php-variable">$masFrutas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Todas las frutas: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$todasFrutas</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Eliminar duplicados
-$numeros_duplicados = [1, 2, 2, 3, 4, 4, 5];
-$numeros_unicos = array_unique($numeros_duplicados);
-echo "Números únicos: " . implode(", ", $numeros_unicos) . "<br>";
+<span class="php-comment">// Eliminar duplicados</span>
+<span class="php-variable">$numeros_duplicados</span> = [<span class="php-number">1</span>, <span class="php-number">2</span>, <span class="php-number">2</span>, <span class="php-number">3</span>, <span class="php-number">4</span>, <span class="php-number">4</span>, <span class="php-number">5</span>];
+<span class="php-variable">$numeros_unicos</span> = <span class="php-function">array_unique</span>(<span class="php-variable">$numeros_duplicados</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Números únicos: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$numeros_unicos</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Obtener claves
-$persona = ["nombre" => "Juan", "edad" => 25, "ciudad" => "Madrid"];
-$claves = array_keys($persona);
-echo "Claves del array persona: " . implode(", ", $claves) . "<br>";
+<span class="php-comment">// Obtener claves</span>
+<span class="php-variable">$persona</span> = [<span class="php-string">"nombre"</span> => <span class="php-string">"Juan"</span>, <span class="php-string">"edad"</span> => <span class="php-number">25</span>, <span class="php-string">"ciudad"</span> => <span class="php-string">"Madrid"</span>];
+<span class="php-variable">$claves</span> = <span class="php-function">array_keys</span>(<span class="php-variable">$persona</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Claves del array persona: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$claves</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Obtener valores
-$valores = array_values($persona);
-echo "Valores del array persona: " . implode(", ", $valores);
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-comment">// Obtener valores</span>
+<span class="php-variable">$valores</span> = <span class="php-function">array_values</span>(<span class="php-variable">$persona</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Valores del array persona: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$valores</span>);
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h2 class="mt-5">Funciones Avanzadas para Arrays</h2>
                     <p>
                         PHP ofrece también funciones avanzadas para operaciones más complejas con arrays:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Array de números
-$numeros = [1, 2, 3, 4, 5];
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Array de números</span>
+<span class="php-variable">$numeros</span> = [<span class="php-number">1</span>, <span class="php-number">2</span>, <span class="php-number">3</span>, <span class="php-number">4</span>, <span class="php-number">5</span>];
 
-// array_map(): aplica una función a cada elemento
-$cuadrados = array_map(function($n) {
-    return $n * $n;
-}, $numeros);
-echo "Números al cuadrado: " . implode(", ", $cuadrados) . "<br>";
+<span class="php-comment">// array_map(): aplica una función a cada elemento</span>
+<span class="php-variable">$cuadrados</span> = <span class="php-function">array_map</span>(<span class="php-keyword">function</span>(<span class="php-variable">$n</span>) {
+    <span class="php-keyword">return</span> <span class="php-variable">$n</span> * <span class="php-variable">$n</span>;
+}, <span class="php-variable">$numeros</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Números al cuadrado: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$cuadrados</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// array_filter(): filtra elementos según una condición
-$pares = array_filter($numeros, function($n) {
-    return $n % 2 == 0;
+<span class="php-comment">// array_filter(): filtra elementos según una condición</span>
+<span class="php-variable">$pares</span> = <span class="php-function">array_filter</span>(<span class="php-variable">$numeros</span>, <span class="php-keyword">function</span>(<span class="php-variable">$n</span>) {
+    <span class="php-keyword">return</span> <span class="php-variable">$n</span> % <span class="php-number">2</span> == <span class="php-number">0</span>;
 });
-echo "Números pares: " . implode(", ", $pares) . "<br>";
+<span class="php-keyword">echo</span> <span class="php-string">"Números pares: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$pares</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// array_reduce(): reduce el array a un solo valor
-$suma = array_reduce($numeros, function($carry, $item) {
-    return $carry + $item;
-}, 0);
-echo "Suma de números: $suma<br>";
+<span class="php-comment">// array_reduce(): reduce el array a un solo valor</span>
+<span class="php-variable">$suma</span> = <span class="php-function">array_reduce</span>(<span class="php-variable">$numeros</span>, <span class="php-keyword">function</span>(<span class="php-variable">$carry</span>, <span class="php-variable">$item</span>) {
+    <span class="php-keyword">return</span> <span class="php-variable">$carry</span> + <span class="php-variable">$item</span>;
+}, <span class="php-number">0</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Suma de números: $suma&lt;br&gt;"</span>;
 
-// array_walk(): modifica cada elemento del array
-$frutas = ["manzana", "naranja", "plátano"];
-array_walk($frutas, function(&$value) {
-    $value = ucfirst($value);
+<span class="php-comment">// array_walk(): modifica cada elemento del array</span>
+<span class="php-variable">$frutas</span> = [<span class="php-string">"manzana"</span>, <span class="php-string">"naranja"</span>, <span class="php-string">"plátano"</span>];
+<span class="php-function">array_walk</span>(<span class="php-variable">$frutas</span>, <span class="php-keyword">function</span>(&<span class="php-variable">$value</span>) {
+    <span class="php-variable">$value</span> = <span class="php-function">ucfirst</span>(<span class="php-variable">$value</span>);
 });
-echo "Frutas con mayúscula: " . implode(", ", $frutas) . "<br>";
+<span class="php-keyword">echo</span> <span class="php-string">"Frutas con mayúscula: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$frutas</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// array_slice(): extrae una porción del array
-$porcion = array_slice($numeros, 1, 3);  // desde índice 1, 3 elementos
-echo "Porción del array: " . implode(", ", $porcion) . "<br>";
+<span class="php-comment">// array_slice(): extrae una porción del array</span>
+<span class="php-variable">$porcion</span> = <span class="php-function">array_slice</span>(<span class="php-variable">$numeros</span>, <span class="php-number">1</span>, <span class="php-number">3</span>);  <span class="php-comment">// desde índice 1, 3 elementos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Porción del array: "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$porcion</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// array_chunk(): divide un array en fragmentos
-$grupos = array_chunk($numeros, 2);  // grupos de 2 elementos
-echo "Array dividido en grupos:<br>";
-foreach ($grupos as $grupo) {
-    echo "- " . implode(", ", $grupo) . "<br>";
+<span class="php-comment">// array_chunk(): divide un array en fragmentos</span>
+<span class="php-variable">$grupos</span> = <span class="php-function">array_chunk</span>(<span class="php-variable">$numeros</span>, <span class="php-number">2</span>);  <span class="php-comment">// grupos de 2 elementos</span>
+<span class="php-keyword">echo</span> <span class="php-string">"Array dividido en grupos:&lt;br&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$grupos</span> <span class="php-keyword">as</span> <span class="php-variable">$grupo</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"- "</span> . <span class="php-function">implode</span>(<span class="php-string">", "</span>, <span class="php-variable">$grupo</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 }
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <div class="alert alert-success mt-3">
@@ -696,125 +722,130 @@ foreach ($grupos as $grupo) {
                     <h2 class="mt-5">Casos Prácticos con Arrays</h2>
                     
                     <h3 class="mt-4">Caso 1: Lista de tareas</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Lista de tareas con arrays
-$tareas = [
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Lista de tareas con arrays</span>
+<span class="php-variable">$tareas</span> = [
     [
-        "id" => 1,
-        "titulo" => "Comprar víveres",
-        "completada" => true,
-        "fechaLimite" => "2025-05-05"
+        <span class="php-string">"id"</span> => <span class="php-number">1</span>,
+        <span class="php-string">"titulo"</span> => <span class="php-string">"Comprar víveres"</span>,
+        <span class="php-string">"completada"</span> => <span class="php-keyword">true</span>,
+        <span class="php-string">"fechaLimite"</span> => <span class="php-string">"2025-05-05"</span>
     ],
     [
-        "id" => 2,
-        "titulo" => "Pagar facturas",
-        "completada" => false,
-        "fechaLimite" => "2025-05-10"
+        <span class="php-string">"id"</span> => <span class="php-number">2</span>,
+        <span class="php-string">"titulo"</span> => <span class="php-string">"Pagar facturas"</span>,
+        <span class="php-string">"completada"</span> => <span class="php-keyword">false</span>,
+        <span class="php-string">"fechaLimite"</span> => <span class="php-string">"2025-05-10"</span>
     ],
     [
-        "id" => 3,
-        "titulo" => "Enviar informe",
-        "completada" => false,
-        "fechaLimite" => "2025-05-15"
+        <span class="php-string">"id"</span> => <span class="php-number">3</span>,
+        <span class="php-string">"titulo"</span> => <span class="php-string">"Enviar informe"</span>,
+        <span class="php-string">"completada"</span> => <span class="php-keyword">false</span>,
+        <span class="php-string">"fechaLimite"</span> => <span class="php-string">"2025-05-15"</span>
     ]
 ];
 
-// Mostrar todas las tareas
-echo "<h4>Lista de tareas:</h4>";
-echo "<ul>";
-foreach ($tareas as $tarea) {
-    $estado = $tarea["completada"] ? "completada" : "pendiente";
-    $clase = $tarea["completada"] ? "text-decoration-line-through text-muted" : "";
-    echo "<li class='$clase'>";
-    echo $tarea["titulo"] . " - Estado: " . $estado . " (Fecha límite: " . $tarea["fechaLimite"] . ")";
-    echo "</li>";
+<span class="php-comment">// Mostrar todas las tareas</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;h4&gt;Lista de tareas:&lt;/h4&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;ul&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$tareas</span> <span class="php-keyword">as</span> <span class="php-variable">$tarea</span>) {
+    <span class="php-variable">$estado</span> = <span class="php-variable">$tarea</span>[<span class="php-string">"completada"</span>] ? <span class="php-string">"completada"</span> : <span class="php-string">"pendiente"</span>;
+    <span class="php-variable">$clase</span> = <span class="php-variable">$tarea</span>[<span class="php-string">"completada"</span>] ? <span class="php-string">"text-decoration-line-through text-muted"</span> : <span class="php-string">""</span>;
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;li class='$clase'&gt;"</span>;
+    <span class="php-keyword">echo</span> <span class="php-variable">$tarea</span>[<span class="php-string">"titulo"</span>] . <span class="php-string">" - Estado: "</span> . <span class="php-variable">$estado</span> . <span class="php-string">" (Fecha límite: "</span> . <span class="php-variable">$tarea</span>[<span class="php-string">"fechaLimite"</span>] . <span class="php-string">")&lt;/li&gt;"</span>;
 }
-echo "</ul>";
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;/ul&gt;"</span>;
 
-// Filtrar tareas pendientes
-$tareasPendientes = array_filter($tareas, function($tarea) {
-    return !$tarea["completada"];
+<span class="php-comment">// Filtrar tareas pendientes</span>
+<span class="php-variable">$tareasPendientes</span> = <span class="php-function">array_filter</span>(<span class="php-variable">$tareas</span>, <span class="php-keyword">function</span>(<span class="php-variable">$tarea</span>) {
+    <span class="php-keyword">return</span> !<span class="php-variable">$tarea</span>[<span class="php-string">"completada"</span>];
 });
 
-echo "<h4>Tareas pendientes:</h4>";
-echo "<ul>";
-foreach ($tareasPendientes as $tarea) {
-    echo "<li>" . $tarea["titulo"] . " (Fecha límite: " . $tarea["fechaLimite"] . ")</li>";
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;h4&gt;Tareas pendientes:&lt;/h4&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;ul&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$tareasPendientes</span> <span class="php-keyword">as</span> <span class="php-variable">$tarea</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;li&gt;"</span> . <span class="php-variable">$tarea</span>[<span class="php-string">"titulo"</span>] . <span class="php-string">" (Fecha límite: "</span> . <span class="php-variable">$tarea</span>[<span class="php-string">"fechaLimite"</span>] . <span class="php-string">")&lt;/li&gt;"</span>;
 }
-echo "</ul>";
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;/ul&gt;"</span>;
 
-// Contar tareas completadas
-$tareasCompletadas = array_filter($tareas, function($tarea) {
-    return $tarea["completada"];
+<span class="php-comment">// Contar tareas completadas</span>
+<span class="php-variable">$tareasCompletadas</span> = <span class="php-function">array_filter</span>(<span class="php-variable">$tareas</span>, <span class="php-keyword">function</span>(<span class="php-variable">$tarea</span>) {
+    <span class="php-keyword">return</span> <span class="php-variable">$tarea</span>[<span class="php-string">"completada"</span>];
 });
 
-echo "<p>Tienes " . count($tareasPendientes) . " tareas pendientes y " . 
-     count($tareasCompletadas) . " tareas completadas.</p>";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;p&gt;Tienes "</span> . <span class="php-function">count</span>(<span class="php-variable">$tareasPendientes</span>) . <span class="php-string">" tareas pendientes y "</span> . 
+     <span class="php-function">count</span>(<span class="php-variable">$tareasCompletadas</span>) . <span class="php-string">" tareas completadas.&lt;/p&gt;"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <h3 class="mt-4">Caso 2: Cálculo de estadísticas</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Datos de ventas
-$ventas = [
-    "enero" => 15000,
-    "febrero" => 22000,
-    "marzo" => 18500,
-    "abril" => 25000,
-    "mayo" => 21000
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> ejemplo.php</span>
+                        </div>
+                            <div class="vscode-editor-content">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Datos de ventas</span>
+<span class="php-variable">$ventas</span> = [
+    <span class="php-string">"enero"</span> => <span class="php-number">15000</span>,
+    <span class="php-string">"febrero"</span> => <span class="php-number">22000</span>,
+    <span class="php-string">"marzo"</span> => <span class="php-number">18500</span>,
+    <span class="php-string">"abril"</span> => <span class="php-number">25000</span>,
+    <span class="php-string">"mayo"</span> => <span class="php-number">21000</span>
 ];
 
-// Total de ventas
-$totalVentas = array_sum($ventas);
-echo "<h4>Estadísticas de ventas:</h4>";
-echo "Total de ventas: $" . number_format($totalVentas, 2) . "<br>";
+<span class="php-comment">// Total de ventas</span>
+<span class="php-variable">$totalVentas</span> = <span class="php-function">array_sum</span>(<span class="php-variable">$ventas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;h4&gt;Estadísticas de ventas:&lt;/h4&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"Total de ventas: $"</span> . <span class="php-function">number_format</span>(<span class="php-variable">$totalVentas</span>, <span class="php-number">2</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Promedio de ventas
-$promedioVentas = $totalVentas / count($ventas);
-echo "Promedio mensual: $" . number_format($promedioVentas, 2) . "<br>";
+<span class="php-comment">// Promedio de ventas</span>
+<span class="php-variable">$promedioVentas</span> = <span class="php-variable">$totalVentas</span> / <span class="php-function">count</span>(<span class="php-variable">$ventas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Promedio mensual: $"</span> . <span class="php-function">number_format</span>(<span class="php-variable">$promedioVentas</span>, <span class="php-number">2</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Mes con mayores ventas
-$mesMaximo = array_search(max($ventas), $ventas);
-echo "Mes con mayores ventas: " . ucfirst($mesMaximo) . " con $" . number_format($ventas[$mesMaximo], 2) . "<br>";
+<span class="php-comment">// Mes con mayores ventas</span>
+<span class="php-variable">$mesMaximo</span> = <span class="php-function">array_search</span>(<span class="php-function">max</span>(<span class="php-variable">$ventas</span>), <span class="php-variable">$ventas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Mes con mayores ventas: "</span> . <span class="php-function">ucfirst</span>(<span class="php-variable">$mesMaximo</span>) . <span class="php-string">" con $"</span> . <span class="php-function">number_format</span>(<span class="php-variable">$ventas</span>[<span class="php-variable">$mesMaximo</span>], <span class="php-number">2</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Mes con menores ventas
-$mesMinimo = array_search(min($ventas), $ventas);
-echo "Mes con menores ventas: " . ucfirst($mesMinimo) . " con $" . number_format($ventas[$mesMinimo], 2) . "<br>";
+<span class="php-comment">// Mes con menores ventas</span>
+<span class="php-variable">$mesMinimo</span> = <span class="php-function">array_search</span>(<span class="php-function">min</span>(<span class="php-variable">$ventas</span>), <span class="php-variable">$ventas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Mes con menores ventas: "</span> . <span class="php-function">ucfirst</span>(<span class="php-variable">$mesMinimo</span>) . <span class="php-string">" con $"</span> . <span class="php-function">number_format</span>(<span class="php-variable">$ventas</span>[<span class="php-variable">$mesMinimo</span>], <span class="php-number">2</span>) . <span class="php-string">"&lt;br&gt;"</span>;
 
-// Ordenar ventas (de mayor a menor)
-arsort($ventas);
-echo "<br><h5>Ventas ordenadas (mayor a menor):</h5>";
-echo "<ul>";
-foreach ($ventas as $mes => $cantidad) {
-    echo "<li>" . ucfirst($mes) . ": $" . number_format($cantidad, 2) . "</li>";
+<span class="php-comment">// Ordenar ventas (de mayor a menor)</span>
+<span class="php-function">arsort</span>(<span class="php-variable">$ventas</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;&lt;h5&gt;Ventas ordenadas (mayor a menor):&lt;/h5&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;ul&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$ventas</span> <span class="php-keyword">as</span> <span class="php-variable">$mes</span> => <span class="php-variable">$cantidad</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;li&gt;"</span> . <span class="php-function">ucfirst</span>(<span class="php-variable">$mes</span>) . <span class="php-string">": $"</span> . <span class="php-function">number_format</span>(<span class="php-variable">$cantidad</span>, <span class="php-number">2</span>) . <span class="php-string">"&lt;/li&gt;"</span>;
 }
-echo "</ul>";
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;/ul&gt;"</span>;
 
-// Calcular porcentaje respecto al total
-echo "<h5>Porcentaje sobre el total:</h5>";
-echo "<ul>";
-foreach ($ventas as $mes => $cantidad) {
-    $porcentaje = ($cantidad / $totalVentas) * 100;
-    echo "<li>" . ucfirst($mes) . ": " . number_format($porcentaje, 1) . "%</li>";
+<span class="php-comment">// Calcular porcentaje respecto al total</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;h5&gt;Porcentaje sobre el total:&lt;/h5&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;ul&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$ventas</span> <span class="php-keyword">as</span> <span class="php-variable">$mes</span> => <span class="php-variable">$cantidad</span>) {
+    <span class="php-variable">$porcentaje</span> = (<span class="php-variable">$cantidad</span> / <span class="php-variable">$totalVentas</span>) * <span class="php-number">100</span>;
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;li&gt;"</span> . <span class="php-function">ucfirst</span>(<span class="php-variable">$mes</span>) . <span class="php-string">": "</span> . <span class="php-function">number_format</span>(<span class="php-variable">$porcentaje</span>, <span class="php-number">1</span>) . <span class="php-string">"%&lt;/li&gt;"</span>;
 }
-echo "</ul>";
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;/ul&gt;"</span>;
+<span class="php-tag">?&gt;</span>
+                                </code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>PHP 8.2</span>
+                            </div>
                     </div>
                     
                     <!-- Navegación de página -->

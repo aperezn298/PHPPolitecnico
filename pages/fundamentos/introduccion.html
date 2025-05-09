@@ -534,221 +534,223 @@
                     </div>
 
                     <!-- Ejercicio práctico -->
-                    <div class="card mt-5 border-primary">
-                        <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0 text-white"><i class="fas fa-laptop-code me-2"></i>Ejercicios Prácticos</h4>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="mb-4">Evalúa tus conocimientos sobre introducción a PHP</h5>
-                            
-                            <!-- Ejercicio 1: Verdadero o Falso -->
-                            <div class="mb-5">
-                                <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Ejercicio 1: Verdadero o Falso</h6>
-                                <p>Marca si las siguientes afirmaciones son verdaderas o falsas:</p>
-                                
-                                <div class="true-false-questions">
-                                    <div class="question mb-3">
-                                        <div class="d-flex align-items-start">
-                                            <span class="me-2">1.</span>
-                                            <div>
-                                                <p class="mb-2">PHP fue creado originalmente por Rasmus Lerdorf en 1994.</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q1" id="q1-true" value="true">
-                                                    <label class="form-check-label" for="q1-true">Verdadero</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q1" id="q1-false" value="false">
-                                                    <label class="form-check-label" for="q1-false">Falso</label>
-                                                </div>
-                                                <div class="answer-feedback text-success" style="display: none;">
-                                                    ¡Correcto! PHP fue creado por Rasmus Lerdorf en 1994 como un conjunto de scripts para rastrear visitas a su CV online.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="question mb-3">
-                                        <div class="d-flex align-items-start">
-                                            <span class="me-2">2.</span>
-                                            <div>
-                                                <p class="mb-2">PHP significa "Personal Home Page" actualmente.</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q2" id="q2-true" value="true">
-                                                    <label class="form-check-label" for="q2-true">Verdadero</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q2" id="q2-false" value="false">
-                                                    <label class="form-check-label" for="q2-false">Falso</label>
-                                                </div>
-                                                <div class="answer-feedback text-danger" style="display: none;">
-                                                    ¡Incorrecto! Actualmente PHP significa "PHP: Hypertext Preprocessor", un acrónimo recursivo desde 1997.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="question mb-3">
-                                        <div class="d-flex align-items-start">
-                                            <span class="me-2">3.</span>
-                                            <div>
-                                                <p class="mb-2">Los archivos PHP se ejecutan en el navegador del usuario.</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q3" id="q3-true" value="true">
-                                                    <label class="form-check-label" for="q3-true">Verdadero</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q3" id="q3-false" value="false">
-                                                    <label class="form-check-label" for="q3-false">Falso</label>
-                                                </div>
-                                                <div class="answer-feedback text-danger" style="display: none;">
-                                                    ¡Incorrecto! PHP se ejecuta en el servidor, no en el navegador del usuario. El servidor procesa el código PHP y envía solo HTML al navegador.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="question mb-3">
-                                        <div class="d-flex align-items-start">
-                                            <span class="me-2">4.</span>
-                                            <div>
-                                                <p class="mb-2">Para ejecutar código PHP, necesitamos un servidor web como Apache.</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q4" id="q4-true" value="true">
-                                                    <label class="form-check-label" for="q4-true">Verdadero</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q4" id="q4-false" value="false">
-                                                    <label class="form-check-label" for="q4-false">Falso</label>
-                                                </div>
-                                                <div class="answer-feedback text-success" style="display: none;">
-                                                    ¡Correcto! PHP necesita un servidor web como Apache para ejecutar sus scripts, aunque desde PHP 5.4 también incluye un servidor de desarrollo integrado.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="question mb-3">
-                                        <div class="d-flex align-items-start">
-                                            <span class="me-2">5.</span>
-                                            <div>
-                                                <p class="mb-2">El código PHP se escribe entre las etiquetas &lt;?php y ?&gt;</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q5" id="q5-true" value="true">
-                                                    <label class="form-check-label" for="q5-true">Verdadero</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="q5" id="q5-false" value="false">
-                                                    <label class="form-check-label" for="q5-false">Falso</label>
-                                                </div>
-                                                <div class="answer-feedback text-success" style="display: none;">
-                                                    ¡Correcto! El código PHP siempre está contenido dentro de las etiquetas &lt;?php y ?&gt;
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <button class="btn btn-primary check-true-false mt-2">Verificar respuestas</button>
-                                </div>
-                            </div>
-                            
-                            <!-- Ejercicio 2: Relacionar -->
-                            <div class="mb-5">
-                                <h6 class="mb-3"><i class="fas fa-project-diagram me-2 text-primary"></i>Ejercicio 2: Relaciona los conceptos</h6>
-                                <p>Selecciona la definición correcta para cada concepto de PHP:</p>
-                                
-                                <div class="matching-exercise">
-                                    <form id="matching-form">
-                                        <div class="row mb-3">
-                                            <div class="col-md-4">
-                                                <strong>1. PHP</strong>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <select class="form-select" data-correct="a">
-                                                    <option value="">Selecciona la respuesta correcta...</option>
-                                                    <option value="a">Hypertext Preprocessor, lenguaje de programación para desarrollo web del lado del servidor</option>
-                                                    <option value="b">Un sistema de gestión de bases de datos relacionales</option>
-                                                    <option value="c">Un marco de desarrollo frontend para crear páginas web interactivas</option>
-                                                    <option value="d">Un servidor web de código abierto</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row mb-3">
-                                            <div class="col-md-4">
-                                                <strong>2. Variables en PHP</strong>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <select class="form-select" data-correct="c">
-                                                    <option value="">Selecciona la respuesta correcta...</option>
-                                                    <option value="a">Se declaran con la palabra clave 'var'</option>
-                                                    <option value="b">No pueden comenzar con el símbolo $</option>
-                                                    <option value="c">Comienzan con $ y son sensibles a mayúsculas y minúsculas</option>
-                                                    <option value="d">Son tipadas estáticamente, una vez declaradas no pueden cambiar de tipo</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row mb-3">
-                                            <div class="col-md-4">
-                                                <strong>3. MySQL</strong>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <select class="form-select" data-correct="b">
-                                                    <option value="">Selecciona la respuesta correcta...</option>
-                                                    <option value="a">Un lenguaje de programación para desarrollo frontend</option>
-                                                    <option value="b">Un sistema de gestión de bases de datos relacionales muy utilizado con PHP</option>
-                                                    <option value="c">Una función para manipular cadenas en PHP</option>
-                                                    <option value="d">Un framework para desarrollo de aplicaciones PHP</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row mb-3">
-                                            <div class="col-md-4">
-                                                <strong>4. include()</strong>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <select class="form-select" data-correct="a">
-                                                    <option value="">Selecciona la respuesta correcta...</option>
-                                                    <option value="a">Una función que permite incluir y evaluar archivos en PHP</option>
-                                                    <option value="b">Una función para encriptar datos en PHP</option>
-                                                    <option value="c">Un método para conectar PHP con bases de datos</option>
-                                                    <option value="d">Una estructura de control de flujo en PHP</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row mb-3">
-                                            <div class="col-md-4">
-                                                <strong>5. $_POST</strong>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <select class="form-select" data-correct="d">
-                                                    <option value="">Selecciona la respuesta correcta...</option>
-                                                    <option value="a">Una función para enviar datos a través de correo electrónico</option>
-                                                    <option value="b">Un método para crear publicaciones en bases de datos</option>
-                                                    <option value="c">Una función para mostrar texto en el navegador</option>
-                                                    <option value="d">Una variable superglobal usada para recoger datos de formularios enviados con el método POST</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="text-end mt-3">
-                                            <span id="matching-result" class="me-3 fw-bold"></span>
-                                            <button type="button" class="btn btn-primary" id="check-matching">Verificar respuestas</button>
-                                            <button type="button" class="btn btn-secondary ms-2" id="reveal-matching">Mostrar solución</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            
-                            <div class="mt-4 text-center">
-                                <button class="btn btn-success complete-lesson" data-bs-toggle="tooltip"
-                                    title="Marcar como completada">
-                                    <i class="fas fa-check me-2"></i>Completar lección
+                    <div class="accordion mt-5" id="practicalExercisesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="exerciseOneHeader">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#exerciseOne" aria-expanded="true" aria-controls="exerciseOne">
+                                    Ejercicio 1: Verdadero o Falso
                                 </button>
+                            </h2>
+                            <div id="exerciseOne" class="accordion-collapse collapse show" aria-labelledby="exerciseOneHeader" data-bs-parent="#practicalExercisesAccordion">
+                                <div class="accordion-body">
+                                    <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Ejercicio 1: Verdadero o Falso</h6>
+                                    <p>Marca si las siguientes afirmaciones son verdaderas o falsas:</p>
+                                    <div class="true-false-questions">
+                                        <div class="question mb-3">
+                                            <div class="d-flex align-items-start">
+                                                <span class="me-2">1.</span>
+                                                <div>
+                                                    <p class="mb-2">PHP fue creado originalmente por Rasmus Lerdorf en 1994.</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q1" id="q1-true" value="true">
+                                                        <label class="form-check-label" for="q1-true">Verdadero</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q1" id="q1-false" value="false">
+                                                        <label class="form-check-label" for="q1-false">Falso</label>
+                                                    </div>
+                                                    <div class="answer-feedback text-success" style="display: none;">
+                                                        ¡Correcto! PHP fue creado por Rasmus Lerdorf en 1994 como un conjunto de scripts para rastrear visitas a su CV online.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <div class="d-flex align-items-start">
+                                                <span class="me-2">2.</span>
+                                                <div>
+                                                    <p class="mb-2">PHP significa "Personal Home Page" actualmente.</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q2" id="q2-true" value="true">
+                                                        <label class="form-check-label" for="q2-true">Verdadero</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q2" id="q2-false" value="false">
+                                                        <label class="form-check-label" for="q2-false">Falso</label>
+                                                    </div>
+                                                    <div class="answer-feedback text-danger" style="display: none;">
+                                                        ¡Incorrecto! Actualmente PHP significa "PHP: Hypertext Preprocessor", un acrónimo recursivo desde 1997.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <div class="d-flex align-items-start">
+                                                <span class="me-2">3.</span>
+                                                <div>
+                                                    <p class="mb-2">Los archivos PHP se ejecutan en el navegador del usuario.</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q3" id="q3-true" value="true">
+                                                        <label class="form-check-label" for="q3-true">Verdadero</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q3" id="q3-false" value="false">
+                                                        <label class="form-check-label" for="q3-false">Falso</label>
+                                                    </div>
+                                                    <div class="answer-feedback text-danger" style="display: none;">
+                                                        ¡Incorrecto! PHP se ejecuta en el servidor, no en el navegador del usuario. El servidor procesa el código PHP y envía solo HTML al navegador.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <div class="d-flex align-items-start">
+                                                <span class="me-2">4.</span>
+                                                <div>
+                                                    <p class="mb-2">Para ejecutar código PHP, necesitamos un servidor web como Apache.</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q4" id="q4-true" value="true">
+                                                        <label class="form-check-label" for="q4-true">Verdadero</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q4" id="q4-false" value="false">
+                                                        <label class="form-check-label" for="q4-false">Falso</label>
+                                                    </div>
+                                                    <div class="answer-feedback text-success" style="display: none;">
+                                                        ¡Correcto! PHP necesita un servidor web como Apache para ejecutar sus scripts, aunque desde PHP 5.4 también incluye un servidor de desarrollo integrado.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="question mb-3">
+                                            <div class="d-flex align-items-start">
+                                                <span class="me-2">5.</span>
+                                                <div>
+                                                    <p class="mb-2">El código PHP se escribe entre las etiquetas &lt;?php y ?&gt;</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q5" id="q5-true" value="true">
+                                                        <label class="form-check-label" for="q5-true">Verdadero</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="q5" id="q5-false" value="false">
+                                                        <label class="form-check-label" for="q5-false">Falso</label>
+                                                    </div>
+                                                    <div class="answer-feedback text-success" style="display: none;">
+                                                        ¡Correcto! El código PHP siempre está contenido dentro de las etiquetas &lt;?php y ?&gt;
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="btn btn-primary check-true-false mt-2">Verificar respuestas</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="exerciseTwoHeader">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#exerciseTwo" aria-expanded="false" aria-controls="exerciseTwo">
+                                    Ejercicio 2: Relacionar
+                                </button>
+                            </h2>
+                            <div id="exerciseTwo" class="accordion-collapse collapse" aria-labelledby="exerciseTwoHeader" data-bs-parent="#practicalExercisesAccordion">
+                                <div class="accordion-body">
+                                    <h6 class="mb-3"><i class="fas fa-project-diagram me-2 text-primary"></i>Ejercicio 2: Relaciona los conceptos</h6>
+                                    <p>Selecciona la definición correcta para cada concepto de PHP:</p>
+                                    <div class="matching-exercise">
+                                        <form id="matching-form">
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <strong>1. PHP</strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <select class="form-select" data-correct="a">
+                                                        <option value="">Selecciona la respuesta correcta...</option>
+                                                        <option value="a">Hypertext Preprocessor, lenguaje de programación para desarrollo web del lado del servidor</option>
+                                                        <option value="b">Un sistema de gestión de bases de datos relacionales</option>
+                                                        <option value="c">Un marco de desarrollo frontend para crear páginas web interactivas</option>
+                                                        <option value="d">Un servidor web de código abierto</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <strong>2. Variables en PHP</strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <select class="form-select" data-correct="c">
+                                                        <option value="">Selecciona la respuesta correcta...</option>
+                                                        <option value="a">Se declaran con la palabra clave 'var'</option>
+                                                        <option value="b">No pueden comenzar con el símbolo $</option>
+                                                        <option value="c">Comienzan con $ y son sensibles a mayúsculas y minúsculas</option>
+                                                        <option value="d">Son tipadas estáticamente, una vez declaradas no pueden cambiar de tipo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <strong>3. MySQL</strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <select class="form-select" data-correct="b">
+                                                        <option value="">Selecciona la respuesta correcta...</option>
+                                                        <option value="a">Un lenguaje de programación para desarrollo frontend</option>
+                                                        <option value="b">Un sistema de gestión de bases de datos relacionales muy utilizado con PHP</option>
+                                                        <option value="c">Una función para manipular cadenas en PHP</option>
+                                                        <option value="d">Un framework para desarrollo de aplicaciones PHP</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <strong>4. include()</strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <select class="form-select" data-correct="a">
+                                                        <option value="">Selecciona la respuesta correcta...</option>
+                                                        <option value="a">Una función que permite incluir y evaluar archivos en PHP</option>
+                                                        <option value="b">Una función para encriptar datos en PHP</option>
+                                                        <option value="c">Un método para conectar PHP con bases de datos</option>
+                                                        <option value="d">Una estructura de control de flujo en PHP</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <strong>5. $_POST</strong>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <select class="form-select" data-correct="d">
+                                                        <option value="">Selecciona la respuesta correcta...</option>
+                                                        <option value="a">Una función para enviar datos a través de correo electrónico</option>
+                                                        <option value="b">Un método para crear publicaciones en bases de datos</option>
+                                                        <option value="c">Una función para mostrar texto en el navegador</option>
+                                                        <option value="d">Una variable superglobal usada para recoger datos de formularios enviados con el método POST</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="text-end mt-3">
+                                                <span id="matching-result" class="me-3 fw-bold"></span>
+                                                <button type="button" class="btn btn-primary" id="check-matching">Verificar respuestas</button>
+                                                <button type="button" class="btn btn-secondary ms-2" id="reveal-matching">Mostrar solución</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
                     </div>
                     
                     <!-- Script para los ejercicios -->
