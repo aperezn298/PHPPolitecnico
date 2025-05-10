@@ -41,10 +41,10 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Intermedio
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">                            Intermedio
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/try-catch.html">Manejo de Excepciones</a></li>
                             <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
                             <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y Sesiones</a></li>
                             <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
@@ -91,49 +91,49 @@
                     </div>
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="1">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="fund-intro">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
                                     <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
                                 </div>
                                 <span class="badge bg-success rounded-pill">1/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="fund-sintaxis">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
                                     <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
                                 </div>
                                 <span class="badge bg-success rounded-pill">2/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="fund-variables">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
                                     <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
                                 </div>
                                 <span class="badge bg-success rounded-pill">3/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="fund-operadores">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
                                     <a href="operadores.html" class="text-decoration-none">Operadores</a>
                                 </div>
                                 <span class="badge bg-success rounded-pill">4/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="fund-control">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
                                     <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
                                 </div>
                                 <span class="badge bg-success rounded-pill">5/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed" data-lesson-id="6">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-funciones">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="funciones.html" class="text-decoration-none">Funciones</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">6/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="7">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-arrays">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="arrays.html" class="text-decoration-none">Arrays</a>
@@ -145,7 +145,7 @@
                     <div class="card-footer">
                         <p class="mb-1 small">Progreso del módulo:</p>
                         <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 71%;" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100">71%</div>
                         </div>
                     </div>
                 </div>
@@ -385,98 +385,7 @@
                                 <span>PHP 8.2</span>
                             </div>
                     </div>
-                    
-                    <h2 class="mt-5">Parámetros por Referencia</h2>
-                    <p>
-                        Por defecto, los parámetros de función se pasan por valor, lo que significa que la función recibe una copia del valor. Si la función modifica el parámetro, no afecta a la variable original.
-                    </p>
-                    
-                    <p>
-                        Para modificar la variable original, podemos pasar parámetros por referencia añadiendo el símbolo <code>&</code> antes del nombre del parámetro:
-                    </p>
-                    
-                    <div class="vscode-editor mt-4">
-                        <div
-                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                            <span><i class="fab fa-php"></i> ejemplo.php</span>
-                        </div>
-                            <div class="vscode-editor-content">
-                                <pre><code class="php">
-<span class="php-tag">&lt;?php</span>
-<span class="php-keyword">function</span> <span class="php-function">incrementarValor</span>(<span class="php-variable">$numero</span>) {
-    <span class="php-variable">$numero</span>++;
-}
 
-<span class="php-keyword">function</span> <span class="php-function">incrementarReferencia</span>(<span class="php-variable">&</span><span class="php-variable">$numero</span>) {
-    <span class="php-variable">$numero</span>++;
-}
-
-<span class="php-variable">$a</span> = <span class="php-number">5</span>;
-<span class="php-function">incrementarValor</span>(<span class="php-variable">$a</span>);
-<span class="php-keyword">echo</span> <span class="php-string">"Después de incrementarValor(): $a"</span>;
-
-<span class="php-variable">$b</span> = <span class="php-number">10</span>;
-<span class="php-function">incrementarReferencia</span>(<span class="php-variable">$b</span>);
-<span class="php-keyword">echo</span> <span class="php-string">"Después de incrementarReferencia(): $b"</span>;
-<span class="php-tag">?&gt;</span>
-                                </code></pre>
-                            </div>
-                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
-                                <span>PHP 8.2</span>
-                            </div>
-                    </div>
-                    
-                    <div class="alert alert-danger mt-3">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        <strong>Precaución:</strong> El paso por referencia es poderoso pero puede llevar a código difícil de entender y depurar. Úsalo con cautela y documéntalo claramente.
-                    </div>
-                    
-                    <h2 class="mt-5">Ámbito de las Variables</h2>
-                    <p>
-                        El ámbito (scope) de una variable determina desde qué parte del código es accesible.
-                    </p>
-                    
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Tipos de ámbito en PHP</h5>
-                            <ul>
-                                <li><strong>Local</strong>: Variables declaradas dentro de una función, accesibles solo dentro de esa función</li>
-                                <li><strong>Global</strong>: Variables declaradas fuera de cualquier función, accesibles en cualquier parte del script excepto dentro de funciones</li>
-                                <li><strong>Estático</strong>: Variables locales que no pierden su valor cuando la función termina</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="vscode-editor mt-4">
-                        <div
-                            class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                            <span><i class="fab fa-php"></i> ejemplo.php</span>
-                        </div>
-                            <div class="vscode-editor-content">
-                                <pre><code class="php">
-<span class="php-tag">&lt;?php</span>
-<span class="php-variable">$x</span> = <span class="php-string">"Variable global"</span>;
-
-<span class="php-keyword">function</span> <span class="php-function">test1</span>() {
-    <span class="php-variable">$y</span> = <span class="php-string">"Variable local"</span>;
-    <span class="php-keyword">echo</span> <span class="php-string">"Dentro de la función test1: Variable y (local): $y"</span>;
-}
-
-<span class="php-keyword">function</span> <span class="php-function">test2</span>() {
-    <span class="php-keyword">global</span> <span class="php-variable">$x</span>;
-    <span class="php-keyword">echo</span> <span class="php-string">"Dentro de la función test2: Variable x (global): $x"</span>;
-}
-
-<span class="php-function">test1</span>();
-<span class="php-function">test2</span>();
-<span class="php-tag">?&gt;</span>
-                                </code></pre>
-                            </div>
-                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
-                                <span>PHP 8.2</span>
-                            </div>
-                    </div>
-                    
                     <h2 class="mt-5">Funciones Anónimas (Closures)</h2>
                     <p>
                         Las funciones anónimas o closures son funciones sin nombre, que pueden asignarse a variables o pasarse como argumentos a otras funciones:
@@ -731,8 +640,7 @@
                                 <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
                             </a>
                         </li>
-                        <li class="mb-2">
-                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                        <li class="mb-2">                            <a href="../intermedio/try-catch.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
                                 <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
                             </a>
                         </li>

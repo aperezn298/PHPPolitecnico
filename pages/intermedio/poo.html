@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Orientada a Objetos en PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../fundamentos/introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="try-catch.html">Manejo de Excepciones</a></li>
+                            <li><a class="dropdown-item" href="formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item" href="archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item active" href="poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0 text-white">Intermedio</h5>
+                    </div>
+                    <div class="card-body p-0">                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-trycatch">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="try-catch.html" class="text-decoration-none">Manejo de Excepciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-formularios">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="formularios.html" class="text-decoration-none">Formularios</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">2/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-cookies">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="cookies-sesiones.html" class="text-decoration-none">Cookies y Sesiones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">3/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-archivos">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="archivos.html" class="text-decoration-none">Manejo de Archivos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">4/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-fechas">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="fechas.html" class="text-decoration-none">Fechas y Tiempo</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">5/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-poo">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="poo.html" class="text-decoration-none">Programación Orientada a Objetos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/6</span>
+                            </li>
+                        </ul>
+                    </div>                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="#">Intermedio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Programación Orientada a Objetos</li>
+                    </ol>
+                </nav>
+
+                <h1 class="mb-4">Programación Orientada a Objetos en PHP</h1>
+                
+                <div class="alert alert-primary">
+                    <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                    <ul class="mb-0">
+                        <li>Comprender los conceptos fundamentales de la POO</li>
+                        <li>Implementar clases y objetos en PHP</li>
+                        <li>Utilizar herencia y polimorfismo</li>
+                        <li>Trabajar con métodos y propiedades estáticas</li>
+                        <li>Implementar interfaces y clases abstractas</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5">Clases y Objetos</h2>
+                <p>
+                    En PHP, una clase es una plantilla para crear objetos. Define las propiedades y métodos 
+                    que tendrán los objetos creados a partir de ella.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> Persona.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-info">Básico</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+&lt;?php
+class Persona {
+    // Propiedades
+    private $nombre;
+    private $edad;
+    
+    // Constructor
+    public function __construct($nombre, $edad) {
+        $this->nombre = $nombre;
+        $this->edad = $edad;
+    }
+    
+    // Métodos
+    public function saludar() {
+        return "Hola, soy " . $this->nombre;
+    }
+    
+    public function getEdad() {
+        return $this->edad;
+    }
+    
+    public function cumpleanos() {
+        $this->edad++;
+    }
+}
+
+// Crear un objeto
+$persona = new Persona("Juan", 25);
+echo $persona->saludar(); // Salida: Hola, soy Juan
+echo $persona->getEdad(); // Salida: 25
+?&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Herencia</h2>
+                <p>
+                    La herencia permite crear nuevas clases basadas en clases existentes. La clase hija 
+                    hereda todas las propiedades y métodos públicos y protegidos de la clase padre.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> Empleado.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-warning">Intermedio</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+&lt;?php
+class Empleado extends Persona {
+    private $puesto;
+    private $salario;
+    
+    public function __construct($nombre, $edad, $puesto, $salario) {
+        parent::__construct($nombre, $edad);
+        $this->puesto = $puesto;
+        $this->salario = $salario;
+    }
+    
+    public function getPuesto() {
+        return $this->puesto;
+    }
+    
+    public function getSalario() {
+        return $this->salario;
+    }
+    
+    // Sobrescribir método de la clase padre
+    public function saludar() {
+        return parent::saludar() . " y trabajo como " . $this->puesto;
+    }
+}
+
+$empleado = new Empleado("María", 30, "Desarrolladora", 50000);
+echo $empleado->saludar(); 
+// Salida: Hola, soy María y trabajo como Desarrolladora
+?&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Interfaces y Clases Abstractas</h2>
+                <p>
+                    Las interfaces y clases abstractas son herramientas fundamentales para definir contratos 
+                    y compartir funcionalidad entre clases.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> interfaces.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-danger">Avanzado</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+&lt;?php
+// Interfaz
+interface Trabajador {
+    public function trabajar();
+    public function descansar();
+}
+
+// Clase abstracta
+abstract class Profesional {
+    protected $especialidad;
+    
+    public function __construct($especialidad) {
+        $this->especialidad = $especialidad;
+    }
+    
+    abstract public function ejercer();
+    
+    public function getEspecialidad() {
+        return $this->especialidad;
+    }
+}
+
+// Implementación
+class Programador extends Profesional implements Trabajador {
+    private $lenguaje;
+    
+    public function __construct($especialidad, $lenguaje) {
+        parent::__construct($especialidad);
+        $this->lenguaje = $lenguaje;
+    }
+    
+    public function trabajar() {
+        return "Programando en " . $this->lenguaje;
+    }
+    
+    public function descansar() {
+        return "Tomando un café";
+    }
+    
+    public function ejercer() {
+        return "Desarrollando software como " . $this->especialidad;
+    }
+}
+
+$programador = new Programador("Backend Developer", "PHP");
+echo $programador->trabajar(); // Salida: Programando en PHP
+echo $programador->ejercer(); // Salida: Desarrollando software como Backend Developer
+?&gt;</code></pre>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Propiedades y Métodos Estáticos</h2>
+                <p>
+                    Los miembros estáticos pertenecen a la clase en lugar de a una instancia específica. 
+                    Se pueden acceder sin crear un objeto de la clase.
+                </p>
+
+                <div class="vscode-editor mt-4 mb-5">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> estaticos.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-warning">Intermedio</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+&lt;?php
+class Matematica {
+    public static $pi = 3.14159;
+    private static $contador = 0;
+    
+    public static function sumar($a, $b) {
+        self::$contador++;
+        return $a + $b;
+    }
+    
+    public static function getContador() {
+        return self::$contador;
+    }
+}
+
+// Usar miembros estáticos
+echo Matematica::$pi; // Salida: 3.14159
+echo Matematica::sumar(5, 3); // Salida: 8
+echo Matematica::getContador(); // Salida: 1
+?&gt;</code></pre>
+                    </div>
+                </div>
+
+                <!-- Ejercicio Práctico -->
+                <div class="card mb-5">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-laptop-code me-2"></i>Ejercicio Práctico</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Desarrolla un sistema de gestión de biblioteca que incluya:</p>
+                        <ol>
+                            <li>Una clase abstracta <code>Documento</code> con métodos comunes</li>
+                            <li>Clases <code>Libro</code>, <code>Revista</code> y <code>DVD</code> que hereden de <code>Documento</code></li>
+                            <li>Una interfaz <code>Prestable</code> con métodos para prestar y devolver</li>
+                            <li>Una clase <code>Biblioteca</code> que gestione el inventario</li>
+                        </ol>
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-info-circle"></i> Sugerencia</h5>
+                            <p class="mb-0">
+                                Utiliza propiedades estáticas para mantener el registro del total de 
+                                documentos y implementa métodos para buscar por diferentes criterios.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navegación entre lecciones -->
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <a href="fechas.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left"></i> Anterior: Fechas y Tiempo
+                        </a>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="../apis/introduccion.html" class="btn btn-outline-primary">
+                            Siguiente: Introducción a APIs <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a></li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../fundamentos/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="try-catch.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/sidebar.js"></script>
+</body>
+</html>

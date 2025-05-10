@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../../js/sidebar.js" defer></script>
 </head>
 
 <body>
@@ -40,6 +41,7 @@
                             <li><a class="dropdown-item" href="control.html">Estructuras de Control</a></li>
                             <li><a class="dropdown-item" href="funciones.html">Funciones</a></li>
                             <li><a class="dropdown-item" href="arrays.html">Arrays</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/try-catch.html">Try-Catch</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -47,6 +49,7 @@
                             Intermedio
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/try-catch.html">Manejo de Excepciones</a></li>
                             <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
                             <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y
                                     Sesiones</a></li>
@@ -95,56 +98,49 @@
                     </div>
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion completed"
-                                data-lesson-id="1">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-intro">
                                 <div>
-                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox" checked>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="introduccion.html" class="text-decoration-none">Introducción a PHP</a>
                                 </div>
-                                <span class="badge bg-success rounded-pill">1/7</span>
+                                <span class="badge bg-secondary rounded-pill">1/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
-                                data-lesson-id="2">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-sintaxis">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="sintaxis.html" class="text-decoration-none">Sintaxis Básica</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">2/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
-                                data-lesson-id="3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-variables">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="variables.html" class="text-decoration-none">Variables y Tipos</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">3/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
-                                data-lesson-id="4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-operadores">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="operadores.html" class="text-decoration-none">Operadores</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">4/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
-                                data-lesson-id="5">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-control">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="control.html" class="text-decoration-none">Estructuras de Control</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">5/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
-                                data-lesson-id="6">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-funciones">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="funciones.html" class="text-decoration-none">Funciones</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">6/7</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion"
-                                data-lesson-id="7">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="fund-arrays">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="arrays.html" class="text-decoration-none">Arrays</a>
@@ -156,8 +152,7 @@
                     <div class="card-footer">
                         <p class="mb-1 small">Progreso del módulo:</p>
                         <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" id="course-progress"
-                                style="width: 14%;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100">14%</div>
+                            <div class="progress-bar bg-danger" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                         </div>
                     </div>
                 </div>
@@ -954,7 +949,7 @@
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="../intermedio/formularios.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                            <a href="../intermedio/try-catch.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
                                 <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
                             </a>
                         </li>

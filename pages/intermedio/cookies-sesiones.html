@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies y Sesiones en PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../fundamentos/introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="try-catch.html">Manejo de Excepciones</a></li>
+                            <li><a class="dropdown-item" href="formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item active" href="cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item" href="archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0 text-white">Intermedio</h5>
+                    </div>
+                    <div class="card-body p-0">                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-trycatch">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="try-catch.html" class="text-decoration-none">Manejo de Excepciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-formularios">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="formularios.html" class="text-decoration-none">Formularios</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">2/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-cookies">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="cookies-sesiones.html" class="text-decoration-none">Cookies y Sesiones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">3/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-archivos">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="archivos.html" class="text-decoration-none">Manejo de Archivos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">4/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-fechas">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="fechas.html" class="text-decoration-none">Fechas y Tiempo</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">5/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-poo">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="poo.html" class="text-decoration-none">Programación Orientada a Objetos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/6</span>
+                            </li>
+                        </ul>
+                    </div>                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="#">Intermedio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cookies y Sesiones</li>
+                    </ol>
+                </nav>
+
+                <h1 class="mb-4">Cookies y Sesiones en PHP</h1>
+                
+                <div class="alert alert-primary">
+                    <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                    <ul class="mb-0">
+                        <li>Comprender el concepto de cookies y sesiones en aplicaciones web</li>
+                        <li>Aprender a crear y gestionar cookies con PHP</li>
+                        <li>Dominar el manejo de sesiones para mantener datos del usuario</li>
+                        <li>Implementar autenticación básica usando sesiones</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5">Cookies en PHP</h2>
+                <p>
+                    Las cookies son pequeños archivos de texto que se almacenan en el navegador del cliente. 
+                    Son útiles para guardar información específica del usuario y sus preferencias entre diferentes 
+                    visitas al sitio web.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> crear_cookie.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-info">Básico</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Crear una cookie que expira en 30 días</span>
+<span class="php-variable">$nombre</span> = <span class="php-string">"usuario"</span>;
+<span class="php-variable">$valor</span> = <span class="php-string">"Juan"</span>;
+<span class="php-variable">$expiracion</span> = <span class="php-function">time</span>() + (86400 * 30); <span class="php-comment">// 86400 = 1 día</span>
+
+<span class="php-function">setcookie</span>(<span class="php-variable">$nombre</span>, <span class="php-variable">$valor</span>, <span class="php-variable">$expiracion</span>, <span class="php-string">"/"</span>);
+
+<span class="php-comment">// Leer una cookie</span>
+<span class="php-keyword">if</span> (<span class="php-function">isset</span>(<span class="php-variable">$_COOKIE</span>[<span class="php-string">'usuario'</span>])) {
+    <span class="php-keyword">echo</span> <span class="php-string">"¡Bienvenido de nuevo, "</span> . <span class="php-variable">$_COOKIE</span>[<span class="php-string">'usuario'</span>] . <span class="php-string">"!"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="alert alert-info mt-4">
+                    <h5><i class="fas fa-info-circle"></i> Importante</h5>
+                    <p class="mb-0">
+                        Las cookies deben establecerse antes de enviar cualquier salida al navegador. 
+                        Es una buena práctica colocar las llamadas a setcookie() al inicio del script.
+                    </p>
+                </div>
+
+                <h2 class="mt-5">Sesiones en PHP</h2>
+                <p>
+                    Las sesiones proporcionan una manera de preservar datos entre múltiples páginas durante 
+                    la visita de un usuario. A diferencia de las cookies, los datos de sesión se almacenan 
+                    en el servidor.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> manejo_sesiones.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-warning">Intermedio</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Iniciar sesión</span>
+<span class="php-function">session_start</span>();
+
+<span class="php-comment">// Almacenar datos en la sesión</span>
+<span class="php-variable">$_SESSION</span>[<span class="php-string">'usuario_id'</span>] = <span class="php-number">123</span>;
+<span class="php-variable">$_SESSION</span>[<span class="php-string">'nombre'</span>] = <span class="php-string">"Juan Pérez"</span>;
+<span class="php-variable">$_SESSION</span>[<span class="php-string">'logueado'</span>] = <span class="php-keyword">true</span>;
+
+<span class="php-comment">// Verificar si el usuario está logueado</span>
+<span class="php-keyword">if</span> (<span class="php-function">isset</span>(<span class="php-variable">$_SESSION</span>[<span class="php-string">'logueado'</span>]) && <span class="php-variable">$_SESSION</span>[<span class="php-string">'logueado'</span>] === <span class="php-keyword">true</span>) {
+    <span class="php-keyword">echo</span> <span class="php-string">"Usuario autenticado: "</span> . <span class="php-variable">$_SESSION</span>[<span class="php-string">'nombre'</span>];
+}
+
+<span class="php-comment">// Cerrar sesión</span>
+<span class="php-comment">// session_destroy();</span>
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <h3 class="mt-5">Ejemplo Práctico: Sistema de Login</h3>
+                <p>
+                    A continuación, veremos un ejemplo básico de cómo implementar un sistema de login 
+                    usando sesiones:
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> login.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-warning">Completo</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-function">session_start</span>();
+
+<span class="php-comment">// Verificar si el formulario fue enviado</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$_SERVER</span>[<span class="php-string">'REQUEST_METHOD'</span>] === <span class="php-string">'POST'</span>) {
+    <span class="php-variable">$usuario</span> = <span class="php-variable">$_POST</span>[<span class="php-string">'usuario'</span>] ?? <span class="php-string">''</span>;
+    <span class="php-variable">$password</span> = <span class="php-variable">$_POST</span>[<span class="php-string">'password'</span>] ?? <span class="php-string">''</span>;
+    
+    <span class="php-comment">// En un caso real, verificarías contra una base de datos</span>
+    <span class="php-keyword">if</span> (<span class="php-variable">$usuario</span> === <span class="php-string">'admin'</span> && <span class="php-variable">$password</span> === <span class="php-string">'123456'</span>) {
+        <span class="php-variable">$_SESSION</span>[<span class="php-string">'logueado'</span>] = <span class="php-keyword">true</span>;
+        <span class="php-variable">$_SESSION</span>[<span class="php-string">'usuario'</span>] = <span class="php-variable">$usuario</span>;
+        <span class="php-function">header</span>(<span class="php-string">'Location: dashboard.php'</span>);
+        <span class="php-keyword">exit</span>;
+    } <span class="php-keyword">else</span> {
+        <span class="php-variable">$error</span> = <span class="php-string">'Usuario o contraseña incorrectos'</span>;
+    }
+}
+<span class="php-tag">?&gt;</span>
+
+<span class="php-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="html">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form method="post"&gt;
+        &lt;input type="text" name="usuario" placeholder="Usuario" required&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Contraseña" required&gt;&lt;br&gt;
+        &lt;button type="submit"&gt;Iniciar Sesión&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning mt-4 mb-5">
+                    <h5><i class="fas fa-exclamation-triangle"></i> Consideraciones de Seguridad</h5>
+                    <ul class="mb-0">
+                        <li>Siempre usa HTTPS cuando manejes datos sensibles</li>
+                        <li>Establece el parámetro httponly en las cookies para prevenir ataques XSS</li>
+                        <li>Nunca almacenes contraseñas en texto plano, usa funciones de hash como password_hash()</li>
+                        <li>Implementa protección contra CSRF en tus formularios</li>
+                    </ul>
+                </div>
+
+                <!-- Ejercicio Práctico -->
+                <div class="card mb-5">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-laptop-code me-2"></i>Ejercicio Práctico</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Crea un sistema simple de preferencias de usuario usando cookies que:</p>
+                        <ol>
+                            <li>Permita al usuario seleccionar un tema (claro/oscuro)</li>
+                            <li>Guarde el idioma preferido</li>
+                            <li>Recuerde estas preferencias durante 30 días</li>
+                        </ol>
+                        <div class="vscode-editor mt-4">
+                            <div class="vscode-editor-header bg-dark text-white px-3 py-2">
+                                <span><i class="fab fa-php"></i> preferencias.php</span>
+                            </div>
+                            <div class="vscode-editor-content bg-dark p-3">
+                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Tu código aquí
+// Sugerencia: Usa setcookie() para cada preferencia
+// Verifica si existen cookies antes de mostrar valores por defecto</span>
+<span class="php-tag">?&gt;</span>
+
+<span class="html">&lt;form method="post"&gt;
+    &lt;select name="tema"&gt;
+        &lt;option value="claro"&gt;Tema Claro&lt;/option&gt;
+        &lt;option value="oscuro"&gt;Tema Oscuro&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;select name="idioma"&gt;
+        &lt;option value="es"&gt;Español&lt;/option&gt;
+        &lt;option value="en"&gt;English&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;button type="submit"&gt;Guardar Preferencias&lt;/button&gt;
+&lt;/form&gt;</span>
+                                </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navegación entre lecciones -->
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <a href="formularios.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left"></i> Anterior: Formularios
+                        </a>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="archivos.html" class="btn btn-outline-primary">
+                            Siguiente: Manejo de Archivos <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a></li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="../../index.html" class="text-decoration-none text-white-50 hover-white">Inicio</a></li>
+                        <li class="mb-2"><a href="../fundamentos/introduccion.html" class="text-decoration-none text-white-50 hover-white">Fundamentos</a></li>
+                        <li class="mb-2"><a href="try-catch.html" class="text-decoration-none text-white-50 hover-white">Intermedio</a></li>
+                        <li class="mb-2"><a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white">Bases de Datos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50">&copy; 2025 Guía Interactiva PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-white-50">Hecho con <i class="fas fa-heart text-danger"></i> por la comunidad PHP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/sidebar.js"></script>
+</body>
+</html>

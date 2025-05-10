@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manejo de Archivos en PHP | Guía Interactiva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../fundamentos/introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="try-catch.html">Manejo de Excepciones</a></li>
+                            <li><a class="dropdown-item" href="formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item active" href="archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../bd/intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="../bd/crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0 text-white">Intermedio</h5>
+                    </div>
+                    <div class="card-body p-0">                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-trycatch">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="try-catch.html" class="text-decoration-none">Manejo de Excepciones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-formularios">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="formularios.html" class="text-decoration-none">Formularios</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">2/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-cookies">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="cookies-sesiones.html" class="text-decoration-none">Cookies y Sesiones</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">3/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-archivos">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="archivos.html" class="text-decoration-none">Manejo de Archivos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">4/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-fechas">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="fechas.html" class="text-decoration-none">Fechas y Tiempo</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">5/6</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-poo">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="poo.html" class="text-decoration-none">Programación Orientada a Objetos</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">6/6</span>
+                            </li>
+                        </ul>
+                    </div>                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="#">Intermedio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Manejo de Archivos</li>
+                    </ol>
+                </nav>
+
+                <h1 class="mb-4">Manejo de Archivos en PHP</h1>
+                
+                <div class="alert alert-primary">
+                    <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                    <ul class="mb-0">
+                        <li>Aprender a leer y escribir archivos en PHP</li>
+                        <li>Comprender los diferentes modos de apertura de archivos</li>
+                        <li>Manejar permisos y errores en operaciones con archivos</li>
+                        <li>Trabajar con archivos CSV y realizar operaciones avanzadas</li>
+                    </ul>
+                </div>
+
+                <h2 class="mt-5">Apertura y Lectura de Archivos</h2>
+                <p>
+                    PHP proporciona varias funciones para trabajar con archivos. La función básica para abrir 
+                    un archivo es <code>fopen()</code>, que requiere dos parámetros principales: la ruta del 
+                    archivo y el modo de apertura.
+                </p>
+
+                <div class="table-responsive mt-4">
+                    <table class="table table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Modo</th>
+                                <th>Descripción</th>
+                                <th>Crea archivo</th>
+                                <th>Sobrescribe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>r</code></td>
+                                <td>Solo lectura</td>
+                                <td>No</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><code>w</code></td>
+                                <td>Solo escritura</td>
+                                <td>Sí</td>
+                                <td>Sí</td>
+                            </tr>
+                            <tr>
+                                <td><code>a</code></td>
+                                <td>Añadir al final</td>
+                                <td>Sí</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><code>r+</code></td>
+                                <td>Lectura y escritura</td>
+                                <td>No</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> lectura_archivo.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-info">Básico</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Abrir archivo en modo lectura</span>
+<span class="php-variable">$archivo</span> = <span class="php-function">fopen</span>(<span class="php-string">'datos.txt'</span>, <span class="php-string">'r'</span>);
+
+<span class="php-comment">// Verificar si se abrió correctamente</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$archivo</span>) {
+    <span class="php-comment">// Leer línea por línea</span>
+    <span class="php-keyword">while</span> (!<span class="php-function">feof</span>(<span class="php-variable">$archivo</span>)) {
+        <span class="php-variable">$linea</span> = <span class="php-function">fgets</span>(<span class="php-variable">$archivo</span>);
+        <span class="php-keyword">echo</span> <span class="php-variable">$linea</span> . <span class="php-string">"&lt;br&gt;"</span>;
+    }
+    
+    <span class="php-comment">// Cerrar el archivo</span>
+    <span class="php-function">fclose</span>(<span class="php-variable">$archivo</span>);
+} <span class="php-keyword">else</span> {
+    <span class="php-keyword">echo</span> <span class="php-string">"Error al abrir el archivo"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Escritura de Archivos</h2>
+                <p>
+                    PHP ofrece varias funciones para escribir en archivos. Las más comunes son <code>fwrite()</code> 
+                    y <code>file_put_contents()</code>.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> escritura_archivo.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-info">Básico</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Método 1: Usando fwrite()</span>
+<span class="php-variable">$archivo</span> = <span class="php-function">fopen</span>(<span class="php-string">'nuevo.txt'</span>, <span class="php-string">'w'</span>);
+<span class="php-variable">$texto</span> = <span class="php-string">"Este es un texto de ejemplo.\n"</span>;
+<span class="php-function">fwrite</span>(<span class="php-variable">$archivo</span>, <span class="php-variable">$texto</span>);
+<span class="php-function">fclose</span>(<span class="php-variable">$archivo</span>);
+
+<span class="php-comment">// Método 2: Usando file_put_contents()</span>
+<span class="php-variable">$contenido</span> = <span class="php-string">"Este es otro texto de ejemplo."</span>;
+<span class="php-function">file_put_contents</span>(<span class="php-string">'otro.txt'</span>, <span class="php-variable">$contenido</span>);
+
+<span class="php-comment">// Añadir contenido al final del archivo</span>
+<span class="php-function">file_put_contents</span>(<span class="php-string">'otro.txt'</span>, <span class="php-string">"\nNueva línea"</span>, FILE_APPEND);
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning mt-4">
+                    <h5><i class="fas fa-exclamation-triangle"></i> Importante</h5>
+                    <p class="mb-0">
+                        Siempre verifica los permisos de escritura y asegúrate de cerrar los archivos después 
+                        de usarlos para liberar recursos del sistema.
+                    </p>
+                </div>
+
+                <h2 class="mt-5">Trabajando con CSV</h2>
+                <p>
+                    Los archivos CSV (Valores Separados por Comas) son muy comunes para manejar datos tabulares. 
+                    PHP tiene funciones específicas para trabajar con este formato.
+                </p>
+
+                <div class="vscode-editor mt-4">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> manejo_csv.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-warning">Intermedio</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Crear un archivo CSV</span>
+<span class="php-variable">$archivo</span> = <span class="php-function">fopen</span>(<span class="php-string">'usuarios.csv'</span>, <span class="php-string">'w'</span>);
+
+<span class="php-comment">// Escribir encabezados</span>
+<span class="php-variable">$encabezados</span> = [<span class="php-string">'Nombre'</span>, <span class="php-string">'Email'</span>, <span class="php-string">'Edad'</span>];
+<span class="php-function">fputcsv</span>(<span class="php-variable">$archivo</span>, <span class="php-variable">$encabezados</span>);
+
+<span class="php-comment">// Escribir datos</span>
+<span class="php-variable">$datos</span> = [
+    [<span class="php-string">'Juan'</span>, <span class="php-string">'juan@email.com'</span>, <span class="php-string">'25'</span>],
+    [<span class="php-string">'María'</span>, <span class="php-string">'maria@email.com'</span>, <span class="php-string">'30'</span>]
+];
+
+<span class="php-keyword">foreach</span> (<span class="php-variable">$datos</span> as <span class="php-variable">$fila</span>) {
+    <span class="php-function">fputcsv</span>(<span class="php-variable">$archivo</span>, <span class="php-variable">$fila</span>);
+}
+
+<span class="php-function">fclose</span>(<span class="php-variable">$archivo</span>);
+
+<span class="php-comment">// Leer archivo CSV</span>
+<span class="php-variable">$archivo</span> = <span class="php-function">fopen</span>(<span class="php-string">'usuarios.csv'</span>, <span class="php-string">'r'</span>);
+
+<span class="php-keyword">while</span> (<span class="php-variable">$fila</span> = <span class="php-function">fgetcsv</span>(<span class="php-variable">$archivo</span>)) {
+    <span class="php-keyword">print_r</span>(<span class="php-variable">$fila</span>);
+    <span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+}
+
+<span class="php-function">fclose</span>(<span class="php-variable">$archivo</span>);
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Manejo de Directorios</h2>
+                <p>
+                    PHP también proporciona funciones para trabajar con directorios y obtener información 
+                    sobre archivos.
+                </p>
+
+                <div class="vscode-editor mt-4 mb-5">
+                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                        <span><i class="fab fa-php"></i> directorios.php</span>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">PHP</span>
+                            <span class="badge bg-warning">Intermedio</span>
+                        </div>
+                    </div>
+                    <div class="vscode-editor-content bg-dark p-3">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Listar archivos en un directorio</span>
+<span class="php-variable">$directorio</span> = <span class="php-string">'./archivos'</span>;
+
+<span class="php-keyword">if</span> (<span class="php-function">is_dir</span>(<span class="php-variable">$directorio</span>)) {
+    <span class="php-variable">$archivos</span> = <span class="php-function">scandir</span>(<span class="php-variable">$directorio</span>);
+    
+    <span class="php-keyword">foreach</span> (<span class="php-variable">$archivos</span> as <span class="php-variable">$archivo</span>) {
+        <span class="php-keyword">if</span> (<span class="php-variable">$archivo</span> != <span class="php-string">'.'</span> && <span class="php-variable">$archivo</span> != <span class="php-string">'..'</span>) {
+            <span class="php-variable">$ruta_completa</span> = <span class="php-variable">$directorio</span> . <span class="php-string">'/'</span> . <span class="php-variable">$archivo</span>;
+            
+            <span class="php-keyword">echo</span> <span class="php-string">"Archivo: "</span> . <span class="php-variable">$archivo</span> . <span class="php-string">"&lt;br&gt;"</span>;
+            <span class="php-keyword">echo</span> <span class="php-string">"Tamaño: "</span> . <span class="php-function">filesize</span>(<span class="php-variable">$ruta_completa</span>) . <span class="php-string">" bytes&lt;br&gt;"</span>;
+            <span class="php-keyword">echo</span> <span class="php-string">"Última modificación: "</span> . <span class="php-function">date</span>(<span class="php-string">"Y-m-d H:i:s"</span>, <span class="php-function">filemtime</span>(<span class="php-variable">$ruta_completa</span>)) . <span class="php-string">"&lt;br&gt;&lt;br&gt;"</span>;
+        }
+    }
+}
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                </div>
+
+                <!-- Ejercicio Práctico -->
+                <div class="card mb-5">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-laptop-code me-2"></i>Ejercicio Práctico</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Crea un sistema de registro de logs que:</p>
+                        <ol>
+                            <li>Escriba mensajes en un archivo log.txt con fecha y hora</li>
+                            <li>Permita diferentes niveles de log (INFO, ERROR, WARNING)</li>
+                            <li>Mantenga un límite de tamaño del archivo</li>
+                            <li>Rote los logs cuando se alcance el límite</li>
+                        </ol>
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-info-circle"></i> Sugerencia</h5>
+                            <p class="mb-0">
+                                Utiliza <code>date()</code> para el timestamp, <code>filesize()</code> para verificar el tamaño 
+                                y <code>rename()</code> para rotar los archivos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navegación entre lecciones -->
+                <div class="row mt-5">
+                    <div class="col-6">
+                        <a href="cookies-sesiones.html" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left"></i> Anterior: Cookies y Sesiones
+                        </a>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="fechas.html" class="btn btn-outline-primary">
+                            Siguiente: Fechas y Tiempo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a></li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../fundamentos/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="try-catch.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white-50 mb-0">Desarrollado por <a href="https://www.example.com" class="text-white">Alvaro Perez N</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/sidebar.js"></script>
+</body>
+</html>
