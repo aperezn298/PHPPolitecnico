@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Agregar Prism.js para resaltar sintaxis -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -88,45 +90,46 @@
             <div class="col-lg-3">
                 <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
                     <div class="card-header bg-success text-white">
-                        <h5 class="mb-0 text-white">Intermedio</h5>
+                        <h5 class="mb-0 text-white"><i class="fas fa-cogs"></i> Intermedio</h5>
                     </div>
-                    <div class="card-body p-0">                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-trycatch">
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-try-catch">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="try-catch.html" class="text-decoration-none">Manejo de Excepciones</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">1/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-formularios">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-formularios">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="formularios.html" class="text-decoration-none">Formularios</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">2/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-cookies">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-cookies-sesiones">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="cookies-sesiones.html" class="text-decoration-none">Cookies y Sesiones</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">3/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-archivos">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-archivos">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="archivos.html" class="text-decoration-none">Manejo de Archivos</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">4/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-fechas">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-fechas">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="fechas.html" class="text-decoration-none">Fechas y Tiempo</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">5/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-poo">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-poo">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="poo.html" class="text-decoration-none">Programación Orientada a Objetos</a>
@@ -134,7 +137,8 @@
                                 <span class="badge bg-secondary rounded-pill">6/6</span>
                             </li>
                         </ul>
-                    </div>                    <div class="card-footer">
+                    </div>
+                    <div class="card-footer">
                         <p class="mb-1 small">Progreso del módulo:</p>
                         <div class="progress">
                             <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
@@ -142,225 +146,225 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Contenido principal -->
             <div class="col-lg-9">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
-                        <li class="breadcrumb-item"><a href="#">Intermedio</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Fechas y Tiempo</li>
-                    </ol>
-                </nav>
+                <div class="content-page">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                            <li class="breadcrumb-item"><a href="#">Intermedio</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Fechas y Tiempo</li>
+                        </ol>
+                    </nav>
 
-                <h1 class="mb-4">Fechas y Tiempo en PHP</h1>
-                
-                <div class="alert alert-primary">
-                    <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
-                    <ul class="mb-0">
-                        <li>Comprender las funciones básicas de manejo de fechas en PHP</li>
-                        <li>Aprender a trabajar con timestamps y formatos de fecha</li>
-                        <li>Dominar la clase DateTime y sus métodos</li>
-                        <li>Manejar zonas horarias y diferencias de tiempo</li>
-                    </ul>
-                </div>
+                    <h1 class="mb-4">Fechas y Tiempo en PHP</h1>
 
-                <h2 class="mt-5">Funciones Básicas de Fecha y Hora</h2>
-                <p>
-                    PHP proporciona varias funciones para trabajar con fechas y horas. La función más básica 
-                    es <code>date()</code>, que permite formatear una fecha según nuestras necesidades.
-                </p>
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Comprender las funciones básicas de manejo de fechas en PHP</li>
+                            <li>Aprender a trabajar con timestamps y formatos de fecha</li>
+                            <li>Dominar la clase DateTime y sus métodos</li>
+                            <li>Manejar zonas horarias y diferencias de tiempo</li>
+                        </ul>
+                    </div>
 
-                <div class="vscode-editor mt-4">
-                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> fecha_basica.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-info">Básico</span>
+                    <h2 class="mt-5">Funciones Básicas de Fecha y Hora</h2>
+                    <p>
+                        PHP proporciona varias funciones para trabajar con fechas y horas. La función más básica 
+                        es <code>date()</code>, que permite formatear una fecha según nuestras necesidades.
+                    </p>
+
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> fecha_basica.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Obtener la fecha actual</span>
+<span class="php-keyword">echo</span> <span class="php-function">date</span>(<span class="php-string">"Y-m-d"</span>); <span class="php-comment">// Formato: AAAA-MM-DD</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+
+<span class="php-comment">// Obtener la hora actual</span>
+<span class="php-keyword">echo</span> <span class="php-function">date</span>(<span class="php-string">"H:i:s"</span>); <span class="php-comment">// Formato: HH:MM:SS</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+
+<span class="php-comment">// Fecha y hora completa</span>
+<span class="php-keyword">echo</span> <span class="php-function">date</span>(<span class="php-string">"Y-m-d H:i:s"</span>); <span class="php-comment">// Formato: AAAA-MM-DD HH:MM:SS</span>
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+
+<span class="php-comment">// Formato personalizado</span>
+<span class="php-keyword">echo</span> <span class="php-function">date</span>(<span class="php-string">"l, j \d\e F \d\e Y"</span>); <span class="php-comment">// Ejemplo: Lunes, 9 de Mayo de 2025</span>
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
                         </div>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
-                        <pre><code class="php">
-&lt;?php
-// Obtener la fecha actual
-echo date("Y-m-d"); // Formato: AAAA-MM-DD
-echo "&lt;br&gt;";
 
-// Obtener la hora actual
-echo date("H:i:s"); // Formato: HH:MM:SS
-echo "&lt;br&gt;";
-
-// Fecha y hora completa
-echo date("Y-m-d H:i:s"); // Formato: AAAA-MM-DD HH:MM:SS
-echo "&lt;br&gt;";
-
-// Formato personalizado
-echo date("l, j \d\e F \d\e Y"); // Ejemplo: Lunes, 9 de Mayo de 2025
-?&gt;</code></pre>
+                    <div class="table-responsive mt-4">
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Formato</th>
+                                    <th>Descripción</th>
+                                    <th>Ejemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>Y</code></td>
+                                    <td>Año con 4 dígitos</td>
+                                    <td>2025</td>
+                                </tr>
+                                <tr>
+                                    <td><code>m</code></td>
+                                    <td>Mes con 2 dígitos</td>
+                                    <td>05</td>
+                                </tr>
+                                <tr>
+                                    <td><code>d</code></td>
+                                    <td>Día con 2 dígitos</td>
+                                    <td>09</td>
+                                </tr>
+                                <tr>
+                                    <td><code>H</code></td>
+                                    <td>Hora formato 24h</td>
+                                    <td>13</td>
+                                </tr>
+                                <tr>
+                                    <td><code>i</code></td>
+                                    <td>Minutos</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td><code>s</code></td>
+                                    <td>Segundos</td>
+                                    <td>45</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
 
-                <div class="table-responsive mt-4">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Formato</th>
-                                <th>Descripción</th>
-                                <th>Ejemplo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>Y</code></td>
-                                <td>Año con 4 dígitos</td>
-                                <td>2025</td>
-                            </tr>
-                            <tr>
-                                <td><code>m</code></td>
-                                <td>Mes con 2 dígitos</td>
-                                <td>05</td>
-                            </tr>
-                            <tr>
-                                <td><code>d</code></td>
-                                <td>Día con 2 dígitos</td>
-                                <td>09</td>
-                            </tr>
-                            <tr>
-                                <td><code>H</code></td>
-                                <td>Hora formato 24h</td>
-                                <td>13</td>
-                            </tr>
-                            <tr>
-                                <td><code>i</code></td>
-                                <td>Minutos</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                                <td><code>s</code></td>
-                                <td>Segundos</td>
-                                <td>45</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <h2 class="mt-5">Trabajando con Timestamps</h2>
+                    <p>
+                        Un timestamp es un número entero que representa los segundos transcurridos desde el 
+                        1 de enero de 1970 (época Unix). PHP proporciona varias funciones para trabajar con timestamps.
+                    </p>
 
-                <h2 class="mt-5">Trabajando con Timestamps</h2>
-                <p>
-                    Un timestamp es un número entero que representa los segundos transcurridos desde el 
-                    1 de enero de 1970 (época Unix). PHP proporciona varias funciones para trabajar con timestamps.
-                </p>
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> timestamps.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Obtener el timestamp actual</span>
+<span class="php-variable">$timestamp_actual</span> = <span class="php-function">time</span>();
+<span class="php-keyword">echo</span> <span class="php-string">"Timestamp actual: "</span> . <span class="php-variable">$timestamp_actual</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
 
-                <div class="vscode-editor mt-4">
-                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> timestamps.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-warning">Intermedio</span>
+<span class="php-comment">// Convertir una fecha a timestamp</span>
+<span class="php-variable">$fecha_string</span> = <span class="php-string">"2025-05-09"</span>;
+<span class="php-variable">$timestamp</span> = <span class="php-function">strtotime</span>(<span class="php-variable">$fecha_string</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Timestamp de $fecha_string: "</span> . <span class="php-variable">$timestamp</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+
+<span class="php-comment">// Operaciones con fechas</span>
+<span class="php-keyword">echo</span> <span class="php-string">"En una semana: "</span> . <span class="php-function">date</span>(<span class="php-string">"Y-m-d"</span>, <span class="php-function">strtotime</span>(<span class="php-string">"+1 week"</span>));
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+<span class="php-keyword">echo</span> <span class="php-string">"En dos meses: "</span> . <span class="php-function">date</span>(<span class="php-string">"Y-m-d"</span>, <span class="php-function">strtotime</span>(<span class="php-string">"+2 months"</span>));
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
                         </div>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
-                        <pre><code class="php">
-&lt;?php
-// Obtener el timestamp actual
-$timestamp_actual = time();
-echo "Timestamp actual: " . $timestamp_actual;
-echo "&lt;br&gt;";
 
-// Convertir una fecha a timestamp
-$fecha_string = "2025-05-09";
-$timestamp = strtotime($fecha_string);
-echo "Timestamp de $fecha_string: " . $timestamp;
-echo "&lt;br&gt;";
+                    <h2 class="mt-5">La Clase DateTime</h2>
+                    <p>
+                        PHP proporciona la clase DateTime para un manejo más orientado a objetos de las fechas. 
+                        Esta clase ofrece métodos más potentes y flexibles para trabajar con fechas y horas.
+                    </p>
 
-// Operaciones con fechas
-echo "En una semana: " . date("Y-m-d", strtotime("+1 week"));
-echo "&lt;br&gt;";
-echo "En dos meses: " . date("Y-m-d", strtotime("+2 months"));
-echo "&lt;br&gt;";
-echo "Año próximo: " . date("Y-m-d", strtotime("+1 year"));
-?&gt;</code></pre>
-                    </div>
-                </div>
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> datetime.php</span>
+                        </div>
+                        <div class="vscode-editor-content">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Crear objeto DateTime</span>
+<span class="php-variable">$fecha</span> = <span class="php-keyword">new</span> <span class="php-class">DateTime</span>();
+<span class="php-keyword">echo</span> <span class="php-variable">$fecha</span>-><span class="php-method">format</span>(<span class="php-string">'Y-m-d H:i:s'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
 
-                <h2 class="mt-5">La Clase DateTime</h2>
-                <p>
-                    PHP proporciona la clase DateTime para un manejo más orientado a objetos de las fechas. 
-                    Esta clase ofrece métodos más potentes y flexibles para trabajar con fechas y horas.
-                </p>
+<span class="php-comment">// Crear fecha específica</span>
+<span class="php-variable">$fecha_especifica</span> = <span class="php-keyword">new</span> <span class="php-class">DateTime</span>(<span class="php-string">'2025-05-09'</span>);
+<span class="php-keyword">echo</span> <span class="php-variable">$fecha_especifica</span>-><span class="php-method">format</span>(<span class="php-string">'Y-m-d'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
 
-                <div class="vscode-editor mt-4">
-                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> datetime.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-warning">Intermedio</span>
+<span class="php-comment">// Modificar fecha</span>
+<span class="php-variable">$fecha</span>-><span class="php-method">modify</span>(<span class="php-string">'+1 month'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"En un mes: "</span> . <span class="php-variable">$fecha</span>-><span class="php-method">format</span>(<span class="php-string">'Y-m-d'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
+
+<span class="php-comment">// Diferencia entre fechas</span>
+<span class="php-variable">$fecha1</span> = <span class="php-keyword">new</span> <span class="php-class">DateTime</span>(<span class="php-string">'2025-01-01'</span>);
+<span class="php-variable">$fecha2</span> = <span class="php-keyword">new</span> <span class="php-class">DateTime</span>(<span class="php-string">'2025-12-31'</span>);
+<span class="php-variable">$diferencia</span> = <span class="php-variable">$fecha1</span>-><span class="php-method">diff</span>(<span class="php-variable">$fecha2</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Diferencia: "</span> . <span class="php-variable">$diferencia</span>-><span class="php-property">days</span> . <span class="php-string">" días"</span>;
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
                         </div>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
-                        <pre><code class="php">
-&lt;?php
-// Crear objeto DateTime
-$fecha = new DateTime();
-echo $fecha->format('Y-m-d H:i:s');
-echo "&lt;br&gt;";
 
-// Crear fecha específica
-$fecha_especifica = new DateTime('2025-05-09');
-echo $fecha_especifica->format('Y-m-d');
-echo "&lt;br&gt;";
+                    <h2 class="mt-5">Zonas Horarias</h2>
+                    <p>
+                        El manejo de zonas horarias es crucial en aplicaciones que operan globalmente. PHP 
+                        permite trabajar con diferentes zonas horarias usando la clase DateTimeZone.
+                    </p>
 
-// Modificar fecha
-$fecha->modify('+1 month');
-echo "En un mes: " . $fecha->format('Y-m-d');
-echo "&lt;br&gt;";
-
-// Diferencia entre fechas
-$fecha1 = new DateTime('2025-01-01');
-$fecha2 = new DateTime('2025-12-31');
-$diferencia = $fecha1->diff($fecha2);
-echo "Diferencia: " . $diferencia->days . " días";
-?&gt;</code></pre>
-                    </div>
-                </div>
-
-                <h2 class="mt-5">Zonas Horarias</h2>
-                <p>
-                    El manejo de zonas horarias es crucial en aplicaciones que operan globalmente. PHP 
-                    permite trabajar con diferentes zonas horarias usando la clase DateTimeZone.
-                </p>
-
-                <div class="vscode-editor mt-4 mb-5">
-                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> zonas_horarias.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-danger">Avanzado</span>
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fab fa-php"></i> timezones.php</span>
                         </div>
-                    </div>
-                    <div class="vscode-editor-content bg-dark p-3">
-                        <pre><code class="php">
-&lt;?php
-// Establecer zona horaria
-date_default_timezone_set('America/Mexico_City');
+                        <div class="vscode-editor-content">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Establecer zona horaria</span>
+<span class="php-function">date_default_timezone_set</span>(<span class="php-string">'America/Mexico_City'</span>);
 
-// Crear objeto DateTime con zona horaria
-$fecha_cdmx = new DateTime('now', new DateTimeZone('America/Mexico_City'));
-echo "CDMX: " . $fecha_cdmx->format('Y-m-d H:i:s');
-echo "&lt;br&gt;";
+<span class="php-comment">// Crear objeto DateTime con zona horaria</span>
+<span class="php-variable">$fecha_cdmx</span> = <span class="php-keyword">new</span> <span class="php-class">DateTime</span>(<span class="php-string">'now'</span>, <span class="php-keyword">new</span> <span class="php-class">DateTimeZone</span>(<span class="php-string">'America/Mexico_City'</span>));
+<span class="php-keyword">echo</span> <span class="php-string">"CDMX: "</span> . <span class="php-variable">$fecha_cdmx</span>-><span class="php-method">format</span>(<span class="php-string">'Y-m-d H:i:s'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
 
-// Cambiar zona horaria
-$fecha_madrid = clone $fecha_cdmx;
-$fecha_madrid->setTimezone(new DateTimeZone('Europe/Madrid'));
-echo "Madrid: " . $fecha_madrid->format('Y-m-d H:i:s');
-echo "&lt;br&gt;";
+<span class="php-comment">// Cambiar zona horaria</span>
+<span class="php-variable">$fecha_madrid</span> = <span class="php-function">clone</span> <span class="php-variable">$fecha_cdmx</span>;
+<span class="php-variable">$fecha_madrid</span>-><span class="php-method">setTimezone</span>(<span class="php-keyword">new</span> <span class="php-class">DateTimeZone</span>(<span class="php-string">'Europe/Madrid'</span>));
+<span class="php-keyword">echo</span> <span class="php-string">"Madrid: "</span> . <span class="php-variable">$fecha_madrid</span>-><span class="php-method">format</span>(<span class="php-string">'Y-m-d H:i:s'</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"&lt;br&gt;"</span>;
 
-// Listar zonas horarias disponibles
-$zonas = DateTimeZone::listIdentifiers(DateTimeZone::AMERICA);
-echo "Zonas horarias de América:&lt;br&gt;";
-foreach ($zonas as $zona) {
-    echo $zona . "&lt;br&gt;";
+<span class="php-comment">// Listar zonas horarias disponibles</span>
+<span class="php-variable">$zonas</span> = <span class="php-class">DateTimeZone</span>::<span class="php-method">listIdentifiers</span>(<span class="php-class">DateTimeZone</span>::<span class="php-constant">AMERICA</span>);
+<span class="php-keyword">echo</span> <span class="php-string">"Zonas horarias de América:&lt;br&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$zonas</span> <span class="php-keyword">as</span> <span class="php-variable">$zona</span>) {
+    <span class="php-keyword">echo</span> <span class="php-variable">$zona</span> . <span class="php-string">"&lt;br&gt;"</span>;
 }
-?&gt;</code></pre>
+<span class="php-tag">?&gt;</span>
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
                     </div>
                 </div>
 
@@ -486,5 +490,8 @@ foreach ($zonas as $zona) {
     <!-- Custom JS -->
     <script src="../../js/scripts.js"></script>
     <script src="../../js/sidebar.js"></script>
+    <!-- Mover los enlaces de Prism.js al final del body para asegurar su carga -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
 </body>
 </html>

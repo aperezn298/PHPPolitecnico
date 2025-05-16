@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a MySQL - Guía PHP</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Prism CSS -->
+    <link href="../../css/prism.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../../index.html">
+                <i class="fab fa-php fa-lg me-2"></i>Guía PHP
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Fundamentos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../fundamentos/introduccion.html">Introducción a PHP</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/sintaxis.html">Sintaxis Básica</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/variables.html">Variables y Tipos</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/operadores.html">Operadores</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/control.html">Estructuras de Control</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/funciones.html">Funciones</a></li>
+                            <li><a class="dropdown-item" href="../fundamentos/arrays.html">Arrays</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Intermedio
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../intermedio/formularios.html">Formularios</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/cookies-sesiones.html">Cookies y Sesiones</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/archivos.html">Manejo de Archivos</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/fechas.html">Fechas y Tiempo</a></li>
+                            <li><a class="dropdown-item" href="../intermedio/poo.html">Programación Orientada a Objetos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Bases de Datos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="intro-mysql.html">Introducción a MySQL</a></li>
+                            <li><a class="dropdown-item" href="conexion.html">Conexión a MySQL</a></li>
+                            <li><a class="dropdown-item" href="crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../proyecto-final.html">Proyecto Final</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->    <div class="container mt-5 pt-4">
+        <div class="row">
+            <!-- Sidebar con progreso del curso -->
+            <div class="col-lg-3">
+                <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0 text-white"><i class="fas fa-database"></i> Bases de Datos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="bd-intro-mysql">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="intro-mysql.html" class="text-decoration-none">Introducción a MySQL</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1/3</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="bd-conexion">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="conexion.html" class="text-decoration-none">Conexión a MySQL</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">2/3</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="bd-crud">
+                                <div>
+                                    <input class="form-check-input lesson-checkbox me-2" type="checkbox">
+                                    <a href="crud.html" class="text-decoration-none">Operaciones CRUD</a>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">3/3</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <p class="mb-1 small">Progreso del módulo:</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contenido principal -->
+            <div class="col-lg-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                        <li class="breadcrumb-item">Bases de Datos</li>
+                        <li class="breadcrumb-item active" aria-current="page">Introducción a MySQL</li>
+                    </ol>
+                </nav>
+
+                <h1 class="mb-4">Introducción a MySQL</h1>
+                
+                <div class="alert alert-primary">
+                    <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                    <ul class="mb-0">
+                        <li>Comprender qué es MySQL y sus características principales</li>
+                        <li>Aprender a instalar y configurar MySQL en tu sistema</li>
+                        <li>Entender los conceptos básicos de bases de datos relacionales</li>
+                        <li>Dominar las operaciones básicas de SQL para gestionar datos</li>
+                    </ul>
+                </div>
+
+                <div class="content">
+                    <!-- Introducción -->
+                    <section id="introduccion" class="mb-5">
+                        <h2 class="mb-4">¿Qué es MySQL?</h2>
+                        <p>MySQL es un sistema de gestión de bases de datos relacional (RDBMS) de código abierto desarrollado por Oracle Corporation. Es uno de los sistemas de bases de datos más populares del mundo, especialmente para aplicaciones web.</p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            MySQL se integra perfectamente con PHP, formando una de las combinaciones más utilizadas en el desarrollo web.
+                        </div>
+                    </section>
+
+                    <!-- Características -->
+                    <section id="caracteristicas" class="mb-5">
+                        <h2 class="mb-4">Características Principales</h2>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Rendimiento
+                                        </h5>
+                                        <p class="card-text">Alto rendimiento y escalabilidad para manejar grandes cantidades de datos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-lock text-primary me-2"></i>
+                                            Seguridad
+                                        </h5>
+                                        <p class="card-text">Sistema robusto de seguridad con control de acceso y encriptación.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-cogs text-warning me-2"></i>
+                                            Flexibilidad
+                                        </h5>
+                                        <p class="card-text">Compatible con múltiples plataformas y lenguajes de programación.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i class="fas fa-users text-info me-2"></i>
+                                            Comunidad
+                                        </h5>
+                                        <p class="card-text">Gran comunidad de desarrolladores y abundante documentación.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Instalación -->
+                    <section id="instalacion" class="mb-5">
+                        <h2 class="mb-4">Instalación</h2>
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Pasos para instalar MySQL</h5>
+                                <ol class="mb-0">
+                                    <li class="mb-3">Descargar MySQL Community Server desde la <a href="https://dev.mysql.com/downloads/mysql/" target="_blank">página oficial</a></li>
+                                    <li class="mb-3">Ejecutar el instalador y seguir el asistente de configuración</li>
+                                    <li class="mb-3">Configurar la contraseña del usuario root</li>
+                                    <li>Verificar la instalación ejecutando MySQL en la terminal</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Es importante guardar la contraseña del usuario root en un lugar seguro, ya que será necesaria para administrar la base de datos.
+                        </div>
+                    </section>
+
+                    <!-- Conceptos Básicos -->
+                    <section id="conceptos" class="mb-5">
+                        <h2 class="mb-4">Conceptos Básicos</h2>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Base de datos</strong></td>
+                                        <td>Colección organizada de datos relacionados entre sí</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tabla</strong></td>
+                                        <td>Estructura que organiza los datos en filas y columnas</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Campo</strong></td>
+                                        <td>Columna de una tabla que almacena un tipo específico de dato</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Registro</strong></td>
+                                        <td>Fila de una tabla que contiene un conjunto de datos relacionados</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Clave primaria</strong></td>
+                                        <td>Campo que identifica de manera única cada registro</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- SQL Básico -->
+                    <section id="sql-basico" class="mb-5">
+                        <h2 class="mb-4">SQL Básico</h2>
+                        <p>SQL (Structured Query Language) es el lenguaje estándar para interactuar con bases de datos relacionales. Aquí algunos comandos básicos:</p>
+                          <div class="vscode-editor mt-4">
+                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                <span><i class="fas fa-database me-2"></i>creacion_basica.sql</span>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-secondary me-2">SQL</span>
+                                    <span class="badge bg-info">Básico</span>
+                                </div>
+                            </div>
+                            <div class="vscode-editor-content bg-dark p-3">
+                                <pre><code class="language-sql">-- Crear una base de datos
+CREATE DATABASE mi_base_datos;
+
+-- Usar una base de datos
+USE mi_base_datos;
+
+-- Crear una tabla
+CREATE TABLE usuarios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    email VARCHAR(100),
+    fecha_registro DATETIME
+);</code></pre>
+                            </div>
+                        </div><div class="alert alert-success">
+                            <i class="fas fa-lightbulb me-2"></i>
+                            Tip: Los comentarios en SQL comienzan con dos guiones (--) o /* para comentarios multilínea */
+                        </div>
+
+                        <h5 class="mt-4">Operaciones Básicas con Registros</h5>
+                        <p>Estas son las operaciones fundamentales que puedes realizar con registros en una tabla:</p>                        <!-- Insertar -->
+                        <div class="mb-4">
+                            <h6><i class="fas fa-plus-circle text-success me-2"></i>Insertar Registros (INSERT)</h6>
+                            <div class="vscode-editor">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-database me-2"></i>insertar_datos.sql</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-secondary me-2">SQL</span>
+                                        <span class="badge bg-success">INSERT</span>
+                                    </div>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-sql">-- Insertar un nuevo usuario
+INSERT INTO usuarios (nombre, email, fecha_registro)
+VALUES ('Juan Pérez', 'juan@email.com', NOW());</code></pre>
+                                </div>
+                            </div>
+                        </div>                        <!-- Consultar -->
+                        <div class="mb-4">
+                            <h6><i class="fas fa-search text-primary me-2"></i>Consultar Registros (SELECT)</h6>
+                            <div class="vscode-editor">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-database me-2"></i>consultar_datos.sql</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-secondary me-2">SQL</span>
+                                        <span class="badge bg-primary">SELECT</span>
+                                    </div>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-sql">-- Consultar todos los usuarios
+SELECT * FROM usuarios;
+
+-- Consultar con condiciones
+SELECT nombre, email 
+FROM usuarios;</code></pre>
+                                </div>
+                            </div>
+                        </div>                        <!-- Consultas con WHERE -->
+                        <div class="mb-4">
+                            <h6><i class="fas fa-filter text-info me-2"></i>Consultas con Filtros (WHERE)</h6>
+                            <div class="vscode-editor">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-database me-2"></i>filtros_avanzados.sql</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-secondary me-2">SQL</span>
+                                        <span class="badge bg-info">Avanzado</span>
+                                    </div>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-sql">
+-- Consultar con condiciones
+SELECT nombre, email 
+FROM usuarios 
+WHERE id = 1;
+
+-- Búsqueda por texto
+SELECT * FROM usuarios 
+WHERE nombre LIKE '%Juan%';
+
+-- Múltiples condiciones
+SELECT * FROM usuarios 
+WHERE edad >= 18 
+AND ciudad = 'Madrid';
+
+-- Rangos de fechas
+SELECT nombre, fecha_registro 
+FROM usuarios 
+WHERE fecha_registro BETWEEN '2025-01-01' AND '2025-12-31';
+
+-- Valores múltiples
+SELECT * FROM usuarios 
+WHERE ciudad IN ('Madrid', 'Barcelona', 'Valencia');</code></pre>
+                                </div>
+                            </div>
+                            <div class="alert alert-info mt-2">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Puedes combinar diferentes condiciones usando AND y OR para crear consultas más específicas.
+                            </div>
+                        </div>                        <!-- Actualizar -->
+                        <div class="mb-4">
+                            <h6><i class="fas fa-edit text-warning me-2"></i>Actualizar Registros (UPDATE)</h6>
+                            <div class="vscode-editor">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-database me-2"></i>actualizar_datos.sql</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-secondary me-2">SQL</span>
+                                        <span class="badge bg-warning">UPDATE</span>
+                                    </div>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-sql">-- Actualizar datos de un usuario
+UPDATE usuarios 
+SET email = 'nuevo@email.com'
+WHERE id = 1;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Eliminar -->
+                        <div class="mb-4">
+                            <h6><i class="fas fa-trash text-danger me-2"></i>Eliminar Registros (DELETE)</h6>
+                            <div class="vscode-editor">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-database me-2"></i>eliminar_datos.sql</span>
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge bg-secondary me-2">SQL</span>
+                                        <span class="badge bg-danger">DELETE</span>
+                                    </div>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-sql">-- Eliminar un usuario
+DELETE FROM usuarios 
+WHERE id = 1;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Importante: Siempre usa la cláusula WHERE en las operaciones UPDATE y DELETE para evitar afectar a todos los registros de la tabla.
+                        </div>
+                    </section>
+
+                    <!-- Navegación entre páginas -->
+                    <div class="d-flex justify-content-between align-items-center mt-5">
+                        <a href="../intermedio/poo.html" class="btn btn-primary">
+                            <i class="fas fa-arrow-left me-2"></i>Anterior
+                        </a>
+                        <a href="conexion.html" class="btn btn-primary">
+                            Siguiente<i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="mb-4">
+                        <a href="../../index.html" class="d-flex align-items-center text-decoration-none">
+                            <i class="fab fa-php fa-2x text-primary me-3"></i>
+                            <h4 class="fw-bold text-white m-0">Guía Interactiva PHP</h4>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-4">Aprende PHP desde cero hasta desarrollo de aplicaciones completas con bases de datos. Domina el lenguaje de programación más popular para desarrollo web del lado del servidor.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://github.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="https://youtube.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background-color: rgba(255,255,255,0.1);" target="_blank">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h5 class="mb-4 text-white">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a>
+                        </li>
+                        <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4 text-white">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="../../index.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Inicio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../fundamentos/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Fundamentos
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="try-catch.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>PHP Intermedio
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../bd/intro-mysql.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>MySQL y PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../apis/introduccion.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>APIs con PHP
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="../proyecto-final.html" class="text-decoration-none text-white-50 hover-white d-flex align-items-center">
+                                <i class="fas fa-chevron-right me-2" style="font-size: 12px;"></i>Proyecto CRUD
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-md-0">&copy; 2025 Guía Interactiva de PHP. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-white-50">Desarrollado por: AperezN</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../../js/scripts.js"></script>
+    <script src="../../js/sidebar.js"></script>
+</body>
+</html>

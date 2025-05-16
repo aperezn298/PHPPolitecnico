@@ -88,45 +88,46 @@
             <div class="col-lg-3">
                 <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 80px;">
                     <div class="card-header bg-success text-white">
-                        <h5 class="mb-0 text-white">Intermedio</h5>
+                        <h5 class="mb-0 text-white"><i class="fas fa-cogs"></i> Intermedio</h5>
                     </div>
-                    <div class="card-body p-0">                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-trycatch">
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-try-catch">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="try-catch.html" class="text-decoration-none">Manejo de Excepciones</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">1/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-formularios">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-formularios">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="formularios.html" class="text-decoration-none">Formularios</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">2/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-cookies">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-cookies-sesiones">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="cookies-sesiones.html" class="text-decoration-none">Cookies y Sesiones</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">3/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-archivos">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-archivos">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="archivos.html" class="text-decoration-none">Manejo de Archivos</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">4/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-fechas">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-fechas">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="fechas.html" class="text-decoration-none">Fechas y Tiempo</a>
                                 </div>
                                 <span class="badge bg-secondary rounded-pill">5/6</span>
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="intermedio-poo">
+                            <li class="list-group-item d-flex justify-content-between align-items-center leccion" data-lesson-id="int-poo">
                                 <div>
                                     <input class="form-check-input lesson-checkbox me-2" type="checkbox">
                                     <a href="poo.html" class="text-decoration-none">Programación Orientada a Objetos</a>
@@ -134,7 +135,8 @@
                                 <span class="badge bg-secondary rounded-pill">6/6</span>
                             </li>
                         </ul>
-                    </div>                    <div class="card-footer">
+                    </div>
+                    <div class="card-footer">
                         <p class="mb-1 small">Progreso del módulo:</p>
                         <div class="progress">
                             <div class="progress-bar bg-success" role="progressbar" id="course-progress" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
@@ -172,47 +174,49 @@
                     que tendrán los objetos creados a partir de ella.
                 </p>
 
+                <!-- Actualizar el ejemplo de Clases y Objetos -->
                 <div class="vscode-editor mt-4">
                     <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> Persona.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-info">Básico</span>
-                        </div>
+                        <span><i class="fab fa-php"></i> clases_objetos.php</span>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
+                    <div class="vscode-editor-content">
                         <pre><code class="php">
-&lt;?php
-class Persona {
-    // Propiedades
-    private $nombre;
-    private $edad;
-    
-    // Constructor
-    public function __construct($nombre, $edad) {
-        $this->nombre = $nombre;
-        $this->edad = $edad;
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Definir una clase</span>
+<span class="php-keyword">class</span> <span class="php-class">Persona</span> {
+    <span class="php-comment">// Propiedades</span>
+    <span class="php-keyword">private</span> <span class="php-variable">$nombre</span>;
+    <span class="php-keyword">private</span> <span class="php-variable">$edad</span>;
+
+    <span class="php-comment">// Constructor</span>
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">__construct</span>(<span class="php-variable">$nombre</span>, <span class="php-variable">$edad</span>) {
+        <span class="php-variable">$this</span>-><span class="php-variable">nombre</span> = <span class="php-variable">$nombre</span>;
+        <span class="php-variable">$this</span>-><span class="php-variable">edad</span> = <span class="php-variable">$edad</span>;
     }
-    
-    // Métodos
-    public function saludar() {
-        return "Hola, soy " . $this->nombre;
+
+    <span class="php-comment">// Métodos</span>
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">saludar</span>() {
+        <span class="php-keyword">return</span> <span class="php-string">"Hola, soy "</span> . <span class="php-variable">$this</span>-><span class="php-variable">nombre</span>;
     }
-    
-    public function getEdad() {
-        return $this->edad;
+
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">getEdad</span>() {
+        <span class="php-keyword">return</span> <span class="php-variable">$this</span>-><span class="php-variable">edad</span>;
     }
-    
-    public function cumpleanos() {
-        $this->edad++;
+
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">cumpleanos</span>() {
+        <span class="php-variable">$this</span>-><span class="php-variable">edad</span>++;
     }
 }
 
-// Crear un objeto
-$persona = new Persona("Juan", 25);
-echo $persona->saludar(); // Salida: Hola, soy Juan
-echo $persona->getEdad(); // Salida: 25
-?&gt;</code></pre>
+<span class="php-comment">// Crear un objeto</span>
+<span class="php-variable">$persona</span> = <span class="php-keyword">new</span> <span class="php-class">Persona</span>(<span class="php-string">"Juan"</span>, <span class="php-number">25</span>);
+<span class="php-keyword">echo</span> <span class="php-variable">$persona</span>-><span class="php-method">saludar</span>(); <span class="php-comment">// Salida: Hola, soy Juan</span>
+<span class="php-keyword">echo</span> <span class="php-variable">$persona</span>-><span class="php-method">getEdad</span>(); <span class="php-comment">// Salida: 25</span>
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                        <span>PHP 8.2</span>
                     </div>
                 </div>
 
@@ -222,45 +226,46 @@ echo $persona->getEdad(); // Salida: 25
                     hereda todas las propiedades y métodos públicos y protegidos de la clase padre.
                 </p>
 
+                <!-- Actualizar el ejemplo de Herencia -->
                 <div class="vscode-editor mt-4">
                     <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> Empleado.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-warning">Intermedio</span>
-                        </div>
+                        <span><i class="fab fa-php"></i> herencia.php</span>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
+                    <div class="vscode-editor-content">
                         <pre><code class="php">
-&lt;?php
-class Empleado extends Persona {
-    private $puesto;
-    private $salario;
-    
-    public function __construct($nombre, $edad, $puesto, $salario) {
-        parent::__construct($nombre, $edad);
-        $this->puesto = $puesto;
-        $this->salario = $salario;
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">class</span> <span class="php-class">Empleado</span> <span class="php-keyword">extends</span> <span class="php-class">Persona</span> {
+    <span class="php-keyword">private</span> <span class="php-variable">$puesto</span>;
+    <span class="php-keyword">private</span> <span class="php-variable">$salario</span>;
+
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">__construct</span>(<span class="php-variable">$nombre</span>, <span class="php-variable">$edad</span>, <span class="php-variable">$puesto</span>, <span class="php-variable">$salario</span>) {
+        <span class="php-keyword">parent</span>::<span class="php-method">__construct</span>(<span class="php-variable">$nombre</span>, <span class="php-variable">$edad</span>);
+        <span class="php-variable">$this</span>-><span class="php-variable">puesto</span> = <span class="php-variable">$puesto</span>;
+        <span class="php-variable">$this</span>-><span class="php-variable">salario</span> = <span class="php-variable">$salario</span>;
     }
-    
-    public function getPuesto() {
-        return $this->puesto;
+
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">getPuesto</span>() {
+        <span class="php-keyword">return</span> <span class="php-variable">$this</span>-><span class="php-variable">puesto</span>;
     }
-    
-    public function getSalario() {
-        return $this->salario;
+
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">getSalario</span>() {
+        <span class="php-keyword">return</span> <span class="php-variable">$this</span>-><span class="php-variable">salario</span>;
     }
-    
-    // Sobrescribir método de la clase padre
-    public function saludar() {
-        return parent::saludar() . " y trabajo como " . $this->puesto;
+
+    <span class="php-comment">// Sobrescribir método de la clase padre</span>
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">saludar</span>() {
+        <span class="php-keyword">return</span> <span class="php-keyword">parent</span>::<span class="php-method">saludar</span>() . <span class="php-string">" y trabajo como "</span> . <span class="php-variable">$this</span>-><span class="php-variable">puesto</span>;
     }
 }
 
-$empleado = new Empleado("María", 30, "Desarrolladora", 50000);
-echo $empleado->saludar(); 
-// Salida: Hola, soy María y trabajo como Desarrolladora
-?&gt;</code></pre>
+<span class="php-variable">$empleado</span> = <span class="php-keyword">new</span> <span class="php-class">Empleado</span>(<span class="php-string">"María"</span>, <span class="php-number">30</span>, <span class="php-string">"Desarrolladora"</span>, <span class="php-number">50000</span>);
+<span class="php-keyword">echo</span> <span class="php-variable">$empleado</span>-><span class="php-method">saludar</span>(); 
+<span class="php-comment">// Salida: Hola, soy María y trabajo como Desarrolladora</span>
+<span class="php-tag">?&gt;</span>
+                        </code></pre>
+                    </div>
+                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                        <span>PHP 8.2</span>
                     </div>
                 </div>
 
@@ -270,17 +275,13 @@ echo $empleado->saludar();
                     y compartir funcionalidad entre clases.
                 </p>
 
+                <!-- Actualizar el ejemplo de Interfaces y Clases Abstractas -->
                 <div class="vscode-editor mt-4">
                     <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> interfaces.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-danger">Avanzado</span>
-                        </div>
+                        <span><i class="fab fa-php"></i> interfaces_clases_abstractas.php</span>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
-                        <pre><code class="php">
-&lt;?php
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">&lt;?php
 // Interfaz
 interface Trabajador {
     public function trabajar();
@@ -329,6 +330,9 @@ echo $programador->trabajar(); // Salida: Programando en PHP
 echo $programador->ejercer(); // Salida: Desarrollando software como Backend Developer
 ?&gt;</code></pre>
                     </div>
+                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                        <span>PHP 8.2</span>
+                    </div>
                 </div>
 
                 <h2 class="mt-5">Propiedades y Métodos Estáticos</h2>
@@ -337,17 +341,13 @@ echo $programador->ejercer(); // Salida: Desarrollando software como Backend Dev
                     Se pueden acceder sin crear un objeto de la clase.
                 </p>
 
+                <!-- Actualizar el ejemplo de Propiedades y Métodos Estáticos -->
                 <div class="vscode-editor mt-4 mb-5">
                     <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                        <span><i class="fab fa-php"></i> estaticos.php</span>
-                        <div class="d-flex align-items-center">
-                            <span class="badge bg-secondary me-2">PHP</span>
-                            <span class="badge bg-warning">Intermedio</span>
-                        </div>
+                        <span><i class="fab fa-php"></i> propiedades_metodos_estaticos.php</span>
                     </div>
-                    <div class="vscode-editor-content bg-dark p-3">
-                        <pre><code class="php">
-&lt;?php
+                    <div class="vscode-editor-content">
+                        <pre><code class="php">&lt;?php
 class Matematica {
     public static $pi = 3.14159;
     private static $contador = 0;
@@ -367,6 +367,9 @@ echo Matematica::$pi; // Salida: 3.14159
 echo Matematica::sumar(5, 3); // Salida: 8
 echo Matematica::getContador(); // Salida: 1
 ?&gt;</code></pre>
+                    </div>
+                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                        <span>PHP 8.2</span>
                     </div>
                 </div>
 

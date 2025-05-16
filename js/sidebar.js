@@ -34,8 +34,26 @@ function initSidebarProgress() {
 function updateLessonBadge(lesson, completed) {
     const badge = lesson.querySelector('.badge');
     if (badge) {
-        badge.classList.remove('bg-success', 'bg-warning', 'bg-secondary');
-        badge.classList.add(completed ? 'bg-success' : 'bg-secondary');
+        badge.classList.remove('bg-success', 'bg-secondary', 'bg-warning');
+        // Obtener el número de la lección y el total
+        let badgeText = badge.textContent.trim();
+        let match = badgeText.match(/(\d+)\/(\d+)/);
+        let current = 0, total = 0;
+        if (match) {
+            current = parseInt(match[1], 10);
+            total = parseInt(match[2], 10);
+        }
+        // Si no se puede extraer, usar dataset o fallback
+        if (!current || !total) {
+            current = Array.from(lesson.parentNode.children).indexOf(lesson) + 1;
+            total = lesson.parentNode.children.length;
+        }
+        badge.textContent = `${current}/${total}`;
+        if (completed) {
+            badge.classList.add('bg-success');
+        } else {
+            badge.classList.add('bg-secondary');
+        }
     }
 }
 
@@ -107,32 +125,41 @@ function updateSectionProgress() {
     
     const sectionLessons = document.querySelectorAll('.leccion');
     const completedLessons = document.querySelectorAll('.leccion.completed');
+    
+    // Actualizar el progreso en formato fracción
+    const moduleProgress = document.getElementById('module-lessons-count');
+    if (moduleProgress) {
+        moduleProgress.textContent = `${completedLessons.length}/${sectionLessons.length} lecciones`;
+    }
+    
+    // Actualizar la barra de progreso
     const percentage = sectionLessons.length > 0 ? 
         Math.round((completedLessons.length / sectionLessons.length) * 100) : 0;
     
     progressBar.style.width = percentage + '%';
     progressBar.setAttribute('aria-valuenow', percentage);
-    progressBar.textContent = percentage + '%';
+    progressBar.textContent = `${completedLessons.length}/${sectionLessons.length}`;
     
-    // Actualizar clase según el porcentaje
+    // Actualizar clases de la barra de progreso
     progressBar.classList.remove('bg-success', 'bg-warning', 'bg-danger');
-    if (percentage >= 80) {
+    if (completedLessons.length === sectionLessons.length) {
         progressBar.classList.add('bg-success');
-    } else if (percentage >= 40) {
+    } else if (completedLessons.length > 0) {
         progressBar.classList.add('bg-warning');
     } else {
-        progressBar.classList.add('bg-danger');
+        progressBar.classList.add('bg-secondary');
     }
     
-    // Guardar progreso del módulo
-    const progress = JSON.parse(localStorage.getItem('phpGuideProgress') || '{}');
-    if (!progress.sections) progress.sections = {};
-    progress.sections[section] = {
-        total: sectionLessons.length,
-        completed: completedLessons.length,
-        percentage: percentage
-    };
-    localStorage.setItem('phpGuideProgress', JSON.stringify(progress));
+    // Actualizar el progreso actual de la lección
+    const currentProgress = document.getElementById('current-lesson-progress');
+    if (currentProgress) {
+        const currentLesson = document.querySelector('.leccion.active');
+        if (currentLesson) {
+            const totalTopics = currentLesson.dataset.totalTopics || 7;
+            const completedTopics = currentLesson.classList.contains('completed') ? totalTopics : 0;
+            currentProgress.textContent = `${completedTopics}/${totalTopics} temas`;
+        }
+    }
 }
 
 // Cargar el progreso al iniciar
