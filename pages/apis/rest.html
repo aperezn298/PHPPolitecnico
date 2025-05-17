@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<!D    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST APIs con PHP - Guía Interactiva de PHP</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
+    <script src="../../js/sidebar.js" defer></script>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -143,11 +156,244 @@
                             <li class="breadcrumb-item active" aria-current="page">REST APIs</li>
                         </ol>
                     </nav>
+                      <h1 class="mb-4">APIs REST con PHP</h1>
                     
-                    <h1 class="mb-4">APIs REST con PHP</h1>
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Comprender los principios de las APIs REST</li>
+                            <li>Entender los métodos HTTP y su relación con CRUD</li>
+                            <li>Conocer el formato JSON para intercambio de datos</li>
+                            <li>Aprender sobre los códigos de estado HTTP</li>
+                            <li>Implementar buenas prácticas en diseño de APIs REST</li>
+                        </ul>
+                    </div>
                     
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i> Esta página está en construcción. Pronto estará disponible el contenido sobre REST APIs con PHP.
+                    <h2 class="mt-5">¿Qué es REST?</h2>
+                    <p>
+                        REST (Representational State Transfer) es un estilo de arquitectura para diseñar servicios web. Fue presentado por Roy Fielding en su tesis doctoral en 2000 y se ha convertido en el estándar de facto para el diseño de APIs web modernas.
+                    </p>
+                    
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger"><i class="fas fa-lightbulb me-2"></i>Principios fundamentales de REST</h5>
+                            <ul class="mb-0">
+                                <li><strong>Interfaz uniforme:</strong> Los recursos se identifican mediante URIs y se manipulan mediante representaciones.</li>
+                                <li><strong>Sin estado:</strong> Cada petición contiene toda la información necesaria, no depende de peticiones anteriores.</li>
+                                <li><strong>Cacheable:</strong> Las respuestas pueden ser cacheable para mejorar el rendimiento.</li>
+                                <li><strong>Cliente-servidor:</strong> Existe una separación clara entre cliente y servidor.</li>
+                                <li><strong>Sistema en capas:</strong> La arquitectura puede estar compuesta por múltiples capas jerárquicas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Recursos y URLs</h2>
+                    <p>
+                        En una API REST, todo es un <strong>recurso</strong>. Un recurso puede ser un objeto, un servicio, o cualquier entidad que pueda ser identificada, nombrada y manipulada a través de la web. Cada recurso es accesible a través de una URL única.
+                    </p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Recurso</th>
+                                    <th>URL</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Colección</td>
+                                    <td><code>/usuarios</code></td>
+                                    <td>Representa a todos los usuarios</td>
+                                </tr>
+                                <tr>
+                                    <td>Elemento</td>
+                                    <td><code>/usuarios/123</code></td>
+                                    <td>Representa al usuario con ID 123</td>
+                                </tr>
+                                <tr>
+                                    <td>Subrecurso</td>
+                                    <td><code>/usuarios/123/pedidos</code></td>
+                                    <td>Todos los pedidos del usuario 123</td>
+                                </tr>
+                                <tr>
+                                    <td>Filtrado</td>
+                                    <td><code>/usuarios?activo=true</code></td>
+                                    <td>Usuarios que están activos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h2 class="mt-5">Métodos HTTP y operaciones CRUD</h2>
+                    <p>
+                        Los métodos HTTP definen las acciones que se pueden realizar sobre los recursos. Estos se corresponden con las operaciones CRUD (Create, Read, Update, Delete) de las bases de datos.
+                    </p>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-exchange-alt me-2"></i>métodos_http.md</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="language-markdown">
+| Método HTTP | Operación CRUD | Descripción                                 | Ejemplo                                   |
+|-------------|----------------|---------------------------------------------|-------------------------------------------|
+| GET         | Read           | Obtener datos                               | GET /usuarios - Listar todos los usuarios |
+| GET         | Read           | Obtener un recurso específico               | GET /usuarios/1 - Obtener usuario con ID 1|
+| POST        | Create         | Crear un nuevo recurso                      | POST /usuarios - Crear un nuevo usuario   |
+| PUT         | Update         | Actualizar un recurso existente (completo)  | PUT /usuarios/1 - Actualizar usuario 1    |
+| PATCH       | Update         | Actualizar parcialmente un recurso          | PATCH /usuarios/1 - Actualizar una parte  |
+| DELETE      | Delete         | Eliminar un recurso                         | DELETE /usuarios/1 - Eliminar usuario 1   |
+                            </code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>Markdown</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Formato JSON</h2>
+                    <p>
+                        JSON (JavaScript Object Notation) es el formato estándar para intercambiar datos en APIs REST. Es ligero, fácil de leer para humanos y fácil de procesar para las máquinas.
+                    </p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-code me-2"></i>ejemplo_usuario.json</span>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-json">
+{
+  "id": 1,
+  "nombre": "Juan Pérez",
+  "correo": "juan@example.com",
+  "activo": true,
+  "rol": "admin",
+  "creado": "2025-01-15T10:30:00Z"
+}
+                                    </code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>JSON</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="vscode-editor mt-3">
+                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                    <span><i class="fas fa-code me-2"></i>ejemplo_coleccion.json</span>
+                                </div>
+                                <div class="vscode-editor-content bg-dark p-3">
+                                    <pre><code class="language-json">
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Juan Pérez",
+      "correo": "juan@example.com"
+    },
+    {
+      "id": 2,
+      "nombre": "María López",
+      "correo": "maria@example.com"
+    }
+  ],
+  "total": 2,
+  "pagina": 1,
+  "porPagina": 10
+}
+                                    </code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>JSON</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Códigos de estado HTTP</h2>
+                    <p>
+                        Los códigos de estado HTTP comunican el resultado de una petición. Es importante utilizarlos correctamente en tu API REST.
+                    </p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Descripción</th>
+                                    <th>Uso en APIs</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-success">
+                                    <td>200 OK</td>
+                                    <td>La petición se completó con éxito</td>
+                                    <td>Respuesta a GET, PUT, PATCH exitosos</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td>201 Created</td>
+                                    <td>Recurso creado con éxito</td>
+                                    <td>Respuesta a POST exitoso</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <td>204 No Content</td>
+                                    <td>Éxito pero sin contenido en la respuesta</td>
+                                    <td>Respuesta a DELETE exitoso</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <td>400 Bad Request</td>
+                                    <td>La petición tiene algún error</td>
+                                    <td>Datos de entrada inválidos</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <td>401 Unauthorized</td>
+                                    <td>Se requiere autenticación</td>
+                                    <td>El cliente no está autenticado</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <td>403 Forbidden</td>
+                                    <td>No tiene permisos</td>
+                                    <td>Usuario autenticado sin permisos</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <td>404 Not Found</td>
+                                    <td>Recurso no encontrado</td>
+                                    <td>ID o ruta no existe</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <td>500 Internal Server Error</td>
+                                    <td>Error del servidor</td>
+                                    <td>Errores de programación o base de datos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h2 class="mt-5">Buenas prácticas para diseñar APIs REST</h2>
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <ol class="mb-0">
+                                <li><strong>Usa sustantivos, no verbos</strong> en las URLs (ej. <code>/usuarios</code> en lugar de <code>/getUsuarios</code>)</li>
+                                <li><strong>Versiona tu API</strong> (ej. <code>/api/v1/usuarios</code>)</li>
+                                <li><strong>Utiliza correctamente los códigos de estado HTTP</strong></li>
+                                <li><strong>Implementa paginación</strong> para colecciones grandes</li>
+                                <li><strong>Permite filtrado, ordenación y búsqueda</strong> mediante parámetros de consulta</li>
+                                <li><strong>Documenta tu API</strong> para que otros la puedan usar fácilmente</li>
+                                <li><strong>Implementa validación de datos</strong> tanto en cliente como en servidor</li>
+                                <li><strong>Maneja correctamente los errores</strong> con mensajes descriptivos</li>
+                                <li><strong>Asegura tu API</strong> con HTTPS y estrategias de autenticación apropiadas</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mt-4">
+                        <h5><i class="fas fa-check-circle me-2"></i>En resumen</h5>
+                        <p class="mb-0">
+                            Las APIs REST siguen principios de diseño que las hacen escalables, mantenibles y fáciles de usar. Utilizan URLs para identificar recursos, métodos HTTP para manipularlos, y códigos de estado para comunicar resultados. En las próximas lecciones, veremos cómo implementar y consumir APIs REST con PHP.
+                        </p>
                     </div>
                     
                     <!-- Navegación entre lecciones -->

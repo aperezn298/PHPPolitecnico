@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<!D    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo de APIs con PHP - Guía Interactiva de PHP</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
+    <script src="../../js/sidebar.js" defer></script>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -143,11 +156,396 @@
                             <li class="breadcrumb-item active" aria-current="page">Consumo de APIs</li>
                         </ol>
                     </nav>
+                      <h1 class="mb-4">Consumo de APIs con PHP</h1>
                     
-                    <h1 class="mb-4">Consumo de APIs con PHP</h1>
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Aprender a consumir APIs externas con PHP</li>
+                            <li>Utilizar diferentes métodos para realizar peticiones HTTP</li>
+                            <li>Procesar respuestas JSON de APIs</li>
+                            <li>Manejar errores y excepciones en peticiones API</li>
+                            <li>Implementar autenticación API con PHP</li>
+                        </ul>
+                    </div>
                     
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i> Esta página está en construcción. Pronto estará disponible el contenido sobre consumo de APIs con PHP.
+                    <h2 class="mt-5">Métodos para consumir APIs en PHP</h2>
+                    <p>
+                        PHP ofrece varias formas de realizar peticiones HTTP a APIs externas. Veamos las más utilizadas:
+                    </p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-file-code text-danger me-2"></i>file_get_contents()
+                                    </h5>
+                                    <p class="card-text">
+                                        <ul>
+                                            <li>Función nativa de PHP</li>
+                                            <li>Simple para peticiones GET</li>
+                                            <li>Limitado para peticiones complejas</li>
+                                            <li>Requiere allow_url_fopen=On</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-network-wired text-danger me-2"></i>cURL
+                                    </h5>
+                                    <p class="card-text">
+                                        <ul>
+                                            <li>Más potente y flexible</li>
+                                            <li>Soporta todos los métodos HTTP</li>
+                                            <li>Permite configuración avanzada</li>
+                                            <li>Requiere extensión cURL instalada</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-box-open text-danger me-2"></i>Bibliotecas
+                                    </h5>
+                                    <p class="card-text">
+                                        <ul>
+                                            <li>Guzzle HTTP Client</li>
+                                            <li>Symfony HTTP Client</li>
+                                            <li>Más abstraídas y fáciles de usar</li>
+                                            <li>Instalables con Composer</li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Ejemplos prácticos</h2>
+                    
+                    <h3 class="mt-4">1. Usando file_get_contents()</h3>
+                    <p>Método simple para peticiones GET a una API:</p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-code me-2"></i>ejemplo_file_get_contents.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// URL de la API (en este caso una API pública de prueba)</span>
+<span class="php-variable">$url</span> = <span class="php-string">"https://jsonplaceholder.typicode.com/users/1"</span>;
+
+<span class="php-comment">// Configuración del contexto para la petición</span>
+<span class="php-variable">$options</span> = [
+    <span class="php-string">"http"</span> => [
+        <span class="php-string">"method"</span> => <span class="php-string">"GET"</span>,
+        <span class="php-string">"header"</span> => <span class="php-string">"Content-Type: application/json\r\n"</span> .
+                   <span class="php-string">"Accept: application/json\r\n"</span>
+    ]
+];
+
+<span class="php-variable">$context</span> = <span class="php-function">stream_context_create</span>(<span class="php-variable">$options</span>);
+
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Realizar la petición</span>
+    <span class="php-variable">$response</span> = <span class="php-function">file_get_contents</span>(<span class="php-variable">$url</span>, <span class="php-keyword">false</span>, <span class="php-variable">$context</span>);
+    
+    <span class="php-comment">// Decodificar la respuesta JSON</span>
+    <span class="php-variable">$data</span> = <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+    
+    <span class="php-comment">// Mostrar los datos</span>
+    <span class="php-function">echo</span> <span class="php-string">"Nombre: "</span> . <span class="php-variable">$data</span>[<span class="php-string">'name'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"Email: "</span> . <span class="php-variable">$data</span>[<span class="php-string">'email'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"Teléfono: "</span> . <span class="php-variable">$data</span>[<span class="php-string">'phone'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    
+} <span class="php-keyword">catch</span> (<span class="php-class">Exception</span> <span class="php-variable">$e</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"Error: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-5">2. Usando cURL</h3>
+                    <p>cURL ofrece más flexibilidad y opciones para realizar peticiones HTTP:</p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-code me-2"></i>ejemplo_curl.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// URL de la API</span>
+<span class="php-variable">$url</span> = <span class="php-string">"https://jsonplaceholder.typicode.com/posts"</span>;
+
+<span class="php-comment">// Datos a enviar (para un POST)</span>
+<span class="php-variable">$data</span> = [
+    <span class="php-string">'title'</span> => <span class="php-string">'Nuevo post'</span>,
+    <span class="php-string">'body'</span> => <span class="php-string">'Contenido del post'</span>,
+    <span class="php-string">'userId'</span> => <span class="php-number">1</span>
+];
+
+<span class="php-comment">// Inicializar cURL</span>
+<span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>(<span class="php-variable">$url</span>);
+
+<span class="php-comment">// Configurar opciones de cURL</span>
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>); <span class="php-comment">// Devolver respuesta como string</span>
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_POST</span>, <span class="php-keyword">true</span>); <span class="php-comment">// Método POST</span>
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_POSTFIELDS</span>, <span class="php-function">json_encode</span>(<span class="php-variable">$data</span>)); <span class="php-comment">// Datos a enviar</span>
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_HTTPHEADER</span>, [
+    <span class="php-string">'Content-Type: application/json',</span>
+    <span class="php-string">'Accept: application/json'</span>
+]);
+
+<span class="php-comment">// Ejecutar la petición</span>
+<span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+
+<span class="php-comment">// Verificar si hay errores</span>
+<span class="php-keyword">if</span> (<span class="php-function">curl_errno</span>(<span class="php-variable">$ch</span>)) {
+    <span class="php-function">echo</span> <span class="php-string">'Error cURL: '</span> . <span class="php-function">curl_error</span>(<span class="php-variable">$ch</span>);
+    <span class="php-keyword">exit</span>;
+}
+
+<span class="php-comment">// Obtener código de estado HTTP</span>
+<span class="php-variable">$httpCode</span> = <span class="php-function">curl_getinfo</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLINFO_HTTP_CODE</span>);
+
+<span class="php-comment">// Cerrar sesión cURL</span>
+<span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+
+<span class="php-comment">// Procesar la respuesta</span>
+<span class="php-function">echo</span> <span class="php-string">"Código HTTP: "</span> . <span class="php-variable">$httpCode</span> . <span class="php-string">"&lt;br&gt;"</span>;
+
+<span class="php-keyword">if</span> (<span class="php-variable">$httpCode</span> == <span class="php-number">201</span> || <span class="php-variable">$httpCode</span> == <span class="php-number">200</span>) {
+    <span class="php-variable">$data</span> = <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+    <span class="php-function">echo</span> <span class="php-string">"Post creado con ID: "</span> . <span class="php-variable">$data</span>[<span class="php-string">'id'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"Título: "</span> . <span class="php-variable">$data</span>[<span class="php-string">'title'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-function">echo</span> <span class="php-string">"Error en la petición. Código: "</span> . <span class="php-variable">$httpCode</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mt-5">3. Consumiendo nuestra API de usuarios</h3>
+                    <p>Ejemplo de cómo consumir la API de usuarios que desarrollaremos en la próxima sección:</p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-code me-2"></i>consumir_api_usuarios.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// URL base de nuestra API</span>
+<span class="php-variable">$baseUrl</span> = <span class="php-string">"http://localhost/api/usuarios"</span>;
+
+<span class="php-comment">/**
+ * Función para realizar peticiones a la API
+ * @param string $url URL de la petición
+ * @param string $method Método HTTP (GET, POST, PUT, DELETE)
+ * @param array $data Datos a enviar (para POST, PUT)
+ * @return array Respuesta decodificada
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">llamarAPI</span>(<span class="php-variable">$url</span>, <span class="php-variable">$method</span> = <span class="php-string">'GET'</span>, <span class="php-variable">$data</span> = <span class="php-keyword">null</span>) {
+    <span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>(<span class="php-variable">$url</span>);
+    
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_CUSTOMREQUEST</span>, <span class="php-variable">$method</span>);
+    
+    <span class="php-keyword">if</span> (<span class="php-variable">$data</span> && (<span class="php-variable">$method</span> === <span class="php-string">'POST'</span> || <span class="php-variable">$method</span> === <span class="php-string">'PUT'</span>)) {
+        <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_POSTFIELDS</span>, <span class="php-function">json_encode</span>(<span class="php-variable">$data</span>));
+    }
+    
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_HTTPHEADER</span>, [
+        <span class="php-string">'Content-Type: application/json',</span>
+        <span class="php-string">'Accept: application/json'</span>
+    ]);
+    
+    <span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+    <span class="php-variable">$httpCode</span> = <span class="php-function">curl_getinfo</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLINFO_HTTP_CODE</span>);
+    
+    <span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+    
+    <span class="php-keyword">return</span> [
+        <span class="php-string">'codigo'</span> => <span class="php-variable">$httpCode</span>,
+        <span class="php-string">'datos'</span> => <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>)
+    ];
+}
+
+<span class="php-comment">// 1. Obtener todos los usuarios</span>
+<span class="php-function">echo</span> <span class="php-string">"&lt;h3&gt;Lista de usuarios&lt;/h3&gt;"</span>;
+<span class="php-variable">$usuarios</span> = <span class="php-function">llamarAPI</span>(<span class="php-variable">$baseUrl</span>);
+
+<span class="php-keyword">if</span> (<span class="php-variable">$usuarios</span>[<span class="php-string">'codigo'</span>] == <span class="php-number">200</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"&lt;ul&gt;"</span>;
+    <span class="php-keyword">foreach</span> (<span class="php-variable">$usuarios</span>[<span class="php-string">'datos'</span>] <span class="php-keyword">as</span> <span class="php-variable">$usuario</span>) {
+        <span class="php-function">echo</span> <span class="php-string">"&lt;li&gt;"</span> . <span class="php-variable">$usuario</span>[<span class="php-string">'nombre'</span>] . <span class="php-string">" - "</span> . <span class="php-variable">$usuario</span>[<span class="php-string">'correo'</span>] . <span class="php-string">"&lt;/li&gt;"</span>;
+    }
+    <span class="php-function">echo</span> <span class="php-string">"&lt;/ul&gt;"</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-function">echo</span> <span class="php-string">"Error al obtener usuarios. Código: "</span> . <span class="php-variable">$usuarios</span>[<span class="php-string">'codigo'</span>];
+}
+
+<span class="php-comment">// 2. Crear un nuevo usuario</span>
+<span class="php-function">echo</span> <span class="php-string">"&lt;h3&gt;Crear nuevo usuario&lt;/h3&gt;"</span>;
+<span class="php-variable">$nuevoUsuario</span> = [
+    <span class="php-string">'nombre'</span> => <span class="php-string">'Carlos Gómez'</span>,
+    <span class="php-string">'correo'</span> => <span class="php-string">'carlos@example.com'</span>
+];
+
+<span class="php-variable">$resultado</span> = <span class="php-function">llamarAPI</span>(<span class="php-variable">$baseUrl</span>, <span class="php-string">'POST'</span>, <span class="php-variable">$nuevoUsuario</span>);
+
+<span class="php-keyword">if</span> (<span class="php-variable">$resultado</span>[<span class="php-string">'codigo'</span>] == <span class="php-number">201</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"Usuario creado correctamente: "</span> . <span class="php-variable">$resultado</span>[<span class="php-string">'datos'</span>][<span class="php-string">'mensaje'</span>];
+} <span class="php-keyword">else</span> {
+    <span class="php-function">echo</span> <span class="php-string">"Error al crear usuario. Código: "</span> . <span class="php-variable">$resultado</span>[<span class="php-string">'codigo'</span>];
+}
+
+<span class="php-comment">// 3. Obtener un usuario específico</span>
+<span class="php-variable">$idUsuario</span> = <span class="php-number">1</span>;
+<span class="php-function">echo</span> <span class="php-string">"&lt;h3&gt;Detalle del usuario $idUsuario&lt;/h3&gt;"</span>;
+<span class="php-variable">$usuario</span> = <span class="php-function">llamarAPI</span>(<span class="php-variable">$baseUrl</span> . <span class="php-string">"/"</span> . <span class="php-variable">$idUsuario</span>);
+
+<span class="php-keyword">if</span> (<span class="php-variable">$usuario</span>[<span class="php-string">'codigo'</span>] == <span class="php-number">200</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"ID: "</span> . <span class="php-variable">$usuario</span>[<span class="php-string">'datos'</span>][<span class="php-string">'id'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"Nombre: "</span> . <span class="php-variable">$usuario</span>[<span class="php-string">'datos'</span>][<span class="php-string">'nombre'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"Email: "</span> . <span class="php-variable">$usuario</span>[<span class="php-string">'datos'</span>][<span class="php-string">'correo'</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-function">echo</span> <span class="php-string">"Error al obtener el usuario. Código: "</span> . <span class="php-variable">$usuario</span>[<span class="php-string">'codigo'</span>];
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Manejo de errores y excepciones</h2>
+                    <p>
+                        Es importante implementar un manejo adecuado de errores al consumir APIs:
+                    </p>
+                    
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger"><i class="fas fa-exclamation-triangle me-2"></i>Buenas prácticas para manejo de errores</h5>
+                            <ul class="mb-0">
+                                <li>Verifica los códigos de estado HTTP de la respuesta</li>
+                                <li>Utiliza bloques try-catch para capturar excepciones</li>
+                                <li>Valida el formato de la respuesta antes de intentar procesarla</li>
+                                <li>Establece tiempos de espera (timeout) adecuados para evitar bloqueos</li>
+                                <li>Implementa reintentos con backoff exponencial para peticiones fallidas</li>
+                                <li>Registra (log) los errores para depuración</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Autenticación al consumir APIs</h2>
+                    <p>
+                        Muchas APIs requieren autenticación. Estos son los métodos más comunes:
+                    </p>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Método</th>
+                                    <th>Descripción</th>
+                                    <th>Implementación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>API Key</strong></td>
+                                    <td>Clave única que identifica al cliente</td>
+                                    <td>Se pasa en el header o como parámetro de URL</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Basic Auth</strong></td>
+                                    <td>Combinación de usuario y contraseña</td>
+                                    <td>Se codifica en Base64 y se envía en el header Authorization</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OAuth 2.0</strong></td>
+                                    <td>Protocolo estándar de autorización</td>
+                                    <td>Se obtiene un token de acceso que se pasa en el header</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>JWT</strong></td>
+                                    <td>Token seguro que contiene información del usuario</td>
+                                    <td>Se envía en el header Authorization</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-code me-2"></i>autenticacion_api.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Ejemplo con API Key</span>
+<span class="php-keyword">function</span> <span class="php-function">apiKeyRequest</span>(<span class="php-variable">$url</span>, <span class="php-variable">$apiKey</span>) {
+    <span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>(<span class="php-variable">$url</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_HTTPHEADER</span>, [
+        <span class="php-string">"X-API-Key: $apiKey"</span>,
+        <span class="php-string">'Accept: application/json'</span>
+    ]);
+    <span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+    <span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+    <span class="php-keyword">return</span> <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+}
+
+<span class="php-comment">// Ejemplo con Basic Auth</span>
+<span class="php-keyword">function</span> <span class="php-function">basicAuthRequest</span>(<span class="php-variable">$url</span>, <span class="php-variable">$username</span>, <span class="php-variable">$password</span>) {
+    <span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>(<span class="php-variable">$url</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_USERPWD</span>, <span class="php-variable">$username</span> . <span class="php-string">":"</span> . <span class="php-variable">$password</span>);
+    <span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+    <span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+    <span class="php-keyword">return</span> <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+}
+
+<span class="php-comment">// Ejemplo con Bearer Token (JWT o OAuth)</span>
+<span class="php-keyword">function</span> <span class="php-function">tokenRequest</span>(<span class="php-variable">$url</span>, <span class="php-variable">$token</span>) {
+    <span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>(<span class="php-variable">$url</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>);
+    <span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-constant">CURLOPT_HTTPHEADER</span>, [
+        <span class="php-string">"Authorization: Bearer $token"</span>,
+        <span class="php-string">'Accept: application/json'</span>
+    ]);
+    <span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+    <span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+    <span class="php-keyword">return</span> <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mt-5">
+                        <h5><i class="fas fa-check-circle me-2"></i>En resumen</h5>
+                        <p class="mb-0">
+                            PHP ofrece varias formas de consumir APIs externas, desde funciones nativas como file_get_contents y cURL, hasta bibliotecas especializadas. Es importante manejar adecuadamente los errores, validar las respuestas y aplicar los métodos de autenticación requeridos. En la siguiente lección, veremos cómo crear nuestras propias APIs con PHP.
+                        </p>
                     </div>
                     
                     <!-- Navegación entre lecciones -->

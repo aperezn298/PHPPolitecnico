@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operaciones CRUD con PHP y MySQL | Guía Interactiva</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/styles.css">
-    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../css/styles.css">    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Prism CSS -->
+    <link href="../../css/prism.css" rel="stylesheet" />
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -59,7 +64,18 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="intro-mysql.html">Introducción a MySQL</a></li>
                             <li><a class="dropdown-item" href="conexion.html">Conexión a MySQL</a></li>
-                            <li><a class="dropdown-item active" href="crud.html">Operaciones CRUD</a></li>
+                            <li><a class="dropdown-item" href="crud.html">Operaciones CRUD</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            APIs con PHP
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../apis/introduccion.html">Introducción a APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/rest.html">REST APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/consumo.html">Consumo de APIs</a></li>
+                            <li><a class="dropdown-item" href="../apis/creacion.html">Creación de APIs</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -70,6 +86,7 @@
         </div>
     </nav>
 
+    <!-- Contenido principal -->
     <div class="container mt-5 pt-4">
         <div class="row">
             <!-- Sidebar con progreso del curso -->
@@ -111,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Contenido principal -->
             <div class="col-lg-9">
                 <div class="content-page">
@@ -122,9 +139,9 @@
                             <li class="breadcrumb-item active" aria-current="page">Operaciones CRUD</li>
                         </ol>
                     </nav>
-                    
+
                     <h1 class="mb-4">Operaciones CRUD con PHP y MySQL</h1>
-                    
+
                     <div class="alert alert-primary">
                         <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
                         <ul class="mb-0">
@@ -136,12 +153,12 @@
                             <li>Crear un sistema CRUD completo y funcional</li>
                         </ul>
                     </div>
-                    
+
                     <h2>¿Qué son las Operaciones CRUD?</h2>
                     <p>
                         CRUD es un acrónimo que representa las cuatro operaciones básicas que se realizan en aplicaciones persistentes de base de datos:
                     </p>
-                    
+
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead class="table-primary">
@@ -180,622 +197,333 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <p>
                         Estas operaciones son fundamentales en cualquier aplicación que trabaje con bases de datos, desde un simple blog hasta complejos sistemas de gestión empresarial.
                     </p>
-                    
+
                     <h2>Estructura de Base de Datos para Ejemplos</h2>
                     <p>
                         Antes de empezar con las operaciones CRUD, crearemos una base de datos y tabla simple para nuestros ejemplos. Usaremos una tabla de <code>usuarios</code> con los siguientes campos:
                     </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">-- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS tutorial_php;
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-database me-2"></i>creacion_db.sql</span>
+                        </div>                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="sql">
+<span class="sql-comment">-- Crear la base de datos</span>
+<span class="sql-keyword">CREATE DATABASE IF NOT EXISTS</span> <span class="sql-identifier">tutorial_php</span>;
 
--- Usar la base de datos
-USE tutorial_php;
+<span class="sql-comment">-- Usar la base de datos</span>
+<span class="sql-keyword">USE</span> <span class="sql-identifier">tutorial_php</span>;
 
--- Crear la tabla usuarios
-CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    telefono VARCHAR(15),
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+<span class="sql-comment">-- Crear la tabla usuarios</span>
+<span class="sql-keyword">CREATE TABLE IF NOT EXISTS</span> <span class="sql-identifier">usuarios</span> (
+    <span class="sql-identifier">id</span> <span class="sql-keyword">INT</span> <span class="sql-keyword">AUTO_INCREMENT</span> <span class="sql-keyword">PRIMARY KEY</span>,
+    <span class="sql-identifier">nombre</span> <span class="sql-keyword">VARCHAR</span>(50) <span class="sql-keyword">NOT NULL</span>,
+    <span class="sql-identifier">email</span> <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL</span> <span class="sql-keyword">UNIQUE</span>,
+    <span class="sql-identifier">telefono</span> <span class="sql-keyword">VARCHAR</span>(15),
+    <span class="sql-identifier">fecha_registro</span> <span class="sql-keyword">TIMESTAMP</span> <span class="sql-keyword">DEFAULT</span> <span class="sql-keyword">CURRENT_TIMESTAMP</span>
 );</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>MySQL 8.0</span>
                         </div>
                     </div>
-                    
+                    <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
+
                     <div class="alert alert-info mt-4">
                         <i class="fas fa-info-circle me-2"></i>
                         Debes ejecutar este código SQL en tu sistema de gestión de bases de datos MySQL (como phpMyAdmin) antes de probar los ejemplos siguientes.
                     </div>
-                    
+
                     <h2 class="mt-5">1. Crear (Create) - Insertando Registros</h2>
                     <p>
                         La operación CREATE nos permite insertar nuevos registros en la base de datos. A continuación, veremos cómo insertar un nuevo usuario:
                     </p>
-                    
                     <div class="vscode-editor mt-4">
                         <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                             <span><i class="fas fa-database me-2"></i>crear_usuario.php</span>
+                        </div>                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión a la base de datos usando PDO</span>
+<span class="php-variable">$host</span> = <span class="php-string">"localhost"</span>;
+<span class="php-variable">$dbname</span> = <span class="php-string">"tutorial_php"</span>;
+<span class="php-variable">$username</span> = <span class="php-string">"root"</span>;
+<span class="php-variable">$password</span> = <span class="php-string">""</span>;
+
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Crear conexión PDO</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(<span class="php-string">"mysql:host=$host;dbname=$dbname"</span>, <span class="php-variable">$username</span>, <span class="php-variable">$password</span>);
+    
+    <span class="php-comment">// Configurar PDO para mostrar errores</span>
+    <span class="php-variable">$pdo</span>-><span class="php-function">setAttribute</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span>, <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>);
+    
+    <span class="php-comment">// Datos del formulario</span>
+    <span class="php-variable">$nombre</span> = <span class="php-string">"Juan Pérez"</span>;
+    <span class="php-variable">$email</span> = <span class="php-string">"juan@example.com"</span>;
+    <span class="php-variable">$telefono</span> = <span class="php-string">"1234567890"</span>;
+    
+    <span class="php-comment">// Preparar la consulta SQL con PDO</span>
+    <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"INSERT INTO usuarios (nombre, email, telefono) VALUES (?, ?, ?)"</span>);
+    
+    <span class="php-comment">// Ejecutar la consulta con los parámetros</span>
+    <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$nombre</span>, <span class="php-variable">$email</span>, <span class="php-variable">$telefono</span>]);
+    
+    <span class="php-comment">// Obtener el ID del último registro insertado</span>
+    <span class="php-variable">$lastId</span> = <span class="php-variable">$pdo</span>-><span class="php-function">lastInsertId</span>();
+    
+    <span class="php-function">echo</span> <span class="php-string">"Usuario creado correctamente. ID: "</span> . <span class="php-variable">$lastId</span>;
+    
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// Manejar errores de base de datos</span>
+    <span class="php-function">echo</span> <span class="php-string">"Error: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
+} <span class="php-keyword">finally</span> {
+    <span class="php-comment">// Cerrar la conexión y liberar recursos</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">null</span>;
+    <span class="php-variable">$stmt</span> = <span class="php-keyword">null</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
                         </div>
-                        <div class="vscode-editor-content bg-dark p-3">
-                            <pre><code class="language-php">&lt;?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tutorial_php";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Datos del formulario
-$nombre = "Juan Pérez";
-$email = "juan@example.com";
-$telefono = "1234567890";
-
-// Preparar la consulta SQL
-$stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, telefono) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $nombre, $email, $telefono);
-
-// Ejecutar la consulta
-if ($stmt->execute()) {
-    echo "Usuario creado correctamente. ID: " . $conn->insert_id;
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-// Cerrar la conexión
-$stmt->close();
-$conn->close();
-?&gt;</code></pre>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
                         </div>
                     </div>
-                    
+
                     <h2 class="mt-5">2. Leer (Read) - Consultando Registros</h2>
                     <p>
                         La operación READ nos permite recuperar registros de la base de datos. Veremos dos ejemplos: leer todos los registros y leer un registro específico.
                     </p>
-                    
                     <div class="vscode-editor mt-4">
                         <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                             <span><i class="fas fa-database me-2"></i>listar_usuarios.php</span>
-                        </div>
-                        <div class="vscode-editor-content bg-dark p-3">
-                            <pre><code class="language-php">&lt;?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tutorial_php";
+                        </div>                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión a la base de datos usando PDO</span>
+<span class="php-variable">$host</span> = <span class="php-string">"localhost"</span>;
+<span class="php-variable">$dbname</span> = <span class="php-string">"tutorial_php"</span>;
+<span class="php-variable">$username</span> = <span class="php-string">"root"</span>;
+<span class="php-variable">$password</span> = <span class="php-string">""</span>;
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Consulta SQL
-$sql = "SELECT id, nombre, email, telefono, fecha_registro FROM usuarios";
-$result = $conn->query($sql);
-
-// Verificar si hay resultados
-if ($result->num_rows > 0) {
-    echo "&lt;table border='1'&gt;";
-    echo "&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;th&gt;Teléfono&lt;/th&gt;&lt;th&gt;Fecha Registro&lt;/th&gt;&lt;/tr&gt;";
-
-    // Mostrar datos de cada fila
-    while($row = $result->fetch_assoc()) {
-        echo "&lt;tr&gt;&lt;td&gt;" . $row["id"] . "&lt;/td&gt;&lt;td&gt;" . $row["nombre"] . "&lt;/td&gt;&lt;td&gt;" . $row["email"] . "&lt;/td&gt;&lt;td&gt;" . $row["telefono"] . "&lt;/td&gt;&lt;td&gt;" . $row["fecha_registro"] . "&lt;/td&gt;&lt;/tr&gt;";
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Crear conexión PDO</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(<span class="php-string">"mysql:host=$host;dbname=$dbname"</span>, <span class="php-variable">$username</span>, <span class="php-variable">$password</span>);
+    
+    <span class="php-comment">// Configurar PDO para mostrar errores</span>
+    <span class="php-variable">$pdo</span>-><span class="php-function">setAttribute</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span>, <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>);
+    
+    <span class="php-comment">// Consulta SQL</span>
+    <span class="php-variable">$sql</span> = <span class="php-string">"SELECT id, nombre, email, telefono, fecha_registro FROM usuarios"</span>;
+    
+    <span class="php-comment">// Preparar y ejecutar la consulta</span>
+    <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">query</span>(<span class="php-variable">$sql</span>);
+    
+    <span class="php-comment">// Verificar si hay resultados</span>
+    <span class="php-keyword">if</span> (<span class="php-variable">$stmt</span>-><span class="php-function">rowCount</span>() > 0) {
+        <span class="php-function">echo</span> <span class="php-string">"&lt;table border='1'&gt;"</span>;
+        <span class="php-function">echo</span> <span class="php-string">"&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Nombre&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;th&gt;Teléfono&lt;/th&gt;&lt;th&gt;Fecha Registro&lt;/th&gt;&lt;/tr&gt;"</span>;
+        
+        <span class="php-comment">// Mostrar datos de cada fila usando fetchAll con PDO::FETCH_ASSOC</span>
+        <span class="php-keyword">foreach</span>(<span class="php-variable">$stmt</span>-><span class="php-function">fetchAll</span>(<span class="php-class">PDO</span>::<span class="php-constant">FETCH_ASSOC</span>) <span class="php-keyword">as</span> <span class="php-variable">$row</span>) {
+            <span class="php-function">echo</span> <span class="php-string">"&lt;tr&gt;&lt;td&gt;"</span> . <span class="php-variable">$row</span>[<span class="php-string">"id"</span>] . <span class="php-string">"&lt;/td&gt;&lt;td&gt;"</span> . <span class="php-variable">$row</span>[<span class="php-string">"nombre"</span>] . <span class="php-string">"&lt;/td&gt;&lt;td&gt;"</span> . 
+                 <span class="php-variable">$row</span>[<span class="php-string">"email"</span>] . <span class="php-string">"&lt;/td&gt;&lt;td&gt;"</span> . <span class="php-variable">$row</span>[<span class="php-string">"telefono"</span>] . <span class="php-string">"&lt;/td&gt;&lt;td&gt;"</span> . <span class="php-variable">$row</span>[<span class="php-string">"fecha_registro"</span>] . <span class="php-string">"&lt;/td&gt;&lt;/tr&gt;"</span>;
+        }
+        <span class="php-function">echo</span> <span class="php-string">"&lt;/table&gt;"</span>;
+    } <span class="php-keyword">else</span> {
+        <span class="php-function">echo</span> <span class="php-string">"0 resultados"</span>;
     }
-    echo "&lt;/table&gt;";
-} else {
-    echo "0 resultados";
+    
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// Manejar errores de base de datos</span>
+    <span class="php-function">echo</span> <span class="php-string">"Error: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
+} <span class="php-keyword">finally</span> {
+    <span class="php-comment">// Cerrar la conexión y liberar recursos</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">null</span>;
+    <span class="php-variable">$stmt</span> = <span class="php-keyword">null</span>;
 }
-
-// Cerrar la conexión
-$conn->close();
-?&gt;</code></pre>
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
                         </div>
                     </div>
-                    
+
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-database me-2"></i>leer_usuario.php</span>
+                        </div>                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión a la base de datos usando PDO</span>
+<span class="php-variable">$host</span> = <span class="php-string">"localhost"</span>;
+<span class="php-variable">$dbname</span> = <span class="php-string">"tutorial_php"</span>;
+<span class="php-variable">$username</span> = <span class="php-string">"root"</span>;
+<span class="php-variable">$password</span> = <span class="php-string">""</span>;
+
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Crear conexión PDO</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(<span class="php-string">"mysql:host=$host;dbname=$dbname"</span>, <span class="php-variable">$username</span>, <span class="php-variable">$password</span>);
+    
+    <span class="php-comment">// Configurar PDO para mostrar errores</span>
+    <span class="php-variable">$pdo</span>-><span class="php-function">setAttribute</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span>, <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>);
+    
+    <span class="php-comment">// ID del usuario a leer</span>
+    <span class="php-variable">$id</span> = 1;
+    
+    <span class="php-comment">// Preparar la consulta SQL con PDO</span>
+    <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"SELECT id, nombre, email, telefono, fecha_registro FROM usuarios WHERE id = ?"</span>);
+    
+    <span class="php-comment">// Ejecutar la consulta con los parámetros</span>
+    <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$id</span>]);
+    
+    <span class="php-comment">// Verificar si hay resultados</span>
+    <span class="php-keyword">if</span> (<span class="php-variable">$stmt</span>-><span class="php-function">rowCount</span>() > 0) {
+        <span class="php-variable">$row</span> = <span class="php-variable">$stmt</span>-><span class="php-function">fetch</span>(<span class="php-class">PDO</span>::<span class="php-constant">FETCH_ASSOC</span>);
+        <span class="php-function">echo</span> <span class="php-string">"ID: "</span> . <span class="php-variable">$row</span>[<span class="php-string">"id"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+        <span class="php-function">echo</span> <span class="php-string">"Nombre: "</span> . <span class="php-variable">$row</span>[<span class="php-string">"nombre"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+        <span class="php-function">echo</span> <span class="php-string">"Email: "</span> . <span class="php-variable">$row</span>[<span class="php-string">"email"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+        <span class="php-function">echo</span> <span class="php-string">"Teléfono: "</span> . <span class="php-variable">$row</span>[<span class="php-string">"telefono"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+        <span class="php-function">echo</span> <span class="php-string">"Fecha Registro: "</span> . <span class="php-variable">$row</span>[<span class="php-string">"fecha_registro"</span>] . <span class="php-string">"&lt;br&gt;"</span>;
+    } <span class="php-keyword">else</span> {
+        <span class="php-function">echo</span> <span class="php-string">"No se encontró el usuario."</span>;
+    }
+    
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// Manejar errores de base de datos</span>
+    <span class="php-function">echo</span> <span class="php-string">"Error: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
+} <span class="php-keyword">finally</span> {
+    <span class="php-comment">// Cerrar la conexión y liberar recursos</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">null</span>;
+    <span class="php-variable">$stmt</span> = <span class="php-keyword">null</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+
                     <h2 class="mt-5">3. Actualizar (Update) - Modificando Registros</h2>
                     <p>
                         La operación UPDATE nos permite modificar registros existentes en la base de datos:
                     </p>
-                    
                     <div class="vscode-editor mt-4">
                         <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                             <span><i class="fas fa-database me-2"></i>actualizar_usuario.php</span>
+                        </div>                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión a la base de datos usando PDO</span>
+<span class="php-variable">$host</span> = <span class="php-string">"localhost"</span>;
+<span class="php-variable">$dbname</span> = <span class="php-string">"tutorial_php"</span>;
+<span class="php-variable">$username</span> = <span class="php-string">"root"</span>;
+<span class="php-variable">$password</span> = <span class="php-string">""</span>;
+
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Crear conexión PDO</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(<span class="php-string">"mysql:host=$host;dbname=$dbname"</span>, <span class="php-variable">$username</span>, <span class="php-variable">$password</span>);
+    
+    <span class="php-comment">// Configurar PDO para mostrar errores</span>
+    <span class="php-variable">$pdo</span>-><span class="php-function">setAttribute</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span>, <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>);
+    
+    <span class="php-comment">// Datos a actualizar</span>
+    <span class="php-variable">$id</span> = 1;
+    <span class="php-variable">$nombre</span> = <span class="php-string">"Juan Pérez Actualizado"</span>;
+    <span class="php-variable">$telefono</span> = <span class="php-string">"9876543210"</span>;
+    
+    <span class="php-comment">// Preparar la consulta SQL con PDO</span>
+    <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"UPDATE usuarios SET nombre = ?, telefono = ? WHERE id = ?"</span>);
+    
+    <span class="php-comment">// Ejecutar la consulta con los parámetros</span>
+    <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$nombre</span>, <span class="php-variable">$telefono</span>, <span class="php-variable">$id</span>]);
+    
+    <span class="php-comment">// Obtener el número de filas afectadas</span>
+    <span class="php-variable">$rowCount</span> = <span class="php-variable">$stmt</span>-><span class="php-function">rowCount</span>();
+    
+    <span class="php-function">echo</span> <span class="php-string">"Usuario actualizado correctamente. Filas afectadas: "</span> . <span class="php-variable">$rowCount</span>;
+    
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// Manejar errores de base de datos</span>
+    <span class="php-function">echo</span> <span class="php-string">"Error: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
+} <span class="php-keyword">finally</span> {
+    <span class="php-comment">// Cerrar la conexión y liberar recursos</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">null</span>;
+    <span class="php-variable">$stmt</span> = <span class="php-keyword">null</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
                         </div>
-                        <div class="vscode-editor-content bg-dark p-3">
-                            <pre><code class="language-php">&lt;?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tutorial_php";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Datos a actualizar
-$id = 1;
-$nombre = "Juan Pérez Actualizado";
-$telefono = "9876543210";
-
-// Preparar la consulta SQL
-$stmt = $conn->prepare("UPDATE usuarios SET nombre = ?, telefono = ? WHERE id = ?");
-$stmt->bind_param("ssi", $nombre, $telefono, $id);
-
-// Ejecutar la consulta
-if ($stmt->execute()) {
-    echo "Usuario actualizado correctamente. Filas afectadas: " . $stmt->affected_rows;
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-// Cerrar la conexión
-$stmt->close();
-$conn->close();
-?&gt;</code></pre>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
                         </div>
                     </div>
-                    
+
                     <h2 class="mt-5">4. Eliminar (Delete) - Borrando Registros</h2>
                     <p>
                         La operación DELETE nos permite eliminar registros de la base de datos:
                     </p>
-                    
                     <div class="vscode-editor mt-4">
                         <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                             <span><i class="fas fa-database me-2"></i>eliminar_usuario.php</span>
-                        </div>
-                        <div class="vscode-editor-content bg-dark p-3">
-                            <pre><code class="language-php">&lt;?php
-// Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tutorial_php";
+                        </div>                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión a la base de datos usando PDO</span>
+<span class="php-variable">$host</span> = <span class="php-string">"localhost"</span>;
+<span class="php-variable">$dbname</span> = <span class="php-string">"tutorial_php"</span>;
+<span class="php-variable">$username</span> = <span class="php-string">"root"</span>;
+<span class="php-variable">$password</span> = <span class="php-string">""</span>;
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Crear conexión PDO</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(<span class="php-string">"mysql:host=$host;dbname=$dbname"</span>, <span class="php-variable">$username</span>, <span class="php-variable">$password</span>);
+    
+    <span class="php-comment">// Configurar PDO para mostrar errores</span>
+    <span class="php-variable">$pdo</span>-><span class="php-function">setAttribute</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span>, <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>);
+    
+    <span class="php-comment">// ID del usuario a eliminar</span>
+    <span class="php-variable">$id</span> = 1;
+    
+    <span class="php-comment">// Preparar la consulta SQL con PDO</span>
+    <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"DELETE FROM usuarios WHERE id = ?"</span>);
+    
+    <span class="php-comment">// Ejecutar la consulta con los parámetros</span>
+    <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$id</span>]);
+    
+    <span class="php-comment">// Obtener el número de filas afectadas</span>
+    <span class="php-variable">$rowCount</span> = <span class="php-variable">$stmt</span>-><span class="php-function">rowCount</span>();
+    
+    <span class="php-function">echo</span> <span class="php-string">"Usuario eliminado correctamente. Filas afectadas: "</span> . <span class="php-variable">$rowCount</span>;
+    
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// Manejar errores de base de datos</span>
+    <span class="php-function">echo</span> <span class="php-string">"Error: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
+} <span class="php-keyword">finally</span> {
+    <span class="php-comment">// Cerrar la conexión y liberar recursos</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">null</span>;
+    <span class="php-variable">$stmt</span> = <span class="php-keyword">null</span>;
 }
-
-// ID del usuario a eliminar
-$id = 1;
-
-// Preparar la consulta SQL
-$stmt = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
-$stmt->bind_param("i", $id);
-
-// Ejecutar la consulta
-if ($stmt->execute()) {
-    echo "Usuario eliminado correctamente. Filas afectadas: " . $stmt->affected_rows;
-} else {
-    echo "Error: " . $stmt->error;
-}
-
-// Cerrar la conexión
-$stmt->close();
-$conn->close();
-?&gt;</code></pre>
+<span class="php-tag">?&gt;</span></code></pre>
                         </div>
-                    </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>                    </div>
                     
-                    <h2 class="mt-5">Aplicación CRUD Completa</h2>
-                    <p>
-                        Ahora vamos a integrar todas las operaciones CRUD en una aplicación web simple para gestionar usuarios.
-                    </p>
-                    
-                    <div class="alert alert-warning">
-                        <i class="fas fa-exclamation-triangle me-2"></i>
-                        Esta es una estructura básica para fines educativos. En un entorno de producción, deberías implementar medidas adicionales de validación, seguridad y manejar errores de forma más robusta.
-                    </div>
-                    
-                    <h3>1. Archivo de Conexión (db_connection.php)</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Archivo: db_connection.php
-
-// Parámetros de conexión
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tutorial_php";
-
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Establecer charset
-$conn->set_charset("utf8");
-?&gt;</code></pre>
-                        </div>
-                    </div>
-                    
-                    <h3>2. Página Principal (index.php)</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Incluir archivo de conexión
-require_once 'db_connection.php';
-
-// Consulta para obtener todos los usuarios
-$sql = "SELECT id, nombre, email, telefono FROM usuarios";
-$result = $conn->query($sql);
-?&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Sistema CRUD de Usuarios&lt;/title&gt;
-    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="container mt-5"&gt;
-        &lt;div class="row"&gt;
-            &lt;div class="col-12"&gt;
-                &lt;h1 class="mb-4"&gt;Sistema CRUD de Usuarios&lt;/h1&gt;
-                
-                &lt;div class="mb-4"&gt;
-                    &lt;a href="crear.php" class="btn btn-primary"&gt;
-                        &lt;i class="fas fa-user-plus"&gt;&lt;/i&gt; Agregar Nuevo Usuario
-                    &lt;/a&gt;
-                &lt;/div&gt;
-                
-                &lt;table class="table table-striped table-bordered"&gt;
-                    &lt;thead class="table-dark"&gt;
-                        &lt;tr&gt;
-                            &lt;th&gt;ID&lt;/th&gt;
-                            &lt;th&gt;Nombre&lt;/th&gt;
-                            &lt;th&gt;Email&lt;/th&gt;
-                            &lt;th&gt;Teléfono&lt;/th&gt;
-                            &lt;th&gt;Acciones&lt;/th&gt;
-                        &lt;/tr&gt;
-                    &lt;/thead&gt;
-                    &lt;tbody&gt;
-                        &lt;?php if ($result->num_rows > 0): ?&gt;
-                            &lt;?php while($row = $result->fetch_assoc()): ?&gt;
-                                &lt;tr&gt;
-                                    &lt;td&gt;&lt;?= $row['id'] ?&gt;&lt;/td&gt;
-                                    &lt;td&gt;&lt;?= $row['nombre'] ?&gt;&lt;/td&gt;
-                                    &lt;td&gt;&lt;?= $row['email'] ?&gt;&lt;/td&gt;
-                                    &lt;td&gt;&lt;?= $row['telefono'] ?&gt;&lt;/td&gt;
-                                    &lt;td&gt;
-                                        &lt;a href="ver.php?id=&lt;?= $row['id'] ?&gt;" class="btn btn-sm btn-info"&gt;
-                                            &lt;i class="fas fa-eye"&gt;&lt;/i&gt; Ver
-                                        &lt;/a&gt;
-                                        &lt;a href="editar.php?id=&lt;?= $row['id'] ?&gt;" class="btn btn-sm btn-warning"&gt;
-                                            &lt;i class="fas fa-edit"&gt;&lt;/i&gt; Editar
-                                        &lt;/a&gt;
-                                        &lt;a href="eliminar.php?id=&lt;?= $row['id'] ?&gt;" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar este usuario?');"&gt;
-                                            &lt;i class="fas fa-trash"&gt;&lt;/i&gt; Eliminar
-                                        &lt;/a&gt;
-                                    &lt;/td&gt;
-                                &lt;/tr&gt;
-                            &lt;?php endwhile; ?&gt;
-                        &lt;?php else: ?&gt;
-                            &lt;tr&gt;
-                                &lt;td colspan="5" class="text-center"&gt;No hay usuarios registrados&lt;/td&gt;
-                            &lt;/tr&gt;
-                        &lt;?php endif; ?&gt;
-                    &lt;/tbody&gt;
-                &lt;/table&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
-    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-&lt;?php
-// Cerrar la conexión
-$conn->close();
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
-                    </div>
-                    
-                    <h3>3. Crear Usuario (crear.php)</h3>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Incluir archivo de conexión
-require_once 'db_connection.php';
-
-// Inicializar variables
-$nombre = $email = $telefono = "";
-$nombre_err = $email_err = "";
-
-// Procesar datos del formulario cuando se envía
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // Validar nombre
-    if (empty(trim($_POST["nombre"]))) {
-        $nombre_err = "Por favor ingrese un nombre.";
-    } else {
-        $nombre = trim($_POST["nombre"]);
-    }
-    
-    // Validar email
-    if (empty(trim($_POST["email"]))) {
-        $email_err = "Por favor ingrese un email.";
-    } else {
-        // Preparar una consulta SELECT
-        $sql = "SELECT id FROM usuarios WHERE email = ?";
-        
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("s", $param_email);
-            $param_email = trim($_POST["email"]);
-            
-            if ($stmt->execute()) {
-                $stmt->store_result();
-                
-                if ($stmt->num_rows > 0) {
-                    $email_err = "Este email ya está registrado.";
-                } else {
-                    $email = trim($_POST["email"]);
-                }
-            } else {
-                echo "¡Ups! Algo salió mal. Por favor, inténtelo más tarde.";
-            }
-            
-            $stmt->close();
-        }
-    }
-    
-    // Validar teléfono
-    $telefono = trim($_POST["telefono"]);
-    
-    // Verificar si hay errores antes de insertar en la base de datos
-    if (empty($nombre_err) && empty($email_err)) {
-        
-        // Preparar consulta INSERT
-        $sql = "INSERT INTO usuarios (nombre, email, telefono) VALUES (?, ?, ?)";
-        
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("sss", $param_nombre, $param_email, $param_telefono);
-            
-            // Establecer parámetros
-            $param_nombre = $nombre;
-            $param_email = $email;
-            $param_telefono = $telefono;
-            
-            // Intentar ejecutar la consulta
-            if ($stmt->execute()) {
-                // Redireccionar a la página principal
-                header("location: index.php");
-                exit();
-            } else {
-                echo "¡Ups! Algo salió mal. Por favor, inténtelo más tarde.";
-            }
-            
-            $stmt->close();
-        }
-    }
-}
-?&gt;
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Crear Usuario&lt;/title&gt;
-    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="container mt-5"&gt;
-        &lt;div class="row"&gt;
-            &lt;div class="col-lg-6 mx-auto"&gt;
-                &lt;div class="card shadow"&gt;
-                    &lt;div class="card-header bg-primary text-white"&gt;
-                        &lt;h4 class="mb-0"&gt;Agregar Nuevo Usuario&lt;/h4&gt;
-                    &lt;/div&gt;
-                    &lt;div class="card-body"&gt;
-                        &lt;form action="&lt;?= htmlspecialchars($_SERVER["PHP_SELF"]); ?&gt;" method="post"&gt;
-                            &lt;div class="mb-3"&gt;
-                                &lt;label for="nombre" class="form-label"&gt;Nombre&lt;/label&gt;
-                                &lt;input type="text" name="nombre" class="form-control &lt;?= (!empty($nombre_err)) ? 'is-invalid' : ''; ?&gt;" value="&lt;?= $nombre; ?&gt;"&gt;
-                                &lt;div class="invalid-feedback"&gt;&lt;?= $nombre_err; ?&gt;&lt;/div&gt;
-                            &lt;/div&gt;
-                            
-                            &lt;div class="mb-3"&gt;
-                                &lt;label for="email" class="form-label"&gt;Email&lt;/label&gt;
-                                &lt;input type="email" name="email" class="form-control &lt;?= (!empty($email_err)) ? 'is-invalid' : ''; ?&gt;" value="&lt;?= $email; ?&gt;"&gt;
-                                &lt;div class="invalid-feedback"&gt;&lt;?= $email_err; ?&gt;&lt;/div&gt;
-                            &lt;/div&gt;
-                            
-                            &lt;div class="mb-3"&gt;
-                                &lt;label for="telefono" class="form-label"&gt;Teléfono&lt;/label&gt;
-                                &lt;input type="text" name="telefono" class="form-control" value="&lt;?= $telefono; ?&gt;"&gt;
-                            &lt;/div&gt;
-                            
-                            &lt;div class="d-grid gap-2 d-md-flex justify-content-md-end"&gt;
-                                &lt;a href="index.php" class="btn btn-secondary"&gt;Cancelar&lt;/a&gt;
-                                &lt;button type="submit" class="btn btn-primary"&gt;Crear Usuario&lt;/button&gt;
-                            &lt;/div&gt;
-                        &lt;/form&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver Resultado</button>
-                        </div>
-                        <div class="result-section p-3">
-                            <div class="alert alert-secondary">El resultado se mostrará aquí al presionar "Ver Resultado"</div>
-                        </div>
-                    </div>
-
-                    <div class="alert alert-info mt-4">
-                        <h5><i class="fas fa-graduation-cap me-2"></i>Nota importante:</h5>
-                        <p>
-                            Por limitaciones de espacio, no se incluyen en esta página todos los archivos del sistema CRUD completo. Los archivos faltantes (ver.php, editar.php y eliminar.php) seguirían una estructura similar a los mostrados, implementando las operaciones correspondientes.
-                        </p>
-                        <p>
-                            En el proyecto final de esta guía, desarrollarás un sistema CRUD completo y funcional con todas estas características y más.
-                        </p>
-                    </div>
-                    
-                    <h2 class="mt-5">Buenas Prácticas para Operaciones CRUD</h2>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Recomendaciones de seguridad y optimización</h5>
-                            <ul>
-                                <li><strong>Usar consultas preparadas</strong>: Siempre utiliza consultas preparadas para prevenir ataques de inyección SQL.</li>
-                                <li><strong>Validar datos</strong>: Valida todos los datos de entrada, tanto en el cliente como en el servidor.</li>
-                                <li><strong>Sanitizar salidas</strong>: Usa funciones como <code>htmlspecialchars()</code> para sanitizar datos antes de mostrarlos.</li>
-                                <li><strong>Manejo de errores</strong>: Implementa un adecuado sistema de manejo de errores y no muestres información sensible al usuario.</li>
-                                <li><strong>Cerrar conexiones</strong>: Siempre cierra las conexiones y consultas preparadas después de usarlas.</li>
-                                <li><strong>Transacciones</strong>: Usa transacciones para operaciones que involucran múltiples consultas relacionadas.</li>
-                                <li><strong>Mensajes de error personalizados</strong>: Proporciona mensajes útiles pero que no revelen detalles internos.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <h2 class="mt-4">Alternativas a SQL Puro</h2>
-                    <p>
-                        Aunque en esta lección hemos utilizado SQL puro con PHP, existen otras alternativas que facilitan las operaciones CRUD:
-                    </p>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">ORM (Object-Relational Mapping)</h5>
-                                    <p class="card-text">Los ORMs como Doctrine o Eloquent permiten trabajar con objetos PHP en lugar de SQL directo.</p>
-                                    <a href="https://www.doctrine-project.org/" class="btn btn-sm btn-outline-primary" target="_blank">Doctrine</a>
-                                    <a href="https://laravel.com/docs/eloquent" class="btn btn-sm btn-outline-primary ms-2" target="_blank">Eloquent</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Query Builders</h5>
-                                    <p class="card-text">Las bibliotecas de construcción de consultas ofrecen una interfaz fluida para crear consultas SQL.</p>
-                                    <a href="https://packagist.org/packages/aura/sqlquery" class="btn btn-sm btn-outline-primary" target="_blank">Aura.SqlQuery</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Demo en vivo -->
-                    <h2 class="mt-5">Demo Interactiva: Formulario CRUD</h2>
-                    <p>A continuación, puedes probar un pequeño formulario que simula una operación CREATE:</p>
-                    
-                    <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">
-                            Formulario de Registro (Simulación)
-                        </div>
-                        <div class="card-body">
-                            <form id="crud-form">
-                                <div class="mb-3">
-                                    <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="telefono" class="form-label">Teléfono</label>
-                                    <input type="text" class="form-control" id="telefono" name="telefono">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Registrar</button>
-                            </form>
-                            <div class="crud-result mt-3"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Navegación de página -->
-                    <div class="page-navigation">
+                    <!-- Navegación entre lecciones -->
+                    <div class="page-navigation mt-5 pt-3 border-top d-flex justify-content-between">
                         <a href="conexion.html" class="btn btn-outline-primary">
-                            <i class="fas fa-arrow-left me-2"></i> Anterior: Conexión a MySQL
+                            <i class="fas fa-arrow-left me-2"></i>Anterior: Conexión a MySQL
                         </a>
-                        <a href="../proyecto-final.html" class="btn btn-primary">
-                            Siguiente: Proyecto Final <i class="fas fa-arrow-right ms-2"></i>
+                        <a href="../apis/introduccion.html" class="btn btn-outline-primary">
+                            Siguiente: Introducción a APIs<i class="fas fa-arrow-right ms-2"></i>
                         </a>
-                    </div>
-                    
-                    <!-- Ejercicio práctico -->
-                    <div class="card mt-5 border-primary">
-                        <div class="card-header bg-primary text-white">
-                            <h4 class="mb-0"><i class="fas fa-laptop-code me-2"></i>Ejercicio Práctico</h4>
-                        </div>
-                        <div class="card-body">
-                            <h5>Desarrolla un mini sistema CRUD</h5>
-                            <p>Utilizando lo aprendido en esta lección, desarrolla un sistema CRUD para una librería en línea con las siguientes características:</p>
-                            <ol>
-                                <li>Una tabla <code>libros</code> con los campos: id, titulo, autor, anio_publicacion, genero y disponible (boolean)</li>
-                                <li>Formulario para agregar nuevos libros</li>
-                                <li>Lista de todos los libros con opciones para ver detalles, editar y eliminar</li>
-                                <li>Función de búsqueda por título o autor</li>
-                                <li>Opción para marcar un libro como disponible/no disponible</li>
-                            </ol>
-                            <div class="alert alert-light border">
-                                <p><strong>Pistas:</strong></p>
-                                <ul>
-                                    <li>Utiliza Bootstrap para crear una interfaz atractiva</li>
-                                    <li>Implementa validación de formularios</li>
-                                    <li>Usa consultas preparadas para todas las operaciones con la base de datos</li>
-                                    <li>Para la búsqueda, puedes usar la cláusula <code>LIKE</code> de SQL</li>
-                                </ul>
-                            </div>
-                            <button class="btn btn-sm btn-success complete-lesson" data-bs-toggle="tooltip" title="Marcar como completada">
-                                <i class="fas fa-check me-2"></i>Completar lección
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-5 mt-5">
@@ -825,8 +553,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h5 class="mb-4 text-white">Recursos</h5>
                     <ul class="list-unstyled">
                         <li><a href="https://www.php.net" class="text-decoration-none text-white" target="_blank">PHP.net</a></li>
-                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a>
-                        </li>
+                        <li><a href="https://www.w3schools.com/php/" class="text-decoration-none text-white" target="_blank">W3Schools</a></li>
                         <li><a href="https://www.mysql.com/" class="text-decoration-none text-white" target="_blank">MySQL</a></li>
                     </ul>
                 </div>
@@ -883,5 +610,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Custom JS -->
     <script src="../../js/scripts.js"></script>
     <script src="../../js/sidebar.js"></script>
+    <!-- Prism.js para resaltado de sintaxis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
 </body>
 </html>

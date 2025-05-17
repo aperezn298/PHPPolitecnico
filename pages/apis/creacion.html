@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<!D    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creación de APIs con PHP - Guía Interactiva de PHP</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
+    <script src="../../js/sidebar.js" defer></script>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -143,11 +156,502 @@
                             <li class="breadcrumb-item active" aria-current="page">Creación de APIs</li>
                         </ol>
                     </nav>
+                      <h1 class="mb-4">Creación de APIs con PHP</h1>
                     
-                    <h1 class="mb-4">Creación de APIs con PHP</h1>
+                    <div class="alert alert-primary">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
+                        <ul class="mb-0">
+                            <li>Diseñar y crear una API REST con PHP nativo</li>
+                            <li>Implementar operaciones CRUD en la API</li>
+                            <li>Comprender la estructura de una API profesional</li>
+                            <li>Manejar respuestas y errores en el formato adecuado</li>
+                            <li>Implementar seguridad básica en APIs</li>
+                        </ul>
+                    </div>
                     
-                    <div class="alert alert-info">
-                        <i class="fas fa-info-circle me-2"></i> Esta página está en construcción. Pronto estará disponible el contenido sobre creación de APIs con PHP.
+                    <h2 class="mt-5">Arquitectura de una API REST con PHP</h2>
+                    <p>
+                        Antes de crear nuestra API, vamos a entender la estructura de archivos que utilizaremos:
+                    </p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-5">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-folder-tree text-danger me-2"></i>Estructura de archivos
+                                    </h5>
+                                    <div class="file-tree">
+                                        <ul>
+                                            <li><i class="fas fa-folder"></i> api/
+                                                <ul>
+                                                    <li><i class="fas fa-file-code"></i> index.php (punto de entrada)</li>
+                                                    <li><i class="fas fa-file-code"></i> db.php (conexión a la BD)</li>
+                                                    <li><i class="fas fa-file-code"></i> UsuarioController.php (lógica)</li>
+                                                    <li><i class="fas fa-file-code"></i> config.php (configuración)</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-sitemap text-danger me-2"></i>Flujo de la API
+                                    </h5>
+                                    <ol>
+                                        <li><strong>index.php</strong> - Recibe todas las peticiones HTTP y actúa como enrutador</li>
+                                        <li><strong>db.php</strong> - Establece la conexión con la base de datos</li>
+                                        <li><strong>UsuarioController.php</strong> - Contiene las funciones para manejar las operaciones CRUD</li>
+                                        <li><strong>Los controladores</strong> ejecutan consultas en la base de datos</li>
+                                        <li><strong>Se genera y devuelve</strong> una respuesta JSON con código HTTP apropiado</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Conexión a la base de datos (db.php)</h2>
+                    <p>Primero, creamos el archivo de conexión a la base de datos:</p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-database me-2"></i>db.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-variable">$host</span> = <span class="php-string">'localhost'</span>;
+<span class="php-variable">$dbname</span> = <span class="php-string">'prueba'</span>;
+<span class="php-variable">$user</span> = <span class="php-string">'root'</span>;
+<span class="php-variable">$pass</span> = <span class="php-string">''</span>;
+
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Crear conexión PDO</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(<span class="php-string">"mysql:host=$host;dbname=$dbname;charset=utf8"</span>, <span class="php-variable">$user</span>, <span class="php-variable">$pass</span>);
+    
+    <span class="php-comment">// Configurar PDO para mostrar errores</span>
+    <span class="php-variable">$pdo</span>-><span class="php-function">setAttribute</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span>, <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>);
+} <span class="php-keyword">catch</span> (<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// En caso de error, devolver respuesta de error en JSON</span>
+    <span class="php-function">http_response_code</span>(<span class="php-number">500</span>);
+    <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Error de conexión: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>()]);
+    <span class="php-keyword">exit</span>;
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Controlador de usuarios (UsuarioController.php)</h2>
+                    <p>
+                        A continuación, creamos el controlador que manejará las operaciones CRUD para los usuarios:
+                    </p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-code me-2"></i>UsuarioController.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Incluir archivo de conexión a la BD</span>
+<span class="php-keyword">require_once</span> <span class="php-string">'db.php'</span>;
+
+<span class="php-comment">/**
+ * Obtener todos los usuarios
+ * Método: GET
+ * URL: /usuarios
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">obtenerUsuarios</span>() {
+    <span class="php-keyword">global</span> <span class="php-variable">$pdo</span>;
+    <span class="php-keyword">try</span> {
+        <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">query</span>(<span class="php-string">"SELECT * FROM usuarios"</span>);
+        <span class="php-variable">$usuarios</span> = <span class="php-variable">$stmt</span>-><span class="php-function">fetchAll</span>(<span class="php-class">PDO</span>::<span class="php-constant">FETCH_ASSOC</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>(<span class="php-variable">$usuarios</span>);
+    } <span class="php-keyword">catch</span> (<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">500</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Error al obtener usuarios"</span>]);
+    }
+}
+
+<span class="php-comment">/**
+ * Obtener un usuario por ID
+ * Método: GET
+ * URL: /usuarios/{id}
+ * @param int $id ID del usuario
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">obtenerUsuario</span>(<span class="php-variable">$id</span>) {
+    <span class="php-keyword">global</span> <span class="php-variable">$pdo</span>;
+    <span class="php-keyword">try</span> {
+        <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"SELECT * FROM usuarios WHERE id = ?"</span>);
+        <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$id</span>]);
+        <span class="php-variable">$usuario</span> = <span class="php-variable">$stmt</span>-><span class="php-function">fetch</span>(<span class="php-class">PDO</span>::<span class="php-constant">FETCH_ASSOC</span>);
+
+        <span class="php-keyword">if</span> (<span class="php-variable">$usuario</span>) {
+            <span class="php-function">echo</span> <span class="php-function">json_encode</span>(<span class="php-variable">$usuario</span>);
+        } <span class="php-keyword">else</span> {
+            <span class="php-function">http_response_code</span>(<span class="php-number">404</span>);
+            <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Usuario no encontrado"</span>]);
+        }
+    } <span class="php-keyword">catch</span> (<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">500</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Error al obtener usuario"</span>]);
+    }
+}
+
+<span class="php-comment">/**
+ * Crear un nuevo usuario
+ * Método: POST
+ * URL: /usuarios
+ * @param array $data Datos del usuario a crear
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">crearUsuario</span>(<span class="php-variable">$data</span>) {
+    <span class="php-keyword">global</span> <span class="php-variable">$pdo</span>;
+
+    <span class="php-comment">// Validar datos necesarios</span>
+    <span class="php-keyword">if</span> (!<span class="php-function">isset</span>(<span class="php-variable">$data</span>[<span class="php-string">'nombre'</span>]) || !<span class="php-function">isset</span>(<span class="php-variable">$data</span>[<span class="php-string">'correo'</span>])) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">400</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Nombre y correo son obligatorios"</span>]);
+        <span class="php-keyword">return</span>;
+    }
+
+    <span class="php-keyword">try</span> {
+        <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"INSERT INTO usuarios (nombre, correo) VALUES (?, ?)"</span>);
+        <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$data</span>[<span class="php-string">'nombre'</span>], <span class="php-variable">$data</span>[<span class="php-string">'correo'</span>]]);
+        <span class="php-function">http_response_code</span>(<span class="php-number">201</span>); <span class="php-comment">// 201 Created</span>
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"mensaje"</span> => <span class="php-string">"Usuario creado"</span>]);
+    } <span class="php-keyword">catch</span> (<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">500</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Error al crear usuario"</span>]);
+    }
+}
+
+<span class="php-comment">/**
+ * Actualizar un usuario existente
+ * Método: PUT
+ * URL: /usuarios/{id}
+ * @param int $id ID del usuario
+ * @param array $data Datos actualizados
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">actualizarUsuario</span>(<span class="php-variable">$id</span>, <span class="php-variable">$data</span>) {
+    <span class="php-keyword">global</span> <span class="php-variable">$pdo</span>;
+
+    <span class="php-comment">// Validar datos necesarios</span>
+    <span class="php-keyword">if</span> (!<span class="php-function">isset</span>(<span class="php-variable">$data</span>[<span class="php-string">'nombre'</span>]) || !<span class="php-function">isset</span>(<span class="php-variable">$data</span>[<span class="php-string">'correo'</span>])) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">400</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Nombre y correo son obligatorios"</span>]);
+        <span class="php-keyword">return</span>;
+    }
+
+    <span class="php-keyword">try</span> {
+        <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"UPDATE usuarios SET nombre = ?, correo = ? WHERE id = ?"</span>);
+        <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$data</span>[<span class="php-string">'nombre'</span>], <span class="php-variable">$data</span>[<span class="php-string">'correo'</span>], <span class="php-variable">$id</span>]);
+
+        <span class="php-keyword">if</span> (<span class="php-variable">$stmt</span>-><span class="php-function">rowCount</span>() > <span class="php-number">0</span>) {
+            <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"mensaje"</span> => <span class="php-string">"Usuario actualizado"</span>]);
+        } <span class="php-keyword">else</span> {
+            <span class="php-function">http_response_code</span>(<span class="php-number">404</span>);
+            <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Usuario no encontrado o sin cambios"</span>]);
+        }
+    } <span class="php-keyword">catch</span> (<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">500</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Error al actualizar usuario"</span>]);
+    }
+}
+
+<span class="php-comment">/**
+ * Eliminar un usuario
+ * Método: DELETE
+ * URL: /usuarios/{id}
+ * @param int $id ID del usuario
+ */</span>
+<span class="php-keyword">function</span> <span class="php-function">eliminarUsuario</span>(<span class="php-variable">$id</span>) {
+    <span class="php-keyword">global</span> <span class="php-variable">$pdo</span>;
+    <span class="php-keyword">try</span> {
+        <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">prepare</span>(<span class="php-string">"DELETE FROM usuarios WHERE id = ?"</span>);
+        <span class="php-variable">$stmt</span>-><span class="php-function">execute</span>([<span class="php-variable">$id</span>]);
+
+        <span class="php-keyword">if</span> (<span class="php-variable">$stmt</span>-><span class="php-function">rowCount</span>() > <span class="php-number">0</span>) {
+            <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"mensaje"</span> => <span class="php-string">"Usuario eliminado"</span>]);
+        } <span class="php-keyword">else</span> {
+            <span class="php-function">http_response_code</span>(<span class="php-number">404</span>);
+            <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Usuario no encontrado"</span>]);
+        }
+    } <span class="php-keyword">catch</span> (<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">500</span>);
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Error al eliminar usuario"</span>]);
+    }
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Punto de entrada de la API (index.php)</h2>
+                    <p>
+                        Finalmente, creamos el archivo index.php que actuará como enrutador para todas las peticiones:
+                    </p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-code me-2"></i>index.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Configurar cabeceras para API REST</span>
+<span class="php-function">header</span>(<span class="php-string">"Content-Type: application/json"</span>);
+<span class="php-function">header</span>(<span class="php-string">"Access-Control-Allow-Origin: *"</span>);
+<span class="php-function">header</span>(<span class="php-string">"Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS"</span>);
+<span class="php-function">header</span>(<span class="php-string">"Access-Control-Allow-Headers: Content-Type, Authorization"</span>);
+
+<span class="php-comment">// Para peticiones OPTIONS (CORS preflight)</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$_SERVER</span>[<span class="php-string">'REQUEST_METHOD'</span>] == <span class="php-string">'OPTIONS'</span>) {
+    <span class="php-keyword">exit</span>(<span class="php-number">0</span>);
+}
+
+<span class="php-comment">// Incluir el controlador</span>
+<span class="php-keyword">require_once</span> <span class="php-string">'UsuarioController.php'</span>;
+
+<span class="php-comment">// Obtener método HTTP</span>
+<span class="php-variable">$method</span> = <span class="php-variable">$_SERVER</span>[<span class="php-string">'REQUEST_METHOD'</span>];
+
+<span class="php-comment">// Analizar la ruta solicitada</span>
+<span class="php-variable">$path</span> = <span class="php-function">explode</span>(<span class="php-string">'/'</span>, <span class="php-function">trim</span>(<span class="php-variable">$_SERVER</span>[<span class="php-string">'PATH_INFO'</span>] ?? <span class="php-string">''</span>, <span class="php-string">'/'</span>));
+<span class="php-variable">$resource</span> = <span class="php-variable">$path</span>[<span class="php-number">0</span>] ?? <span class="php-keyword">null</span>;
+<span class="php-variable">$id</span> = <span class="php-variable">$path</span>[<span class="php-number">1</span>] ?? <span class="php-keyword">null</span>;
+
+<span class="php-comment">// Enrutamiento basado en método HTTP y recurso</span>
+<span class="php-keyword">switch</span> (<span class="php-variable">$method</span>) {
+    <span class="php-keyword">case</span> <span class="php-string">'GET'</span>:
+        <span class="php-keyword">if</span> (<span class="php-variable">$resource</span> === <span class="php-string">'usuarios'</span>) {
+            <span class="php-variable">$id</span> ? <span class="php-function">obtenerUsuario</span>(<span class="php-variable">$id</span>) : <span class="php-function">obtenerUsuarios</span>();
+        }
+        <span class="php-keyword">break</span>;
+
+    <span class="php-keyword">case</span> <span class="php-string">'POST'</span>:
+        <span class="php-keyword">if</span> (<span class="php-variable">$resource</span> === <span class="php-string">'usuarios'</span>) {
+            <span class="php-variable">$data</span> = <span class="php-function">json_decode</span>(<span class="php-function">file_get_contents</span>(<span class="php-string">"php://input"</span>), <span class="php-keyword">true</span>);
+            <span class="php-function">crearUsuario</span>(<span class="php-variable">$data</span>);
+        }
+        <span class="php-keyword">break</span>;
+
+    <span class="php-keyword">case</span> <span class="php-string">'PUT'</span>:
+        <span class="php-keyword">if</span> (<span class="php-variable">$resource</span> === <span class="php-string">'usuarios'</span> && <span class="php-variable">$id</span>) {
+            <span class="php-variable">$data</span> = <span class="php-function">json_decode</span>(<span class="php-function">file_get_contents</span>(<span class="php-string">"php://input"</span>), <span class="php-keyword">true</span>);
+            <span class="php-function">actualizarUsuario</span>(<span class="php-variable">$id</span>, <span class="php-variable">$data</span>);
+        }
+        <span class="php-keyword">break</span>;
+
+    <span class="php-keyword">case</span> <span class="php-string">'DELETE'</span>:
+        <span class="php-keyword">if</span> (<span class="php-variable">$resource</span> === <span class="php-string">'usuarios'</span> && <span class="php-variable">$id</span>) {
+            <span class="php-function">eliminarUsuario</span>(<span class="php-variable">$id</span>);
+        }
+        <span class="php-keyword">break</span>;
+
+    <span class="php-keyword">default</span>:
+        <span class="php-function">http_response_code</span>(<span class="php-number">405</span>); <span class="php-comment">// Method Not Allowed</span>
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Método no permitido"</span>]);
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Creación de la Base de Datos</h2>
+                    <p>
+                        Para que nuestra API funcione, necesitamos crear la tabla <code>usuarios</code> en la base de datos:
+                    </p>
+                    
+                    <div class="vscode-editor mt-3">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-database me-2"></i>crear_tabla.sql</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="sql">
+<span class="sql-comment">-- Crear la base de datos si no existe</span>
+<span class="sql-keyword">CREATE DATABASE IF NOT EXISTS</span> <span class="sql-identifier">prueba</span>;
+
+<span class="sql-comment">-- Usar la base de datos</span>
+<span class="sql-keyword">USE</span> <span class="sql-identifier">prueba</span>;
+
+<span class="sql-comment">-- Crear la tabla usuarios</span>
+<span class="sql-keyword">CREATE TABLE IF NOT EXISTS</span> <span class="sql-identifier">usuarios</span> (
+  <span class="sql-identifier">id</span> <span class="sql-keyword">INT</span> <span class="sql-keyword">AUTO_INCREMENT</span> <span class="sql-keyword">PRIMARY KEY</span>,
+  <span class="sql-identifier">nombre</span> <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL</span>,
+  <span class="sql-identifier">correo</span> <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL</span> <span class="sql-keyword">UNIQUE</span>,
+  <span class="sql-identifier">fecha_registro</span> <span class="sql-keyword">TIMESTAMP</span> <span class="sql-keyword">DEFAULT</span> <span class="sql-keyword">CURRENT_TIMESTAMP</span>
+);
+
+<span class="sql-comment">-- Insertar algunos usuarios de prueba</span>
+<span class="sql-keyword">INSERT INTO</span> <span class="sql-identifier">usuarios</span> (<span class="sql-identifier">nombre</span>, <span class="sql-identifier">correo</span>) <span class="sql-keyword">VALUES</span>
+(<span class="sql-string">'Juan Pérez'</span>, <span class="sql-string">'juan@example.com'</span>),
+(<span class="sql-string">'María García'</span>, <span class="sql-string">'maria@example.com'</span>);
+</code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>MySQL 8.0</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Probando la API</h2>
+                    <p>
+                        Una vez que hayamos creado todos los archivos y la base de datos, podemos probar nuestra API con herramientas como Postman o utilizando cURL desde la línea de comandos:
+                    </p>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-dark text-white">
+                                    <i class="fas fa-terminal me-2"></i>Probar con cURL
+                                </div>
+                                <div class="card-body">
+                                    <pre><code class="language-bash">
+# GET - Obtener todos los usuarios
+curl http://localhost/api/usuarios
+
+# GET - Obtener un usuario por ID
+curl http://localhost/api/usuarios/1
+
+# POST - Crear un nuevo usuario
+curl -X POST http://localhost/api/usuarios \
+  -H "Content-Type: application/json" \
+  -d '{"nombre":"Ana Rodríguez","correo":"ana@example.com"}'
+
+# PUT - Actualizar un usuario
+curl -X PUT http://localhost/api/usuarios/1 \
+  -H "Content-Type: application/json" \
+  -d '{"nombre":"Juan Pérez Actualizado","correo":"juan.nuevo@example.com"}'
+
+# DELETE - Eliminar un usuario
+curl -X DELETE http://localhost/api/usuarios/2
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-dark text-white">
+                                    <i class="fas fa-file-code me-2"></i>Ejemplo de respuesta JSON
+                                </div>
+                                <div class="card-body">
+                                    <pre><code class="language-json">
+// Respuesta GET /usuarios
+[
+  {
+    "id": "1",
+    "nombre": "Juan Pérez",
+    "correo": "juan@example.com",
+    "fecha_registro": "2023-05-15 10:30:45"
+  },
+  {
+    "id": "2",
+    "nombre": "María García",
+    "correo": "maria@example.com",
+    "fecha_registro": "2023-05-15 10:30:45"
+  }
+]
+
+// Respuesta POST /usuarios (201 Created)
+{
+  "mensaje": "Usuario creado"
+}
+
+// Respuesta de error (404 Not Found)
+{
+  "error": "Usuario no encontrado"
+}
+                                    </code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2 class="mt-5">Seguridad en APIs</h2>
+                    <p>
+                        Para una API en producción, es importante implementar medidas de seguridad:
+                    </p>
+                    
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger"><i class="fas fa-shield-alt me-2"></i>Medidas de seguridad recomendadas</h5>
+                            <ol class="mb-0">
+                                <li><strong>Autenticación:</strong> Implementar JWT, API Keys o OAuth 2.0</li>
+                                <li><strong>HTTPS:</strong> Asegurar todas las comunicaciones con cifrado SSL/TLS</li>
+                                <li><strong>Validación de entradas:</strong> Sanitizar y validar todos los datos de entrada</li>
+                                <li><strong>Rate limiting:</strong> Limitar el número de solicitudes por usuario/IP</li>
+                                <li><strong>Logs de auditoría:</strong> Registrar todas las operaciones importantes</li>
+                                <li><strong>CORS:</strong> Configurar correctamente las políticas de acceso entre dominios</li>
+                                <li><strong>Protección contra SQL Injection:</strong> Usar consultas preparadas (como ya hicimos)</li>
+                                <li><strong>Gestión adecuada de errores:</strong> No revelar información sensible en errores</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-lock me-2"></i>api_key_auth.php</span>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Ejemplo simple de autenticación por API Key</span>
+<span class="php-keyword">function</span> <span class="php-function">verificarApiKey</span>() {
+    <span class="php-comment">// En producción, estas claves deberían almacenarse de forma segura</span>
+    <span class="php-variable">$apiKeys</span> = [
+        <span class="php-string">'abcd1234xyz'</span> => <span class="php-string">'usuario_cliente'</span>,
+        <span class="php-string">'efgh5678abc'</span> => <span class="php-string">'usuario_admin'</span>
+    ];
+    
+    <span class="php-comment">// Obtener encabezados</span>
+    <span class="php-variable">$headers</span> = <span class="php-function">getallheaders</span>();
+    
+    <span class="php-comment">// Verificar si existe el encabezado X-API-Key</span>
+    <span class="php-keyword">if</span> (!<span class="php-function">isset</span>(<span class="php-variable">$headers</span>[<span class="php-string">'X-API-Key'</span>])) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">401</span>); <span class="php-comment">// Unauthorized</span>
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"Se requiere API Key"</span>]);
+        <span class="php-keyword">exit</span>;
+    }
+    
+    <span class="php-variable">$apiKey</span> = <span class="php-variable">$headers</span>[<span class="php-string">'X-API-Key'</span>];
+    
+    <span class="php-comment">// Verificar si la API Key es válida</span>
+    <span class="php-keyword">if</span> (!<span class="php-function">array_key_exists</span>(<span class="php-variable">$apiKey</span>, <span class="php-variable">$apiKeys</span>)) {
+        <span class="php-function">http_response_code</span>(<span class="php-number">403</span>); <span class="php-comment">// Forbidden</span>
+        <span class="php-function">echo</span> <span class="php-function">json_encode</span>([<span class="php-string">"error"</span> => <span class="php-string">"API Key inválida"</span>]);
+        <span class="php-keyword">exit</span>;
+    }
+    
+    <span class="php-comment">// Aquí podríamos verificar permisos específicos según el usuario</span>
+    <span class="php-variable">$usuario</span> = <span class="php-variable">$apiKeys</span>[<span class="php-variable">$apiKey</span>];
+    
+    <span class="php-keyword">return</span> <span class="php-variable">$usuario</span>;
+}
+
+<span class="php-comment">// Esta función se llamaría al inicio de index.php</span>
+<span class="php-variable">$usuario</span> = <span class="php-function">verificarApiKey</span>();
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                            <span>PHP 8.2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mt-5">
+                        <h5><i class="fas fa-check-circle me-2"></i>En resumen</h5>
+                        <p class="mb-0">
+                            Crear una API REST con PHP nativo es relativamente sencillo y no requiere frameworks adicionales. En esta lección hemos visto cómo estructurar los archivos, crear un sistema de enrutamiento básico y manejar diferentes tipos de peticiones HTTP. Hemos implementado operaciones CRUD para una entidad Usuario y añadido un ejemplo básico de seguridad. Estos conceptos pueden expandirse para crear APIs más complejas y robustas.
+                        </p>
                     </div>
                     
                     <!-- Navegación entre lecciones -->

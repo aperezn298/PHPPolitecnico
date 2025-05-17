@@ -8,12 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Custom CSS -->    <link rel="stylesheet" href="../../css/styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Prism CSS -->
     <link href="../../css/prism.css" rel="stylesheet" />
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -134,7 +135,13 @@
                     <!-- Métodos de Conexión -->
                     <section id="conexion" class="mb-5">
                         <h2 class="mb-4">Métodos de Conexión a MySQL</h2>
-                        <p>PHP ofrece dos principales métodos para conectarse a MySQL:</p>
+                        <p>PHP ofrece dos principales métodos para conectarse a bases de datos MySQL:</p>
+                        
+                        <div class="alert alert-primary mb-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            La elección entre MySQLi y PDO dependerá de tus necesidades de proyecto. PDO ofrece mayor flexibilidad y compatibilidad con diferentes bases de datos, mientras que MySQLi está optimizado específicamente para MySQL.
+                        </div>
+                        
                         <div class="row g-4 mb-4">
                             <div class="col-md-6">
                                 <div class="card h-100 border-0 shadow-sm">
@@ -143,7 +150,12 @@
                                             <i class="fas fa-database text-primary me-2"></i>
                                             MySQLi
                                         </h5>
-                                        <p class="card-text">Extensión MySQL mejorada, específica para MySQL.</p>
+                                        <p class="card-text">Extensión MySQL mejorada, específica para MySQL. Ofrece tanto interfaz procedural como orientada a objetos.</p>
+                                        <ul class="mt-2 mb-0">
+                                            <li>Solo compatible con MySQL</li>
+                                            <li>Soporte para consultas preparadas</li>
+                                            <li>Disponible desde PHP 5.0</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +166,16 @@
                                             <i class="fas fa-database text-success me-2"></i>
                                             PDO
                                         </h5>
-                                        <p class="card-text">PHP Data Objects, compatible con múltiples bases de datos.</p>
+                                        <p class="card-text">PHP Data Objects, una interfaz consistente para acceder a múltiples bases de datos.</p>
+                                        <ul class="mt-2 mb-0">
+                                            <li>Compatible con 12+ tipos de bases de datos</li>
+                                            <li>Manejo de errores con excepciones</li>
+                                            <li>Mayor portabilidad de código</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </div>                    </section>
 
                     <!-- MySQLi -->
                     <section id="mysqli" class="mb-5">
@@ -167,95 +183,147 @@
                         <p>MySQLi ofrece dos estilos de programación: orientado a objetos y procedural. Aquí ejemplos de ambos:</p>
 
                         <!-- Conexión con MySQLi Orientado a Objetos -->
-                        <div class="vscode-editor mt-4">
-                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                                <span><i class="fas fa-database me-2"></i>mysqli_objeto.php</span>
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0"><i class="fas fa-code text-primary me-2"></i>MySQLi Orientado a Objetos</h5>
                             </div>
-                            <div class="vscode-editor-content bg-dark p-3">
-                                <pre><code class="language-php">&lt;?php
-// Conexión
-$mysqli = new mysqli("localhost", "usuario", "contraseña", "base_datos");
+                            <div class="card-body">
+                                <p>Este estilo utiliza objetos y métodos, siguiendo los principios de programación orientada a objetos:</p>                                <div class="vscode-editor mt-3">
+                                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                        <span><i class="fas fa-database me-2"></i>mysqli_objeto.php</span>
+                                    </div>
+                                    <div class="vscode-editor-content bg-dark p-3">
+                                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión</span>
+<span class="php-variable">$mysqli</span> = <span class="php-keyword">new</span> <span class="php-function">mysqli</span>(<span class="php-string">"localhost"</span>, <span class="php-string">"usuario"</span>, <span class="php-string">"contraseña"</span>, <span class="php-string">"base_datos"</span>);
 
-// Verificar conexión
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
+<span class="php-comment">// Verificar conexión</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$mysqli</span>-><span class="php-variable">connect_error</span>) {
+    <span class="php-function">die</span>(<span class="php-string">"Error de conexión: "</span> . <span class="php-variable">$mysqli</span>-><span class="php-variable">connect_error</span>);
 }
 
-// Realizar consulta
-$resultado = $mysqli->query("SELECT * FROM usuarios");
+<span class="php-comment">// Realizar consulta</span>
+<span class="php-variable">$resultado</span> = <span class="php-variable">$mysqli</span>-><span class="php-function">query</span>(<span class="php-string">"SELECT * FROM usuarios"</span>);
 
-// Cerrar conexión
-$mysqli->close();
-?&gt;</code></pre>
+<span class="php-comment">// Cerrar conexión</span>
+<span class="php-variable">$mysqli</span>-><span class="php-function">close</span>();
+<span class="php-tag">?&gt;</span></code></pre>
+                                    </div>
+                                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                        <span>PHP 8.2</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Conexión con MySQLi Procedural -->
-                        <div class="vscode-editor mt-4">
-                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                                <span><i class="fas fa-database me-2"></i>mysqli_procedural.php</span>
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0"><i class="fas fa-code text-success me-2"></i>MySQLi Procedural</h5>
                             </div>
-                            <div class="vscode-editor-content bg-dark p-3">
-                                <pre><code class="language-php">&lt;?php
-// Conexión
-$conexion = mysqli_connect("localhost", "usuario", "contraseña", "base_datos");
+                            <div class="card-body">
+                                <p>Este estilo utiliza funciones en lugar de métodos, siguiendo un paradigma más tradicional:</p>                                <div class="vscode-editor mt-3">
+                                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                        <span><i class="fas fa-database me-2"></i>mysqli_procedural.php</span>
+                                    </div>
+                                    <div class="vscode-editor-content bg-dark p-3">
+                                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Conexión</span>
+<span class="php-variable">$conexion</span> = <span class="php-function">mysqli_connect</span>(<span class="php-string">"localhost"</span>, <span class="php-string">"usuario"</span>, <span class="php-string">"contraseña"</span>, <span class="php-string">"base_datos"</span>);
 
-// Verificar conexión
-if (!$conexion) {
-    die("Error de conexión: " . mysqli_connect_error());
+<span class="php-comment">// Verificar conexión</span>
+<span class="php-keyword">if</span> (!<span class="php-variable">$conexion</span>) {
+    <span class="php-function">die</span>(<span class="php-string">"Error de conexión: "</span> . <span class="php-function">mysqli_connect_error</span>());
 }
 
-// Realizar consulta
-$resultado = mysqli_query($conexion, "SELECT * FROM usuarios");
+<span class="php-comment">// Realizar consulta</span>
+<span class="php-variable">$resultado</span> = <span class="php-function">mysqli_query</span>(<span class="php-variable">$conexion</span>, <span class="php-string">"SELECT * FROM usuarios"</span>);
 
-// Cerrar conexión
-mysqli_close($conexion);
-?&gt;</code></pre>
+<span class="php-comment">// Cerrar conexión</span>
+<span class="php-function">mysqli_close</span>(<span class="php-variable">$conexion</span>);
+<span class="php-tag">?&gt;</span></code></pre>
+                                    </div>
+                                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                        <span>PHP 8.2</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- PDO -->
+                    </section>                    <!-- PDO -->
                     <section id="pdo" class="mb-5">
                         <h2 class="mb-4">Conexión con PDO</h2>
-                        <p>PDO proporciona una interfaz consistente para acceder a bases de datos en PHP:</p>
+                        <p>PDO (PHP Data Objects) es una capa de abstracción para acceder a bases de datos que proporciona una interfaz consistente independientemente del tipo de base de datos que estés utilizando.</p>
+                        
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0"><i class="fas fa-lightbulb me-2"></i>¿Por qué usar PDO?</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>PDO ofrece múltiples ventajas que lo convierten en la opción preferida para muchos desarrolladores:</p>
+                                <ul>
+                                    <li><strong>Portabilidad:</strong> Tu código funcionará con cualquiera de las 12+ bases de datos soportadas, simplemente cambiando la cadena de conexión.</li>
+                                    <li><strong>Seguridad:</strong> Consultas preparadas con parámetros vinculados que protegen contra inyecciones SQL.</li>
+                                    <li><strong>Orientado a objetos:</strong> API consistente y moderna que facilita el desarrollo.</li>
+                                    <li><strong>Manejo de errores avanzado:</strong> Utiliza excepciones que permiten implementar una gestión de errores más robusta.</li>
+                                    <li><strong>Reutilización de conexiones:</strong> Permite reutilizar conexiones existentes para mejorar el rendimiento.</li>
+                                    <li><strong>Transacciones:</strong> Soporte nativo para transacciones, permitiendo operaciones atómicas.</li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <!-- Conexión con PDO -->
-                        <div class="vscode-editor mt-4">
-                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                                <span><i class="fas fa-database me-2"></i>pdo_conexion.php</span>
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0"><i class="fas fa-code text-info me-2"></i>Conexión PDO</h5>
                             </div>
-                            <div class="vscode-editor-content bg-dark p-3">
-                                <pre><code class="language-php">&lt;?php
-try {
-    // Conexión
-    $pdo = new PDO(
-        "mysql:host=localhost;dbname=base_datos",
-        "usuario",
-        "contraseña",
-        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+                            <div class="card-body">
+                                <p>PDO utiliza un enfoque orientado a objetos y manejo de excepciones para una mayor robustez:</p>                                <div class="vscode-editor mt-3">
+                                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                        <span><i class="fas fa-database me-2"></i>pdo_conexion.php</span>
+                                    </div>
+                                    <div class="vscode-editor-content bg-dark p-3">
+                                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">try</span> {
+    <span class="php-comment">// Conexión</span>
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(
+        <span class="php-string">"mysql:host=localhost;dbname=base_datos"</span>,
+        <span class="php-string">"usuario"</span>,
+        <span class="php-string">"contraseña"</span>,
+        <span class="php-array">array</span>(<span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span> => <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>)
     );
 
-    // Realizar consulta
-    $stmt = $pdo->query("SELECT * FROM usuarios");
-    $usuarios = $stmt->fetchAll();
+    <span class="php-comment">// Realizar consulta</span>
+    <span class="php-variable">$stmt</span> = <span class="php-variable">$pdo</span>-><span class="php-function">query</span>(<span class="php-string">"SELECT * FROM usuarios"</span>);
+    <span class="php-variable">$usuarios</span> = <span class="php-variable">$stmt</span>-><span class="php-function">fetchAll</span>();
 
-} catch(PDOException $e) {
-    echo "Error de conexión: " . $e->getMessage();
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"Error de conexión: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>();
 }
-?&gt;</code></pre>
+<span class="php-tag">?&gt;</span></code></pre>
+                                    </div>
+                                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                        <span>PHP 8.2</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="alert alert-info">
                             <i class="fas fa-info-circle me-2"></i>
-                            PDO utiliza excepciones para el manejo de errores, lo que facilita la captura y gestión de problemas.
+                            <p>PDO utiliza excepciones para el manejo de errores, lo que facilita la captura y gestión de problemas en aplicaciones profesionales.</p>
+                            <p class="mb-0"><strong>Consejo profesional:</strong> En proyectos modernos de PHP, PDO es la opción recomendada por su flexibilidad, seguridad y compatibilidad con los frameworks más populares como Laravel, Symfony y CodeIgniter.</p>
                         </div>
                     </section>
 
                     <!-- Comparación -->
                     <section id="comparacion" class="mb-5">
-                        <h2 class="mb-4">MySQLi vs PDO</h2>
+                        <h2 class="mb-4">MySQLi vs PDO: Comparación Detallada</h2>
+                        
+                        <p>A continuación se presenta una comparación de las características más importantes de ambas interfaces:</p>
+                        
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="table-light">
@@ -282,65 +350,135 @@ try {
                                         <td>Sí</td>
                                     </tr>
                                     <tr>
+                                        <td>Interfaz procedural</td>
+                                        <td>Sí</td>
+                                        <td>No</td>
+                                    </tr>
+                                    <tr>
                                         <td>Portabilidad</td>
                                         <td>Baja</td>
                                         <td>Alta</td>
                                     </tr>
+                                    <tr>
+                                        <td>Manejo de errores</td>
+                                        <td>Funciones y propiedades</td>
+                                        <td>Excepciones</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rendimiento</td>
+                                        <td>Ligeramente mejor con MySQL</td>
+                                        <td>Bueno con todas las BD</td>
+                                    </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        
+                        <div class="alert alert-success mt-3">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>Recomendación:</strong> PDO es generalmente la mejor opción para proyectos nuevos por su flexibilidad y portabilidad. Usa MySQLi si tu proyecto es exclusivamente para MySQL o necesitas su interfaz procedural.
                         </div>
                     </section>
 
                     <!-- Manejo de Errores -->
                     <section id="errores" class="mb-5">
-                        <h2 class="mb-4">Manejo de Errores</h2>
+                        <h2 class="mb-4">Manejo de Errores en Conexiones</h2>
+                        
                         <div class="alert alert-warning mb-4">
                             <i class="fas fa-exclamation-triangle me-2"></i>
-                            Siempre verifica la conexión y maneja los errores apropiadamente en un entorno de producción.
+                            Un manejo adecuado de errores en conexiones a bases de datos es crucial para la seguridad y experiencia de usuario en aplicaciones de producción.
                         </div>
 
-                        <h5>Ejemplo de manejo de errores con PDO:</h5>
-                        <p>Usa bloques try-catch para capturar excepciones y manejar errores de conexión o consulta.</p>
-                        <!-- Ejemplo de Manejo de Errores con PDO -->
-                        <div class="vscode-editor mt-4">
-                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                                <span><i class="fas fa-database me-2"></i>pdo_errores.php</span>
+                        <p>El manejo de errores es diferente en MySQLi y PDO:</p>
+                          <!-- MySQLi Error Handling Section -->
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0"><i class="fas fa-bug text-danger me-2"></i>Errores en MySQLi</h5>
                             </div>
-                            <div class="vscode-editor-content bg-dark p-3">
-                                <pre><code class="language-php">&lt;?php
-try {
-    $pdo = new PDO(
-        "mysql:host=localhost;dbname=base_datos",
-        "usuario",
-        "contraseña",
-        array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                            <div class="card-body">
+                                <p>MySQLi maneja errores principalmente a través de verificaciones condicionales:</p>                                <div class="vscode-editor mt-3">
+                                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                        <span><i class="fas fa-database me-2"></i>mysqli_errores.php</span>
+                                    </div>
+                                    <div class="vscode-editor-content bg-dark p-3">
+                                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Verificar error de conexión (orientado a objetos)</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$mysqli</span>-><span class="php-variable">connect_error</span>) {
+    <span class="php-function">die</span>(<span class="php-string">"Error de conexión: "</span> . <span class="php-variable">$mysqli</span>-><span class="php-variable">connect_error</span>);
+}
+
+<span class="php-comment">// Verificar error de consulta</span>
+<span class="php-keyword">if</span> (!<span class="php-variable">$result</span> = <span class="php-variable">$mysqli</span>-><span class="php-function">query</span>(<span class="php-variable">$sql</span>)) {
+    <span class="php-function">die</span>(<span class="php-string">"Error en la consulta: "</span> . <span class="php-variable">$mysqli</span>-><span class="php-variable">error</span>);
+}
+<span class="php-tag">?&gt;</span></code></pre>
+                                    </div>
+                                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                        <span>PHP 8.2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <!-- PDO Error Handling Section -->
+                        <div class="card mb-4 border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0"><i class="fas fa-exclamation-circle text-warning me-2"></i>Errores en PDO</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>PDO utiliza excepciones para el manejo de errores, lo que permite una gestión más estructurada:</p>
+                                <!-- Ejemplo de Manejo de Errores con PDO -->                                <div class="vscode-editor mt-3">
+                                    <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                        <span><i class="fas fa-database me-2"></i>pdo_errores.php</span>
+                                    </div>
+                                    <div class="vscode-editor-content bg-dark p-3">
+                                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">try</span> {
+    <span class="php-variable">$pdo</span> = <span class="php-keyword">new</span> <span class="php-class">PDO</span>(
+        <span class="php-string">"mysql:host=localhost;dbname=base_datos"</span>,
+        <span class="php-string">"usuario"</span>,
+        <span class="php-string">"contraseña"</span>,
+        <span class="php-array">array</span>(
+            <span class="php-class">PDO</span>::<span class="php-constant">ATTR_ERRMODE</span> => <span class="php-class">PDO</span>::<span class="php-constant">ERRMODE_EXCEPTION</span>,
+            <span class="php-class">PDO</span>::<span class="php-constant">ATTR_DEFAULT_FETCH_MODE</span> => <span class="php-class">PDO</span>::<span class="php-constant">FETCH_ASSOC</span>
         )
     );
 
-    // Código de la base de datos...
+    <span class="php-comment">// Código de la base de datos...</span>
 
-} catch(PDOException $e) {
-    // Log del error
-    error_log("Error de BD: " . $e->getMessage());
+} <span class="php-keyword">catch</span>(<span class="php-class">PDOException</span> <span class="php-variable">$e</span>) {
+    <span class="php-comment">// Log del error</span>
+    <span class="php-function">error_log</span>(<span class="php-string">"Error de BD: "</span> . <span class="php-variable">$e</span>-><span class="php-function">getMessage</span>());
 
-    // Mensaje para el usuario
-    die("Lo sentimos, ha ocurrido un error en la base de datos.");
+    <span class="php-comment">// Mensaje para el usuario</span>
+    <span class="php-function">die</span>(<span class="php-string">"Lo sentimos, ha ocurrido un error en la base de datos."</span>);
 }
-?&gt;</code></pre>
+<span class="php-tag">?&gt;</span></code></pre>
+                                    </div>
+                                    <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                        <span>PHP 8.2</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- Navegación entre páginas -->
-                    <div class="d-flex justify-content-between align-items-center mt-5">
-                        <a href="intro-mysql.html" class="btn btn-primary">
-                            <i class="fas fa-arrow-left me-2"></i>Anterior
-                        </a>
-                        <a href="crud.html" class="btn btn-primary">
-                            Siguiente<i class="fas fa-arrow-right ms-2"></i>
-                        </a>
+                        
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Buena práctica:</strong> En entornos de producción, nunca muestres los mensajes de error detallados a los usuarios finales. Registra los errores en un archivo de log y muestra solo mensajes genéricos.
+                        </div>
+                    </section>                    <!-- Navegación entre lecciones -->
+                    <div class="row mt-5">
+                        <div class="col-6">
+                            <a href="intro-mysql.html" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left"></i> Anterior: Introducción a MySQL
+                            </a>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a href="crud.html" class="btn btn-outline-primary">
+                                Siguiente: Operaciones CRUD <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

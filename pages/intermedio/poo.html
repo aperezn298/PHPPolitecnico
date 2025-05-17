@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programación Orientada a Objetos en PHP | Guía Interactiva</title>
     <!-- Bootstrap CSS -->
@@ -10,6 +9,8 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -279,56 +280,56 @@
                 <div class="vscode-editor mt-4">
                     <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                         <span><i class="fab fa-php"></i> interfaces_clases_abstractas.php</span>
-                    </div>
-                    <div class="vscode-editor-content">
-                        <pre><code class="php">&lt;?php
-// Interfaz
-interface Trabajador {
-    public function trabajar();
-    public function descansar();
+                    </div>                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Interfaz</span>
+<span class="php-keyword">interface</span> <span class="php-class">Trabajador</span> {
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">trabajar</span>();
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">descansar</span>();
 }
 
-// Clase abstracta
-abstract class Profesional {
-    protected $especialidad;
+<span class="php-comment">// Clase abstracta</span>
+<span class="php-keyword">abstract</span> <span class="php-keyword">class</span> <span class="php-class">Profesional</span> {
+    <span class="php-keyword">protected</span> <span class="php-variable">$especialidad</span>;
     
-    public function __construct($especialidad) {
-        $this->especialidad = $especialidad;
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">__construct</span>(<span class="php-variable">$especialidad</span>) {
+        <span class="php-variable">$this</span>-><span class="php-variable">especialidad</span> = <span class="php-variable">$especialidad</span>;
     }
     
-    abstract public function ejercer();
+    <span class="php-keyword">abstract</span> <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">ejercer</span>();
     
-    public function getEspecialidad() {
-        return $this->especialidad;
-    }
-}
-
-// Implementación
-class Programador extends Profesional implements Trabajador {
-    private $lenguaje;
-    
-    public function __construct($especialidad, $lenguaje) {
-        parent::__construct($especialidad);
-        $this->lenguaje = $lenguaje;
-    }
-    
-    public function trabajar() {
-        return "Programando en " . $this->lenguaje;
-    }
-    
-    public function descansar() {
-        return "Tomando un café";
-    }
-    
-    public function ejercer() {
-        return "Desarrollando software como " . $this->especialidad;
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">getEspecialidad</span>() {
+        <span class="php-keyword">return</span> <span class="php-variable">$this</span>-><span class="php-variable">especialidad</span>;
     }
 }
 
-$programador = new Programador("Backend Developer", "PHP");
-echo $programador->trabajar(); // Salida: Programando en PHP
-echo $programador->ejercer(); // Salida: Desarrollando software como Backend Developer
-?&gt;</code></pre>
+<span class="php-comment">// Implementación</span>
+<span class="php-keyword">class</span> <span class="php-class">Programador</span> <span class="php-keyword">extends</span> <span class="php-class">Profesional</span> <span class="php-keyword">implements</span> <span class="php-class">Trabajador</span> {
+    <span class="php-keyword">private</span> <span class="php-variable">$lenguaje</span>;
+    
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">__construct</span>(<span class="php-variable">$especialidad</span>, <span class="php-variable">$lenguaje</span>) {
+        <span class="php-keyword">parent</span>::<span class="php-method">__construct</span>(<span class="php-variable">$especialidad</span>);
+        <span class="php-variable">$this</span>-><span class="php-variable">lenguaje</span> = <span class="php-variable">$lenguaje</span>;
+    }
+    
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">trabajar</span>() {
+        <span class="php-keyword">return</span> <span class="php-string">"Programando en "</span> . <span class="php-variable">$this</span>-><span class="php-variable">lenguaje</span>;
+    }
+    
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">descansar</span>() {
+        <span class="php-keyword">return</span> <span class="php-string">"Tomando un café"</span>;
+    }
+    
+    <span class="php-keyword">public</span> <span class="php-keyword">function</span> <span class="php-method">ejercer</span>() {
+        <span class="php-keyword">return</span> <span class="php-string">"Desarrollando software como "</span> . <span class="php-variable">$this</span>-><span class="php-variable">especialidad</span>;
+    }
+}
+
+<span class="php-variable">$programador</span> = <span class="php-keyword">new</span> <span class="php-class">Programador</span>(<span class="php-string">"Backend Developer"</span>, <span class="php-string">"PHP"</span>);
+<span class="php-keyword">echo</span> <span class="php-variable">$programador</span>-><span class="php-method">trabajar</span>(); <span class="php-comment">// Salida: Programando en PHP</span>
+<span class="php-keyword">echo</span> <span class="php-variable">$programador</span>-><span class="php-method">ejercer</span>(); <span class="php-comment">// Salida: Desarrollando software como Backend Developer</span>
+<span class="php-tag">?&gt;</span></code></pre>
                     </div>
                     <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
                         <span>PHP 8.2</span>
@@ -345,28 +346,28 @@ echo $programador->ejercer(); // Salida: Desarrollando software como Backend Dev
                 <div class="vscode-editor mt-4 mb-5">
                     <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                         <span><i class="fab fa-php"></i> propiedades_metodos_estaticos.php</span>
-                    </div>
-                    <div class="vscode-editor-content">
-                        <pre><code class="php">&lt;?php
-class Matematica {
-    public static $pi = 3.14159;
-    private static $contador = 0;
+                    </div>                    <div class="vscode-editor-content">
+                        <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-keyword">class</span> <span class="php-class">Matematica</span> {
+    <span class="php-keyword">public</span> <span class="php-keyword">static</span> <span class="php-variable">$pi</span> = <span class="php-number">3.14159</span>;
+    <span class="php-keyword">private</span> <span class="php-keyword">static</span> <span class="php-variable">$contador</span> = <span class="php-number">0</span>;
     
-    public static function sumar($a, $b) {
-        self::$contador++;
-        return $a + $b;
+    <span class="php-keyword">public</span> <span class="php-keyword">static</span> <span class="php-keyword">function</span> <span class="php-method">sumar</span>(<span class="php-variable">$a</span>, <span class="php-variable">$b</span>) {
+        <span class="php-keyword">self</span>::<span class="php-variable">$contador</span>++;
+        <span class="php-keyword">return</span> <span class="php-variable">$a</span> + <span class="php-variable">$b</span>;
     }
     
-    public static function getContador() {
-        return self::$contador;
+    <span class="php-keyword">public</span> <span class="php-keyword">static</span> <span class="php-keyword">function</span> <span class="php-method">getContador</span>() {
+        <span class="php-keyword">return</span> <span class="php-keyword">self</span>::<span class="php-variable">$contador</span>;
     }
 }
 
-// Usar miembros estáticos
-echo Matematica::$pi; // Salida: 3.14159
-echo Matematica::sumar(5, 3); // Salida: 8
-echo Matematica::getContador(); // Salida: 1
-?&gt;</code></pre>
+<span class="php-comment">// Usar miembros estáticos</span>
+<span class="php-keyword">echo</span> <span class="php-class">Matematica</span>::<span class="php-variable">$pi</span>; <span class="php-comment">// Salida: 3.14159</span>
+<span class="php-keyword">echo</span> <span class="php-class">Matematica</span>::<span class="php-method">sumar</span>(<span class="php-number">5</span>, <span class="php-number">3</span>); <span class="php-comment">// Salida: 8</span>
+<span class="php-keyword">echo</span> <span class="php-class">Matematica</span>::<span class="php-method">getContador</span>(); <span class="php-comment">// Salida: 1</span>
+<span class="php-tag">?&gt;</span></code></pre>
                     </div>
                     <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
                         <span>PHP 8.2</span>
@@ -404,8 +405,8 @@ echo Matematica::getContador(); // Salida: 1
                         </a>
                     </div>
                     <div class="col-6 text-end">
-                        <a href="../apis/introduccion.html" class="btn btn-outline-primary">
-                            Siguiente: Introducción a APIs <i class="fas fa-arrow-right"></i>
+                        <a href="../bd/intro-mysql.html" class="btn btn-outline-primary">
+                            Siguiente: Introducción a MySQL <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>

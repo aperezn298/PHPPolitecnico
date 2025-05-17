@@ -8,12 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Custom CSS -->    <link rel="stylesheet" href="../../css/styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Prism CSS -->
     <link href="../../css/prism.css" rel="stylesheet" />
+    <!-- Code Styles CSS -->
+    <link href="../../css/code-styles.css" rel="stylesheet" />
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -270,8 +271,7 @@
                     <!-- SQL Básico -->
                     <section id="sql-basico" class="mb-5">
                         <h2 class="mb-4">SQL Básico</h2>
-                        <p>SQL (Structured Query Language) es el lenguaje estándar para interactuar con bases de datos relacionales. Aquí algunos comandos básicos:</p>
-                          <div class="vscode-editor mt-4">
+                        <p>SQL (Structured Query Language) es el lenguaje estándar para interactuar con bases de datos relacionales. Aquí algunos comandos básicos:</p>                          <div class="vscode-editor mt-4">
                             <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                                 <span><i class="fas fa-database me-2"></i>creacion_basica.sql</span>
                                 <div class="d-flex align-items-center">
@@ -280,19 +280,23 @@
                                 </div>
                             </div>
                             <div class="vscode-editor-content bg-dark p-3">
-                                <pre><code class="language-sql">-- Crear una base de datos
-CREATE DATABASE mi_base_datos;
+                                <pre><code class="sql">
+<span class="sql-comment">-- Crear una base de datos</span>
+<span class="sql-keyword">CREATE DATABASE</span> <span class="sql-identifier">mi_base_datos</span>;
 
--- Usar una base de datos
-USE mi_base_datos;
+<span class="sql-comment">-- Usar una base de datos</span>
+<span class="sql-keyword">USE</span> <span class="sql-identifier">mi_base_datos</span>;
 
--- Crear una tabla
-CREATE TABLE usuarios (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50),
-    email VARCHAR(100),
-    fecha_registro DATETIME
+<span class="sql-comment">-- Crear una tabla</span>
+<span class="sql-keyword">CREATE TABLE</span> <span class="sql-identifier">usuarios</span> (
+    <span class="sql-identifier">id</span> <span class="sql-type">INT</span> <span class="sql-keyword">PRIMARY KEY</span> <span class="sql-keyword">AUTO_INCREMENT</span>,
+    <span class="sql-identifier">nombre</span> <span class="sql-type">VARCHAR</span>(<span class="sql-number">50</span>),
+    <span class="sql-identifier">email</span> <span class="sql-type">VARCHAR</span>(<span class="sql-number">100</span>),
+    <span class="sql-identifier">fecha_registro</span> <span class="sql-type">DATETIME</span>
 );</code></pre>
+                            </div>
+                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                <span>MySQL 8.0</span>
                             </div>
                         </div><div class="alert alert-success">
                             <i class="fas fa-lightbulb me-2"></i>
@@ -302,8 +306,7 @@ CREATE TABLE usuarios (
                         <h5 class="mt-4">Operaciones Básicas con Registros</h5>
                         <p>Estas son las operaciones fundamentales que puedes realizar con registros en una tabla:</p>                        <!-- Insertar -->
                         <div class="mb-4">
-                            <h6><i class="fas fa-plus-circle text-success me-2"></i>Insertar Registros (INSERT)</h6>
-                            <div class="vscode-editor">
+                            <h6><i class="fas fa-plus-circle text-success me-2"></i>Insertar Registros (INSERT)</h6>                            <div class="vscode-editor">
                                 <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                                     <span><i class="fas fa-database me-2"></i>insertar_datos.sql</span>
                                     <div class="d-flex align-items-center">
@@ -312,15 +315,18 @@ CREATE TABLE usuarios (
                                     </div>
                                 </div>
                                 <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-sql">-- Insertar un nuevo usuario
-INSERT INTO usuarios (nombre, email, fecha_registro)
-VALUES ('Juan Pérez', 'juan@email.com', NOW());</code></pre>
+                                    <pre><code class="sql">
+<span class="sql-comment">-- Insertar un nuevo usuario</span>
+<span class="sql-keyword">INSERT INTO</span> <span class="sql-identifier">usuarios</span> (<span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span>, <span class="sql-identifier">fecha_registro</span>)
+<span class="sql-keyword">VALUES</span> (<span class="sql-string">'Juan Pérez'</span>, <span class="sql-string">'juan@email.com'</span>, <span class="sql-function">NOW</span>());</code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>MySQL 8.0</span>
                                 </div>
                             </div>
                         </div>                        <!-- Consultar -->
                         <div class="mb-4">
-                            <h6><i class="fas fa-search text-primary me-2"></i>Consultar Registros (SELECT)</h6>
-                            <div class="vscode-editor">
+                            <h6><i class="fas fa-search text-primary me-2"></i>Consultar Registros (SELECT)</h6>                            <div class="vscode-editor">
                                 <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                                     <span><i class="fas fa-database me-2"></i>consultar_datos.sql</span>
                                     <div class="d-flex align-items-center">
@@ -329,18 +335,21 @@ VALUES ('Juan Pérez', 'juan@email.com', NOW());</code></pre>
                                     </div>
                                 </div>
                                 <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-sql">-- Consultar todos los usuarios
-SELECT * FROM usuarios;
+                                    <pre><code class="sql">
+<span class="sql-comment">-- Consultar todos los usuarios</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span>;
 
--- Consultar con condiciones
-SELECT nombre, email 
-FROM usuarios;</code></pre>
+<span class="sql-comment">-- Consultar con condiciones</span>
+<span class="sql-keyword">SELECT</span> <span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span> 
+<span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span>;</code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>MySQL 8.0</span>
                                 </div>
                             </div>
                         </div>                        <!-- Consultas con WHERE -->
                         <div class="mb-4">
-                            <h6><i class="fas fa-filter text-info me-2"></i>Consultas con Filtros (WHERE)</h6>
-                            <div class="vscode-editor">
+                            <h6><i class="fas fa-filter text-info me-2"></i>Consultas con Filtros (WHERE)</h6>                            <div class="vscode-editor">
                                 <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                                     <span><i class="fas fa-database me-2"></i>filtros_avanzados.sql</span>
                                     <div class="d-flex align-items-center">
@@ -349,29 +358,32 @@ FROM usuarios;</code></pre>
                                     </div>
                                 </div>
                                 <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-sql">
--- Consultar con condiciones
-SELECT nombre, email 
-FROM usuarios 
-WHERE id = 1;
+                                    <pre><code class="sql">
+<span class="sql-comment">-- Consultar con condiciones</span>
+<span class="sql-keyword">SELECT</span> <span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span> 
+<span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">id</span> = <span class="sql-number">1</span>;
 
--- Búsqueda por texto
-SELECT * FROM usuarios 
-WHERE nombre LIKE '%Juan%';
+<span class="sql-comment">-- Búsqueda por texto</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">nombre</span> <span class="sql-keyword">LIKE</span> <span class="sql-string">'%Juan%'</span>;
 
--- Múltiples condiciones
-SELECT * FROM usuarios 
-WHERE edad >= 18 
-AND ciudad = 'Madrid';
+<span class="sql-comment">-- Múltiples condiciones</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">edad</span> >= <span class="sql-number">18</span> 
+<span class="sql-keyword">AND</span> <span class="sql-identifier">ciudad</span> = <span class="sql-string">'Madrid'</span>;
 
--- Rangos de fechas
-SELECT nombre, fecha_registro 
-FROM usuarios 
-WHERE fecha_registro BETWEEN '2025-01-01' AND '2025-12-31';
+<span class="sql-comment">-- Rangos de fechas</span>
+<span class="sql-keyword">SELECT</span> <span class="sql-identifier">nombre</span>, <span class="sql-identifier">fecha_registro</span> 
+<span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">fecha_registro</span> <span class="sql-keyword">BETWEEN</span> <span class="sql-string">'2025-01-01'</span> <span class="sql-keyword">AND</span> <span class="sql-string">'2025-12-31'</span>;
 
--- Valores múltiples
-SELECT * FROM usuarios 
-WHERE ciudad IN ('Madrid', 'Barcelona', 'Valencia');</code></pre>
+<span class="sql-comment">-- Valores múltiples</span>
+<span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">ciudad</span> <span class="sql-keyword">IN</span> (<span class="sql-string">'Madrid'</span>, <span class="sql-string">'Barcelona'</span>, <span class="sql-string">'Valencia'</span>);</code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>MySQL 8.0</span>
                                 </div>
                             </div>
                             <div class="alert alert-info mt-2">
@@ -380,8 +392,7 @@ WHERE ciudad IN ('Madrid', 'Barcelona', 'Valencia');</code></pre>
                             </div>
                         </div>                        <!-- Actualizar -->
                         <div class="mb-4">
-                            <h6><i class="fas fa-edit text-warning me-2"></i>Actualizar Registros (UPDATE)</h6>
-                            <div class="vscode-editor">
+                            <h6><i class="fas fa-edit text-warning me-2"></i>Actualizar Registros (UPDATE)</h6>                            <div class="vscode-editor">
                                 <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                                     <span><i class="fas fa-database me-2"></i>actualizar_datos.sql</span>
                                     <div class="d-flex align-items-center">
@@ -390,18 +401,21 @@ WHERE ciudad IN ('Madrid', 'Barcelona', 'Valencia');</code></pre>
                                     </div>
                                 </div>
                                 <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-sql">-- Actualizar datos de un usuario
-UPDATE usuarios 
-SET email = 'nuevo@email.com'
-WHERE id = 1;</code></pre>
+                                    <pre><code class="sql">
+<span class="sql-comment">-- Actualizar datos de un usuario</span>
+<span class="sql-keyword">UPDATE</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">SET</span> <span class="sql-identifier">email</span> = <span class="sql-string">'nuevo@email.com'</span>
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">id</span> = <span class="sql-number">1</span>;</code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>MySQL 8.0</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Eliminar -->
                         <div class="mb-4">
-                            <h6><i class="fas fa-trash text-danger me-2"></i>Eliminar Registros (DELETE)</h6>
-                            <div class="vscode-editor">
+                            <h6><i class="fas fa-trash text-danger me-2"></i>Eliminar Registros (DELETE)</h6>                            <div class="vscode-editor">
                                 <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
                                     <span><i class="fas fa-database me-2"></i>eliminar_datos.sql</span>
                                     <div class="d-flex align-items-center">
@@ -410,9 +424,13 @@ WHERE id = 1;</code></pre>
                                     </div>
                                 </div>
                                 <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-sql">-- Eliminar un usuario
-DELETE FROM usuarios 
-WHERE id = 1;</code></pre>
+                                    <pre><code class="sql">
+<span class="sql-comment">-- Eliminar un usuario</span>
+<span class="sql-keyword">DELETE FROM</span> <span class="sql-identifier">usuarios</span> 
+<span class="sql-keyword">WHERE</span> <span class="sql-identifier">id</span> = <span class="sql-number">1</span>;</code></pre>
+                                </div>
+                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                    <span>MySQL 8.0</span>
                                 </div>
                             </div>
                         </div>
@@ -421,16 +439,18 @@ WHERE id = 1;</code></pre>
                             <i class="fas fa-exclamation-triangle me-2"></i>
                             Importante: Siempre usa la cláusula WHERE en las operaciones UPDATE y DELETE para evitar afectar a todos los registros de la tabla.
                         </div>
-                    </section>
-
-                    <!-- Navegación entre páginas -->
-                    <div class="d-flex justify-content-between align-items-center mt-5">
-                        <a href="../intermedio/poo.html" class="btn btn-primary">
-                            <i class="fas fa-arrow-left me-2"></i>Anterior
-                        </a>
-                        <a href="conexion.html" class="btn btn-primary">
-                            Siguiente<i class="fas fa-arrow-right ms-2"></i>
-                        </a>
+                    </section>                    <!-- Navegación entre lecciones -->
+                    <div class="row mt-5">
+                        <div class="col-6">
+                            <a href="../intermedio/poo.html" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left"></i> Anterior: Programación Orientada a Objetos
+                            </a>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a href="conexion.html" class="btn btn-outline-primary">
+                                Siguiente: Conexión a MySQL <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
