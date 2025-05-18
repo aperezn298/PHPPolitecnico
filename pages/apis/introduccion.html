@@ -150,88 +150,156 @@
                     <div class="alert alert-info">
                         <i class="fas fa-info-circle me-2"></i> En esta sección aprenderás qué son las APIs, cómo funcionan y por qué son importantes en el desarrollo web moderno.
                     </div>
+                      <h2 class="mt-5">¿Qué es una API?</h2>
                     
-                    <h2 class="mt-5">¿Qué es una API?</h2>
-                    <p>
-                        API significa <strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface (Interfaz de Programación de Aplicaciones). En términos sencillos, una API es un conjunto de reglas y protocolos que permiten que diferentes aplicaciones se comuniquen entre sí.
-                    </p>
-                    <p>
-                        Piensa en una API como un "camarero" en un restaurante:
-                    </p>
-                    
-                    <div class="row mt-4 mb-5">
-                        <div class="col-md-6 mb-3">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <i class="fas fa-utensils text-danger me-2"></i> Analogía del restaurante
-                                    </h5>
-                                    <p class="card-text">
-                                        <ul>
-                                            <li><strong>Tú</strong> (el cliente) quieres un plato de comida, pero no puedes entrar a la cocina.</li>
-                                            <li><strong>El camarero</strong> (la API) toma tu pedido en un formato específico.</li>
-                                            <li><strong>La cocina</strong> (el servidor) recibe el pedido y prepara la comida.</li>
-                                            <li><strong>El camarero</strong> trae de vuelta la comida en un plato (los datos en un formato específico).</li>
-                                        </ul>
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-dark text-white py-3">
+                            <h4 class="mb-0 text-white">
+                                <i class="fas fa-sitemap me-2"></i>Application Programming Interface
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center mb-4">
+                                <div class="col-lg-7">
+                                    <p class="lead text-justify">
+                                        Una API es un conjunto de reglas y protocolos que permiten que diferentes aplicaciones se comuniquen entre sí.
+                                    </p>
+                                    <p>
+                                        El término API significa <strong>A</strong>pplication <strong>P</strong>rogramming <strong>I</strong>nterface (Interfaz de Programación de Aplicaciones). Actúa como un intermediario que permite que el software solicite características y datos específicos de otro software.
                                     </p>
                                 </div>
+                                <div class="col-lg-5">
+                                    <div class="api-diagram text-center py-3">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="bg-light rounded p-3 shadow-sm mb-2">
+                                                    <i class="fas fa-laptop fa-2x text-primary mb-2"></i>
+                                                    <h6>Cliente</h6>
+                                                </div>
+                                                <i class="fas fa-arrow-right text-muted"></i>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="bg-danger rounded p-3 shadow-sm mb-2">
+                                                    <i class="fas fa-exchange-alt fa-2x text-white mb-2"></i>
+                                                    <h6 class="text-white">API</h6>
+                                                </div>
+                                                <i class="fas fa-arrow-right text-muted"></i>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="bg-dark rounded p-3 shadow-sm mb-2">
+                                                    <i class="fas fa-database fa-2x text-light mb-2"></i>
+                                                    <h6 class="text-white">Servidor</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <i class="fas fa-plug text-danger me-2"></i> En la práctica
-                                    </h5>
-                                    <p class="card-text">
-                                        Las APIs permiten:
-                                        <ul>
-                                            <li>Integrar servicios de terceros (como pagos, mapas, clima)</li>
-                                            <li>Separar el frontend del backend (arquitectura desacoplada)</li>
-                                            <li>Facilitar la comunicación entre diferentes sistemas</li>
-                                            <li>Reutilizar funcionalidades sin compartir todo el código</li>
-                                        </ul>
-                                    </p>
+                            
+                            <h5 class="border-bottom pb-2 mb-3">Comprende las APIs con una analogía sencilla</h5>
+                            
+                            <div class="row mt-4 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <i class="fas fa-utensils text-danger me-2"></i> Analogía del restaurante
+                                            </h5>
+                                            <p class="card-text">
+                                                <ul>
+                                                    <li><strong>Tú</strong> (el cliente) quieres un plato de comida, pero no puedes entrar a la cocina.</li>
+                                                    <li><strong>El camarero</strong> (la API) toma tu pedido en un formato específico.</li>
+                                                    <li><strong>La cocina</strong> (el servidor) recibe el pedido y prepara la comida.</li>
+                                                    <li><strong>El camarero</strong> trae de vuelta la comida en un plato (los datos en un formato específico).</li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <i class="fas fa-plug text-danger me-2"></i> En la práctica
+                                            </h5>
+                                            <p class="card-text">
+                                                Las APIs permiten:
+                                                <ul>
+                                                    <li>Integrar servicios de terceros (como pagos, mapas, clima)</li>
+                                                    <li>Separar el frontend del backend (arquitectura desacoplada)</li>
+                                                    <li>Facilitar la comunicación entre diferentes sistemas</li>
+                                                    <li>Reutilizar funcionalidades sin compartir todo el código</li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <h2>Tipos de APIs</h2>
+                      <h2>Tipos de APIs</h2>
                     <p>Existen varios tipos de APIs según su arquitectura y uso:</p>
                     
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Tipo</th>
-                                    <th>Descripción</th>
-                                    <th>Ejemplo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>API REST</strong></td>
-                                    <td>Utiliza métodos HTTP (GET, POST, PUT, DELETE) para operaciones CRUD. Es la más común en la web.</td>
-                                    <td>API de Twitter, OpenWeatherMap</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>API SOAP</strong></td>
-                                    <td>Protocolo más estructurado y formal. Usa XML exclusivamente. Común en empresas y servicios financieros.</td>
-                                    <td>Servicios web bancarios, PayPal (versiones antiguas)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>GraphQL</strong></td>
-                                    <td>Permite a los clientes solicitar exactamente los datos que necesitan, evitando sobrefetching o underfetching.</td>
-                                    <td>API de GitHub, Facebook</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>WebSockets</strong></td>
-                                    <td>Permite comunicación bidireccional en tiempo real entre cliente y servidor.</td>
-                                    <td>Aplicaciones de chat, actualizaciones en vivo</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row g-4 mt-2 mb-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-danger text-white text-center py-3">
+                                    <i class="fas fa-server fa-2x mb-2"></i>
+                                    <h5 class="card-title mb-0">REST API</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Utiliza métodos HTTP (GET, POST, PUT, DELETE) para operaciones CRUD. Es la más común en la web.</p>
+                                    <p class="card-text small text-muted border-top pt-2">
+                                        <i class="fas fa-check-circle me-1 text-success"></i> Ejemplos: Twitter, OpenWeatherMap
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-primary text-white text-center py-3">
+                                    <i class="fas fa-envelope-open-text fa-2x mb-2"></i>
+                                    <h5 class="card-title mb-0">SOAP API</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Protocolo más estructurado y formal. Usa XML exclusivamente. Común en empresas y servicios financieros.</p>
+                                    <p class="card-text small text-muted border-top pt-2">
+                                        <i class="fas fa-check-circle me-1 text-success"></i> Ejemplos: Servicios bancarios, PayPal (antiguo)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-success text-white text-center py-3">
+                                    <i class="fas fa-project-diagram fa-2x mb-2"></i>
+                                    <h5 class="card-title mb-0">GraphQL</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Permite a los clientes solicitar exactamente los datos que necesitan, evitando sobrefetching o underfetching.</p>
+                                    <p class="card-text small text-muted border-top pt-2">
+                                        <i class="fas fa-check-circle me-1 text-success"></i> Ejemplos: GitHub, Facebook
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-info text-white text-center py-3">
+                                    <i class="fas fa-bolt fa-2x mb-2"></i>
+                                    <h5 class="card-title mb-0">WebSockets</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Permite comunicación bidireccional en tiempo real entre cliente y servidor.</p>
+                                    <p class="card-text small text-muted border-top pt-2">
+                                        <i class="fas fa-check-circle me-1 text-success"></i> Ejemplos: Chats, actualizaciones en vivo
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <h2 class="mt-5">¿Por qué usar APIs?</h2>
@@ -265,73 +333,289 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <h2 class="mt-5">APIs y PHP</h2>
-                    <p>
-                        PHP es un lenguaje excelente tanto para <strong>consumir</strong> como para <strong>crear</strong> APIs por varias razones:
-                    </p>
-                    
-                    <div class="interactive-example">
-                        <div class="code-section">
-                            <pre><code class="php-code">&lt;?php
-// Ejemplo: Consumir una API con PHP (OpenWeatherMap)
-$apiKey = "tu_api_key";
-$ciudad = "Madrid";
-$url = "https://api.openweathermap.org/data/2.5/weather?q={$ciudad}&appid={$apiKey}&units=metric";
-
-// Realizar la petición HTTP
-$respuesta = file_get_contents($url);
-
-// Convertir JSON a array asociativo de PHP
-$datos = json_decode($respuesta, true);
-
-// Acceder a los datos
-echo "Temperatura en {$ciudad}: " . $datos['main']['temp'] . "°C";
-echo "Condición: " . $datos['weather'][0]['description'];
-?&gt;</code></pre>
-                            <button class="btn btn-primary mt-2 run-code-btn">Ver ejemplo</button>
+                      <h2 class="mt-5">APIs y PHP</h2>
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-danger text-white">
+                            <h5 class="mb-0"><i class="fas fa-code me-2"></i>PHP y las APIs</h5>
                         </div>
-                        <div class="result-section p-3">
-                            <div class="result-header">Resultado:</div>
-                            <div class="result-output">
-                                Temperatura en Madrid: 22.5°C<br>
-                                Condición: cielo despejado
+                        <div class="card-body">
+                            <p>
+                                PHP es un lenguaje excelente tanto para <strong>consumir</strong> como para <strong>crear</strong> APIs por varias razones:
+                            </p>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-download text-danger fa-2x me-3"></i>
+                                        </div>
+                                        <div>
+                                            <h5>Consumir APIs</h5>
+                                            <ul class="mb-0">
+                                                <li>Funciones nativas para peticiones HTTP</li>
+                                                <li>Manejo sencillo de JSON</li>
+                                                <li>Bibliotecas especializadas disponibles</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-cloud-upload-alt text-danger fa-2x me-3"></i>
+                                        </div>
+                                        <div>
+                                            <h5>Crear APIs</h5>
+                                            <ul class="mb-0">
+                                                <li>Fácil integración con bases de datos</li>
+                                                <li>Generación de respuestas en JSON</li>
+                                                <li>Frameworks que facilitan el desarrollo</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                      <div class="vscode-editor mt-4">
+                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                            <span><i class="fas fa-shopping-cart me-2"></i>consumir_api_productos.php</span>
+                            <div>
+                                <i class="fas fa-circle text-danger me-1"></i>
+                                <i class="fas fa-circle text-warning me-1"></i>
+                                <i class="fas fa-circle text-success"></i>
+                            </div>
+                        </div>
+                        <div class="vscode-editor-content bg-dark p-3">
+                            <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Ejemplo: Consumir una API gratuita con PHP (Fake Store API)</span>
+<span class="php-comment">// Esta API no requiere apiKey</span>
+<span class="php-variable">$url</span> = <span class="php-string">"https://fakestoreapi.com/products?limit=4"</span>;
+
+<span class="php-comment">// Realizar la petición HTTP</span>
+<span class="php-variable">$respuesta</span> = <span class="php-function">file_get_contents</span>(<span class="php-variable">$url</span>);
+
+<span class="php-comment">// Convertir JSON a array asociativo de PHP</span>
+<span class="php-variable">$productos</span> = <span class="php-function">json_decode</span>(<span class="php-variable">$respuesta</span>, <span class="php-keyword">true</span>);
+
+<span class="php-comment">// Acceder a los datos y mostrar productos</span>
+<span class="php-function">echo</span> <span class="php-string">"&lt;div class='productos-container'&gt;"</span>;
+<span class="php-function">echo</span> <span class="php-string">"  &lt;h3&gt;Catálogo de Productos&lt;/h3&gt;"</span>;
+<span class="php-function">echo</span> <span class="php-string">"  &lt;div class='row'&gt;"</span>;
+
+<span class="php-keyword">foreach</span> (<span class="php-variable">$productos</span> <span class="php-keyword">as</span> <span class="php-variable">$producto</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"&lt;div class='col-md-3 mb-4'&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"  &lt;div class='card h-100'&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"    &lt;img src='{$producto['image']}' class='card-img-top p-3' alt='{$producto['title']}' style='height: 180px; object-fit: contain;'&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"    &lt;div class='card-body'&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"      &lt;h5 class='card-title text-truncate' title='{$producto['title']}'&gt;{$producto['title']}&lt;/h5&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"      &lt;p class='card-text text-muted'&gt;{$producto['category']}&lt;/p&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"      &lt;p class='card-text'&gt;&lt;strong&gt;€{$producto['price']}&lt;/strong&gt;&lt;/p&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"      &lt;button class='btn btn-sm btn-primary'&gt;Añadir al carrito&lt;/button&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"    &lt;/div&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"  &lt;/div&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"&lt;/div&gt;"</span>;
+}
+
+<span class="php-function">echo</span> <span class="php-string">"  &lt;/div&gt;"</span>;
+<span class="php-function">echo</span> <span class="php-string">"&lt;/div&gt;"</span>;
+<span class="php-tag">?&gt;</span></code></pre>
+                        </div>
+                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1 d-flex justify-content-between">
+                            <span>PHP 8.2</span>
+                            <span><i class="fas fa-code-branch me-2"></i>main</span>
+                        </div>
+                    </div>
+                      <div class="card mt-3 border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <i class="fas fa-desktop me-2"></i>Resultado de la API
+                        </div>
+                        <div class="card-body">
+                            <h4 class="mb-3">Catálogo de Productos</h4>
+                            <div class="row">
+                                <div class="col-md-3 mb-4">
+                                    <div class="card h-100 border">
+                                        <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" class="card-img-top p-3" alt="Mochila" style="height: 180px; object-fit: contain;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Mochila Fjallraven - Foldsack No. 1">Mochila Fjallraven - Foldsack No. 1</h6>
+                                            <p class="card-text text-muted small">men's clothing</p>
+                                            <p class="card-text"><strong>€109.95</strong></p>
+                                            <button class="btn btn-sm btn-primary">Añadir al carrito</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-4">
+                                    <div class="card h-100 border">
+                                        <img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" class="card-img-top p-3" alt="Camiseta" style="height: 180px; object-fit: contain;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Camiseta Slim Fit para hombre">Camiseta Slim Fit para hombre</h6>
+                                            <p class="card-text text-muted small">men's clothing</p>
+                                            <p class="card-text"><strong>€22.30</strong></p>
+                                            <button class="btn btn-sm btn-primary">Añadir al carrito</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-4">
+                                    <div class="card h-100 border">
+                                        <img src="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" class="card-img-top p-3" alt="Chaqueta" style="height: 180px; object-fit: contain;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Chaqueta de algodón para hombre">Chaqueta de algodón para hombre</h6>
+                                            <p class="card-text text-muted small">men's clothing</p>
+                                            <p class="card-text"><strong>€55.99</strong></p>
+                                            <button class="btn btn-sm btn-primary">Añadir al carrito</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-4">
+                                    <div class="card h-100 border">
+                                        <img src="https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg" class="card-img-top p-3" alt="Camiseta casual" style="height: 180px; object-fit: contain;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-truncate" title="Camiseta casual slim fit">Camiseta casual slim fit</h6>
+                                            <p class="card-text text-muted small">men's clothing</p>
+                                            <p class="card-text"><strong>€15.99</strong></p>
+                                            <button class="btn btn-sm btn-primary">Añadir al carrito</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="alert alert-info mt-3">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-info-circle fa-2x me-3"></i>
+                            </div>
+                            <div>
+                                <h5>¿Cómo funciona?</h5>
+                                <p class="mb-0">
+                                    El código anterior realiza una petición a la <a href="https://fakestoreapi.com" target="_blank" class="text-decoration-none">Fake Store API</a>, que proporciona datos de productos sin requerir autenticación. La respuesta JSON se convierte a un array asociativo de PHP y luego se recorre con un bucle foreach para mostrar cada producto en un formato de catálogo visualmente atractivo. Este ejemplo demuestra cómo PHP puede consumir fácilmente una API RESTful y procesar datos JSON.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                      <h2 class="mt-5">Herramientas para trabajar con APIs en PHP</h2>
+                    <p>PHP ofrece varias herramientas y opciones para interactuar con APIs:</p>
                     
-                    <div class="mt-5">
-                        <h2>Herramientas para trabajar con APIs en PHP</h2>
-                        <p>PHP ofrece varias opciones para interactuar con APIs:</p>
+                    <div class="row mt-4">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <span class="badge rounded-circle bg-danger p-3">
+                                            <i class="fas fa-code fa-2x text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="card-title">Funciones nativas</h5>
+                                    <p class="card-text">
+                                        PHP incluye funciones integradas como <code>file_get_contents()</code> y la extensión <code>cURL</code> que permiten realizar peticiones HTTP a cualquier API.
+                                    </p>
+                                    <div class="mt-auto pt-3">
+                                        <a href="https://www.php.net/manual/es/book.curl.php" class="btn btn-sm btn-outline-danger" target="_blank">
+                                            <i class="fas fa-external-link-alt me-1"></i> Documentación cURL
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <ul class="list-group mb-4">
-                            <li class="list-group-item d-flex">
-                                <span class="badge bg-danger rounded me-3">1</span>
-                                <div>
-                                    <h5>Funciones nativas</h5>
-                                    <p>PHP incluye funciones como <code>file_get_contents()</code>, <code>curl_*</code> que permiten realizar peticiones HTTP.</p>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <span class="badge rounded-circle bg-danger p-3">
+                                            <i class="fas fa-box-open fa-2x text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="card-title">Bibliotecas de terceros</h5>
+                                    <p class="card-text">
+                                        Bibliotecas como Guzzle HTTP, HTTPful, y otras simplifican el proceso de realizar peticiones HTTP complejas y manejar respuestas.
+                                    </p>
+                                    <div class="mt-auto pt-3">
+                                        <a href="https://docs.guzzlephp.org/en/stable/" class="btn btn-sm btn-outline-danger" target="_blank">
+                                            <i class="fas fa-external-link-alt me-1"></i> Guzzle HTTP
+                                        </a>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <span class="badge bg-danger rounded me-3">2</span>
-                                <div>
-                                    <h5>Bibliotecas de terceros</h5>
-                                    <p>Guzzle HTTP, HTTPful, y otras bibliotecas simplifican el proceso de realizar peticiones HTTP.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body text-center">
+                                    <div class="mb-3">
+                                        <span class="badge rounded-circle bg-danger p-3">
+                                            <i class="fas fa-layer-group fa-2x text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="card-title">Frameworks</h5>
+                                    <p class="card-text">
+                                        Laravel, Symfony y otros frameworks PHP ofrecen clientes HTTP y herramientas integradas para trabajar con APIs de forma eficiente.
+                                    </p>
+                                    <div class="mt-auto pt-3">
+                                        <a href="https://laravel.com/docs/10.x/http-client" class="btn btn-sm btn-outline-danger" target="_blank">
+                                            <i class="fas fa-external-link-alt me-1"></i> Laravel HTTP
+                                        </a>
+                                    </div>
                                 </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <span class="badge bg-danger rounded me-3">3</span>
-                                <div>
-                                    <h5>Frameworks</h5>
-                                    <p>Laravel, Symfony y otros frameworks PHP ofrecen herramientas integradas para trabajar con APIs.</p>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="alert alert-success mt-5">
                         <h4><i class="fas fa-check-circle me-2"></i>En resumen</h4>
                         <p class="mb-0">Las APIs son fundamentales en el desarrollo web moderno. Permiten integrar servicios, compartir datos entre aplicaciones y construir arquitecturas más flexibles y escalables. En las siguientes lecciones, aprenderemos específicamente sobre APIs REST, cómo consumirlas y cómo crear nuestras propias APIs con PHP.</p>
+                    </div>
+                    
+                    <!-- Flujo de trabajo con APIs en PHP -->
+                    <div class="card border-0 shadow-sm mt-4 mb-5">
+                        <div class="card-header bg-danger text-white">
+                            <h4 class="mb-0"><i class="fas fa-project-diagram me-2"></i>Flujo de trabajo con APIs en PHP</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-4">
+                                <div class="col-md-3 text-center">
+                                    <div class="d-inline-block rounded-circle bg-light p-3 mb-3">
+                                        <i class="fas fa-paper-plane fa-2x text-danger"></i>
+                                    </div>
+                                    <h5>1. Petición</h5>
+                                    <p class="small">Envía una solicitud HTTP desde PHP a la API usando métodos GET, POST, PUT o DELETE</p>
+                                    <div class="bg-light rounded p-2 small">
+                                        <code>file_get_contents($url)</code> o <br><code>curl_exec($ch)</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="d-inline-block rounded-circle bg-light p-3 mb-3">
+                                        <i class="fas fa-exchange-alt fa-2x text-danger"></i>
+                                    </div>
+                                    <h5>2. Respuesta</h5>
+                                    <p class="small">La API devuelve datos (normalmente en formato JSON) y un código de estado HTTP</p>
+                                    <div class="bg-light rounded p-2 small">
+                                        <code>$respuesta = ...</code><br>
+                                        <code>$codigo = http_response_code()</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="d-inline-block rounded-circle bg-light p-3 mb-3">
+                                        <i class="fas fa-code fa-2x text-danger"></i>
+                                    </div>
+                                    <h5>3. Procesamiento</h5>
+                                    <p class="small">Convierte la respuesta JSON a estructuras de datos PHP para su uso</p>
+                                    <div class="bg-light rounded p-2 small">
+                                        <code>$datos = json_decode(</code><br><code>$respuesta, true)</code>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="d-inline-block rounded-circle bg-light p-3 mb-3">
+                                        <i class="fas fa-laptop-code fa-2x text-danger"></i>
+                                    </div>
+                                    <h5>4. Utilización</h5>
+                                    <p class="small">Usa los datos recibidos en tu aplicación PHP</p>
+                                    <div class="bg-light rounded p-2 small">
+                                        <code>$temperatura = </code><br><code>$datos['main']['temp']</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Navegación entre lecciones -->

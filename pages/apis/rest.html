@@ -1,17 +1,4 @@
-<!D    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REST APIs con PHP - Guía Interactiva de PHP</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/styles.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Code Styles CSS -->
-    <link href="../../css/code-styles.css" rel="stylesheet" />
-    <script src="../../js/sidebar.js" defer></script>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +10,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome -->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Code Styles CSS -->    <link href="../../css/code-styles.css" rel="stylesheet" />
+    <style>
+        /* Additional styles for code blocks */
+        .vscode-editor {
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vscode-editor-header {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .vscode-editor-content {
+            background-color: #1E1E1E !important;
+            color: #D4D4D4 !important;
+            font-family: 'Consolas', 'Monaco', monospace !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            border-radius: 0 !important;
+            padding: 12px !important;
+        }
+        
+        .vscode-editor-content pre {
+            margin-bottom: 0;
+            padding: 0;
+        }
+        
+        .vscode-editor-content code {
+            background: transparent !important;
+            padding: 0 !important;
+        }
+        
+        .vscode-editor-footer {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+    </style>
     <script src="../../js/sidebar.js" defer></script>
+    <script src="../../js/code-format.js" defer></script>
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -150,13 +178,28 @@
             <div class="col-lg-9">
                 <div class="content-page">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
+                        <ol class="breadcrumb">                            <li class="breadcrumb-item"><a href="../../index.html">Inicio</a></li>
                             <li class="breadcrumb-item"><a href="#">APIs con PHP</a></li>
                             <li class="breadcrumb-item active" aria-current="page">REST APIs</li>
                         </ol>
                     </nav>
-                      <h1 class="mb-4">APIs REST con PHP</h1>
+                    
+                    <!-- Encabezado mejorado -->
+                    <div class="card bg-light text-dark border-0 shadow-lg mb-5">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 text-center mb-3 mb-md-0">
+                                    <i class="fas fa-exchange-alt fa-5x text-danger mb-3"></i>
+                                </div>
+                                <div class="col-md-9">
+                                    <h1 class="display-5 mb-3">APIs REST con PHP</h1>
+                                    <p class="lead mb-0">
+                                        Aprende a diseñar, implementar y consumir APIs REST con PHP siguiendo los principios y buenas prácticas de la arquitectura más utilizada en servicios web modernos.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="alert alert-primary">
                         <h5><i class="fas fa-graduation-cap me-2"></i>Objetivos de Aprendizaje</h5>
@@ -168,103 +211,336 @@
                             <li>Implementar buenas prácticas en diseño de APIs REST</li>
                         </ul>
                     </div>
-                    
-                    <h2 class="mt-5">¿Qué es REST?</h2>
-                    <p>
-                        REST (Representational State Transfer) es un estilo de arquitectura para diseñar servicios web. Fue presentado por Roy Fielding en su tesis doctoral en 2000 y se ha convertido en el estándar de facto para el diseño de APIs web modernas.
-                    </p>
-                    
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title text-danger"><i class="fas fa-lightbulb me-2"></i>Principios fundamentales de REST</h5>
-                            <ul class="mb-0">
-                                <li><strong>Interfaz uniforme:</strong> Los recursos se identifican mediante URIs y se manipulan mediante representaciones.</li>
-                                <li><strong>Sin estado:</strong> Cada petición contiene toda la información necesaria, no depende de peticiones anteriores.</li>
-                                <li><strong>Cacheable:</strong> Las respuestas pueden ser cacheable para mejorar el rendimiento.</li>
-                                <li><strong>Cliente-servidor:</strong> Existe una separación clara entre cliente y servidor.</li>
-                                <li><strong>Sistema en capas:</strong> La arquitectura puede estar compuesta por múltiples capas jerárquicas.</li>
-                            </ul>
+                      <h2 class="mt-5">¿Qué es REST?</h2>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <p class="lead">
+                                REST (Representational State Transfer) es un estilo de arquitectura para diseñar servicios web. Fue presentado por Roy Fielding en su tesis doctoral en 2000 y se ha convertido en el estándar de facto para el diseño de APIs web modernas.
+                            </p>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="badge bg-danger p-2 rounded-circle me-3">
+                                    <i class="fas fa-info-circle fa-2x text-white"></i>
+                                </div>
+                                <p class="mb-0 fst-italic">
+                                    REST es un conjunto de principios arquitectónicos, no un protocolo o estándar. Las API que siguen estos principios se denominan "RESTful".
+                                </p>
+                            </div>
+                        </div>                        <div class="col-lg-5">
+                            <div class="card bg-light border-0 shadow-sm">
+                                <div class="card-body text-center p-4">
+                                    <img src="https://www.astera.com/wp-content/uploads/2020/01/rest.png" alt="Diagrama REST" class="img-fluid rounded mb-3" style="max-height: 200px;">
+                                    <p class="small text-muted mb-0">
+                                        Imagen: Comunicación cliente-servidor a través de una API REST utilizando recursos, verbos HTTP y representaciones.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <h2 class="mt-5">Recursos y URLs</h2>
-                    <p>
-                        En una API REST, todo es un <strong>recurso</strong>. Un recurso puede ser un objeto, un servicio, o cualquier entidad que pueda ser identificada, nombrada y manipulada a través de la web. Cada recurso es accesible a través de una URL única.
-                    </p>
+                    <h3 class="mt-5 mb-4 text-danger"><i class="fas fa-lightbulb me-2"></i>Principios fundamentales de REST</h3>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <span class="badge rounded-circle bg-danger p-3">
+                                            <i class="fas fa-network-wired fa-2x text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="card-title text-center">Interfaz uniforme</h5>
+                                    <p class="card-text">
+                                        Los recursos se identifican mediante URIs y se manipulan mediante representaciones. Simplifica la arquitectura general y mejora la visibilidad de las interacciones.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <span class="badge rounded-circle bg-primary p-3">
+                                            <i class="fas fa-database fa-2x text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="card-title text-center">Sin estado</h5>
+                                    <p class="card-text">
+                                        Cada petición contiene toda la información necesaria y no depende de peticiones anteriores. El servidor no almacena contexto entre peticiones.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-center mb-3">
+                                        <span class="badge rounded-circle bg-success p-3">
+                                            <i class="fas fa-server fa-2x text-white"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="card-title text-center">Sistema en capas</h5>
+                                    <p class="card-text">
+                                        La arquitectura está compuesta por múltiples capas jerárquicas que pueden evolucionar de forma independiente, permitiendo escalabilidad y flexibilidad.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <h2 class="mt-5 text-center">Recursos y URLs</h2>
+                    <div class="row mb-5">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-body text-center py-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-link fa-3x text-danger"></i>
+                                    </div>
+                                    <p class="lead">
+                                        En una API REST, todo es un <strong class="text-danger">recurso</strong>. Un recurso puede ser un objeto, un servicio, o cualquier entidad que pueda ser identificada, nombrada y manipulada a través de la web. Cada recurso es accesible a través de una URL única.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="table-light">
+                        <table class="table table-hover border">
+                            <thead class="bg-dark text-white">
                                 <tr>
-                                    <th>Recurso</th>
-                                    <th>URL</th>
-                                    <th>Descripción</th>
+                                    <th><i class="fas fa-cube me-2"></i>Recurso</th>
+                                    <th><i class="fas fa-link me-2"></i>URL</th>
+                                    <th><i class="fas fa-info-circle me-2"></i>Descripción</th>
+                                    <th><i class="fas fa-code me-2"></i>Ejemplo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Colección</td>
+                                    <td class="align-middle">
+                                        <span class="badge bg-primary p-2">Colección</span>
+                                    </td>
+                                    <td><code>/recursos</code></td>
+                                    <td>Representa todos los recursos de un tipo</td>
                                     <td><code>/usuarios</code></td>
-                                    <td>Representa a todos los usuarios</td>
                                 </tr>
                                 <tr>
-                                    <td>Elemento</td>
+                                    <td class="align-middle">
+                                        <span class="badge bg-success p-2">Elemento</span>
+                                    </td>
+                                    <td><code>/recursos/{id}</code></td>
+                                    <td>Representa un recurso específico por su ID</td>
                                     <td><code>/usuarios/123</code></td>
-                                    <td>Representa al usuario con ID 123</td>
                                 </tr>
                                 <tr>
-                                    <td>Subrecurso</td>
+                                    <td class="align-middle">
+                                        <span class="badge bg-info p-2">Subrecurso</span>
+                                    </td>
+                                    <td><code>/recursos/{id}/subrecursos</code></td>
+                                    <td>Todos los subrecursos de un recurso específico</td>
                                     <td><code>/usuarios/123/pedidos</code></td>
-                                    <td>Todos los pedidos del usuario 123</td>
                                 </tr>
                                 <tr>
-                                    <td>Filtrado</td>
+                                    <td class="align-middle">
+                                        <span class="badge bg-warning text-dark p-2">Filtrado</span>
+                                    </td>
+                                    <td><code>/recursos?param=valor</code></td>
+                                    <td>Recursos filtrados por parámetros de consulta</td>
                                     <td><code>/usuarios?activo=true</code></td>
-                                    <td>Usuarios que están activos</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
-                    <h2 class="mt-5">Métodos HTTP y operaciones CRUD</h2>
-                    <p>
-                        Los métodos HTTP definen las acciones que se pueden realizar sobre los recursos. Estos se corresponden con las operaciones CRUD (Create, Read, Update, Delete) de las bases de datos.
+                      <h2 class="mt-5 text-center">Métodos HTTP y operaciones CRUD</h2>
+                    <p class="text-center mb-4">
+                        Los métodos HTTP definen las acciones que se pueden realizar sobre los recursos. 
+                        Estos se corresponden con las operaciones CRUD (Create, Read, Update, Delete) de las bases de datos.
                     </p>
                     
-                    <div class="vscode-editor mt-4">
-                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                            <span><i class="fas fa-exchange-alt me-2"></i>métodos_http.md</span>
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-success text-white text-center py-3">
+                                    <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>POST</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="text-center text-muted mb-3">Create</h6>
+                                    <p class="card-text">Crea un nuevo recurso en el servidor.</p>
+                                    <div class="bg-light p-2 rounded small">
+                                        <code>POST /usuarios</code>
+                                        <br>
+                                        <span class="text-muted">Crea un nuevo usuario</span>
+                                    </div>
+                                    <div class="mt-3 small">
+                                        <span class="badge bg-success">201 Created</span>
+                                        <span class="badge bg-warning text-dark">400 Bad Request</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="vscode-editor-content bg-dark p-3">
-                            <pre><code class="language-markdown">
-| Método HTTP | Operación CRUD | Descripción                                 | Ejemplo                                   |
-|-------------|----------------|---------------------------------------------|-------------------------------------------|
-| GET         | Read           | Obtener datos                               | GET /usuarios - Listar todos los usuarios |
-| GET         | Read           | Obtener un recurso específico               | GET /usuarios/1 - Obtener usuario con ID 1|
-| POST        | Create         | Crear un nuevo recurso                      | POST /usuarios - Crear un nuevo usuario   |
-| PUT         | Update         | Actualizar un recurso existente (completo)  | PUT /usuarios/1 - Actualizar usuario 1    |
-| PATCH       | Update         | Actualizar parcialmente un recurso          | PATCH /usuarios/1 - Actualizar una parte  |
-| DELETE      | Delete         | Eliminar un recurso                         | DELETE /usuarios/1 - Eliminar usuario 1   |
-                            </code></pre>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-primary text-white text-center py-3">
+                                    <h5 class="mb-0"><i class="fas fa-search me-2"></i>GET</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="text-center text-muted mb-3">Read</h6>
+                                    <p class="card-text">Recupera un recurso o una colección.</p>
+                                    <div class="bg-light p-2 rounded small">
+                                        <code>GET /usuarios/123</code>
+                                        <br>
+                                        <span class="text-muted">Obtiene el usuario 123</span>
+                                    </div>
+                                    <div class="mt-3 small">
+                                        <span class="badge bg-primary">200 OK</span>
+                                        <span class="badge bg-warning text-dark">404 Not Found</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
-                            <span>Markdown</span>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-warning text-dark text-center py-3">
+                                    <h5 class="mb-0"><i class="fas fa-edit me-2"></i>PUT / PATCH</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="text-center text-muted mb-3">Update</h6>
+                                    <p class="card-text">Actualiza un recurso existente.</p>
+                                    <div class="bg-light p-2 rounded small">
+                                        <code>PUT /usuarios/123</code>
+                                        <br>
+                                        <span class="text-muted">Actualiza el usuario 123</span>
+                                    </div>
+                                    <div class="mt-3 small">
+                                        <span class="badge bg-primary">200 OK</span>
+                                        <span class="badge bg-warning text-dark">400 Bad Request</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-danger text-white text-center py-3">
+                                    <h5 class="mb-0"><i class="fas fa-trash-alt me-2"></i>DELETE</h5>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="text-center text-muted mb-3">Delete</h6>
+                                    <p class="card-text">Elimina un recurso existente.</p>
+                                    <div class="bg-light p-2 rounded small">
+                                        <code>DELETE /usuarios/123</code>
+                                        <br>
+                                        <span class="text-muted">Elimina el usuario 123</span>
+                                    </div>
+                                    <div class="mt-3 small">
+                                        <span class="badge bg-secondary">204 No Content</span>
+                                        <span class="badge bg-warning text-dark">404 Not Found</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    </div>
+                    
+                    <!-- Ejemplo interactivo de petición y respuesta -->
+                    <div class="card border-0 shadow-sm mb-5 bg-light">
+                        <div class="card-header bg-dark text-white">
+                            <h4 class="mb-0 text-light"><i class="fas fa-exchange-alt me-2"></i>Ejemplo de petición y respuesta REST</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 border-end">
+                                    <h5 class="text-center mb-3"><i class="fas fa-arrow-right text-danger me-2"></i>Petición</h5>
+                                    <div class="card bg-dark text-white mb-3">
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <span><strong>GET</strong> /api/productos/1</span>
+                                            <span class="badge bg-success">Cliente → Servidor</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="mb-1"><strong>Headers:</strong></p>
+                                            <pre class="text-white bg-dark mb-3"><code>Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJ9...</code></pre>
+                                            
+                                            <p class="mb-1"><strong>URL Parameters:</strong></p>
+                                            <pre class="text-white bg-dark"><code>id: 1</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-center mb-3"><i class="fas fa-arrow-left text-success me-2"></i>Respuesta</h5>
+                                    <div class="card bg-dark text-white">
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <span><strong>200</strong> OK</span>
+                                            <span class="badge bg-primary">Servidor → Cliente</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="mb-1"><strong>Headers:</strong></p>
+                                            <pre class="text-white bg-dark mb-3"><code>Content-Type: application/json
+Cache-Control: max-age=3600</code></pre>
+                                              <p class="mb-1"><strong>Body:</strong></p>
+                                            <div class="vscode-editor mb-0">
+                                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                                    <span><i class="fab fa-js"></i> response.json</span>
+                                                </div>
+                                                <div class="vscode-editor-content">
+                                                    <pre><code class="language-json">
+{
+  "id": 1,
+  "nombre": "Smartphone XYZ",
+  "precio": 599.99,
+  "categoria": "Electrónica",
+  "disponible": true,
+  "creado": "2025-01-15T10:30:00Z"
+}
+                                                    </code></pre>
+                                                </div>
+                                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                                    <span>JSON</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark text-white">
+                            <div class="small">
+                                <i class="fas fa-lightbulb me-2"></i> Este ejemplo muestra cómo se ve una petición REST completa para obtener un producto y la respuesta correspondiente en formato JSON.
+                            </div>
                         </div>
                     </div>
                     
-                    <h2 class="mt-5">Formato JSON</h2>
-                    <p>
-                        JSON (JavaScript Object Notation) es el formato estándar para intercambiar datos en APIs REST. Es ligero, fácil de leer para humanos y fácil de procesar para las máquinas.
-                    </p>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="vscode-editor mt-3">
-                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                                    <span><i class="fas fa-code me-2"></i>ejemplo_usuario.json</span>
+                    <h2 class="mt-5 text-center">Formato JSON</h2>
+                    <div class="row mb-4">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="card border-0 shadow-sm bg-light">
+                                <div class="card-body text-center p-4">
+                                    <i class="fas fa-file-code fa-3x text-primary mb-3"></i>
+                                    <p class="lead">
+                                        JSON (JavaScript Object Notation) es el formato estándar para intercambiar datos en APIs REST. Es ligero, fácil de leer para humanos y fácil de procesar para las máquinas.
+                                    </p>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <span class="badge bg-success me-2 p-2">Ligero</span>
+                                        <span class="badge bg-success me-2 p-2">Independiente del lenguaje</span>
+                                        <span class="badge bg-success p-2">Auto-descriptivo</span>
+                                    </div>
                                 </div>
-                                <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-json">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-user me-2"></i>Objeto único (Usuario)</span>
+                                        <span class="badge bg-white text-primary">GET /usuarios/1</span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">                                    <div class="vscode-editor">
+                                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                            <span><i class="fab fa-js"></i> user.json</span>
+                                        </div>
+                                        <div class="vscode-editor-content">
+                                            <pre><code class="language-json">
 {
   "id": 1,
   "nombre": "Juan Pérez",
@@ -273,20 +549,34 @@
   "rol": "admin",
   "creado": "2025-01-15T10:30:00Z"
 }
-                                    </code></pre>
+                                            </code></pre>
+                                        </div>
+                                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                            <span>JSON</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
-                                    <span>JSON</span>
+                                <div class="card-footer bg-light py-2">
+                                    <div class="small text-muted">
+                                        <i class="fas fa-info-circle me-1"></i> Los nombres de las propiedades van entre comillas dobles
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="vscode-editor mt-3">
-                                <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
-                                    <span><i class="fas fa-code me-2"></i>ejemplo_coleccion.json</span>
-                                </div>
-                                <div class="vscode-editor-content bg-dark p-3">
-                                    <pre><code class="language-json">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-success text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-users me-2"></i>Colección (Usuarios)</span>
+                                        <span class="badge bg-white text-success">GET /usuarios</span>
+                                    </div>
+                                </div>                                <div class="card-body p-0">
+                                    <div class="vscode-editor">
+                                        <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                            <span><i class="fab fa-js"></i> users_collection.json</span>
+                                        </div>
+                                        <div class="vscode-editor-content">
+                                            <pre><code class="language-json">
 {
   "usuarios": [
     {
@@ -304,96 +594,579 @@
   "pagina": 1,
   "porPagina": 10
 }
-                                    </code></pre>
+                                            </code></pre>
+                                        </div>                                        <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                            <span>JSON</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
-                                    <span>JSON</span>
+                                <div class="card-footer bg-light py-2">
+                                    <div class="small text-muted">
+                                        <i class="fas fa-info-circle me-1"></i> Incluye metadatos para paginación y conteo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <h2 class="mt-5 text-center">Códigos de estado HTTP</h2>
+                    <div class="row mb-4">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="alert alert-info">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-lightbulb fa-2x me-3"></i>
+                                    </div>
+                                    <div>
+                                        <h5>¿Por qué son importantes?</h5>
+                                        <p class="mb-0">
+                                            Los códigos de estado HTTP comunican el resultado de una petición. Usar los códigos correctos mejora la usabilidad de tu API, permite un mejor manejo de errores y facilita la depuración.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <h2 class="mt-5">Códigos de estado HTTP</h2>
-                    <p>
-                        Los códigos de estado HTTP comunican el resultado de una petición. Es importante utilizarlos correctamente en tu API REST.
-                    </p>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-3">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white text-center">
+                                    <h5 class="mb-0">2xx Éxito</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>200</strong> OK</span>
+                                            <span class="badge bg-success rounded-pill">GET</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>201</strong> Created</span>
+                                            <span class="badge bg-success rounded-pill">POST</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>204</strong> No Content</span>
+                                            <span class="badge bg-success rounded-pill">DELETE</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div class="card h-100 border-primary">
+                                <div class="card-header bg-primary text-white text-center">
+                                    <h5 class="mb-0">3xx Redirección</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>301</strong> Moved</span>
+                                            <i class="fas fa-arrow-right text-primary"></i>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>304</strong> Not Modified</span>
+                                            <i class="fas fa-history text-primary"></i>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>307</strong> Temp Redirect</span>
+                                            <i class="fas fa-random text-primary"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div class="card h-100 border-warning">
+                                <div class="card-header bg-warning text-dark text-center">
+                                    <h5 class="mb-0">4xx Error Cliente</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>400</strong> Bad Request</span>
+                                            <i class="fas fa-exclamation-circle text-warning"></i>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>401</strong> Unauthorized</span>
+                                            <i class="fas fa-lock text-warning"></i>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>404</strong> Not Found</span>
+                                            <i class="fas fa-search text-warning"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <div class="card h-100 border-danger">
+                                <div class="card-header bg-danger text-white text-center">
+                                    <h5 class="mb-0">5xx Error Servidor</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>500</strong> Server Error</span>
+                                            <i class="fas fa-bug text-danger"></i>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>502</strong> Bad Gateway</span>
+                                            <i class="fas fa-unlink text-danger"></i>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span><strong>503</strong> Unavailable</span>
+                                            <i class="fas fa-server text-danger"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <h2 class="mt-5 text-center">Buenas prácticas para diseñar APIs REST</h2>
                     
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Código</th>
-                                    <th>Descripción</th>
-                                    <th>Uso en APIs</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="table-success">
-                                    <td>200 OK</td>
-                                    <td>La petición se completó con éxito</td>
-                                    <td>Respuesta a GET, PUT, PATCH exitosos</td>
-                                </tr>
-                                <tr class="table-success">
-                                    <td>201 Created</td>
-                                    <td>Recurso creado con éxito</td>
-                                    <td>Respuesta a POST exitoso</td>
-                                </tr>
-                                <tr class="table-success">
-                                    <td>204 No Content</td>
-                                    <td>Éxito pero sin contenido en la respuesta</td>
-                                    <td>Respuesta a DELETE exitoso</td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <td>400 Bad Request</td>
-                                    <td>La petición tiene algún error</td>
-                                    <td>Datos de entrada inválidos</td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <td>401 Unauthorized</td>
-                                    <td>Se requiere autenticación</td>
-                                    <td>El cliente no está autenticado</td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <td>403 Forbidden</td>
-                                    <td>No tiene permisos</td>
-                                    <td>Usuario autenticado sin permisos</td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <td>404 Not Found</td>
-                                    <td>Recurso no encontrado</td>
-                                    <td>ID o ruta no existe</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <td>500 Internal Server Error</td>
-                                    <td>Error del servidor</td>
-                                    <td>Errores de programación o base de datos</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row mb-5">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="row g-0">
+                                        <div class="col-md-4 bg-danger text-white p-4 d-flex flex-column justify-content-center">
+                                            <h4 class="text-center mb-4"><i class="fas fa-check-circle fa-2x mb-3"></i><br>Mejores Prácticas</h4>
+                                            <p class="text-center mb-0">Seguir estas recomendaciones te ayudará a crear APIs más intuitivas, mantenibles y fáciles de usar.</p>
+                                        </div>
+                                        <div class="col-md-8 p-4">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Usa sustantivos, no verbos</h6>
+                                                            <p class="small text-muted mb-0"><code>/usuarios</code> en lugar de <code>/getUsuarios</code></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Versiona tu API</h6>
+                                                            <p class="small text-muted mb-0"><code>/api/v1/usuarios</code></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Usa correctamente los códigos HTTP</h6>
+                                                            <p class="small text-muted mb-0">Comunica claramente el resultado</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Implementa paginación</h6>
+                                                            <p class="small text-muted mb-0">Para colecciones grandes</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Permite filtrado y ordenación</h6>
+                                                            <p class="small text-muted mb-0">Mediante parámetros de consulta</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Documenta tu API</h6>
+                                                            <p class="small text-muted mb-0">Usa herramientas como Swagger/OpenAPI</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Valida los datos</h6>
+                                                            <p class="small text-muted mb-0">Tanto en cliente como en servidor</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="d-flex">
+                                                        <div class="flex-shrink-0 me-2">
+                                                            <i class="fas fa-check text-success"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6>Asegura tu API</h6>
+                                                            <p class="small text-muted mb-0">Usa HTTPS y autenticación apropiada</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <h2 class="mt-5">Buenas prácticas para diseñar APIs REST</h2>
-                    <div class="card border-0 shadow-sm mb-4">
-                        <div class="card-body">
-                            <ol class="mb-0">
-                                <li><strong>Usa sustantivos, no verbos</strong> en las URLs (ej. <code>/usuarios</code> en lugar de <code>/getUsuarios</code>)</li>
-                                <li><strong>Versiona tu API</strong> (ej. <code>/api/v1/usuarios</code>)</li>
-                                <li><strong>Utiliza correctamente los códigos de estado HTTP</strong></li>
-                                <li><strong>Implementa paginación</strong> para colecciones grandes</li>
-                                <li><strong>Permite filtrado, ordenación y búsqueda</strong> mediante parámetros de consulta</li>
-                                <li><strong>Documenta tu API</strong> para que otros la puedan usar fácilmente</li>
-                                <li><strong>Implementa validación de datos</strong> tanto en cliente como en servidor</li>
-                                <li><strong>Maneja correctamente los errores</strong> con mensajes descriptivos</li>
-                                <li><strong>Asegura tu API</strong> con HTTPS y estrategias de autenticación apropiadas</li>
-                            </ol>
+                    <!-- Flujo de Comunicación REST -->
+                    <div class="row mb-5">
+                        <div class="col-lg-10 mx-auto">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-dark text-white">
+                                    <h4 class="mb-0 text-light"><i class="fas fa-project-diagram me-2"></i>Flujo de comunicación REST</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row align-items-center text-center">
+                                        <div class="col-lg-3">
+                                            <div class="bg-light rounded p-3 shadow-sm mb-3">
+                                                <i class="fas fa-laptop fa-3x text-primary mb-3"></i>
+                                                <h5>Cliente</h5>
+                                                <p class="small text-muted mb-0">Aplicación o navegador</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-1 d-none d-lg-block">
+                                            <i class="fas fa-arrow-right fa-2x text-muted"></i>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="bg-danger rounded p-3 shadow-sm mb-3">
+                                                <i class="fas fa-exchange-alt fa-3x text-white mb-3"></i>
+                                                <h5 class="text-white">API REST</h5>
+                                                <p class="small text-white mb-0">
+                                                    <span class="badge bg-light text-danger me-1">GET</span>
+                                                    <span class="badge bg-light text-danger me-1">POST</span>
+                                                    <span class="badge bg-light text-danger me-1">PUT</span>
+                                                    <span class="badge bg-light text-danger">DELETE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-1 d-none d-lg-block">
+                                            <i class="fas fa-arrow-right fa-2x text-muted"></i>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="bg-dark rounded p-3 shadow-sm mb-3">
+                                                <i class="fas fa-database fa-3x text-light mb-3"></i>
+                                                <h5 class="text-white">Recursos</h5>
+                                                <p class="small text-white mb-0">Base de datos, archivos, etc.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        </div>
+                    </div>
+                    
+                    <!-- Casos de Uso en PHP -->
+                    <h2 class="mt-5 text-center">Casos de Uso de REST en PHP</h2>
+                    <div class="row mb-5 g-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-primary text-white text-center">
+                                    <h5 class="mb-0"><i class="fas fa-cloud-download-alt me-2"></i>Consumir APIs</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Usar <code>file_get_contents()</code> para peticiones sencillas</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Implementar la librería cURL para peticiones avanzadas</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Utilizar Guzzle HTTP como cliente moderno</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Gestionar autenticación y tokens</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="consumo.html" class="btn btn-sm btn-outline-primary">Ver más <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-success text-white text-center">
+                                    <h5 class="mb-0"><i class="fas fa-cloud-upload-alt me-2"></i>Crear APIs</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Crear endpoints con PHP puro</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Implementar usando frameworks como Laravel o Symfony</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Gestionar autorización y permisos</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Documentar con Swagger/OpenAPI</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="creacion.html" class="btn btn-sm btn-outline-success">Ver más <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-header bg-danger text-white text-center">
+                                    <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Seguridad</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Autenticación con JWT (JSON Web Tokens)</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Validación de datos de entrada</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Protección contra ataques CSRF y XSS</li>
+                                        <li class="list-group-item"><i class="fas fa-check-circle text-success me-2"></i>Implementación de HTTPS</li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="creacion.html#seguridad" class="btn btn-sm btn-outline-danger">Ver más <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="alert alert-success mt-4">
-                        <h5><i class="fas fa-check-circle me-2"></i>En resumen</h5>
-                        <p class="mb-0">
-                            Las APIs REST siguen principios de diseño que las hacen escalables, mantenibles y fáciles de usar. Utilizan URLs para identificar recursos, métodos HTTP para manipularlos, y códigos de estado para comunicar resultados. En las próximas lecciones, veremos cómo implementar y consumir APIs REST con PHP.
-                        </p>
+                        <div class="d-flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-check-circle fa-3x me-3"></i>
+                            </div>
+                            <div>
+                                <h5>En resumen</h5>
+                                <p class="mb-0">
+                                    Las APIs REST siguen principios de diseño que las hacen escalables, mantenibles y fáciles de usar. Utilizan URLs para identificar recursos, métodos HTTP para manipularlos, y códigos de estado para comunicar resultados. En las próximas lecciones, veremos cómo implementar y consumir APIs REST con PHP.
+                                </p>
+                            </div>
+                        </div>                    </div>
+                    
+                    <!-- Ejemplo interactivo de código PHP -->
+                    <div class="my-5">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fab fa-php me-2"></i>Ejemplo de PHP con REST API</h4>
+                            </div>
+                            <div class="card-body">                                <ul class="nav nav-tabs" id="phpRestTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="simple-tab" data-bs-toggle="tab" data-bs-target="#simple" type="button" role="tab" aria-controls="simple" aria-selected="true">Petición Simple</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="curl-tab" data-bs-toggle="tab" data-bs-target="#curl" type="button" role="tab" aria-controls="curl" aria-selected="false">Usando cURL</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="post-tab" data-bs-toggle="tab" data-bs-target="#post" type="button" role="tab" aria-controls="post" aria-selected="false">POST con JSON</button>
+                                    </li>
+                                </ul>
+                                <script>
+                                    // Tab functionality enhancement
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const tabLinks = document.querySelectorAll('#phpRestTabs .nav-link');
+                                        
+                                        tabLinks.forEach(function(tabLink) {
+                                            tabLink.addEventListener('click', function() {
+                                                // Remove active class from all tabs
+                                                tabLinks.forEach(t => t.classList.remove('active'));
+                                                
+                                                // Add active class to clicked tab
+                                                this.classList.add('active');
+                                                
+                                                // Hide all tab panes
+                                                const tabPanes = document.querySelectorAll('#phpRestTabsContent .tab-pane');
+                                                tabPanes.forEach(p => {
+                                                    p.classList.remove('show', 'active');
+                                                });
+                                                
+                                                // Show the corresponding tab pane
+                                                const target = this.getAttribute('data-bs-target');
+                                                const pane = document.querySelector(target);
+                                                if (pane) {
+                                                    pane.classList.add('show', 'active');
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                                
+                                <div class="tab-content p-3 border border-top-0 rounded-bottom" id="phpRestTabsContent">                                    <div class="tab-pane fade show active" id="simple" role="tabpanel">
+                                        <div class="vscode-editor mt-4">
+                                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                                <span><i class="fab fa-php"></i> simple_request.php</span>
+                                            </div>
+                                            <div class="vscode-editor-content">
+                                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Consumir una API REST con file_get_contents</span>
+<span class="php-variable">$url</span> = <span class="php-string">'https://fakestoreapi.com/products/1'</span>;
+
+<span class="php-comment">// Configurar el contexto para la solicitud</span>
+<span class="php-variable">$options</span> = [
+    <span class="php-string">'http'</span> => [
+        <span class="php-string">'method'</span> => <span class="php-string">'GET'</span>,
+        <span class="php-string">'header'</span> => <span class="php-string">'Accept: application/json'</span>
+    ]
+];
+<span class="php-variable">$context</span> = <span class="php-function">stream_context_create</span>(<span class="php-variable">$options</span>);
+
+<span class="php-comment">// Realizar la petición</span>
+<span class="php-variable">$response</span> = <span class="php-function">file_get_contents</span>(<span class="php-variable">$url</span>, <span class="php-keyword">false</span>, <span class="php-variable">$context</span>);
+
+<span class="php-comment">// Verificar si hubo errores</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$response</span> === <span class="php-keyword">false</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"Error al obtener datos de la API"</span>;
+    <span class="php-keyword">exit</span>;
+}
+
+<span class="php-comment">// Decodificar la respuesta JSON</span>
+<span class="php-variable">$data</span> = <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+
+<span class="php-comment">// Mostrar los datos</span>
+<span class="php-function">echo</span> <span class="php-string">"&lt;h3&gt;{</span><span class="php-variable">$data</span>[<span class="php-string">'title'</span>]<span class="php-string">}&lt;/h3&gt;"</span>;
+<span class="php-function">echo</span> <span class="php-string">"&lt;p&gt;Precio: \${</span><span class="php-variable">$data</span>[<span class="php-string">'price'</span>]<span class="php-string">}&lt;/p&gt;"</span>;
+<span class="php-function">echo</span> <span class="php-string">"&lt;p&gt;Categoría: {</span><span class="php-variable">$data</span>[<span class="php-string">'category'</span>]<span class="php-string">}&lt;/p&gt;"</span>;
+<span class="php-function">echo</span> <span class="php-string">"&lt;p&gt;{</span><span class="php-variable">$data</span>[<span class="php-string">'description'</span>]<span class="php-string">}&lt;/p&gt;"</span>;
+<span class="php-tag">?&gt;</span>
+                                                </code></pre>
+                                            </div>
+                                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                                <span>PHP 8.2</span>
+                                            </div>
+                                        </div>
+                                    </div>                                    <div class="tab-pane fade" id="curl" role="tabpanel">
+                                        <div class="vscode-editor">
+                                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                                <span><i class="fab fa-php"></i> curl_request.php</span>
+                                            </div>
+                                            <div class="vscode-editor-content">
+                                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Consumir una API REST con cURL</span>
+<span class="php-variable">$url</span> = <span class="php-string">'https://fakestoreapi.com/products?limit=5'</span>;
+
+<span class="php-comment">// Inicializar cURL</span>
+<span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>();
+
+<span class="php-comment">// Configurar opciones de cURL</span>
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_URL</span>, <span class="php-variable">$url</span>);
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>);
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_HTTPHEADER</span>, [
+    <span class="php-string">'Accept: application/json'</span>,
+    <span class="php-string">'Content-Type: application/json'</span>
+]);
+
+<span class="php-comment">// Ejecutar la petición</span>
+<span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+
+<span class="php-comment">// Verificar si hubo errores</span>
+<span class="php-keyword">if</span>(<span class="php-function">curl_errno</span>(<span class="php-variable">$ch</span>)) {
+    <span class="php-function">echo</span> <span class="php-string">'Error cURL: '</span> . <span class="php-function">curl_error</span>(<span class="php-variable">$ch</span>);
+    <span class="php-keyword">exit</span>;
+}
+
+<span class="php-comment">// Obtener código de estado HTTP</span>
+<span class="php-variable">$httpCode</span> = <span class="php-function">curl_getinfo</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLINFO_HTTP_CODE</span>);
+<span class="php-function">echo</span> <span class="php-string">"Código de estado: </span><span class="php-variable">$httpCode</span><span class="php-string">&lt;br&gt;"</span>;
+
+<span class="php-comment">// Cerrar sesión cURL</span>
+<span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+
+<span class="php-comment">// Decodificar la respuesta JSON</span>
+<span class="php-variable">$productos</span> = <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+
+<span class="php-comment">// Mostrar resultados</span>
+<span class="php-function">echo</span> <span class="php-string">"&lt;ul&gt;"</span>;
+<span class="php-keyword">foreach</span> (<span class="php-variable">$productos</span> <span class="php-keyword">as</span> <span class="php-variable">$producto</span>) {
+    <span class="php-function">echo</span> <span class="php-string">"&lt;li&gt;{</span><span class="php-variable">$producto</span>[<span class="php-string">'title'</span>]<span class="php-string">} - \${</span><span class="php-variable">$producto</span>[<span class="php-string">'price'</span>]<span class="php-string">}&lt;/li&gt;"</span>;
+}
+<span class="php-function">echo</span> <span class="php-string">"&lt;/ul&gt;"</span>;
+<span class="php-tag">?&gt;</span>
+                                                </code></pre>                                        </div>
+                                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                                <span>PHP 8.2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="post" role="tabpanel">
+                                        <div class="vscode-editor">
+                                            <div class="vscode-editor-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+                                                <span><i class="fab fa-php"></i> post_request.php</span>
+                                            </div>
+                                            <div class="vscode-editor-content">
+                                                <pre><code class="php">
+<span class="php-tag">&lt;?php</span>
+<span class="php-comment">// Enviar datos JSON a una API con POST</span>
+<span class="php-variable">$url</span> = <span class="php-string">'https://fakestoreapi.com/products'</span>;
+
+<span class="php-comment">// Datos a enviar en formato JSON</span>
+<span class="php-variable">$data</span> = [
+    <span class="php-string">'title'</span> => <span class="php-string">'Nuevo Producto'</span>,
+    <span class="php-string">'price'</span> => <span class="php-number">99.99</span>,
+    <span class="php-string">'description'</span> => <span class="php-string">'Una descripción del nuevo producto'</span>,
+    <span class="php-string">'image'</span> => <span class="php-string">'https://example.com/image.jpg'</span>,
+    <span class="php-string">'category'</span> => <span class="php-string">'electronics'</span>
+];
+
+<span class="php-comment">// Convertir array a JSON</span>
+<span class="php-variable">$jsonData</span> = <span class="php-function">json_encode</span>(<span class="php-variable">$data</span>);
+
+<span class="php-comment">// Inicializar cURL</span>
+<span class="php-variable">$ch</span> = <span class="php-function">curl_init</span>();
+
+<span class="php-comment">// Configurar opciones de cURL para POST</span>
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_URL</span>, <span class="php-variable">$url</span>);
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_POST</span>, <span class="php-keyword">true</span>);
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_POSTFIELDS</span>, <span class="php-variable">$jsonData</span>);
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_RETURNTRANSFER</span>, <span class="php-keyword">true</span>);
+<span class="php-function">curl_setopt</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLOPT_HTTPHEADER</span>, [
+    <span class="php-string">'Content-Type: application/json'</span>,
+    <span class="php-string">'Content-Length: '</span> . <span class="php-function">strlen</span>(<span class="php-variable">$jsonData</span>)
+]);
+
+<span class="php-comment">// Ejecutar la petición</span>
+<span class="php-variable">$response</span> = <span class="php-function">curl_exec</span>(<span class="php-variable">$ch</span>);
+<span class="php-variable">$httpCode</span> = <span class="php-function">curl_getinfo</span>(<span class="php-variable">$ch</span>, <span class="php-keyword">CURLINFO_HTTP_CODE</span>);
+
+<span class="php-comment">// Cerrar sesión cURL</span>
+<span class="php-function">curl_close</span>(<span class="php-variable">$ch</span>);
+
+<span class="php-comment">// Verificar respuesta</span>
+<span class="php-keyword">if</span> (<span class="php-variable">$httpCode</span> == <span class="php-number">201</span>) { <span class="php-comment">// 201 Created</span>
+    <span class="php-variable">$productoCreado</span> = <span class="php-function">json_decode</span>(<span class="php-variable">$response</span>, <span class="php-keyword">true</span>);
+    <span class="php-function">echo</span> <span class="php-string">"Producto creado correctamente con ID: {</span><span class="php-variable">$productoCreado</span>[<span class="php-string">'id'</span>]<span class="php-string">}&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"&lt;pre&gt;"</span>;
+    <span class="php-function">print_r</span>(<span class="php-variable">$productoCreado</span>);
+    <span class="php-function">echo</span> <span class="php-string">"&lt;/pre&gt;"</span>;
+} <span class="php-keyword">else</span> {
+    <span class="php-function">echo</span> <span class="php-string">"Error al crear el producto. Código: </span><span class="php-variable">$httpCode</span><span class="php-string">&lt;br&gt;"</span>;
+    <span class="php-function">echo</span> <span class="php-string">"Respuesta: </span><span class="php-variable">$response</span><span class="php-string">"</span>;
+}
+<span class="php-tag">?&gt;</span>
+                                                </code></pre>
+                                            </div>
+                                            <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
+                                                <span>PHP 8.2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-light">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle text-primary me-2"></i>
+                                    <p class="small mb-0">Estos ejemplos muestran cómo consumir APIs REST desde PHP utilizando diferentes métodos. Cada pestaña muestra un enfoque distinto: usando <code>file_get_contents()</code> para peticiones simples, <code>cURL</code> para peticiones más avanzadas, y cómo enviar datos JSON mediante POST.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Navegación entre lecciones -->
@@ -488,11 +1261,54 @@
                 </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
+    </footer>    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="../../js/scripts.js"></script>
+    <!-- Custom JS -->    <script src="../../js/scripts.js"></script>
+    <!-- Formateo de código -->
+    <script src="../../js/code-format.js"></script>
+      <!-- Prism.js para resaltado de código -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-php.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-json.min.js"></script>
+      <!-- Animaciones para los elementos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación de entrada para las tarjetas
+            document.querySelectorAll('.card').forEach(function(card, index) {
+                setTimeout(function() {
+                    card.classList.add('animate__animated', 'animate__fadeIn');
+                }, index * 100);
+            });
+            
+            // Inicializar tooltips de Bootstrap
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Asegurarse de que las pestañas funcionen correctamente
+            var tabElms = document.querySelectorAll('button[data-bs-toggle="tab"]');
+            tabElms.forEach(function(tabElm) {
+                tabElm.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var tab = new bootstrap.Tab(tabElm);
+                    tab.show();
+                });
+            });
+            
+            // Formatear ejemplos de código (complementando al código en code-format.js)
+            document.querySelectorAll('.vscode-editor pre').forEach(function(pre) {
+                pre.style.margin = '0';
+                pre.style.background = 'transparent';
+            });
+            
+            document.querySelectorAll('.vscode-editor code').forEach(function(code) {
+                code.style.background = 'transparent';
+                code.style.padding = '0';
+            });
+        });
+    </script>
+    </script>
 </body>
 </html>
