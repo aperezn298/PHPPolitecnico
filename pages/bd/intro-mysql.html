@@ -292,6 +292,8 @@
     <span class="sql-identifier">id</span> <span class="sql-type">INT</span> <span class="sql-keyword">PRIMARY KEY</span> <span class="sql-keyword">AUTO_INCREMENT</span>,
     <span class="sql-identifier">nombre</span> <span class="sql-type">VARCHAR</span>(<span class="sql-number">50</span>),
     <span class="sql-identifier">email</span> <span class="sql-type">VARCHAR</span>(<span class="sql-number">100</span>),
+    <span class="sql-identifier">edad</span> <span class="sql-type">INT</span>,
+    <span class="sql-identifier">ciudad</span> <span class="sql-type">VARCHAR</span>(<span class="sql-number">50</span>),
     <span class="sql-identifier">fecha_registro</span> <span class="sql-type">DATETIME</span>
 );</code></pre>
                             </div>
@@ -317,8 +319,8 @@
                                 <div class="vscode-editor-content bg-dark p-3">
                                     <pre><code class="sql">
 <span class="sql-comment">-- Insertar un nuevo usuario</span>
-<span class="sql-keyword">INSERT INTO</span> <span class="sql-identifier">usuarios</span> (<span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span>, <span class="sql-identifier">fecha_registro</span>)
-<span class="sql-keyword">VALUES</span> (<span class="sql-string">'Juan Pérez'</span>, <span class="sql-string">'juan@email.com'</span>, <span class="sql-function">NOW</span>());</code></pre>
+<span class="sql-keyword">INSERT INTO</span> <span class="sql-identifier">usuarios</span> (<span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span>, <span class="sql-identifier">edad</span>, <span class="sql-identifier">ciudad</span>, <span class="sql-identifier">fecha_registro</span>)
+<span class="sql-keyword">VALUES</span> (<span class="sql-string">'Juan Pérez'</span>, <span class="sql-string">'juan@email.com'</span>, <span class="sql-number">28</span>, <span class="sql-string">'Madrid'</span>, <span class="sql-function">NOW</span>());</code></pre>
                                 </div>
                                 <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
                                     <span>MySQL 8.0</span>
@@ -340,7 +342,7 @@
 <span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span>;
 
 <span class="sql-comment">-- Consultar con condiciones</span>
-<span class="sql-keyword">SELECT</span> <span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span> 
+<span class="sql-keyword">SELECT</span> <span class="sql-identifier">nombre</span>, <span class="sql-identifier">email</span>, <span class="sql-identifier">edad</span>, <span class="sql-identifier">ciudad</span> 
 <span class="sql-keyword">FROM</span> <span class="sql-identifier">usuarios</span>;</code></pre>
                                 </div>
                                 <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
@@ -404,7 +406,9 @@
                                     <pre><code class="sql">
 <span class="sql-comment">-- Actualizar datos de un usuario</span>
 <span class="sql-keyword">UPDATE</span> <span class="sql-identifier">usuarios</span> 
-<span class="sql-keyword">SET</span> <span class="sql-identifier">email</span> = <span class="sql-string">'nuevo@email.com'</span>
+<span class="sql-keyword">SET</span> <span class="sql-identifier">email</span> = <span class="sql-string">'nuevo@email.com'</span>,
+    <span class="sql-identifier">edad</span> = <span class="sql-number">30</span>,
+    <span class="sql-identifier">ciudad</span> = <span class="sql-string">'Barcelona'</span>
 <span class="sql-keyword">WHERE</span> <span class="sql-identifier">id</span> = <span class="sql-number">1</span>;</code></pre>
                                 </div>
                                 <div class="vscode-editor-footer bg-dark text-white px-3 py-1">
