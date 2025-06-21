@@ -1,0 +1,90 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+header {
+    background-color: #2563eb;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #1e3a8a;
+    color: white;
+    margin-top: 3rem;
+}
+
+.usuarios-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.usuario-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.usuario-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.usuario-avatar {
+    font-size: 3rem;
+    text-align: center;
+    margin: 1rem 0 0;
+    color: #2563eb;
+}
+
+.usuario-info {
+    padding: 1rem 1.2rem 1.5rem;
+}
+
+.usuario-nombre {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.usuario-email,
+.usuario-edad,
+.usuario-ciudad,
+.usuario-fecha {
+    font-size: 1rem;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.4rem;
+}
+
+.contenedor {
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
